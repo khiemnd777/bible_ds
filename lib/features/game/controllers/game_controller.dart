@@ -406,6 +406,37 @@ class GameController extends StateNotifier<GameViewState> {
     await initialize();
   }
 
+  Future<bool> openSceneByIndex(int index) async {
+    final content = state.content;
+    if (content == null) return false;
+    if (index < 0 || index >= content.scenes.length) return false;
+
+    final scene = content.scenes[index];
+    final portraits = _portraitResolver.resolveScenePortraits(scene);
+    final progress = state.progress.copyWith(
+      assignedSceneId: scene.id,
+      completedToday: false,
+    );
+    await _progressStore.saveProgress(progress);
+
+    state = state.copyWith(
+      scene: scene,
+      reflection: null,
+      selectedChoice: null,
+      selectedChoices: const [],
+      selectedTurns: const [],
+      currentTurnId:
+          scene.firstTurnWithChoices(scene.conversation.startTurnId)?.id,
+      outcomeText: null,
+      outcomeNext: null,
+      progress: progress,
+      phase: GamePhase.scenario,
+      portraits: portraits,
+      dailyTrend: null,
+    );
+    return true;
+  }
+
   Future<void> goToday() async {
     final todayProgress = state.progress.copyWith(
       dayOffset: 0,

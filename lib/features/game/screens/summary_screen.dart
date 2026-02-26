@@ -1,5 +1,6 @@
 import 'package:bible_decision_simulator/core/i18n.dart';
 import 'package:bible_decision_simulator/features/monetization/donate_dialog.dart';
+import 'package:bible_decision_simulator/game_engine/models/content_models.dart';
 import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
 import 'package:bible_decision_simulator/game_engine/stat/daily_trend_engine.dart';
 import 'package:flutter/material.dart';
@@ -10,21 +11,23 @@ class SummaryScreen extends StatelessWidget {
     required this.stats,
     required this.streak,
     required this.endingSummary,
-    required this.onNextDay,
-    required this.onToday,
-    required this.canNextDay,
+    required this.scenes,
+    required this.currentSceneId,
+    required this.onOpenSceneByIndex,
     required this.text,
     this.dailyTrend,
+    this.onNavigateScenarioView,
   });
 
   final StatState stats;
   final int streak;
   final String endingSummary;
-  final VoidCallback onNextDay;
-  final VoidCallback onToday;
-  final bool canNextDay;
+  final List<Scene> scenes;
+  final String? currentSceneId;
+  final Future<bool> Function(int index) onOpenSceneByIndex;
   final UiText text;
   final DailyTrend? dailyTrend;
+  final VoidCallback? onNavigateScenarioView;
 
   @override
   Widget build(BuildContext context) {
@@ -105,16 +108,8 @@ class SummaryScreen extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: FilledButton(
-              onPressed: canNextDay ? onNextDay : null,
-              child: Text(text.nextDay),
-            ),
-          ),
-          const SizedBox(height: 8),
-          SizedBox(
-            width: double.infinity,
-            child: OutlinedButton(
-              onPressed: onToday,
-              child: Text(text.today),
+              onPressed: () => _openSituation(context),
+              child: Text(text.situation),
             ),
           ),
           const SizedBox(height: 8),
@@ -143,6 +138,43 @@ class SummaryScreen extends StatelessWidget {
         'pride' => stats.pride,
         _ => 50,
       };
+
+  Future<void> _openSituation(BuildContext context) async {
+    if (scenes.isEmpty) return;
+    final currentIndex =
+        scenes.indexWhere((scene) => scene.id == currentSceneId);
+    if (currentIndex >= 0 && currentIndex < scenes.length - 1) {
+      final opened = await onOpenSceneByIndex(currentIndex + 1);
+      if (opened) {
+        onNavigateScenarioView?.call();
+      }
+      return;
+    }
+
+    if (!context.mounted) return;
+    final selectedIndex = await showDialog<int>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(text.selectSituation),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: scenes.length,
+            itemBuilder: (itemContext, index) => ListTile(
+              title: Text(scenes[index].title),
+              onTap: () => Navigator.of(dialogContext).pop(index),
+            ),
+          ),
+        ),
+      ),
+    );
+    if (selectedIndex == null) return;
+    final opened = await onOpenSceneByIndex(selectedIndex);
+    if (opened) {
+      onNavigateScenarioView?.call();
+    }
+  }
 }
 
 const _orderedStatKeys = ['faith', 'love', 'humility', 'wisdom', 'pride'];

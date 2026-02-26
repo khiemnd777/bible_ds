@@ -40,6 +40,8 @@ class UiText {
       };
   String get dailyTrend => _t('daily_trend', 'Daily Spiritual Trend');
   String get nextDay => _t('next_day', 'Next Day');
+  String get situation => _t('situation', 'Situation');
+  String get selectSituation => _t('select_situation', 'Select a situation');
   String get today => _t('today', 'Today');
   String get donate => _t('donate', 'Donate');
 

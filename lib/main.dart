@@ -50,7 +50,7 @@ class _RootShell extends ConsumerStatefulWidget {
 }
 
 class _RootShellState extends ConsumerState<_RootShell> {
-  int _index = 0;
+  int _index = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +66,10 @@ class _RootShellState extends ConsumerState<_RootShell> {
         stats: gameState.stats,
         streak: gameState.progress.streak,
         endingSummary: gameState.endingSummary,
-        onNextDay: gameController.nextDay,
-        onToday: gameController.goToday,
-        canNextDay: gameState.canNextDay,
+        scenes: gameState.content?.scenes ?? const [],
+        currentSceneId: gameState.scene?.id,
+        onOpenSceneByIndex: gameController.openSceneByIndex,
+        onNavigateScenarioView: () => setState(() => _index = 0),
         text: text,
       ),
     ];
