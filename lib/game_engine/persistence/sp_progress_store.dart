@@ -1,0 +1,40 @@
+import 'dart:convert';
+
+import 'package:bible_decision_simulator/game_engine/models/game_state.dart';
+import 'package:bible_decision_simulator/game_engine/persistence/progress_store.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SpProgressStore implements ProgressStore {
+  SpProgressStore(this._prefs);
+
+  final SharedPreferences _prefs;
+
+  static const _statsKey = 'bds.stats';
+  static const _progressKey = 'bds.progress';
+
+  @override
+  Future<ProgressState> loadProgress() async {
+    final raw = _prefs.getString(_progressKey);
+    if (raw == null || raw.isEmpty) return ProgressState.initial();
+    final map = jsonDecode(raw) as Map<String, dynamic>;
+    return ProgressState.fromJson(map);
+  }
+
+  @override
+  Future<void> saveProgress(ProgressState state) async {
+    await _prefs.setString(_progressKey, jsonEncode(state.toJson()));
+  }
+
+  @override
+  Future<StatState> loadStats() async {
+    final raw = _prefs.getString(_statsKey);
+    if (raw == null || raw.isEmpty) return StatState.initial();
+    final map = jsonDecode(raw) as Map<String, dynamic>;
+    return StatState.fromJson(map);
+  }
+
+  @override
+  Future<void> saveStats(StatState state) async {
+    await _prefs.setString(_statsKey, jsonEncode(state.toJson()));
+  }
+}

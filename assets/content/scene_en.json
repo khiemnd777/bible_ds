@@ -1,0 +1,337 @@
+{
+  "scenes": [
+    {
+      "id": "scene_forgive_01",
+      "topic": "forgiveness",
+      "title": "A Sharp Word at Dusk",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npc": {
+          "id": "eli",
+          "name": "Eli",
+          "portraitKey": "friend_01"
+        }
+      },
+      "conversation": {
+        "startTurnId": "t_intro_1",
+        "turns": [
+          {
+            "id": "t_intro_1",
+            "speaker": "Leah",
+            "text": "Your friend Eli snapped at you after a hard day. He now stands in silence, clearly regretful.",
+            "nextTurnId": "t_intro_2",
+            "choices": []
+          },
+          {
+            "id": "t_intro_2",
+            "speaker": "Narrator",
+            "text": "You feel hurt, but also see his trembling hands.",
+            "nextTurnId": "t_choice",
+            "choices": []
+          },
+          {
+            "id": "t_choice",
+            "speaker": "Eli",
+            "text": "How do you respond?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_forgive",
+                "text": "Tell Eli you forgive him and ask how you can pray for him.",
+                "intentTag": "forgive",
+                "actionTag": "mercy",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": -6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "Eli exhales in relief. The conversation becomes honest and healing.",
+                  "next": "reflection:ref_forgiveness"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_retaliate",
+                "text": "Return the insult to make your point.",
+                "intentTag": "anger",
+                "actionTag": "retaliate",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": 12
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -8
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "The room grows cold. Eli withdraws and trust is damaged.",
+                  "next": "reflection:ref_forgiveness"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_c_forgive",
+            "requiredChoiceIds": [
+              "c_forgive"
+            ],
+            "text": "Eli exhales in relief. The conversation becomes honest and healing.",
+            "next": "reflection:ref_forgiveness"
+          },
+          {
+            "id": "o_c_retaliate",
+            "requiredChoiceIds": [
+              "c_retaliate"
+            ],
+            "text": "The room grows cold. Eli withdraws and trust is damaged.",
+            "next": "reflection:ref_forgiveness"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_01",
+      "topic": "courage",
+      "title": "Truth in the Meeting",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npc": {
+          "id": "mina",
+          "name": "Mina",
+          "portraitKey": "friend_01"
+        }
+      },
+      "conversation": {
+        "startTurnId": "t_intro_1",
+        "turns": [
+          {
+            "id": "t_intro_1",
+            "speaker": "Narrator",
+            "text": "At work, everyone agrees to hide a mistake that could hurt others.",
+            "nextTurnId": "t_intro_2",
+            "choices": []
+          },
+          {
+            "id": "t_intro_2",
+            "speaker": "Mina",
+            "text": "If we stay quiet, no one will know. Please don't complicate this.",
+            "nextTurnId": "t_open",
+            "choices": []
+          },
+          {
+            "id": "t_open",
+            "speaker": "Narrator",
+            "text": "Mina looks at you, waiting for your response.",
+            "choices": [
+              {
+                "id": "c_open_push",
+                "text": "Ask the team to report the issue together.",
+                "intentTag": "courage",
+                "actionTag": "truth",
+                "effects": [
+                  {
+                    "stat": "faith",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_decide",
+                "outcome": {
+                  "text": "",
+                  "next": "end"
+                }
+              },
+              {
+                "id": "c_open_delay",
+                "text": "Say you need more time and avoid conflict for now.",
+                "intentTag": "neutral",
+                "actionTag": "delay",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 5
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_decide",
+                "outcome": {
+                  "text": "",
+                  "next": "end"
+                }
+              }
+            ],
+            "nextTurnId": ""
+          },
+          {
+            "id": "t_decide",
+            "speaker": "Mina",
+            "text": "Leadership is asking for a final answer now. What should we do?",
+            "choices": [
+              {
+                "id": "c_decide_truth",
+                "text": "State the truth respectfully and accept the cost.",
+                "intentTag": "courage",
+                "actionTag": "truth",
+                "effects": [
+                  {
+                    "stat": "faith",
+                    "delta": 5
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "",
+                  "next": "reflection:ref_courage"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_decide_silent",
+                "text": "Stay silent to protect your comfort.",
+                "intentTag": "neutral",
+                "actionTag": "silence",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": -6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "",
+                  "next": "reflection:ref_courage"
+                },
+                "nextTurnId": ""
+              }
+            ],
+            "nextTurnId": ""
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_courage_full",
+            "requiredChoiceIds": [
+              "c_open_push",
+              "c_decide_truth"
+            ],
+            "text": "You lead with courage from start to finish. The issue is addressed before it harms others.",
+            "next": "reflection:ref_courage"
+          },
+          {
+            "id": "o_courage_late",
+            "requiredChoiceIds": [
+              "c_decide_truth"
+            ],
+            "text": "You delayed at first, then chose truth when it mattered most. The room is tense, but people are protected.",
+            "next": "reflection:ref_courage"
+          },
+          {
+            "id": "o_silent",
+            "requiredChoiceIds": [],
+            "text": "Conflict is avoided today, but your conscience remains unsettled.",
+            "next": "reflection:ref_courage"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_forgiveness",
+      "topic": "forgiveness",
+      "verseRef": "Ephesians 4:32",
+      "verseText": "Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you.",
+      "questions": [
+        "What made forgiveness difficult in this moment?",
+        "How does God's forgiveness reshape your response to others?",
+        "What practical step can you take to restore peace today?"
+      ]
+    },
+    {
+      "id": "ref_courage",
+      "topic": "courage",
+      "verseRef": "Joshua 1:9",
+      "verseText": "Be strong and courageous. Do not be frightened, and do not be dismayed, for the Lord your God is with you wherever you go.",
+      "questions": [
+        "Where did fear influence your decision?",
+        "What would faithful courage look like next time?",
+        "Who can support you in choosing truth?"
+      ]
+    }
+  ]
+}

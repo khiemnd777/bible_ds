@@ -1,0 +1,28 @@
+name: bible_decision_simulator
+description: Bible Decision Simulator - offline-first interactive narrative game.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  shared_preferences: ^2.5.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/content/scenes.json
+    - assets/content/scenes_vi.json
+    - assets/content/scene_en.json
+    - assets/i18n/en_us.json
+    - assets/i18n/vi_vn.json
+    - assets/portraits/

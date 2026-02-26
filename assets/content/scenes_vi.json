@@ -1,0 +1,337 @@
+{
+  "scenes": [
+    {
+      "id": "scene_forgive_01",
+      "topic": "forgiveness",
+      "title": "Một Lời Cay Nghiệt Lúc Hoàng Hôn",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npc": {
+          "id": "eli",
+          "name": "Eli",
+          "portraitKey": "friend_01"
+        }
+      },
+      "conversation": {
+        "startTurnId": "t_intro_1",
+        "turns": [
+          {
+            "id": "t_intro_1",
+            "speaker": "Leah",
+            "text": "Bạn của bạn là Eli đã buông lời gay gắt với bạn sau một ngày mệt mỏi. Giờ đây anh ấy đứng lặng im, rõ ràng đầy hối hận.",
+            "nextTurnId": "t_intro_2",
+            "choices": []
+          },
+          {
+            "id": "t_intro_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn cảm thấy tổn thương, nhưng cũng nhìn thấy đôi tay anh ấy đang run.",
+            "nextTurnId": "t_choice",
+            "choices": []
+          },
+          {
+            "id": "t_choice",
+            "speaker": "Eli",
+            "text": "Bạn sẽ đáp lại thế nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_forgive",
+                "text": "Nói với Eli rằng bạn tha thứ cho anh ấy và hỏi bạn có thể cầu nguyện cho anh ấy thế nào.",
+                "intentTag": "forgive",
+                "actionTag": "mercy",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": -6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "Eli thở ra nhẹ nhõm. Cuộc trò chuyện trở nên chân thành và chữa lành.",
+                  "next": "reflection:ref_forgiveness"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_retaliate",
+                "text": "Đáp trả lời xúc phạm để chứng minh quan điểm của mình.",
+                "intentTag": "anger",
+                "actionTag": "retaliate",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": 12
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -8
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "Căn phòng trở nên lạnh lẽo. Eli rút lui và sự tin tưởng bị tổn hại.",
+                  "next": "reflection:ref_forgiveness"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_c_forgive",
+            "requiredChoiceIds": [
+              "c_forgive"
+            ],
+            "text": "Eli thở ra nhẹ nhõm. Cuộc trò chuyện trở nên chân thành và chữa lành.",
+            "next": "reflection:ref_forgiveness"
+          },
+          {
+            "id": "o_c_retaliate",
+            "requiredChoiceIds": [
+              "c_retaliate"
+            ],
+            "text": "Căn phòng trở nên lạnh lẽo. Eli rút lui và sự tin tưởng bị tổn hại.",
+            "next": "reflection:ref_forgiveness"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_01",
+      "topic": "courage",
+      "title": "Sự Thật Trong Cuộc Họp",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npc": {
+          "id": "mina",
+          "name": "Mina",
+          "portraitKey": "friend_01"
+        }
+      },
+      "conversation": {
+        "startTurnId": "t_intro_1",
+        "turns": [
+          {
+            "id": "t_intro_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Tại nơi làm việc, mọi người đồng ý che giấu một sai sót có thể gây tổn hại cho người khác.",
+            "nextTurnId": "t_intro_2",
+            "choices": []
+          },
+          {
+            "id": "t_intro_2",
+            "speaker": "Mina",
+            "text": "Nếu chúng ta giữ im lặng, sẽ không ai biết đâu. Xin đừng làm chuyện này phức tạp hơn.",
+            "nextTurnId": "t_open",
+            "choices": []
+          },
+          {
+            "id": "t_open",
+            "speaker": "Dẫn chuyện",
+            "text": "Mina nhìn bạn, chờ câu trả lời của bạn.",
+            "choices": [
+              {
+                "id": "c_open_push",
+                "text": "Đề nghị cả nhóm cùng báo cáo sai sót.",
+                "intentTag": "courage",
+                "actionTag": "truth",
+                "effects": [
+                  {
+                    "stat": "faith",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_decide",
+                "outcome": {
+                  "text": "",
+                  "next": "end"
+                }
+              },
+              {
+                "id": "c_open_delay",
+                "text": "Nói rằng bạn cần thêm thời gian và tạm tránh xung đột.",
+                "intentTag": "neutral",
+                "actionTag": "delay",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 5
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_decide",
+                "outcome": {
+                  "text": "",
+                  "next": "end"
+                }
+              }
+            ],
+            "nextTurnId": ""
+          },
+          {
+            "id": "t_decide",
+            "speaker": "Mina",
+            "text": "Ban lãnh đạo cần câu trả lời cuối cùng ngay bây giờ. Chúng ta nên làm gì?",
+            "choices": [
+              {
+                "id": "c_decide_truth",
+                "text": "Nói sự thật cách tôn trọng và chấp nhận cái giá phải trả.",
+                "intentTag": "courage",
+                "actionTag": "truth",
+                "effects": [
+                  {
+                    "stat": "faith",
+                    "delta": 5
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "",
+                  "next": "reflection:ref_courage"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_decide_silent",
+                "text": "Giữ im lặng để bảo vệ sự thoải mái của bạn.",
+                "intentTag": "neutral",
+                "actionTag": "silence",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": -6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "",
+                  "next": "reflection:ref_courage"
+                },
+                "nextTurnId": ""
+              }
+            ],
+            "nextTurnId": ""
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_courage_full",
+            "requiredChoiceIds": [
+              "c_open_push",
+              "c_decide_truth"
+            ],
+            "text": "Bạn chọn can đảm từ đầu đến cuối. Vấn đề được xử lý trước khi gây hại cho người khác.",
+            "next": "reflection:ref_courage"
+          },
+          {
+            "id": "o_courage_late",
+            "requiredChoiceIds": [
+              "c_decide_truth"
+            ],
+            "text": "Ban đầu bạn chần chừ, nhưng sau đó đã chọn sự thật khi cần nhất. Căn phòng căng thẳng, nhưng mọi người được bảo vệ.",
+            "next": "reflection:ref_courage"
+          },
+          {
+            "id": "o_silent",
+            "requiredChoiceIds": [],
+            "text": "Hôm nay tránh được xung đột, nhưng lương tâm bạn vẫn không yên.",
+            "next": "reflection:ref_courage"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_forgiveness",
+      "topic": "forgiveness",
+      "verseRef": "Ephesians 4:32",
+      "verseText": "Hãy nhân từ và đầy lòng thương xót với nhau, tha thứ cho nhau, như Đức Chúa Trời trong Đấng Christ đã tha thứ cho anh em.",
+      "questions": [
+        "Điều gì khiến việc tha thứ trở nên khó khăn trong khoảnh khắc đó?",
+        "Sự tha thứ của Đức Chúa Trời thay đổi cách bạn đáp ứng người khác như thế nào?",
+        "Hôm nay bạn có thể thực hiện bước cụ thể nào để khôi phục sự bình an?"
+      ]
+    },
+    {
+      "id": "ref_courage",
+      "topic": "courage",
+      "verseRef": "Giô-suê 1:9",
+      "verseText": "Hãy mạnh mẽ và can đảm. Đừng sợ hãi, đừng kinh khiếp, vì Giê-hô-va Đức Chúa Trời của ngươi ở cùng ngươi bất cứ nơi nào ngươi đi.",
+      "questions": [
+        "Nỗi sợ đã ảnh hưởng đến quyết định của bạn ở điểm nào?",
+        "Lần sau, lòng can đảm trung tín sẽ trông như thế nào?",
+        "Ai có thể nâng đỡ bạn khi bạn chọn nói sự thật?"
+      ]
+    }
+  ]
+}
