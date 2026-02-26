@@ -1,7 +1,7 @@
 import 'package:bible_decision_simulator/game_engine/models/content_models.dart';
-import 'package:bible_decision_simulator/game_engine/models/game_state.dart';
 import 'package:bible_decision_simulator/game_engine/rules/ending_engine.dart';
 import 'package:bible_decision_simulator/game_engine/rules/stat_engine.dart';
+import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
 
 class ChoiceResolution {
   final StatState nextStats;

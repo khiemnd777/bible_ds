@@ -7,6 +7,9 @@ import 'package:bible_decision_simulator/game_engine/models/portrait_models.dart
 import 'package:bible_decision_simulator/game_engine/persistence/progress_store.dart';
 import 'package:bible_decision_simulator/game_engine/rules/scheduler.dart';
 import 'package:bible_decision_simulator/game_engine/runtime/game_engine.dart';
+import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
+import 'package:bible_decision_simulator/game_engine/stat/daily_snapshot.dart';
+import 'package:bible_decision_simulator/game_engine/stat/daily_trend_engine.dart';
 import 'package:bible_decision_simulator/game_engine/runtime/portrait_resolver.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,6 +34,7 @@ class GameViewState {
   final List<String> validationErrors;
   final String endingSummary;
   final bool canNextDay;
+  final DailyTrend? dailyTrend;
 
   const GameViewState({
     required this.isLoading,
@@ -51,6 +55,7 @@ class GameViewState {
     required this.validationErrors,
     required this.endingSummary,
     required this.canNextDay,
+    required this.dailyTrend,
   });
 
   factory GameViewState.initial() {
@@ -73,6 +78,7 @@ class GameViewState {
       validationErrors: const [],
       endingSummary: '',
       canNextDay: false,
+      dailyTrend: null,
     );
   }
 
@@ -95,6 +101,7 @@ class GameViewState {
     List<String>? validationErrors,
     String? endingSummary,
     bool? canNextDay,
+    Object? dailyTrend = _unset,
   }) {
     return GameViewState(
       isLoading: isLoading ?? this.isLoading,
@@ -125,6 +132,9 @@ class GameViewState {
       validationErrors: validationErrors ?? this.validationErrors,
       endingSummary: endingSummary ?? this.endingSummary,
       canNextDay: canNextDay ?? this.canNextDay,
+      dailyTrend: identical(dailyTrend, _unset)
+          ? this.dailyTrend
+          : dailyTrend as DailyTrend?,
     );
   }
 }
@@ -145,6 +155,7 @@ class GameController extends StateNotifier<GameViewState> {
         _gameEngine = gameEngine,
         _progressStore = progressStore,
         _portraitResolver = portraitResolver,
+        _dailyTrendEngine = const DailyTrendEngine(),
         _rewardedAdService = rewardedAdService,
         _localeCode = initialLocaleCode,
         super(GameViewState.initial()) {
@@ -157,6 +168,7 @@ class GameController extends StateNotifier<GameViewState> {
   final GameEngine _gameEngine;
   final ProgressStore _progressStore;
   final PortraitResolver _portraitResolver;
+  final DailyTrendEngine _dailyTrendEngine;
   final RewardedAdService _rewardedAdService;
   String _localeCode;
 
@@ -167,6 +179,15 @@ class GameController extends StateNotifier<GameViewState> {
       final content = await _contentStore.load(localeCode: _localeCode);
       final validationErrors = _validator.validate(content);
       final stats = await _progressStore.loadStats();
+      final dailySnapshot = await _progressStore.loadDailySnapshot();
+      if (dailySnapshot == null) {
+        await _progressStore.saveDailySnapshot(
+          DailySnapshot(
+            startDate: DateTime.now(),
+            startStat: stats,
+          ),
+        );
+      }
       var progress = await _progressStore.loadProgress();
 
       final assignment = _scheduler.assignSceneForDay(
@@ -221,6 +242,7 @@ class GameController extends StateNotifier<GameViewState> {
         validationErrors: validationErrors,
         endingSummary: _gameEngine.buildEndingSummary(stats),
         canNextDay: canNextDay,
+        dailyTrend: null,
       );
     } catch (e) {
       state = state.copyWith(
@@ -338,9 +360,36 @@ class GameController extends StateNotifier<GameViewState> {
     );
     await _progressStore.saveProgress(nextProgress);
 
+    final currentStats = state.stats;
+    var dailySnapshot = await _progressStore.loadDailySnapshot();
+    dailySnapshot ??= DailySnapshot(
+      startDate: DateTime.now(),
+      startStat: currentStats,
+    );
+    await _progressStore.saveDailySnapshot(dailySnapshot);
+
+    final shouldShowDailySummary =
+        DateTime.now().difference(dailySnapshot.startDate).inDays >= 1;
+    DailyTrend? dailyTrend;
+    var phase = GamePhase.summary;
+    if (shouldShowDailySummary) {
+      dailyTrend = _dailyTrendEngine.calculateTrend(
+        dailySnapshot.startStat,
+        currentStats,
+      );
+      phase = GamePhase.dailySummary;
+      await _progressStore.saveDailySnapshot(
+        DailySnapshot(
+          startDate: DateTime.now(),
+          startStat: currentStats,
+        ),
+      );
+    }
+
     state = state.copyWith(
       progress: nextProgress,
-      phase: GamePhase.summary,
+      phase: phase,
+      dailyTrend: dailyTrend,
     );
   }
 

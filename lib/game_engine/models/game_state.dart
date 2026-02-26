@@ -3,71 +3,7 @@ enum GamePhase {
   outcome,
   reflection,
   summary,
-}
-
-enum GameStat {
-  faith,
-  love,
-  obedience,
-  humility,
-  wisdom,
-  fear,
-  pride,
-}
-
-extension GameStatKey on GameStat {
-  String get key => switch (this) {
-        GameStat.faith => 'faith',
-        GameStat.love => 'love',
-        GameStat.obedience => 'obedience',
-        GameStat.humility => 'humility',
-        GameStat.wisdom => 'wisdom',
-        GameStat.fear => 'fear',
-        GameStat.pride => 'pride',
-      };
-
-  static GameStat? fromKey(String key) {
-    for (final stat in GameStat.values) {
-      if (stat.key == key) return stat;
-    }
-    return null;
-  }
-}
-
-class StatState {
-  final Map<GameStat, int> values;
-
-  const StatState({required this.values});
-
-  factory StatState.initial() {
-    return StatState(
-      values: {
-        for (final stat in GameStat.values) stat: 50,
-      },
-    );
-  }
-
-  int valueOf(GameStat stat) => values[stat] ?? 50;
-
-  StatState copyWith({
-    Map<GameStat, int>? values,
-  }) {
-    return StatState(values: values ?? this.values);
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      for (final entry in values.entries) entry.key.key: entry.value,
-    };
-  }
-
-  factory StatState.fromJson(Map<String, dynamic> json) {
-    final map = <GameStat, int>{};
-    for (final stat in GameStat.values) {
-      map[stat] = (json[stat.key] as num?)?.toInt() ?? 50;
-    }
-    return StatState(values: map);
-  }
+  dailySummary,
 }
 
 class ProgressState {

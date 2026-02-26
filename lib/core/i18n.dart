@@ -1,5 +1,4 @@
 import 'package:bible_decision_simulator/core/i18n_catalog.dart';
-import 'package:bible_decision_simulator/game_engine/models/game_state.dart';
 
 class UiText {
   UiText._(this.localeCode, this.catalog);
@@ -31,15 +30,15 @@ class UiText {
   String get summaryMenu => _t('summary_menu', 'Summary');
   String dayCount(int n) =>
       _t('day_count_template', '{n} day(s)').replaceAll('{n}', '$n');
-  String statLabel(GameStat stat) => switch (stat) {
-        GameStat.faith => _t('stat_faith', 'faith'),
-        GameStat.love => _t('stat_love', 'love'),
-        GameStat.obedience => _t('stat_obedience', 'obedience'),
-        GameStat.humility => _t('stat_humility', 'humility'),
-        GameStat.wisdom => _t('stat_wisdom', 'wisdom'),
-        GameStat.fear => _t('stat_fear', 'fear'),
-        GameStat.pride => _t('stat_pride', 'pride'),
+  String statLabel(String statKey) => switch (statKey) {
+        'faith' => _t('stat_faith', 'faith'),
+        'love' => _t('stat_love', 'love'),
+        'humility' => _t('stat_humility', 'humility'),
+        'wisdom' => _t('stat_wisdom', 'wisdom'),
+        'pride' => _t('stat_pride', 'pride'),
+        _ => statKey,
       };
+  String get dailyTrend => _t('daily_trend', 'Daily Spiritual Trend');
   String get nextDay => _t('next_day', 'Next Day');
   String get today => _t('today', 'Today');
   String get donate => _t('donate', 'Donate');

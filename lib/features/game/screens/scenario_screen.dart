@@ -71,6 +71,16 @@ class GameFlowScreen extends ConsumerWidget {
           canNextDay: state.canNextDay,
           text: text,
         ),
+      GamePhase.dailySummary => SummaryScreen(
+          stats: state.stats,
+          streak: state.progress.streak,
+          endingSummary: state.endingSummary,
+          onNextDay: controller.nextDay,
+          onToday: controller.goToday,
+          canNextDay: state.canNextDay,
+          text: text,
+          dailyTrend: state.dailyTrend,
+        ),
     };
   }
 }
