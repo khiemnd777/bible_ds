@@ -86,6 +86,8 @@ class GameFlowScreen extends ConsumerWidget {
 }
 
 class ScenarioScreen extends StatelessWidget {
+  static const double _chatSpacing = 16;
+
   const ScenarioScreen({
     super.key,
     required this.scene,
@@ -177,7 +179,8 @@ class ScenarioScreen extends StatelessWidget {
                             npcColor: npcColor,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 14, bottom: 8),
+                            padding: const EdgeInsets.only(
+                                bottom: ScenarioScreen._chatSpacing),
                             child: _PlayerChoiceBubble(
                               playerName: portraits.leftName,
                               playerAvatarPath: portraits.leftPath,
@@ -203,7 +206,8 @@ class ScenarioScreen extends StatelessWidget {
                     currentTurn.choices.isNotEmpty)
                   ...currentTurn.choices.asMap().entries.map(
                         (entry) => Padding(
-                          padding: const EdgeInsets.only(top: 14, bottom: 8),
+                          padding: const EdgeInsets.only(
+                              bottom: ScenarioScreen._chatSpacing),
                           child: _PlayerChoiceBubble(
                             playerName: portraits.leftName,
                             playerAvatarPath: portraits.leftPath,
@@ -222,7 +226,8 @@ class ScenarioScreen extends StatelessWidget {
                   ),
                 if (isOutcomeMode)
                   Padding(
-                    padding: const EdgeInsets.only(top: 12),
+                    padding: const EdgeInsets.only(
+                        bottom: ScenarioScreen._chatSpacing),
                     child: SizedBox(
                       width: double.infinity,
                       child: FilledButton(
@@ -283,7 +288,8 @@ class _NarratorChatBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding:
+          const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
@@ -319,7 +325,8 @@ class _NpcBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding:
+          const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -409,7 +416,8 @@ class _OutcomeBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8),
+      padding:
+          const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(12),

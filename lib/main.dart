@@ -2,6 +2,7 @@ import 'package:bible_decision_simulator/features/game/screens/scenario_screen.d
 import 'package:bible_decision_simulator/features/game/screens/summary_screen.dart';
 import 'package:bible_decision_simulator/features/preview/content_preview_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,6 +11,10 @@ import 'core/i18n_catalog.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   final prefs = await SharedPreferences.getInstance();
   final i18nCatalog = await I18nCatalog.loadFromAssets();
 
