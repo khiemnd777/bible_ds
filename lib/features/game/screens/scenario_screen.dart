@@ -109,7 +109,34 @@ class ScenarioScreen extends StatelessWidget {
   final String? currentTurnId;
   final Choice? selectedChoice;
   final String? outcomeText;
-  final VoidCallback? onNextOutcome;
+  final Future<void> Function()? onNextOutcome;
+
+  bool _isNarratorSpeaker(String speaker) {
+    final lowerSpeaker = speaker.toLowerCase();
+    return lowerSpeaker.contains('narrator') ||
+        lowerSpeaker.contains('dẫn chuyện');
+  }
+
+  Widget _buildTurnBubble({
+    required ConversationTurn turn,
+    required PortraitPair portraits,
+    required Color narratorColor,
+    required Color npcColor,
+  }) {
+    if (_isNarratorSpeaker(turn.speaker)) {
+      return _NarratorChatBlock(
+        speaker: turn.speaker,
+        text: turn.text,
+        color: narratorColor,
+      );
+    }
+    return _NpcBubble(
+      npcName: portraits.rightName,
+      npcAvatarPath: portraits.rightPath,
+      text: turn.text,
+      color: npcColor,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,34 +159,25 @@ class ScenarioScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ...introTurns.map((turn) {
-                  final isNarrator =
-                      turn.speaker.toLowerCase().contains('narrator') ||
-                          turn.speaker.toLowerCase().contains('dẫn chuyện');
-                  if (isNarrator) {
-                    return _NarratorChatBlock(
-                      speaker: turn.speaker,
-                      text: turn.text,
-                      color: narratorColor,
-                    );
-                  }
-                  return _NpcBubble(
-                    npcName: portraits.rightName,
-                    npcAvatarPath: portraits.rightPath,
-                    text: turn.text,
-                    color: npcColor,
+                  return _buildTurnBubble(
+                    turn: turn,
+                    portraits: portraits,
+                    narratorColor: narratorColor,
+                    npcColor: npcColor,
                   );
                 }),
                 ...selectedTurns.asMap().entries.map(
                       (entry) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          _NpcBubble(
-                            npcName: portraits.rightName,
-                            npcAvatarPath: portraits.rightPath,
-                            text: entry.value.text,
-                            color: npcColor,
+                          _buildTurnBubble(
+                            turn: entry.value,
+                            portraits: portraits,
+                            narratorColor: narratorColor,
+                            npcColor: npcColor,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 8),
+                            padding: const EdgeInsets.only(top: 14, bottom: 8),
                             child: _PlayerChoiceBubble(
                               playerName: portraits.leftName,
                               playerAvatarPath: portraits.leftPath,
@@ -174,33 +192,18 @@ class ScenarioScreen extends StatelessWidget {
                       ),
                     ),
                 if (!isOutcomeMode && currentTurn != null)
-                  () {
-                    final isNarrator = currentTurn.speaker
-                            .toLowerCase()
-                            .contains('narrator') ||
-                        currentTurn.speaker
-                            .toLowerCase()
-                            .contains('dẫn chuyện');
-                    if (isNarrator) {
-                      return _NarratorChatBlock(
-                        speaker: currentTurn.speaker,
-                        text: currentTurn.text,
-                        color: narratorColor,
-                      );
-                    }
-                    return _NpcBubble(
-                      npcName: portraits.rightName,
-                      npcAvatarPath: portraits.rightPath,
-                      text: currentTurn.text,
-                      color: npcColor,
-                    );
-                  }(),
+                  _buildTurnBubble(
+                    turn: currentTurn,
+                    portraits: portraits,
+                    narratorColor: narratorColor,
+                    npcColor: npcColor,
+                  ),
                 if (!isOutcomeMode &&
                     currentTurn != null &&
                     currentTurn.choices.isNotEmpty)
                   ...currentTurn.choices.asMap().entries.map(
                         (entry) => Padding(
-                          padding: const EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.only(top: 14, bottom: 8),
                           child: _PlayerChoiceBubble(
                             playerName: portraits.leftName,
                             playerAvatarPath: portraits.leftPath,
@@ -223,7 +226,11 @@ class ScenarioScreen extends StatelessWidget {
                     child: SizedBox(
                       width: double.infinity,
                       child: FilledButton(
-                        onPressed: onNextOutcome,
+                        onPressed: onNextOutcome == null
+                            ? null
+                            : () {
+                                onNextOutcome!.call();
+                              },
                         child: Text(text.next),
                       ),
                     ),
@@ -364,7 +371,7 @@ class _PlayerChoiceBubble extends StatelessWidget {
             onPressed: enabled ? onTap : null,
             style: OutlinedButton.styleFrom(
               backgroundColor: color,
-              alignment: Alignment.centerRight,
+              alignment: Alignment.centerLeft,
               padding: const EdgeInsets.all(12),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -372,7 +379,7 @@ class _PlayerChoiceBubble extends StatelessWidget {
             ),
             child: Text(
               text,
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.left,
             ),
           ),
         ),

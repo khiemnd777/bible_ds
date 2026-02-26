@@ -271,7 +271,6 @@ class GameController extends StateNotifier<GameViewState> {
       final nextStats = _gameEngine
           .resolveChoice(choice: choice, currentStats: state.stats)
           .nextStats;
-      await _progressStore.saveStats(nextStats);
 
       final portraits = _portraitResolver.resolveScenePortraits(
         scene,
@@ -325,10 +324,13 @@ class GameController extends StateNotifier<GameViewState> {
     }
   }
 
-  void goToReflection() {
+  Future<void> goToReflection() async {
     final scene = state.scene;
     final content = state.content;
     if (scene == null || content == null) return;
+    if (state.phase == GamePhase.outcome) {
+      await _progressStore.saveStats(state.stats);
+    }
 
     final reflection = _gameEngine.pickReflection(
       scene: scene,
