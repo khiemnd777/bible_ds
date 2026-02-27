@@ -1,0 +1,51 @@
+{
+  "notifications": [
+    {
+      "id": "daily_scene",
+      "enabled": true,
+      "type": "daily_time",
+      "hour": 7,
+      "minute": 0,
+      "title": {
+        "en_US": "Daily Turning",
+        "vi_VN": "Câu chuyện mới"
+      },
+      "body": {
+        "en_US": "Your new devotional scene is ready.",
+        "vi_VN": "Câu chuyện mới đã sẵn sàng rồi."
+      }
+    },
+    {
+      "id": "streak_reminder",
+      "enabled": true,
+      "type": "daily_time",
+      "hour": 21,
+      "minute": 0,
+      "title": {
+        "en_US": "Don't break your streak 🔥",
+        "vi_VN": "Đừng để mất chuỗi của bạn 🔥"
+      },
+      "body": {
+        "en_US": "You haven't completed today's scene yet.",
+        "vi_VN": "Bạn vẫn chưa dọc câu chuyện ngày hôm nay."
+      },
+      "onlyIfNotCompletedToday": true
+    },
+    {
+      "id": "weekly_topic",
+      "enabled": true,
+      "type": "weekly_time",
+      "weekday": 7,
+      "hour": 8,
+      "minute": 0,
+      "title": {
+        "en_US": "New Topic of the Week",
+        "vi_VN": "Chủ đề mới trong tuần"
+      },
+      "body": {
+        "en_US": "Discover this week's spiritual theme.",
+        "vi_VN": "Khám phá chủ đề trong tuần này."
+      }
+    }
+  ]
+}

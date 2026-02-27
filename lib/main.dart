@@ -2,6 +2,7 @@ import 'package:bible_decision_simulator/features/game/screens/scenario_screen.d
 import 'package:bible_decision_simulator/features/game/screens/summary_screen.dart';
 import 'package:bible_decision_simulator/features/preview/content_preview_screen.dart';
 import 'package:bible_decision_simulator/features/profile/screens/profile_screen.dart';
+import 'package:bible_decision_simulator/controllers/notification_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -55,9 +56,54 @@ class _RootShell extends ConsumerStatefulWidget {
   ConsumerState<_RootShell> createState() => _RootShellState();
 }
 
-class _RootShellState extends ConsumerState<_RootShell> {
+class _RootShellState extends ConsumerState<_RootShell>
+    with WidgetsBindingObserver {
   static const bool _isPreviewEnabled = false;
   int _index = _isPreviewEnabled ? 2 : 1;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _handleNotificationAppOpen();
+    });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _handleNotificationResume();
+    }
+  }
+
+  Future<bool> _mockHasCompletedToday() async {
+    final gameState = ref.read(gameControllerProvider);
+    return gameState.progress.completedToday;
+  }
+
+  Future<void> _handleNotificationAppOpen() async {
+    final localeCode = ref.read(appLocaleProvider);
+    await ref.read(notificationControllerProvider.notifier).handleAppOpen(
+          context: context,
+          hasCompletedToday: _mockHasCompletedToday,
+          localeCode: localeCode,
+        );
+  }
+
+  Future<void> _handleNotificationResume() async {
+    final localeCode = ref.read(appLocaleProvider);
+    await ref.read(notificationControllerProvider.notifier).handleAppResume(
+          hasCompletedToday: _mockHasCompletedToday,
+          localeCode: localeCode,
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
