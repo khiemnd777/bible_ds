@@ -4,13 +4,16 @@ import 'package:bible_decision_simulator/game_engine/content/content_validator.d
 import 'package:bible_decision_simulator/game_engine/models/content_models.dart';
 import 'package:bible_decision_simulator/game_engine/models/game_state.dart';
 import 'package:bible_decision_simulator/game_engine/models/portrait_models.dart';
+import 'package:bible_decision_simulator/game_engine/models/progress_state.dart';
 import 'package:bible_decision_simulator/game_engine/persistence/progress_store.dart';
 import 'package:bible_decision_simulator/game_engine/rules/scheduler.dart';
+import 'package:bible_decision_simulator/game_engine/runtime/daily_scheduler.dart';
 import 'package:bible_decision_simulator/game_engine/runtime/game_engine.dart';
-import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
+import 'package:bible_decision_simulator/game_engine/runtime/portrait_resolver.dart';
+import 'package:bible_decision_simulator/game_engine/runtime/streak_service.dart';
 import 'package:bible_decision_simulator/game_engine/stat/daily_snapshot.dart';
 import 'package:bible_decision_simulator/game_engine/stat/daily_trend_engine.dart';
-import 'package:bible_decision_simulator/game_engine/runtime/portrait_resolver.dart';
+import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class GameViewState {
@@ -35,6 +38,7 @@ class GameViewState {
   final String endingSummary;
   final bool canNextDay;
   final DailyTrend? dailyTrend;
+  final bool isReplayMode;
 
   const GameViewState({
     required this.isLoading,
@@ -56,6 +60,7 @@ class GameViewState {
     required this.endingSummary,
     required this.canNextDay,
     required this.dailyTrend,
+    required this.isReplayMode,
   });
 
   factory GameViewState.initial() {
@@ -79,6 +84,7 @@ class GameViewState {
       endingSummary: '',
       canNextDay: false,
       dailyTrend: null,
+      isReplayMode: false,
     );
   }
 
@@ -102,6 +108,7 @@ class GameViewState {
     String? endingSummary,
     bool? canNextDay,
     Object? dailyTrend = _unset,
+    bool? isReplayMode,
   }) {
     return GameViewState(
       isLoading: isLoading ?? this.isLoading,
@@ -135,6 +142,7 @@ class GameViewState {
       dailyTrend: identical(dailyTrend, _unset)
           ? this.dailyTrend
           : dailyTrend as DailyTrend?,
+      isReplayMode: isReplayMode ?? this.isReplayMode,
     );
   }
 }
@@ -144,6 +152,8 @@ class GameController extends StateNotifier<GameViewState> {
     required ContentStore contentStore,
     required ContentValidator validator,
     required Scheduler scheduler,
+    required DailyScheduler dailyScheduler,
+    required StreakService streakService,
     required GameEngine gameEngine,
     required ProgressStore progressStore,
     required PortraitResolver portraitResolver,
@@ -152,6 +162,8 @@ class GameController extends StateNotifier<GameViewState> {
   })  : _contentStore = contentStore,
         _validator = validator,
         _scheduler = scheduler,
+        _dailyScheduler = dailyScheduler,
+        _streakService = streakService,
         _gameEngine = gameEngine,
         _progressStore = progressStore,
         _portraitResolver = portraitResolver,
@@ -165,12 +177,33 @@ class GameController extends StateNotifier<GameViewState> {
   final ContentStore _contentStore;
   final ContentValidator _validator;
   final Scheduler _scheduler;
+  final DailyScheduler _dailyScheduler;
+  final StreakService _streakService;
   final GameEngine _gameEngine;
   final ProgressStore _progressStore;
   final PortraitResolver _portraitResolver;
   final DailyTrendEngine _dailyTrendEngine;
   final RewardedAdService _rewardedAdService;
   String _localeCode;
+
+  String? get activeSceneId => state.progress.activeSceneId;
+
+  bool get isTodayCompleted => state.progress.todayCompleted;
+
+  Set<String> get unlockedSceneIds => state.progress.unlockedSceneIdSet;
+
+  bool canOpenScene(String sceneId) {
+    return sceneId == activeSceneId || unlockedSceneIds.contains(sceneId);
+  }
+
+  bool canCompleteScene(String sceneId) {
+    return sceneId == activeSceneId && !isTodayCompleted;
+  }
+
+  bool isReplayOnly(String sceneId) {
+    if (sceneId == activeSceneId) return isTodayCompleted;
+    return unlockedSceneIds.contains(sceneId);
+  }
 
   Future<void> initialize() async {
     try {
@@ -188,32 +221,15 @@ class GameController extends StateNotifier<GameViewState> {
           ),
         );
       }
-      var progress = await _progressStore.loadProgress();
 
-      final assignment = _scheduler.assignSceneForDay(
-        now: DateTime.now(),
-        dayOffset: progress.dayOffset,
-        scenes: content.scenes,
+      var progress = await _progressStore.loadProgress();
+      progress = await initializeDailyScene(
+        progress: progress,
+        allSceneIds: content.scenes.map((scene) => scene.id).toList(),
       );
 
-      final needsNewAssignment = progress.currentDayKey != assignment.dayKey ||
-          progress.assignedSceneId.isEmpty;
-
-      if (needsNewAssignment) {
-        progress = progress.copyWith(
-          currentDayKey: assignment.dayKey,
-          assignedSceneId: assignment.sceneId,
-          completedToday: false,
-        );
-        await _progressStore.saveProgress(progress);
-      }
-
-      final scene = content.scenes
-          .where((s) => s.id == progress.assignedSceneId)
-          .cast<Scene?>()
-          .firstWhere((s) => s != null,
-              orElse: () =>
-                  content.scenes.isNotEmpty ? content.scenes.first : null);
+      final scene = _findSceneById(content.scenes, progress.activeSceneId) ??
+          (content.scenes.isNotEmpty ? content.scenes.first : null);
 
       final portraits = scene == null
           ? PortraitPair.empty()
@@ -243,6 +259,7 @@ class GameController extends StateNotifier<GameViewState> {
         endingSummary: _gameEngine.buildEndingSummary(stats),
         canNextDay: canNextDay,
         dailyTrend: null,
+        isReplayMode: scene == null ? false : isReplayOnly(scene.id),
       );
     } catch (e) {
       state = state.copyWith(
@@ -255,80 +272,84 @@ class GameController extends StateNotifier<GameViewState> {
   Future<void> chooseChoice(String choiceId) async {
     final scene = state.scene;
     if (scene == null) return;
-    if (state.currentTurnId != null) {
-      final turn = scene.findTurn(state.currentTurnId!);
-      if (turn == null) return;
+    if (state.currentTurnId == null) return;
 
-      Choice? choice;
-      for (final c in turn.choices) {
-        if (c.id == choiceId) {
-          choice = c;
-          break;
-        }
+    final turn = scene.findTurn(state.currentTurnId!);
+    if (turn == null) return;
+
+    Choice? choice;
+    for (final c in turn.choices) {
+      if (c.id == choiceId) {
+        choice = c;
+        break;
       }
-      if (choice == null) return;
-
-      final nextStats = _gameEngine
-          .resolveChoice(choice: choice, currentStats: state.stats)
-          .nextStats;
-
-      final portraits = _portraitResolver.resolveScenePortraits(
-        scene,
-        intentTag: choice.intentTag,
-        overrides: choice.portraitOverrides,
-      );
-
-      final nextSelectedChoices = [...state.selectedChoices, choice];
-      final nextSelectedTurns = [...state.selectedTurns, turn];
-      final nextChoiceIds = nextSelectedChoices.map((c) => c.id).toList();
-
-      if (choice.nextTurnId.isNotEmpty) {
-        final nextTurn = scene.firstTurnWithChoices(choice.nextTurnId);
-        if (nextTurn != null) {
-          state = state.copyWith(
-            selectedChoice: choice,
-            selectedChoices: nextSelectedChoices,
-            selectedTurns: nextSelectedTurns,
-            currentTurnId: nextTurn.id,
-            outcomeText: null,
-            outcomeNext: null,
-            stats: nextStats,
-            phase: GamePhase.scenario,
-            portraits: portraits,
-            endingSummary: _gameEngine.buildEndingSummary(nextStats),
-          );
-          return;
-        }
-      }
-
-      final resolution = _gameEngine.resolveConversationOutcome(
-        scene: scene,
-        selectedChoiceIds: nextChoiceIds,
-        currentStats: nextStats,
-        fallbackChoice: choice,
-      );
-
-      state = state.copyWith(
-        selectedChoice: choice,
-        selectedChoices: nextSelectedChoices,
-        selectedTurns: nextSelectedTurns,
-        currentTurnId: null,
-        outcomeText: resolution.outcomeText,
-        outcomeNext: resolution.nextTag,
-        stats: resolution.nextStats,
-        phase: GamePhase.outcome,
-        portraits: portraits,
-        endingSummary: _gameEngine.buildEndingSummary(resolution.nextStats),
-      );
-      return;
     }
+    if (choice == null) return;
+
+    final baseStats = state.stats;
+    final nextStats = state.isReplayMode
+        ? baseStats
+        : _gameEngine
+            .resolveChoice(choice: choice, currentStats: baseStats)
+            .nextStats;
+
+    final portraits = _portraitResolver.resolveScenePortraits(
+      scene,
+      intentTag: choice.intentTag,
+      overrides: choice.portraitOverrides,
+    );
+
+    final nextSelectedChoices = [...state.selectedChoices, choice];
+    final nextSelectedTurns = [...state.selectedTurns, turn];
+    final nextChoiceIds = nextSelectedChoices.map((c) => c.id).toList();
+
+    if (choice.nextTurnId.isNotEmpty) {
+      final nextTurn = scene.firstTurnWithChoices(choice.nextTurnId);
+      if (nextTurn != null) {
+        state = state.copyWith(
+          selectedChoice: choice,
+          selectedChoices: nextSelectedChoices,
+          selectedTurns: nextSelectedTurns,
+          currentTurnId: nextTurn.id,
+          outcomeText: null,
+          outcomeNext: null,
+          stats: nextStats,
+          phase: GamePhase.scenario,
+          portraits: portraits,
+          endingSummary: _gameEngine.buildEndingSummary(nextStats),
+        );
+        return;
+      }
+    }
+
+    final resolution = _gameEngine.resolveConversationOutcome(
+      scene: scene,
+      selectedChoiceIds: nextChoiceIds,
+      currentStats: nextStats,
+      fallbackChoice: choice,
+    );
+    final resolvedStats = state.isReplayMode ? baseStats : resolution.nextStats;
+
+    state = state.copyWith(
+      selectedChoice: choice,
+      selectedChoices: nextSelectedChoices,
+      selectedTurns: nextSelectedTurns,
+      currentTurnId: null,
+      outcomeText: resolution.outcomeText,
+      outcomeNext: resolution.nextTag,
+      stats: resolvedStats,
+      phase: GamePhase.outcome,
+      portraits: portraits,
+      endingSummary: _gameEngine.buildEndingSummary(resolvedStats),
+    );
   }
 
   Future<void> goToReflection() async {
     final scene = state.scene;
     final content = state.content;
     if (scene == null || content == null) return;
-    if (state.phase == GamePhase.outcome) {
+
+    if (state.phase == GamePhase.outcome && !state.isReplayMode) {
       await _progressStore.saveStats(state.stats);
     }
 
@@ -345,22 +366,11 @@ class GameController extends StateNotifier<GameViewState> {
   }
 
   Future<void> goToSummary() async {
-    final progress = state.progress;
-    final todayKey = _scheduler.dayKey(
-      DateTime.now().add(Duration(days: progress.dayOffset)),
-    );
-
-    final nextStreak = progress.completedToday
-        ? progress.streak
-        : _scheduler.computeStreak(
-            progress.lastPlayedDayKey, todayKey, progress.streak);
-
-    final nextProgress = progress.copyWith(
-      completedToday: true,
-      lastPlayedDayKey: todayKey,
-      streak: nextStreak,
-    );
-    await _progressStore.saveProgress(nextProgress);
+    final sceneId = state.scene?.id;
+    if (sceneId != null && sceneId.isNotEmpty) {
+      await completeScene(sceneId);
+    }
+    final nextProgress = state.progress;
 
     final currentStats = state.stats;
     var dailySnapshot = await _progressStore.loadDailySnapshot();
@@ -399,9 +409,11 @@ class GameController extends StateNotifier<GameViewState> {
     if (!state.canNextDay) return;
     final nextProgress = state.progress.copyWith(
       dayOffset: state.progress.dayOffset + 1,
+      todayCompleted: false,
       completedToday: false,
-      assignedSceneId: '',
+      clearActiveSceneId: true,
       currentDayKey: '',
+      lastAssignedDate: '',
     );
     await _progressStore.saveProgress(nextProgress);
     state = state.copyWith(progress: nextProgress);
@@ -414,12 +426,22 @@ class GameController extends StateNotifier<GameViewState> {
     if (index < 0 || index >= content.scenes.length) return false;
 
     final scene = content.scenes[index];
+    if (!canOpenScene(scene.id)) return false;
+
+    startScene(scene.id);
+    return true;
+  }
+
+  void startScene(String sceneId) {
+    final content = state.content;
+    if (content == null) return;
+    if (!canOpenScene(sceneId)) return;
+
+    final scene = _findSceneById(content.scenes, sceneId);
+    if (scene == null) return;
+
+    final replay = isReplayOnly(sceneId);
     final portraits = _portraitResolver.resolveScenePortraits(scene);
-    final progress = state.progress.copyWith(
-      assignedSceneId: scene.id,
-      completedToday: false,
-    );
-    await _progressStore.saveProgress(progress);
 
     state = state.copyWith(
       scene: scene,
@@ -431,24 +453,70 @@ class GameController extends StateNotifier<GameViewState> {
           scene.firstTurnWithChoices(scene.conversation.startTurnId)?.id,
       outcomeText: null,
       outcomeNext: null,
-      progress: progress,
       phase: GamePhase.scenario,
       portraits: portraits,
       dailyTrend: null,
+      isReplayMode: replay,
     );
-    return true;
   }
 
   Future<void> goToday() async {
     final todayProgress = state.progress.copyWith(
       dayOffset: 0,
+      todayCompleted: false,
       completedToday: false,
-      assignedSceneId: '',
+      clearActiveSceneId: true,
       currentDayKey: '',
+      lastAssignedDate: '',
     );
     await _progressStore.saveProgress(todayProgress);
     state = state.copyWith(progress: todayProgress);
     await initialize();
+  }
+
+  Future<ProgressState> initializeDailyScene({
+    required ProgressState progress,
+    required List<String> allSceneIds,
+  }) async {
+    final today = _dailyScheduler.todayKey();
+
+    if (progress.lastAssignedDate != today || progress.activeSceneId == null) {
+      final newActiveSceneId = allSceneIds.isEmpty
+          ? null
+          : _dailyScheduler.assignSceneIdForDate(allSceneIds, DateTime.now());
+
+      final updatedUnlocked = [...progress.unlockedSceneIds];
+      final previousActive = progress.activeSceneId;
+      if (previousActive != null &&
+          previousActive.isNotEmpty &&
+          !updatedUnlocked.contains(previousActive)) {
+        updatedUnlocked.add(previousActive);
+      }
+
+      final updated = progress.copyWith(
+        lastAssignedDate: today,
+        activeSceneId: newActiveSceneId,
+        todayCompleted: false,
+        unlockedSceneIds: updatedUnlocked,
+        completedToday: false,
+        currentDayKey: today,
+      );
+      await _progressStore.saveProgress(updated);
+      return updated;
+    }
+
+    return progress;
+  }
+
+  Future<void> completeScene(String sceneId) async {
+    if (!canCompleteScene(sceneId)) return;
+
+    final updated = _streakService.completeDailyScene(
+      state: state.progress,
+      sceneId: sceneId,
+    );
+    state = state.copyWith(progress: updated);
+    await _progressStore.saveProgress(updated);
   }
 
   Future<void> watchRewardedAd() async {
@@ -460,6 +528,14 @@ class GameController extends StateNotifier<GameViewState> {
     if (_localeCode == localeCode) return;
     _localeCode = localeCode;
     await initialize();
+  }
+
+  Scene? _findSceneById(List<Scene> scenes, String? sceneId) {
+    if (sceneId == null || sceneId.isEmpty) return null;
+    for (final scene in scenes) {
+      if (scene.id == sceneId) return scene;
+    }
+    return null;
   }
 
   bool _canAssignNextDayScene({

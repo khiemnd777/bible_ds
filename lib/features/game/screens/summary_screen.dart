@@ -145,8 +145,8 @@ class SummaryScreen extends StatelessWidget {
     if (scenes.isEmpty) return;
     final currentIndex =
         scenes.indexWhere((scene) => scene.id == currentSceneId);
-    if (currentIndex >= 0 && currentIndex < scenes.length - 1) {
-      final opened = await onOpenSceneByIndex(currentIndex + 1);
+    if (currentIndex >= 0 && currentIndex < scenes.length) {
+      final opened = await onOpenSceneByIndex(currentIndex);
       if (opened) {
         onNavigateScenarioView?.call();
       }

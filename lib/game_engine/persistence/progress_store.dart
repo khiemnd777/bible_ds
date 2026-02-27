@@ -1,4 +1,4 @@
-import 'package:bible_decision_simulator/game_engine/models/game_state.dart';
+import 'package:bible_decision_simulator/game_engine/models/progress_state.dart';
 import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
 import 'package:bible_decision_simulator/game_engine/stat/daily_snapshot.dart';
 

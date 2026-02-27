@@ -11,9 +11,11 @@ import 'package:bible_decision_simulator/game_engine/persistence/progress_store.
 import 'package:bible_decision_simulator/game_engine/persistence/sp_progress_store.dart';
 import 'package:bible_decision_simulator/game_engine/rules/ending_engine.dart';
 import 'package:bible_decision_simulator/game_engine/rules/scheduler.dart';
+import 'package:bible_decision_simulator/game_engine/runtime/daily_scheduler.dart';
 import 'package:bible_decision_simulator/game_engine/rules/stat_engine.dart';
 import 'package:bible_decision_simulator/game_engine/runtime/game_engine.dart';
 import 'package:bible_decision_simulator/game_engine/runtime/portrait_resolver.dart';
+import 'package:bible_decision_simulator/game_engine/runtime/streak_service.dart';
 import 'package:bible_decision_simulator/features/monetization/rewarded_ad_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -82,6 +84,14 @@ final schedulerProvider = Provider<Scheduler>((ref) {
   return const Scheduler();
 });
 
+final dailySchedulerProvider = Provider<DailyScheduler>((ref) {
+  return const DailyScheduler();
+});
+
+final streakServiceProvider = Provider<StreakService>((ref) {
+  return const StreakService();
+});
+
 final portraitResolverProvider = Provider<PortraitResolver>((ref) {
   return const PortraitResolver();
 });
@@ -107,6 +117,8 @@ final gameControllerProvider =
     contentStore: ref.read(contentStoreProvider),
     validator: ref.read(contentValidatorProvider),
     scheduler: ref.read(schedulerProvider),
+    dailyScheduler: ref.read(dailySchedulerProvider),
+    streakService: ref.read(streakServiceProvider),
     gameEngine: ref.read(gameEngineProvider),
     progressStore: ref.read(progressStoreProvider),
     portraitResolver: ref.read(portraitResolverProvider),
