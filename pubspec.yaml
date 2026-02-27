@@ -23,9 +23,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/content/scenes.json
-    - assets/content/scenes_vi.json
-    - assets/content/scene_en.json
+    - assets/content/
     - assets/i18n/en_us.json
     - assets/i18n/vi_vn.json
     - assets/portraits/

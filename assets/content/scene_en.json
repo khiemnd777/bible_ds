@@ -3,7 +3,7 @@
     {
       "id": "scene_forgive_01",
       "topic": "forgiveness",
-      "title": "A Sharp Word at Dusk",
+      "title": "A Harsh Word at Sunset",
       "characters": {
         "player": {
           "id": "mc",
@@ -22,26 +22,27 @@
           {
             "id": "t_intro_1",
             "speaker": "Leah",
-            "text": "Your friend Eli snapped at you after a hard day. He now stands in silence, clearly regretful.",
+            "text": "Your friend Eli snapped at you after a tiring day. Now he’s standing there quietly—clearly full of regret.",
             "nextTurnId": "t_intro_2",
             "choices": []
           },
           {
             "id": "t_intro_2",
             "speaker": "Narrator",
-            "text": "You feel hurt, but also see his trembling hands.",
+            "text": "You feel hurt, but you also notice his hands trembling.",
             "nextTurnId": "t_choice",
             "choices": []
           },
           {
             "id": "t_choice",
             "speaker": "Eli",
-            "text": "How do you respond?",
+            "text": "How will you respond?",
             "nextTurnId": "",
             "choices": [
               {
                 "id": "c_forgive",
                 "text": "Tell Eli you forgive him and ask how you can pray for him.",
+                "playerLine": "I’m honestly hurt… but I forgive you. Is there anything I can pray for you about?",
                 "intentTag": "forgive",
                 "actionTag": "mercy",
                 "effects": [
@@ -63,14 +64,15 @@
                   "npc": "neutral"
                 },
                 "outcome": {
-                  "text": "Eli exhales in relief. The conversation becomes honest and healing.",
+                  "text": "Eli lets out a relieved breath. The conversation becomes sincere—and healing.",
                   "next": "reflection:ref_forgiveness"
                 },
                 "nextTurnId": ""
               },
               {
                 "id": "c_retaliate",
-                "text": "Return the insult to make your point.",
+                "text": "Fire back with an insult to prove your point.",
+                "playerLine": "You think you’re the only one tired or what? Don’t talk to me like that.",
                 "intentTag": "anger",
                 "actionTag": "retaliate",
                 "effects": [
@@ -92,7 +94,7 @@
                   "npc": "neutral"
                 },
                 "outcome": {
-                  "text": "The room grows cold. Eli withdraws and trust is damaged.",
+                  "text": "The room turns cold. Eli pulls back, and trust takes a hit.",
                   "next": "reflection:ref_forgiveness"
                 },
                 "nextTurnId": ""
@@ -106,7 +108,7 @@
             "requiredChoiceIds": [
               "c_forgive"
             ],
-            "text": "Eli exhales in relief. The conversation becomes honest and healing.",
+            "text": "Eli lets out a relieved breath. The conversation becomes sincere—and healing.",
             "next": "reflection:ref_forgiveness"
           },
           {
@@ -114,7 +116,7 @@
             "requiredChoiceIds": [
               "c_retaliate"
             ],
-            "text": "The room grows cold. Eli withdraws and trust is damaged.",
+            "text": "The room turns cold. Eli pulls back, and trust takes a hit.",
             "next": "reflection:ref_forgiveness"
           }
         ]
@@ -123,7 +125,7 @@
     {
       "id": "scene_courage_01",
       "topic": "courage",
-      "title": "Truth in the Meeting",
+      "title": "The Truth in the Meeting",
       "characters": {
         "player": {
           "id": "mc",
@@ -142,25 +144,26 @@
           {
             "id": "t_intro_1",
             "speaker": "Narrator",
-            "text": "At work, everyone agrees to hide a mistake that could hurt others.",
+            "text": "At work, everyone agrees to cover up a mistake that could hurt someone.",
             "nextTurnId": "t_intro_2",
             "choices": []
           },
           {
             "id": "t_intro_2",
             "speaker": "Mina",
-            "text": "If we stay quiet, no one will know. Please don't complicate this.",
+            "text": "If we stay quiet, no one will ever know. Please don’t make this more complicated.",
             "nextTurnId": "t_open",
             "choices": []
           },
           {
             "id": "t_open",
             "speaker": "Narrator",
-            "text": "Mina looks at you, waiting for your response.",
+            "text": "Mina looks at you, waiting for your answer.",
             "choices": [
               {
                 "id": "c_open_push",
-                "text": "Ask the team to report the issue together.",
+                "text": "Suggest the whole team report the mistake together.",
+                "playerLine": "I think we should tell the truth. If something happens, I don’t want anyone getting hurt because we stayed silent.",
                 "intentTag": "courage",
                 "actionTag": "truth",
                 "effects": [
@@ -190,6 +193,7 @@
               {
                 "id": "c_open_delay",
                 "text": "Say you need more time and avoid conflict for now.",
+                "playerLine": "Can you give me a bit more time to think? I’m not ready to decide right this second.",
                 "intentTag": "neutral",
                 "actionTag": "delay",
                 "effects": [
@@ -218,11 +222,12 @@
           {
             "id": "t_decide",
             "speaker": "Mina",
-            "text": "Leadership is asking for a final answer now. What should we do?",
+            "text": "Leadership needs a final answer right now. What should we do?",
             "choices": [
               {
                 "id": "c_decide_truth",
-                "text": "State the truth respectfully and accept the cost.",
+                "text": "Tell the truth respectfully and accept the cost.",
+                "playerLine": "I’m going to tell the truth. Even if it’s uncomfortable, I think it’s the right thing to do.",
                 "intentTag": "courage",
                 "actionTag": "truth",
                 "effects": [
@@ -252,6 +257,7 @@
               {
                 "id": "c_decide_silent",
                 "text": "Stay silent to protect your comfort.",
+                "playerLine": "…Fine, let’s just leave it. I don’t want things to get messier.",
                 "intentTag": "neutral",
                 "actionTag": "silence",
                 "effects": [
@@ -289,7 +295,7 @@
               "c_open_push",
               "c_decide_truth"
             ],
-            "text": "You lead with courage from start to finish. The issue is addressed before it harms others.",
+            "text": "You choose courage from start to finish. The issue gets handled before it harms anyone.",
             "next": "reflection:ref_courage"
           },
           {
@@ -297,14 +303,202 @@
             "requiredChoiceIds": [
               "c_decide_truth"
             ],
-            "text": "You delayed at first, then chose truth when it mattered most. The room is tense, but people are protected.",
+            "text": "You hesitated at first, but chose truth when it mattered most. The room is tense, but people are protected.",
             "next": "reflection:ref_courage"
           },
           {
             "id": "o_silent",
             "requiredChoiceIds": [],
-            "text": "Conflict is avoided today, but your conscience remains unsettled.",
+            "text": "You avoided conflict today, but your conscience still won’t let you rest.",
             "next": "reflection:ref_courage"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_pride_01",
+      "topic": "pride",
+      "title": "When I’d Rather Be Right Than Be Loving",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npc": {
+          "id": "an",
+          "name": "An",
+          "portraitKey": "friend_01"
+        }
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "The service team just wrapped up a tense meeting. You suggested changing how the program is organized, but An—your close friend for years—pushed back in front of everyone.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "An",
+            "text": "I just don’t think that approach fits right now. It’s not like I’m denying your effort.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Narrator",
+            "text": "You feel your head heat up. In front of the whole team, it feels like you got put down.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "You",
+            "text": "If you felt that way from the start, why didn’t you tell me privately? Saying it like that in front of everyone puts me in a really awkward spot.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "An",
+            "text": "I didn’t mean to embarrass you. I just felt responsible to be honest. Are you mad because I gave feedback… or because you want me to always be on your side?",
+            "nextTurnId": "t6",
+            "choices": []
+          },
+          {
+            "id": "t6",
+            "speaker": "Narrator",
+            "text": "The air goes quiet. An’s question hits the exact thing you don’t want to admit.",
+            "nextTurnId": "t7",
+            "choices": []
+          },
+          {
+            "id": "t7",
+            "speaker": "An",
+            "text": "I value you. But lately… whenever someone disagrees, you react pretty harshly.",
+            "choices": [
+              {
+                "id": "c_defend_pride",
+                "text": "Push back hard and insist you’re right, because you believe you’re protecting the team’s standards.",
+                "playerLine": "I’m saying this because I care about the overall quality. It’s not like I’m being unreasonable.",
+                "intentTag": "defend",
+                "actionTag": "assert",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 18
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -12
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -8
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "hurt"
+                },
+                "outcome": {
+                  "text": "An stays silent for a long time. “Maybe I need to rethink how we work together.” The words are soft, but heavy like a stone. You keep your pride… but lose closeness.",
+                  "next": "reflection:ref_pride_01"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_pause_reflect",
+                "text": "Pause, admit you overreacted, and ask how An feels.",
+                "playerLine": "I probably reacted too strongly. I don’t want to hurt you. How are you really feeling?",
+                "intentTag": "repent",
+                "actionTag": "humble",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 16
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": -14
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "An exhales. “I’m just scared you’re too exhausted and carrying everything alone.” The two of you sit down and talk for real. Your ego stings a bit, but the friendship stays.",
+                  "next": "reflection:ref_pride_01"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_silent_withdraw",
+                "text": "Stay quiet and end the conversation early to avoid blowing up.",
+                "playerLine": "Whatever… talking more right now won’t fix anything. I’m heading out.",
+                "intentTag": "avoid",
+                "actionTag": "withdraw",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "cold",
+                  "npc": "hurt"
+                },
+                "outcome": {
+                  "text": "The conversation ends in silence. No one wins, no one loses. But the distance starts growing.",
+                  "next": "reflection:ref_pride_01"
+                },
+                "nextTurnId": ""
+              }
+            ],
+            "nextTurnId": ""
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_defend",
+            "requiredChoiceIds": [
+              "c_defend_pride"
+            ],
+            "text": "You defend your stance, but the friendship takes a deep hit.",
+            "next": "reflection:ref_pride_01"
+          },
+          {
+            "id": "o_humble",
+            "requiredChoiceIds": [
+              "c_pause_reflect"
+            ],
+            "text": "Humility opens the door to honest, healing conversation.",
+            "next": "reflection:ref_pride_01"
+          },
+          {
+            "id": "o_withdraw",
+            "requiredChoiceIds": [
+              "c_silent_withdraw"
+            ],
+            "text": "Silence saves face, but leaves a quiet crack behind.",
+            "next": "reflection:ref_pride_01"
           }
         ]
       }
@@ -315,22 +509,33 @@
       "id": "ref_forgiveness",
       "topic": "forgiveness",
       "verseRef": "Ephesians 4:32",
-      "verseText": "Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you.",
+      "verseText": "Be kind and compassionate to one another, forgiving each other, just as God in Christ forgave you.",
       "questions": [
-        "What made forgiveness difficult in this moment?",
-        "How does God's forgiveness reshape your response to others?",
-        "What practical step can you take to restore peace today?"
+        "What made forgiveness feel hard in that moment?",
+        "How does God’s forgiveness change the way you respond to others?",
+        "What’s one specific step you can take today to restore peace?"
       ]
     },
     {
       "id": "ref_courage",
       "topic": "courage",
-      "verseRef": "Joshua 1:9",
-      "verseText": "Be strong and courageous. Do not be frightened, and do not be dismayed, for the Lord your God is with you wherever you go.",
+      "verseRef": "Giô-suê 1:9",
+      "verseText": "Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.",
       "questions": [
-        "Where did fear influence your decision?",
-        "What would faithful courage look like next time?",
-        "Who can support you in choosing truth?"
+        "Where did fear affect your decision?",
+        "Next time, what would faithful courage look like?",
+        "Who can support you when you choose to speak the truth?"
+      ]
+    },
+    {
+      "id": "ref_pride_01",
+      "topic": "pride",
+      "verseRef": "Châm Ngôn 16:18",
+      "verseText": "Pride goes before destruction, and a haughty spirit before a fall.",
+      "questions": [
+        "In this situation, what’s harder to let go of: your idea or your image?",
+        "Are you tying your worth to always being right?",
+        "What’s one concrete action you can take to grow humility in this relationship?"
       ]
     }
   ]

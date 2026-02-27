@@ -422,7 +422,6 @@ class _PlayerChoiceBubble extends StatelessWidget {
     required this.color,
     required this.onTap,
     required this.showAvatar,
-    this.enabled = true,
   });
 
   final String playerName;
@@ -431,7 +430,6 @@ class _PlayerChoiceBubble extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
   final bool showAvatar;
-  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -441,7 +439,7 @@ class _PlayerChoiceBubble extends StatelessWidget {
       children: [
         Flexible(
           child: OutlinedButton(
-            onPressed: enabled ? onTap : null,
+            onPressed: onTap,
             style: OutlinedButton.styleFrom(
               backgroundColor: color,
               alignment: Alignment.centerLeft,
