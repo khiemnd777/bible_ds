@@ -8,11 +8,11 @@
       "minute": 0,
       "title": {
         "en_US": "Daily Turning",
-        "vi_VN": "Câu chuyện mới"
+        "vi_VN": "Tình huống mới"
       },
       "body": {
         "en_US": "Your new devotional scene is ready.",
-        "vi_VN": "Câu chuyện mới đã sẵn sàng rồi."
+        "vi_VN": "Tình huống mới đã sẵn sàng rồi."
       }
     },
     {
@@ -27,7 +27,7 @@
       },
       "body": {
         "en_US": "You haven't completed today's scene yet.",
-        "vi_VN": "Bạn vẫn chưa dọc câu chuyện ngày hôm nay."
+        "vi_VN": "Bạn vẫn chưa xử lý tình huống trong ngày hôm nay."
       },
       "onlyIfNotCompletedToday": true
     },

@@ -172,7 +172,6 @@ class ScenarioScreen extends StatelessWidget {
       );
     }
 
-    // 🔴 Unknown speaker → treat as narrator (safe fallback)
     return _NarratorChatBlock(
       speaker: turn.speaker,
       text: turn.text,
@@ -194,7 +193,7 @@ class ScenarioScreen extends StatelessWidget {
 
     return Column(
       children: [
-        _SceneHeader(title: scene.title, topic: scene.topic),
+        _SceneHeader(title: scene.title, topic: text.topicLabel(scene.topic)),
         Expanded(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16),

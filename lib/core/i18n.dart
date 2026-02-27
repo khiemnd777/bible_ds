@@ -58,6 +58,12 @@ class UiText {
   String get noValidationErrors =>
       _t('no_validation_errors', 'No validation errors.');
   String get noContentLoaded => _t('no_content_loaded', 'No content loaded.');
+  String topicLabel(String topicKey) => switch (topicKey) {
+        'forgiveness' => _t('topic_forgiveness', 'forgiveness'),
+        'courage' => _t('topic_courage', 'courage'),
+        'pride' => _t('topic_pride', 'pride'),
+        _ => topicKey,
+      };
   String endingSummary(String summaryKey) => switch (summaryKey) {
         'ending_summary_discernment' => _t(
             'ending_summary_discernment',
