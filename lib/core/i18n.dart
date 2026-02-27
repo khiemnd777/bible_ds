@@ -14,7 +14,7 @@ class UiText {
     return catalog.lookup(localeCode, key) ?? fallback;
   }
 
-  String get appTitle => _t('app_title', 'Bible Decision Simulator');
+  String get appTitle => _t('app_title', 'Daily Turning');
   String get playTab => _t('play_tab', 'Play');
   String get previewTab => _t('preview_tab', 'Preview');
   String get profileTab => _t('profile_tab', 'Profile');
