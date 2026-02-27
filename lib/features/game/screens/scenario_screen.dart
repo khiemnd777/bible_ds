@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:bible_decision_simulator/core/di.dart';
+import 'package:bible_decision_simulator/features/profile/providers/profile_avatar_provider.dart';
 import 'package:bible_decision_simulator/core/i18n.dart';
 import 'package:bible_decision_simulator/features/game/screens/reflection_screen.dart';
 import 'package:bible_decision_simulator/features/game/screens/summary_screen.dart';
@@ -16,6 +19,9 @@ class GameFlowScreen extends ConsumerWidget {
     final state = ref.watch(gameControllerProvider);
     final controller = ref.read(gameControllerProvider.notifier);
     final text = ref.watch(uiTextProvider);
+    final profileAvatarPath = ref.watch(
+      profileAvatarPathProvider.select((value) => value.valueOrNull),
+    );
 
     if (state.isLoading) {
       return const Center(child: CircularProgressIndicator());
@@ -39,6 +45,7 @@ class GameFlowScreen extends ConsumerWidget {
       GamePhase.scenario => ScenarioScreen(
           scene: scene,
           portraits: state.portraits,
+          playerAvatarPathOverride: profileAvatarPath,
           onPickChoice: controller.chooseChoice,
           selectedChoices: state.selectedChoices,
           selectedTurns: state.selectedTurns,
@@ -48,6 +55,7 @@ class GameFlowScreen extends ConsumerWidget {
       GamePhase.outcome => ScenarioScreen(
           scene: scene,
           portraits: state.portraits,
+          playerAvatarPathOverride: profileAvatarPath,
           onPickChoice: controller.chooseChoice,
           selectedChoice: state.selectedChoice,
           selectedChoices: state.selectedChoices,
@@ -102,6 +110,7 @@ class ScenarioScreen extends StatelessWidget {
     required this.selectedChoices,
     required this.selectedTurns,
     required this.currentTurnId,
+    this.playerAvatarPathOverride,
     this.selectedChoice,
     this.outcomeText,
     this.onNextOutcome,
@@ -114,6 +123,7 @@ class ScenarioScreen extends StatelessWidget {
   final List<Choice> selectedChoices;
   final List<ConversationTurn> selectedTurns;
   final String? currentTurnId;
+  final String? playerAvatarPathOverride;
   final Choice? selectedChoice;
   final String? outcomeText;
   final Future<void> Function()? onNextOutcome;
@@ -130,6 +140,7 @@ class ScenarioScreen extends StatelessWidget {
     required Color narratorColor,
     required Color npcColor,
     required Color playerColor,
+    required String playerAvatarPath,
   }) {
     final speaker = turn.speaker.trim().toLowerCase();
     final player = portraits.leftName.trim().toLowerCase();
@@ -146,7 +157,7 @@ class ScenarioScreen extends StatelessWidget {
     if (speaker == player) {
       return _PlayerSpeechBubble(
         playerName: portraits.leftName,
-        playerAvatarPath: portraits.leftPath,
+        playerAvatarPath: playerAvatarPath,
         text: turn.text,
         color: playerColor,
       );
@@ -179,6 +190,7 @@ class ScenarioScreen extends StatelessWidget {
     final currentTurn =
         currentTurnId == null ? null : scene.findTurn(currentTurnId!);
     final introTurns = scene.introTurns;
+    final playerAvatarPath = playerAvatarPathOverride ?? portraits.leftPath;
 
     return Column(
       children: [
@@ -196,6 +208,7 @@ class ScenarioScreen extends StatelessWidget {
                     narratorColor: narratorColor,
                     npcColor: npcColor,
                     playerColor: playerColor,
+                    playerAvatarPath: playerAvatarPath,
                   );
                 }),
                 ...selectedTurns.asMap().entries.map(
@@ -208,13 +221,14 @@ class ScenarioScreen extends StatelessWidget {
                             narratorColor: narratorColor,
                             npcColor: npcColor,
                             playerColor: playerColor,
+                            playerAvatarPath: playerAvatarPath,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
                                 bottom: ScenarioScreen._chatSpacing),
                             child: _PlayerSpeechBubble(
                               playerName: portraits.leftName,
-                              playerAvatarPath: portraits.leftPath,
+                              playerAvatarPath: playerAvatarPath,
                               text: selectedChoices[entry.key].playerLine,
                               color: playerColor,
                             ),
@@ -229,6 +243,7 @@ class ScenarioScreen extends StatelessWidget {
                     narratorColor: narratorColor,
                     npcColor: npcColor,
                     playerColor: playerColor,
+                    playerAvatarPath: playerAvatarPath,
                   ),
                 if (!isOutcomeMode &&
                     currentTurn != null &&
@@ -239,7 +254,7 @@ class ScenarioScreen extends StatelessWidget {
                               bottom: ScenarioScreen._chatSpacing),
                           child: _PlayerChoiceBubble(
                             playerName: portraits.leftName,
-                            playerAvatarPath: portraits.leftPath,
+                            playerAvatarPath: playerAvatarPath,
                             text: entry.value.text,
                             color: playerColor,
                             onTap: () => onPickChoice(entry.value.id),
@@ -531,23 +546,36 @@ class _Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isAsset = path.startsWith('assets/');
     return Column(
       children: [
         ClipOval(
           child: SizedBox(
             width: 40,
             height: 40,
-            child: Image.asset(
-              path,
-              fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) {
-                return Container(
-                  color: Colors.grey.shade300,
-                  alignment: Alignment.center,
-                  child: const Icon(Icons.person, size: 20),
-                );
-              },
-            ),
+            child: isAsset
+                ? Image.asset(
+                    path,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) {
+                      return Container(
+                        color: Colors.grey.shade300,
+                        alignment: Alignment.center,
+                        child: const Icon(Icons.person, size: 20),
+                      );
+                    },
+                  )
+                : Image.file(
+                    File(path),
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) {
+                      return Container(
+                        color: Colors.grey.shade300,
+                        alignment: Alignment.center,
+                        child: const Icon(Icons.person, size: 20),
+                      );
+                    },
+                  ),
           ),
         ),
         const SizedBox(height: 4),

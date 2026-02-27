@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bible_decision_simulator/core/di.dart';
+import 'package:bible_decision_simulator/features/profile/providers/profile_avatar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
@@ -19,7 +20,6 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   static const _namePrefsKey = 'bds.profile.name';
   static const _emailPrefsKey = 'bds.profile.email';
   static const _phonePrefsKey = 'bds.profile.phone';
-  static const _avatarPathPrefsKey = 'bds.profile.avatar_path';
 
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -47,7 +47,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final savedName = prefs.getString(_namePrefsKey) ?? '';
     final savedEmail = prefs.getString(_emailPrefsKey) ?? '';
     final savedPhone = prefs.getString(_phonePrefsKey) ?? '';
-    final savedAvatarRef = prefs.getString(_avatarPathPrefsKey);
+    final savedAvatarRef = prefs.getString(profileAvatarPathPrefsKey);
     debugPrint('Profile load avatar ref=$savedAvatarRef');
 
     XFile? savedAvatarFile;
@@ -73,12 +73,13 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     await prefs.setString(_emailPrefsKey, _emailController.text.trim());
     await prefs.setString(_phonePrefsKey, _phoneController.text.trim());
     if (_avatarFile == null) {
-      await prefs.remove(_avatarPathPrefsKey);
+      await prefs.remove(profileAvatarPathPrefsKey);
     } else {
       final avatarName = _fileNameFromPath(_avatarFile!.path);
-      await prefs.setString(_avatarPathPrefsKey, avatarName);
+      await prefs.setString(profileAvatarPathPrefsKey, avatarName);
       debugPrint('Profile save avatar ref=$avatarName');
     }
+    ref.invalidate(profileAvatarPathProvider);
   }
 
   Future<String> _persistAvatarFile(XFile sourceFile) async {
@@ -158,7 +159,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       final persistedPath = await _persistAvatarFile(picked);
       final avatarName = _fileNameFromPath(persistedPath);
       final prefs = ref.read(sharedPreferencesProvider);
-      await prefs.setString(_avatarPathPrefsKey, avatarName);
+      await prefs.setString(profileAvatarPathPrefsKey, avatarName);
+      ref.invalidate(profileAvatarPathProvider);
       debugPrint('Profile picked avatar persisted path=$persistedPath');
       if (!mounted) return;
       setState(() {
@@ -240,8 +242,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       );
       return true;
     }());
-    final avatarProvider =
-        avatarExists ? FileImage(File(avatarPath)) : null;
+    final avatarProvider = avatarExists ? FileImage(File(avatarPath)) : null;
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
