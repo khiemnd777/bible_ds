@@ -1,6 +1,7 @@
 import 'package:bible_decision_simulator/features/game/screens/scenario_screen.dart';
 import 'package:bible_decision_simulator/features/game/screens/summary_screen.dart';
 import 'package:bible_decision_simulator/features/preview/content_preview_screen.dart';
+import 'package:bible_decision_simulator/features/profile/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -77,6 +78,7 @@ class _RootShellState extends ConsumerState<_RootShell> {
         onNavigateScenarioView: () => setState(() => _index = 0),
         text: text,
       ),
+      const ProfileScreen(),
     ];
 
     return Scaffold(
@@ -128,6 +130,11 @@ class _RootShellState extends ConsumerState<_RootShell> {
             icon: Icon(Icons.assessment_outlined),
             selectedIcon: Icon(Icons.assessment),
             label: text.summaryMenu,
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person),
+            label: text.profileTab,
           ),
         ],
       ),

@@ -17,6 +17,7 @@ class UiText {
   String get appTitle => _t('app_title', 'Bible Decision Simulator');
   String get playTab => _t('play_tab', 'Play');
   String get previewTab => _t('preview_tab', 'Preview');
+  String get profileTab => _t('profile_tab', 'Profile');
   String get noSceneAvailable =>
       _t('no_scene_available', 'No scene available.');
   String get next => _t('next', 'Next');
@@ -25,6 +26,10 @@ class UiText {
       _t('no_reflection_available', 'No reflection available.');
   String get questions => _t('questions', 'Questions');
   String get continueText => _t('continue', 'Continue');
+  String get submit => _t('submit', 'Submit');
+  String get ok => _t('ok', 'OK');
+  String get profileSavedSuccess =>
+      _t('profile_saved_success', 'Profile saved successfully.');
   String get daySummary => _t('day_summary', 'Day Summary');
   String get currentStreak => _t('current_streak', 'Current Streak');
   String get summaryMenu => _t('summary_menu', 'Summary');
@@ -53,4 +58,18 @@ class UiText {
   String get noValidationErrors =>
       _t('no_validation_errors', 'No validation errors.');
   String get noContentLoaded => _t('no_content_loaded', 'No content loaded.');
+  String get generateProfileTitle =>
+      _t('generate_profile_title', 'Generate Profile');
+  String get yourNameLabel => _t('your_name_label', 'Your name');
+  String get yourAvatarLabel => _t('your_avatar_label', 'Your avatar');
+  String get uploadAvatarButton => _t('upload_avatar_button', 'Upload avatar');
+  String get chooseAvatarSourceTitle =>
+      _t('choose_avatar_source_title', 'Choose avatar source');
+  String get galleryOption => _t('gallery_option', 'Gallery');
+  String get cancel => _t('cancel', 'Cancel');
+  String get avatarScaleLabel => _t('avatar_scale_label', 'Avatar scale');
+  String get yourEmailOptionalLabel =>
+      _t('your_email_optional_label', 'Your email (optional)');
+  String get yourPhoneOptionalLabel =>
+      _t('your_phone_optional_label', 'Your phone (optional)');
 }

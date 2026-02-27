@@ -41,5 +41,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow access to your photo library to select an avatar.</string>
 </dict>
 </plist>
