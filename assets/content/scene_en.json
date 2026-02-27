@@ -15,6 +15,11 @@
             "id": "eli",
             "name": "Eli",
             "portraitKey": "friend_01"
+          },
+          {
+            "id": "leah",
+            "name": "Leah",
+            "portraitKey": "friend_02"
           }
         ]
       },
@@ -30,7 +35,7 @@
           },
           {
             "id": "t_intro_2",
-            "speaker": "Narrator",
+            "speaker": "Leah",
             "text": "You feel hurt, but you also notice his hands trembling.",
             "nextTurnId": "t_choice",
             "choices": []
