@@ -87,6 +87,11 @@ class GameFlowScreen extends ConsumerWidget {
 
 class ScenarioScreen extends StatelessWidget {
   static const double _chatSpacing = 16;
+  static TextStyle _conversationTextStyle(BuildContext context) {
+    final base = Theme.of(context).textTheme.bodyMedium;
+    return (base ?? const TextStyle())
+        .copyWith(fontSize: (base?.fontSize ?? 14) + 1);
+  }
 
   const ScenarioScreen({
     super.key,
@@ -288,7 +293,10 @@ class _SceneHeader extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Text(title, style: Theme.of(context).textTheme.titleLarge),
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
             Chip(label: Text(topic)),
           ],
@@ -324,7 +332,7 @@ class _NarratorChatBlock extends StatelessWidget {
           children: [
             Text('$speaker:', style: Theme.of(context).textTheme.labelLarge),
             const SizedBox(height: 6),
-            Text(text),
+            Text(text, style: ScenarioScreen._conversationTextStyle(context)),
           ],
         ),
       ),
@@ -361,7 +369,10 @@ class _NpcBubble extends StatelessWidget {
                 color: color,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text(text),
+              child: Text(
+                text,
+                style: ScenarioScreen._conversationTextStyle(context),
+              ),
             ),
           ),
         ],
@@ -400,7 +411,11 @@ class _PlayerSpeechBubble extends StatelessWidget {
                 color: color,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text(text, textAlign: TextAlign.left),
+              child: Text(
+                text,
+                textAlign: TextAlign.left,
+                style: ScenarioScreen._conversationTextStyle(context),
+              ),
             ),
           ),
           const SizedBox(width: 8),
@@ -451,6 +466,7 @@ class _PlayerChoiceBubble extends StatelessWidget {
             child: Text(
               text,
               textAlign: TextAlign.left,
+              style: ScenarioScreen._conversationTextStyle(context),
             ),
           ),
         ),

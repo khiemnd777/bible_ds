@@ -56,7 +56,8 @@ class _RootShell extends ConsumerStatefulWidget {
 }
 
 class _RootShellState extends ConsumerState<_RootShell> {
-  int _index = 2;
+  static const bool _isPreviewEnabled = false;
+  int _index = _isPreviewEnabled ? 2 : 1;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,7 @@ class _RootShellState extends ConsumerState<_RootShell> {
 
     final pages = [
       const GameFlowScreen(),
-      const ContentPreviewScreen(),
+      if (_isPreviewEnabled) const ContentPreviewScreen(),
       SummaryScreen(
         stats: gameState.stats,
         streak: gameState.progress.streak,
@@ -80,6 +81,9 @@ class _RootShellState extends ConsumerState<_RootShell> {
       ),
       const ProfileScreen(),
     ];
+    if (_index >= pages.length) {
+      _index = pages.length - 1;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -146,11 +150,12 @@ class _RootShellState extends ConsumerState<_RootShell> {
             selectedIcon: Icon(Icons.auto_stories),
             label: text.playTab,
           ),
-          NavigationDestination(
-            icon: Icon(Icons.preview_outlined),
-            selectedIcon: Icon(Icons.preview),
-            label: text.previewTab,
-          ),
+          if (_isPreviewEnabled)
+            NavigationDestination(
+              icon: Icon(Icons.preview_outlined),
+              selectedIcon: Icon(Icons.preview),
+              label: text.previewTab,
+            ),
           NavigationDestination(
             icon: Icon(Icons.assessment_outlined),
             selectedIcon: Icon(Icons.assessment),

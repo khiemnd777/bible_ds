@@ -1,6 +1,6 @@
 {
   "app_title": "Daily Turning",
-  "play_tab": "Play",
+  "play_tab": "Scenario",
   "preview_tab": "Preview",
   "profile_tab": "Profile",
   "no_scene_available": "No scene available.",
@@ -36,6 +36,9 @@
   "validation": "Validation",
   "no_validation_errors": "No validation errors.",
   "no_content_loaded": "No content loaded.",
+  "ending_summary_discernment": "You walked with discernment and a gentle spirit today.",
+  "ending_summary_realign": "Your decisions show tension; tomorrow is a chance to realign your heart.",
+  "ending_summary_progress": "You made meaningful progress and continued the journey with faith.",
   "generate_profile_title": "Your Profile",
   "your_name_label": "Your name",
   "your_avatar_label": "Your avatar",

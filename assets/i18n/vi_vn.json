@@ -1,6 +1,6 @@
 {
   "app_title": "Daily Turning",
-  "play_tab": "Play",
+  "play_tab": "Tình huống",
   "preview_tab": "Xem trước",
   "profile_tab": "Hồ sơ",
   "no_scene_available": "Không có phân cảnh.",
@@ -36,6 +36,9 @@
   "validation": "Kiểm tra nội dung",
   "no_validation_errors": "Không có lỗi kiểm tra.",
   "no_content_loaded": "Không tải được nội dung.",
+  "ending_summary_discernment": "Hôm nay bạn bước đi với sự khôn ngoan và tinh thần nhu mì.",
+  "ending_summary_realign": "Những quyết định của bạn đang có sự căng thẳng; ngày mai là cơ hội để điều chỉnh lại tấm lòng.",
+  "ending_summary_progress": "Bạn đã tiến bộ ý nghĩa và tiếp tục hành trình trong đức tin.",
   "generate_profile_title": "Hồ sơ cá nhân",
   "your_name_label": "Tên của bạn",
   "your_avatar_label": "Ảnh đại diện",

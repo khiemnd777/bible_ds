@@ -48,7 +48,7 @@ class SummaryScreen extends StatelessWidget {
           Card(
             child: Padding(
               padding: const EdgeInsets.all(12),
-              child: Text(endingSummary),
+              child: Text(text.endingSummary(endingSummary)),
             ),
           ),
           const SizedBox(height: 8),

@@ -58,6 +58,21 @@ class UiText {
   String get noValidationErrors =>
       _t('no_validation_errors', 'No validation errors.');
   String get noContentLoaded => _t('no_content_loaded', 'No content loaded.');
+  String endingSummary(String summaryKey) => switch (summaryKey) {
+        'ending_summary_discernment' => _t(
+            'ending_summary_discernment',
+            'You walked with discernment and a gentle spirit today.',
+          ),
+        'ending_summary_realign' => _t(
+            'ending_summary_realign',
+            'Your decisions show tension; tomorrow is a chance to realign your heart.',
+          ),
+        'ending_summary_progress' => _t(
+            'ending_summary_progress',
+            'You made meaningful progress and continued the journey with faith.',
+          ),
+        _ => summaryKey,
+      };
   String get generateProfileTitle =>
       _t('generate_profile_title', 'Generate Profile');
   String get yourNameLabel => _t('your_name_label', 'Your name');
