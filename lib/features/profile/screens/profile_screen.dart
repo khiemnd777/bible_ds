@@ -273,7 +273,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     // Email
                     TextField(
                       controller: _emailController,
@@ -284,7 +284,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         border: const OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     // Phone
                     TextField(
                       controller: _phoneController,
