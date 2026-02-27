@@ -308,6 +308,191 @@
           }
         ]
       }
+    },
+    {
+      "id": "scene_pride_01",
+      "topic": "pride",
+      "title": "Khi Tôi Muốn Đúng Hơn Là Muốn Yêu Thương",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npc": {
+          "id": "an",
+          "name": "An",
+          "portraitKey": "friend_01"
+        }
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Nhóm phục vụ vừa kết thúc buổi họp căng thẳng. Bạn đề xuất thay đổi cách tổ chức chương trình, nhưng An – người bạn thân nhiều năm – đã phản đối trước mọi người.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "An",
+            "text": "Mình chỉ nghĩ cách đó chưa phù hợp lúc này thôi. Không phải mình phủ nhận công sức của bạn.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn thấy đầu mình nóng lên. Trước mặt cả nhóm, bạn cảm giác bị hạ thấp.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Bạn",
+            "text": "Nếu bạn đã nghĩ vậy từ đầu thì sao không nói riêng? Trước mặt mọi người như thế làm mình khó xử lắm.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "An",
+            "text": "Mình không có ý làm bạn bẽ mặt. Mình chỉ thấy trách nhiệm phải nói thật. Bạn đang giận vì mình góp ý… hay vì bạn muốn mình luôn đứng về phía bạn?",
+            "nextTurnId": "t6",
+            "choices": []
+          },
+          {
+            "id": "t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Không khí chùng xuống. Câu hỏi của An chạm đúng vào điều bạn không muốn thừa nhận.",
+            "nextTurnId": "t7",
+            "choices": []
+          },
+          {
+            "id": "t7",
+            "speaker": "An",
+            "text": "Mình trân trọng bạn. Nhưng dạo này… mỗi lần ai khác ý, bạn phản ứng khá gay gắt.",
+            "choices": [
+              {
+                "id": "c_defend_pride",
+                "text": "Phản bác mạnh mẽ và khẳng định mình đúng, vì bạn tin mình đang bảo vệ tiêu chuẩn phục vụ.",
+                "intentTag": "defend",
+                "actionTag": "assert",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 18
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -12
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -8
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "hurt"
+                },
+                "outcome": {
+                  "text": "An im lặng rất lâu. \"Có lẽ mình cần suy nghĩ lại về cách làm việc chung.\" Câu nói nhẹ nhưng nặng như đá. Bạn giữ được cái tôi… nhưng đánh mất sự gần gũi.",
+                  "next": "reflection:ref_pride_01"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_pause_reflect",
+                "text": "Ngừng lại, thừa nhận mình đã phản ứng quá mạnh và hỏi An cảm thấy thế nào.",
+                "intentTag": "repent",
+                "actionTag": "humble",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 16
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": -14
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "neutral"
+                },
+                "outcome": {
+                  "text": "An thở ra. \"Mình chỉ sợ bạn quá mệt và ôm hết mọi thứ.\" Hai người ngồi lại, nói thật với nhau. Cái tôi đau một chút, nhưng tình bạn được giữ lại.",
+                  "next": "reflection:ref_pride_01"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_silent_withdraw",
+                "text": "Giữ im lặng, kết thúc cuộc nói chuyện sớm để tránh bùng nổ thêm.",
+                "intentTag": "avoid",
+                "actionTag": "withdraw",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "cold",
+                  "npc": "hurt"
+                },
+                "outcome": {
+                  "text": "Cuộc trò chuyện kết thúc trong im lặng. Không ai thắng, không ai thua. Nhưng khoảng cách bắt đầu lớn dần.",
+                  "next": "reflection:ref_pride_01"
+                },
+                "nextTurnId": ""
+              }
+            ],
+            "nextTurnId": ""
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_defend",
+            "requiredChoiceIds": [
+              "c_defend_pride"
+            ],
+            "text": "Bạn bảo vệ lập trường của mình, nhưng tình bạn chịu tổn thương sâu sắc.",
+            "next": "reflection:ref_pride_01"
+          },
+          {
+            "id": "o_humble",
+            "requiredChoiceIds": [
+              "c_pause_reflect"
+            ],
+            "text": "Sự khiêm nhường mở ra đối thoại thật lòng và chữa lành.",
+            "next": "reflection:ref_pride_01"
+          },
+          {
+            "id": "o_withdraw",
+            "requiredChoiceIds": [
+              "c_silent_withdraw"
+            ],
+            "text": "Im lặng giữ được thể diện, nhưng để lại vết nứt âm thầm.",
+            "next": "reflection:ref_pride_01"
+          }
+        ]
+      }
     }
   ],
   "reflections": [
@@ -331,6 +516,17 @@
         "Nỗi sợ đã ảnh hưởng đến quyết định của bạn ở điểm nào?",
         "Lần sau, lòng can đảm trung tín sẽ trông như thế nào?",
         "Ai có thể nâng đỡ bạn khi bạn chọn nói sự thật?"
+      ]
+    },
+    {
+      "id": "ref_pride_01",
+      "topic": "pride",
+      "verseRef": "Châm Ngôn 16:18",
+      "verseText": "Sự kiêu ngạo đi trước sự bại hoại, và tính tự cao đi trước sự sa ngã.",
+      "questions": [
+        "Trong tình huống này, điều gì làm bạn khó buông bỏ nhất: ý tưởng của mình hay hình ảnh của mình?",
+        "Bạn có đang đồng nhất giá trị bản thân với việc mình phải luôn đúng không?",
+        "Một hành động cụ thể nào bạn có thể làm để nuôi dưỡng sự khiêm nhường trong mối quan hệ này?"
       ]
     }
   ]

@@ -124,7 +124,12 @@ class ScenarioScreen extends StatelessWidget {
     required PortraitPair portraits,
     required Color narratorColor,
     required Color npcColor,
+    required Color playerColor,
   }) {
+    final speaker = turn.speaker.trim().toLowerCase();
+    final player = portraits.leftName.trim().toLowerCase();
+    final npc = portraits.rightName.trim().toLowerCase();
+
     if (_isNarratorSpeaker(turn.speaker)) {
       return _NarratorChatBlock(
         speaker: turn.speaker,
@@ -132,11 +137,30 @@ class ScenarioScreen extends StatelessWidget {
         color: narratorColor,
       );
     }
-    return _NpcBubble(
-      npcName: portraits.rightName,
-      npcAvatarPath: portraits.rightPath,
+
+    if (speaker == player) {
+      return _PlayerSpeechBubble(
+        playerName: portraits.leftName,
+        playerAvatarPath: portraits.leftPath,
+        text: turn.text,
+        color: playerColor,
+      );
+    }
+
+    if (speaker == npc) {
+      return _NpcBubble(
+        npcName: portraits.rightName,
+        npcAvatarPath: portraits.rightPath,
+        text: turn.text,
+        color: npcColor,
+      );
+    }
+
+    // 🔴 Unknown speaker → treat as narrator (safe fallback)
+    return _NarratorChatBlock(
+      speaker: turn.speaker,
       text: turn.text,
-      color: npcColor,
+      color: narratorColor,
     );
   }
 
@@ -166,6 +190,7 @@ class ScenarioScreen extends StatelessWidget {
                     portraits: portraits,
                     narratorColor: narratorColor,
                     npcColor: npcColor,
+                    playerColor: playerColor,
                   );
                 }),
                 ...selectedTurns.asMap().entries.map(
@@ -177,6 +202,7 @@ class ScenarioScreen extends StatelessWidget {
                             portraits: portraits,
                             narratorColor: narratorColor,
                             npcColor: npcColor,
+                            playerColor: playerColor,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
@@ -200,6 +226,7 @@ class ScenarioScreen extends StatelessWidget {
                     portraits: portraits,
                     narratorColor: narratorColor,
                     npcColor: npcColor,
+                    playerColor: playerColor,
                   ),
                 if (!isOutcomeMode &&
                     currentTurn != null &&
@@ -288,8 +315,7 @@ class _NarratorChatBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
+      padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
@@ -325,8 +351,7 @@ class _NpcBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
+      padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -341,6 +366,50 @@ class _NpcBubble extends StatelessWidget {
               ),
               child: Text(text),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// ✅ New: player “speech” bubble for turns where speaker == player name.
+/// (Different from _PlayerChoiceBubble which is a button/choice UI.)
+class _PlayerSpeechBubble extends StatelessWidget {
+  const _PlayerSpeechBubble({
+    required this.playerName,
+    required this.playerAvatarPath,
+    required this.text,
+    required this.color,
+  });
+
+  final String playerName;
+  final String playerAvatarPath;
+  final String text;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Flexible(
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(text, textAlign: TextAlign.left),
+            ),
+          ),
+          const SizedBox(width: 8),
+          SizedBox(
+            width: 52,
+            child: _Avatar(path: playerAvatarPath, label: playerName),
           ),
         ],
       ),
@@ -416,8 +485,7 @@ class _OutcomeBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
+      padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(12),

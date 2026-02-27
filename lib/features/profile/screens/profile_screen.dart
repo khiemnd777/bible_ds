@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
@@ -46,13 +47,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final savedName = prefs.getString(_namePrefsKey) ?? '';
     final savedEmail = prefs.getString(_emailPrefsKey) ?? '';
     final savedPhone = prefs.getString(_phonePrefsKey) ?? '';
-    final savedAvatarPath = prefs.getString(_avatarPathPrefsKey);
+    final savedAvatarRef = prefs.getString(_avatarPathPrefsKey);
+    debugPrint('Profile load avatar ref=$savedAvatarRef');
 
     XFile? savedAvatarFile;
-    if (savedAvatarPath != null && savedAvatarPath.isNotEmpty) {
-      final file = File(savedAvatarPath);
-      if (file.existsSync()) {
-        savedAvatarFile = XFile(savedAvatarPath);
+    if (savedAvatarRef != null && savedAvatarRef.isNotEmpty) {
+      final resolvedPath = await _resolveAvatarPath(savedAvatarRef);
+      if (resolvedPath != null) {
+        savedAvatarFile = XFile(resolvedPath);
       }
     }
 
@@ -73,8 +75,52 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     if (_avatarFile == null) {
       await prefs.remove(_avatarPathPrefsKey);
     } else {
-      await prefs.setString(_avatarPathPrefsKey, _avatarFile!.path);
+      final avatarName = _fileNameFromPath(_avatarFile!.path);
+      await prefs.setString(_avatarPathPrefsKey, avatarName);
+      debugPrint('Profile save avatar ref=$avatarName');
     }
+  }
+
+  Future<String> _persistAvatarFile(XFile sourceFile) async {
+    final docsDir = await getApplicationDocumentsDirectory();
+    await docsDir.create(recursive: true);
+    final extensionIndex = sourceFile.path.lastIndexOf('.');
+    final extension = extensionIndex > -1
+        ? sourceFile.path.substring(extensionIndex)
+        : '.jpg';
+    final targetPath = '${docsDir.path}/profile_avatar$extension';
+    if (sourceFile.path == targetPath) return sourceFile.path;
+    final targetFile = File(targetPath);
+    if (targetFile.existsSync()) {
+      await targetFile.delete();
+    }
+    final copiedFile = await File(sourceFile.path).copy(targetPath);
+    return copiedFile.path;
+  }
+
+  Future<String?> _resolveAvatarPath(String savedRef) async {
+    final docsDir = await getApplicationDocumentsDirectory();
+
+    // Backward compatibility: old data stored absolute paths.
+    if (savedRef.contains('/')) {
+      final legacyFile = File(savedRef);
+      if (legacyFile.existsSync()) return savedRef;
+
+      final migratedName = _fileNameFromPath(savedRef);
+      final migratedPath = '${docsDir.path}/$migratedName';
+      if (File(migratedPath).existsSync()) return migratedPath;
+      return null;
+    }
+
+    final currentPath = '${docsDir.path}/$savedRef';
+    if (File(currentPath).existsSync()) return currentPath;
+    return null;
+  }
+
+  String _fileNameFromPath(String path) {
+    final slash = path.lastIndexOf('/');
+    if (slash < 0 || slash == path.length - 1) return path;
+    return path.substring(slash + 1);
   }
 
   Future<void> _openAvatarSourceSheet() async {
@@ -109,8 +155,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     try {
       final picked = await _picker.pickImage(source: source);
       if (!mounted || picked == null) return;
+      final persistedPath = await _persistAvatarFile(picked);
+      final avatarName = _fileNameFromPath(persistedPath);
+      final prefs = ref.read(sharedPreferencesProvider);
+      await prefs.setString(_avatarPathPrefsKey, avatarName);
+      debugPrint('Profile picked avatar persisted path=$persistedPath');
+      if (!mounted) return;
       setState(() {
-        _avatarFile = picked;
+        _avatarFile = XFile(persistedPath);
       });
     } on PlatformException catch (error, stackTrace) {
       debugPrint(
@@ -180,8 +232,16 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   Widget build(BuildContext context) {
     final text = ref.watch(uiTextProvider);
     const avatarSize = 160.0;
+    final avatarPath = _avatarFile?.path;
+    final avatarExists = avatarPath != null && File(avatarPath).existsSync();
+    assert(() {
+      debugPrint(
+        'ProfileScreen avatar file exists=$avatarExists path=$avatarPath',
+      );
+      return true;
+    }());
     final avatarProvider =
-        _avatarFile == null ? null : FileImage(File(_avatarFile!.path));
+        avatarExists ? FileImage(File(avatarPath)) : null;
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
