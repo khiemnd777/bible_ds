@@ -37,7 +37,7 @@ class Scene {
   factory Scene.fromJson(Map<String, dynamic> json) {
     final conversationJson =
         json['conversation'] as Map<String, dynamic>? ?? const {};
-    return Scene(
+    final scene = Scene(
       id: json['id'] as String? ?? '',
       topic: json['topic'] as String? ?? 'general',
       title: json['title'] as String? ?? '',
@@ -46,6 +46,8 @@ class Scene {
       ),
       conversation: SceneConversation.fromJson(conversationJson),
     );
+    scene._assertResolvableSpeakers();
+    return scene;
   }
 
   List<Choice> get initialChoices {
@@ -100,22 +102,77 @@ class Scene {
     }
     return leadingTurnsBefore(firstChoiceTurn.id);
   }
+
+  void _assertResolvableSpeakers() {
+    for (final turn in conversation.turns) {
+      if (_isNarratorSpeaker(turn.speaker)) continue;
+      final speaker = turn.speaker.trim();
+      if (speaker.isEmpty) {
+        throw FormatException(
+          'Scene $id has empty speaker at turn ${turn.id}.',
+        );
+      }
+      if (speaker.toLowerCase() == characters.player.name.toLowerCase()) {
+        continue;
+      }
+      if (characters.findNpcByName(speaker) != null) continue;
+      throw FormatException(
+        'Scene $id has unknown speaker "$speaker" at turn ${turn.id}. '
+        'Expected player "${characters.player.name}", one of '
+        '[${characters.npcs.map((c) => c.name).join(', ')}], '
+        'or narrator keyword.',
+      );
+    }
+  }
+
+  bool _isNarratorSpeaker(String speaker) {
+    final lowerSpeaker = speaker.trim().toLowerCase();
+    return lowerSpeaker.contains('narrator') ||
+        lowerSpeaker.contains('dẫn chuyện');
+  }
 }
 
 class SceneCharacters {
   final Character player;
-  final Character npc;
+  final List<Character> npcs;
 
   const SceneCharacters({
     required this.player,
-    required this.npc,
+    required this.npcs,
   });
 
   factory SceneCharacters.fromJson(Map<String, dynamic> json) {
+    final npcsJson = json['npcs'];
+    final legacyNpcJson = json['npc'];
+    final dynamic rawNpcs;
+    if (npcsJson is List<dynamic>) {
+      rawNpcs = npcsJson;
+    } else if (legacyNpcJson is Map<String, dynamic>) {
+      // TODO(khiem): remove legacy `npc` migration once content is fully moved to `npcs`.
+      rawNpcs = [legacyNpcJson];
+    } else {
+      rawNpcs = const <dynamic>[];
+    }
+
+    final npcs = (rawNpcs as List<dynamic>)
+        .map((e) => Character.fromJson(e as Map<String, dynamic>))
+        .toList(growable: false);
+    if (npcs.isEmpty) {
+      throw const FormatException(
+        'Scene characters.npcs is required and must contain at least one NPC.',
+      );
+    }
+
     return SceneCharacters(
       player: Character.fromJson(
           json['player'] as Map<String, dynamic>? ?? const {}),
-      npc: Character.fromJson(json['npc'] as Map<String, dynamic>? ?? const {}),
+      npcs: npcs,
+    );
+  }
+
+  Character? findNpcByName(String name) {
+    return npcs.firstWhereOrNull(
+      (c) => c.name.toLowerCase() == name.toLowerCase(),
     );
   }
 }
@@ -327,5 +384,14 @@ class ReflectionContent {
           .map((e) => e.toString())
           .toList(),
     );
+  }
+}
+
+extension FirstWhereOrNullExtension<T> on Iterable<T> {
+  T? firstWhereOrNull(bool Function(T element) test) {
+    for (final element in this) {
+      if (test(element)) return element;
+    }
+    return null;
   }
 }

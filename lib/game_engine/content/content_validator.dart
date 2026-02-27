@@ -25,6 +25,27 @@ class ContentValidator {
     }
 
     for (final scene in content.scenes) {
+      if (scene.characters.npcs.isEmpty) {
+        errors.add(
+            'Scene ${scene.id} characters.npcs must contain at least one NPC.');
+      }
+
+      final seenNpcNames = <String>{};
+      for (final npc in scene.characters.npcs) {
+        final npcName = npc.name.trim().toLowerCase();
+        if (npcName.isEmpty) {
+          errors.add('Scene ${scene.id} has NPC with empty name.');
+          continue;
+        }
+        if (!seenNpcNames.add(npcName)) {
+          errors.add('Scene ${scene.id} has duplicate NPC name: ${npc.name}');
+        }
+        if (npcName == scene.characters.player.name.trim().toLowerCase()) {
+          errors.add(
+              'Scene ${scene.id} has NPC name colliding with player name: ${npc.name}');
+        }
+      }
+
       final conversation = scene.conversation;
       if (conversation.turns.isEmpty) {
         errors.add('Scene ${scene.id} conversation has no turns.');
@@ -43,6 +64,11 @@ class ContentValidator {
           errors.add('Scene ${scene.id} has conversation turn with empty id.');
         } else if (!turnIds.add(turn.id)) {
           errors.add('Scene ${scene.id} has duplicate turn id: ${turn.id}');
+        }
+
+        if (!_isSpeakerResolvable(scene, turn.speaker)) {
+          errors.add(
+              'Scene ${scene.id} has unknown speaker "${turn.speaker}" at turn ${turn.id}.');
         }
 
         if (turn.choices.isEmpty && turn.nextTurnId.isEmpty) {
@@ -158,5 +184,18 @@ class ContentValidator {
     }
 
     return null;
+  }
+
+  bool _isSpeakerResolvable(Scene scene, String speaker) {
+    final normalized = speaker.trim().toLowerCase();
+    if (normalized.isEmpty) return false;
+    if (normalized.contains('narrator') || normalized.contains('dẫn chuyện')) {
+      return true;
+    }
+    if (normalized == scene.characters.player.name.trim().toLowerCase()) {
+      return true;
+    }
+    return scene.characters.npcs
+        .any((npc) => npc.name.trim().toLowerCase() == normalized);
   }
 }

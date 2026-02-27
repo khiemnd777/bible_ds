@@ -10,11 +10,18 @@
           "name": "Bạn",
           "portraitKey": "mc_01"
         },
-        "npc": {
-          "id": "eli",
-          "name": "Eli",
-          "portraitKey": "friend_01"
-        }
+        "npcs": [
+          {
+            "id": "eli",
+            "name": "Eli",
+            "portraitKey": "friend_01"
+          },
+          {
+            "id": "leah",
+            "name": "Leah",
+            "portraitKey": "friend_02"
+          }
+        ]
       },
       "conversation": {
         "startTurnId": "t_intro_1",
@@ -22,14 +29,14 @@
           {
             "id": "t_intro_1",
             "speaker": "Leah",
-            "text": "Bạn của bạn là Eli đã buông lời gay gắt với bạn sau một ngày mệt mỏi. Giờ đây anh ấy đứng lặng im, rõ ràng đầy hối hận.",
+            "text": "Bạn cảm thấy tổn thương, nhưng cũng nhìn thấy đôi tay anh ấy đang run.",
             "nextTurnId": "t_intro_2",
             "choices": []
           },
           {
             "id": "t_intro_2",
             "speaker": "Dẫn chuyện",
-            "text": "Bạn cảm thấy tổn thương, nhưng cũng nhìn thấy đôi tay anh ấy đang run.",
+            "text": "Bạn của bạn là Eli đã buông lời gay gắt với bạn sau một ngày mệt mỏi. Giờ đây anh ấy đứng lặng im, rõ ràng đầy hối hận.",
             "nextTurnId": "t_choice",
             "choices": []
           },
@@ -132,11 +139,13 @@
           "name": "Bạn",
           "portraitKey": "mc_01"
         },
-        "npc": {
-          "id": "mina",
-          "name": "Mina",
-          "portraitKey": "friend_01"
-        }
+        "npcs": [
+          {
+            "id": "mina",
+            "name": "Mina",
+            "portraitKey": "friend_01"
+          }
+        ]
       },
       "conversation": {
         "startTurnId": "t_intro_1",
@@ -325,11 +334,13 @@
           "name": "Bạn",
           "portraitKey": "mc_01"
         },
-        "npc": {
-          "id": "an",
-          "name": "An",
-          "portraitKey": "friend_01"
-        }
+        "npcs": [
+          {
+            "id": "an",
+            "name": "An",
+            "portraitKey": "friend_01"
+          }
+        ]
       },
       "conversation": {
         "startTurnId": "t1",

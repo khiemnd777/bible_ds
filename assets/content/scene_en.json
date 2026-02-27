@@ -10,18 +10,20 @@
           "name": "You",
           "portraitKey": "mc_01"
         },
-        "npc": {
-          "id": "eli",
-          "name": "Eli",
-          "portraitKey": "friend_01"
-        }
+        "npcs": [
+          {
+            "id": "eli",
+            "name": "Eli",
+            "portraitKey": "friend_01"
+          }
+        ]
       },
       "conversation": {
         "startTurnId": "t_intro_1",
         "turns": [
           {
             "id": "t_intro_1",
-            "speaker": "Leah",
+            "speaker": "Narrator",
             "text": "Your friend Eli snapped at you after a tiring day. Now he’s standing there quietly—clearly full of regret.",
             "nextTurnId": "t_intro_2",
             "choices": []
@@ -132,11 +134,13 @@
           "name": "You",
           "portraitKey": "mc_01"
         },
-        "npc": {
-          "id": "mina",
-          "name": "Mina",
-          "portraitKey": "friend_01"
-        }
+        "npcs": [
+          {
+            "id": "mina",
+            "name": "Mina",
+            "portraitKey": "friend_01"
+          }
+        ]
       },
       "conversation": {
         "startTurnId": "t_intro_1",
@@ -325,11 +329,13 @@
           "name": "You",
           "portraitKey": "mc_01"
         },
-        "npc": {
-          "id": "an",
-          "name": "An",
-          "portraitKey": "friend_01"
-        }
+        "npcs": [
+          {
+            "id": "an",
+            "name": "An",
+            "portraitKey": "friend_01"
+          }
+        ]
       },
       "conversation": {
         "startTurnId": "t1",

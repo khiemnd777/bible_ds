@@ -44,7 +44,12 @@ class GameFlowScreen extends ConsumerWidget {
     return switch (state.phase) {
       GamePhase.scenario => ScenarioScreen(
           scene: scene,
-          portraits: state.portraits,
+          characterMap: state.characterMap ??
+              CharacterRuntimeMap(
+                player: scene.characters.player,
+                npcs: scene.characters.npcs,
+              ),
+          portraitPaths: state.portraitPaths,
           playerAvatarPathOverride: profileAvatarPath,
           onPickChoice: controller.chooseChoice,
           selectedChoices: state.selectedChoices,
@@ -54,7 +59,12 @@ class GameFlowScreen extends ConsumerWidget {
         ),
       GamePhase.outcome => ScenarioScreen(
           scene: scene,
-          portraits: state.portraits,
+          characterMap: state.characterMap ??
+              CharacterRuntimeMap(
+                player: scene.characters.player,
+                npcs: scene.characters.npcs,
+              ),
+          portraitPaths: state.portraitPaths,
           playerAvatarPathOverride: profileAvatarPath,
           onPickChoice: controller.chooseChoice,
           selectedChoice: state.selectedChoice,
@@ -104,7 +114,8 @@ class ScenarioScreen extends StatelessWidget {
   const ScenarioScreen({
     super.key,
     required this.scene,
-    required this.portraits,
+    required this.characterMap,
+    required this.portraitPaths,
     required this.onPickChoice,
     required this.text,
     required this.selectedChoices,
@@ -117,7 +128,8 @@ class ScenarioScreen extends StatelessWidget {
   });
 
   final Scene scene;
-  final PortraitPair portraits;
+  final CharacterRuntimeMap characterMap;
+  final Map<String, String> portraitPaths;
   final Future<void> Function(String choiceId) onPickChoice;
   final UiText text;
   final List<Choice> selectedChoices;
@@ -136,47 +148,43 @@ class ScenarioScreen extends StatelessWidget {
 
   Widget _buildTurnBubble({
     required ConversationTurn turn,
-    required PortraitPair portraits,
     required Color narratorColor,
     required Color npcColor,
     required Color playerColor,
     required String playerAvatarPath,
   }) {
-    final speaker = turn.speaker.trim().toLowerCase();
-    final player = portraits.leftName.trim().toLowerCase();
-    final npc = portraits.rightName.trim().toLowerCase();
-
-    if (_isNarratorSpeaker(turn.speaker)) {
-      return _NarratorChatBlock(
-        speaker: turn.speaker,
-        text: turn.text,
-        color: narratorColor,
-      );
+    final character = characterMap.resolve(turn.speaker);
+    if (character == null) {
+      if (_isNarratorSpeaker(turn.speaker)) {
+        return _NarratorChatBlock(
+          speaker: turn.speaker,
+          text: turn.text,
+          color: narratorColor,
+        );
+      }
+      throw Exception('Unknown speaker: ${turn.speaker}');
     }
 
-    if (speaker == player) {
+    if (character.id == scene.characters.player.id) {
       return _PlayerSpeechBubble(
-        playerName: portraits.leftName,
+        playerName: character.name,
         playerAvatarPath: playerAvatarPath,
         text: turn.text,
         color: playerColor,
       );
     }
 
-    if (speaker == npc) {
-      return _NpcBubble(
-        npcName: portraits.rightName,
-        npcAvatarPath: portraits.rightPath,
-        text: turn.text,
-        color: npcColor,
-      );
-    }
-
-    return _NarratorChatBlock(
-      speaker: turn.speaker,
+    return _NpcBubble(
+      npcName: character.name,
+      npcAvatarPath: _portraitPathFor(character),
       text: turn.text,
-      color: narratorColor,
+      color: npcColor,
     );
+  }
+
+  String _portraitPathFor(Character character) {
+    return portraitPaths[character.id] ??
+        'assets/portraits/${character.portraitKey}/neutral.png';
   }
 
   @override
@@ -189,7 +197,8 @@ class ScenarioScreen extends StatelessWidget {
     final currentTurn =
         currentTurnId == null ? null : scene.findTurn(currentTurnId!);
     final introTurns = scene.introTurns;
-    final playerAvatarPath = playerAvatarPathOverride ?? portraits.leftPath;
+    final playerPortraitPath = _portraitPathFor(scene.characters.player);
+    final playerAvatarPath = playerAvatarPathOverride ?? playerPortraitPath;
 
     return Column(
       children: [
@@ -203,7 +212,6 @@ class ScenarioScreen extends StatelessWidget {
                 ...introTurns.map((turn) {
                   return _buildTurnBubble(
                     turn: turn,
-                    portraits: portraits,
                     narratorColor: narratorColor,
                     npcColor: npcColor,
                     playerColor: playerColor,
@@ -216,7 +224,6 @@ class ScenarioScreen extends StatelessWidget {
                         children: [
                           _buildTurnBubble(
                             turn: entry.value,
-                            portraits: portraits,
                             narratorColor: narratorColor,
                             npcColor: npcColor,
                             playerColor: playerColor,
@@ -226,7 +233,7 @@ class ScenarioScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(
                                 bottom: ScenarioScreen._chatSpacing),
                             child: _PlayerSpeechBubble(
-                              playerName: portraits.leftName,
+                              playerName: scene.characters.player.name,
                               playerAvatarPath: playerAvatarPath,
                               text: selectedChoices[entry.key].playerLine,
                               color: playerColor,
@@ -238,7 +245,6 @@ class ScenarioScreen extends StatelessWidget {
                 if (!isOutcomeMode && currentTurn != null)
                   _buildTurnBubble(
                     turn: currentTurn,
-                    portraits: portraits,
                     narratorColor: narratorColor,
                     npcColor: npcColor,
                     playerColor: playerColor,
@@ -252,7 +258,7 @@ class ScenarioScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               bottom: ScenarioScreen._chatSpacing),
                           child: _PlayerChoiceBubble(
-                            playerName: portraits.leftName,
+                            playerName: scene.characters.player.name,
                             playerAvatarPath: playerAvatarPath,
                             text: entry.value.text,
                             color: playerColor,

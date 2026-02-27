@@ -33,7 +33,8 @@ class GameViewState {
   final StatState stats;
   final ProgressState progress;
   final GamePhase phase;
-  final PortraitPair portraits;
+  final CharacterRuntimeMap? characterMap;
+  final Map<String, String> portraitPaths;
   final List<String> validationErrors;
   final String endingSummary;
   final bool canNextDay;
@@ -55,7 +56,8 @@ class GameViewState {
     required this.stats,
     required this.progress,
     required this.phase,
-    required this.portraits,
+    required this.characterMap,
+    required this.portraitPaths,
     required this.validationErrors,
     required this.endingSummary,
     required this.canNextDay,
@@ -79,7 +81,8 @@ class GameViewState {
       stats: StatState.initial(),
       progress: ProgressState.initial(),
       phase: GamePhase.scenario,
-      portraits: PortraitPair.empty(),
+      characterMap: null,
+      portraitPaths: const {},
       validationErrors: const [],
       endingSummary: '',
       canNextDay: false,
@@ -103,7 +106,8 @@ class GameViewState {
     StatState? stats,
     ProgressState? progress,
     GamePhase? phase,
-    PortraitPair? portraits,
+    Object? characterMap = _unset,
+    Map<String, String>? portraitPaths,
     List<String>? validationErrors,
     String? endingSummary,
     bool? canNextDay,
@@ -135,7 +139,10 @@ class GameViewState {
       stats: stats ?? this.stats,
       progress: progress ?? this.progress,
       phase: phase ?? this.phase,
-      portraits: portraits ?? this.portraits,
+      characterMap: identical(characterMap, _unset)
+          ? this.characterMap
+          : characterMap as CharacterRuntimeMap?,
+      portraitPaths: portraitPaths ?? this.portraitPaths,
       validationErrors: validationErrors ?? this.validationErrors,
       endingSummary: endingSummary ?? this.endingSummary,
       canNextDay: canNextDay ?? this.canNextDay,
@@ -231,8 +238,14 @@ class GameController extends StateNotifier<GameViewState> {
       final scene = _findSceneById(content.scenes, progress.activeSceneId) ??
           (content.scenes.isNotEmpty ? content.scenes.first : null);
 
-      final portraits = scene == null
-          ? PortraitPair.empty()
+      final characterMap = scene == null
+          ? null
+          : CharacterRuntimeMap(
+              player: scene.characters.player,
+              npcs: scene.characters.npcs,
+            );
+      final portraitPaths = scene == null
+          ? const <String, String>{}
           : _portraitResolver.resolveScenePortraits(scene);
       final canNextDay = _canAssignNextDayScene(
         content: content,
@@ -254,7 +267,8 @@ class GameController extends StateNotifier<GameViewState> {
         stats: stats,
         progress: progress,
         phase: GamePhase.scenario,
-        portraits: portraits,
+        characterMap: characterMap,
+        portraitPaths: portraitPaths,
         validationErrors: validationErrors,
         endingSummary: _gameEngine.buildEndingSummary(stats),
         canNextDay: canNextDay,
@@ -293,7 +307,7 @@ class GameController extends StateNotifier<GameViewState> {
             .resolveChoice(choice: choice, currentStats: baseStats)
             .nextStats;
 
-    final portraits = _portraitResolver.resolveScenePortraits(
+    final portraitPaths = _portraitResolver.resolveScenePortraits(
       scene,
       intentTag: choice.intentTag,
       overrides: choice.portraitOverrides,
@@ -315,7 +329,7 @@ class GameController extends StateNotifier<GameViewState> {
           outcomeNext: null,
           stats: nextStats,
           phase: GamePhase.scenario,
-          portraits: portraits,
+          portraitPaths: portraitPaths,
           endingSummary: _gameEngine.buildEndingSummary(nextStats),
         );
         return;
@@ -339,7 +353,7 @@ class GameController extends StateNotifier<GameViewState> {
       outcomeNext: resolution.nextTag,
       stats: resolvedStats,
       phase: GamePhase.outcome,
-      portraits: portraits,
+      portraitPaths: portraitPaths,
       endingSummary: _gameEngine.buildEndingSummary(resolvedStats),
     );
   }
@@ -441,7 +455,11 @@ class GameController extends StateNotifier<GameViewState> {
     if (scene == null) return;
 
     final replay = isReplayOnly(sceneId);
-    final portraits = _portraitResolver.resolveScenePortraits(scene);
+    final characterMap = CharacterRuntimeMap(
+      player: scene.characters.player,
+      npcs: scene.characters.npcs,
+    );
+    final portraitPaths = _portraitResolver.resolveScenePortraits(scene);
 
     state = state.copyWith(
       scene: scene,
@@ -454,7 +472,8 @@ class GameController extends StateNotifier<GameViewState> {
       outcomeText: null,
       outcomeNext: null,
       phase: GamePhase.scenario,
-      portraits: portraits,
+      characterMap: characterMap,
+      portraitPaths: portraitPaths,
       dailyTrend: null,
       isReplayMode: replay,
     );

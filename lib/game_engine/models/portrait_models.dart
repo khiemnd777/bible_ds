@@ -1,3 +1,5 @@
+import 'package:bible_decision_simulator/game_engine/models/content_models.dart';
+
 enum PortraitExpression {
   neutral,
   calm,
@@ -25,25 +27,24 @@ extension PortraitExpressionExt on PortraitExpression {
   }
 }
 
-class PortraitPair {
-  final String leftPath;
-  final String rightPath;
-  final String leftName;
-  final String rightName;
+class CharacterRuntimeMap {
+  final Character player;
+  final Map<String, Character> npcMap;
 
-  const PortraitPair({
-    required this.leftPath,
-    required this.rightPath,
-    required this.leftName,
-    required this.rightName,
-  });
+  CharacterRuntimeMap({
+    required this.player,
+    required List<Character> npcs,
+  }) : npcMap = {
+          for (final c in npcs) c.name.toLowerCase(): c,
+        };
 
-  factory PortraitPair.empty() {
-    return const PortraitPair(
-      leftPath: '',
-      rightPath: '',
-      leftName: '',
-      rightName: '',
-    );
+  Character? resolve(String speaker) {
+    final lower = speaker.toLowerCase().trim();
+
+    if (lower == player.name.toLowerCase()) {
+      return player;
+    }
+
+    return npcMap[lower];
   }
 }
