@@ -143,6 +143,7 @@ class Character {
 class Choice {
   final String id;
   final String text;
+  final String playerLine;
   final String intentTag;
   final String actionTag;
   final List<StatEffect> effects;
@@ -153,6 +154,7 @@ class Choice {
   const Choice({
     required this.id,
     required this.text,
+    required this.playerLine,
     required this.intentTag,
     required this.actionTag,
     required this.effects,
@@ -167,6 +169,7 @@ class Choice {
     return Choice(
       id: json['id'] as String? ?? '',
       text: json['text'] as String? ?? '',
+      playerLine: json['playerLine'] as String? ?? '',
       intentTag: json['intentTag'] as String? ?? 'neutral',
       actionTag: json['actionTag'] as String? ?? '',
       effects: (json['effects'] as List<dynamic>? ?? [])

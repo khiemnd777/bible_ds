@@ -207,14 +207,11 @@ class ScenarioScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(
                                 bottom: ScenarioScreen._chatSpacing),
-                            child: _PlayerChoiceBubble(
+                            child: _PlayerSpeechBubble(
                               playerName: portraits.leftName,
                               playerAvatarPath: portraits.leftPath,
-                              text: selectedChoices[entry.key].text,
+                              text: selectedChoices[entry.key].playerLine,
                               color: playerColor,
-                              onTap: () {},
-                              showAvatar: true,
-                              enabled: false,
                             ),
                           ),
                         ],

@@ -42,6 +42,7 @@
               {
                 "id": "c_forgive",
                 "text": "Nói với Eli rằng bạn tha thứ cho anh ấy và hỏi bạn có thể cầu nguyện cho anh ấy thế nào.",
+                "playerLine": "Mình bị tổn thương thật… nhưng mình tha thứ cho bạn. Có điều gì mình có thể cầu nguyện cho bạn không?",
                 "intentTag": "forgive",
                 "actionTag": "mercy",
                 "effects": [
@@ -71,6 +72,7 @@
               {
                 "id": "c_retaliate",
                 "text": "Đáp trả lời xúc phạm để chứng minh quan điểm của mình.",
+                "playerLine": "Bạn nghĩ chỉ mình bạn mệt à? Đừng nói với mình bằng giọng đó.",
                 "intentTag": "anger",
                 "actionTag": "retaliate",
                 "effects": [
@@ -161,6 +163,7 @@
               {
                 "id": "c_open_push",
                 "text": "Đề nghị cả nhóm cùng báo cáo sai sót.",
+                "playerLine": "Mình nghĩ chúng ta nên nói sự thật. Nếu có chuyện xảy ra, mình không muốn ai bị ảnh hưởng vì sự im lặng này.",
                 "intentTag": "courage",
                 "actionTag": "truth",
                 "effects": [
@@ -190,6 +193,7 @@
               {
                 "id": "c_open_delay",
                 "text": "Nói rằng bạn cần thêm thời gian và tạm tránh xung đột.",
+                "playerLine": "Cho mình thêm chút thời gian suy nghĩ được không? Mình chưa sẵn sàng quyết ngay lúc này.",
                 "intentTag": "neutral",
                 "actionTag": "delay",
                 "effects": [
@@ -223,6 +227,7 @@
               {
                 "id": "c_decide_truth",
                 "text": "Nói sự thật cách tôn trọng và chấp nhận cái giá phải trả.",
+                "playerLine": "Mình sẽ nói sự thật. Dù có khó chịu thế nào, mình nghĩ đó là điều đúng đắn.",
                 "intentTag": "courage",
                 "actionTag": "truth",
                 "effects": [
@@ -252,6 +257,7 @@
               {
                 "id": "c_decide_silent",
                 "text": "Giữ im lặng để bảo vệ sự thoải mái của bạn.",
+                "playerLine": "… Thôi, cứ để vậy đi. Mình không muốn mọi chuyện rắc rối thêm.",
                 "intentTag": "neutral",
                 "actionTag": "silence",
                 "effects": [
@@ -378,6 +384,7 @@
               {
                 "id": "c_defend_pride",
                 "text": "Phản bác mạnh mẽ và khẳng định mình đúng, vì bạn tin mình đang bảo vệ tiêu chuẩn phục vụ.",
+                "playerLine": "Mình nói vậy vì mình quan tâm đến chất lượng chung. Không phải mình quá đáng.",
                 "intentTag": "defend",
                 "actionTag": "assert",
                 "effects": [
@@ -407,6 +414,7 @@
               {
                 "id": "c_pause_reflect",
                 "text": "Ngừng lại, thừa nhận mình đã phản ứng quá mạnh và hỏi An cảm thấy thế nào.",
+                "playerLine": "Chắc mình đã phản ứng hơi quá. Mình không muốn làm bạn tổn thương. Bạn thật sự cảm thấy thế nào?",
                 "intentTag": "repent",
                 "actionTag": "humble",
                 "effects": [
@@ -436,6 +444,7 @@
               {
                 "id": "c_silent_withdraw",
                 "text": "Giữ im lặng, kết thúc cuộc nói chuyện sớm để tránh bùng nổ thêm.",
+                "playerLine": "Thôi… chắc giờ nói nữa cũng không giải quyết được gì. Mình về trước.",
                 "intentTag": "avoid",
                 "actionTag": "withdraw",
                 "effects": [
