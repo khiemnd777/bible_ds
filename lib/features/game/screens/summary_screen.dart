@@ -5,6 +5,8 @@ import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
 import 'package:bible_decision_simulator/game_engine/stat/daily_trend_engine.dart';
 import 'package:flutter/material.dart';
 
+const _isDailyTrendEnabled = false;
+
 class SummaryScreen extends StatelessWidget {
   const SummaryScreen({
     super.key,
@@ -76,7 +78,7 @@ class SummaryScreen extends StatelessWidget {
               ),
             ),
           ),
-          if (dailyTrend != null) ...[
+          if (_isDailyTrendEnabled && dailyTrend != null) ...[
             const SizedBox(height: 8),
             Card(
               child: Padding(
