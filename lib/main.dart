@@ -203,8 +203,8 @@ class _RootShellState extends ConsumerState<_RootShell>
               label: text.previewTab,
             ),
           NavigationDestination(
-            icon: Icon(Icons.assessment_outlined),
-            selectedIcon: Icon(Icons.assessment),
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home),
             label: text.summaryMenu,
           ),
           NavigationDestination(
