@@ -1,17 +1,20 @@
+import 'package:bible_decision_simulator/core/di.dart';
 import 'package:bible_decision_simulator/core/i18n.dart';
 import 'package:bible_decision_simulator/features/monetization/donate_dialog.dart';
 import 'package:bible_decision_simulator/game_engine/models/content_models.dart';
 import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
 import 'package:bible_decision_simulator/game_engine/stat/daily_trend_engine.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const _isDailyTrendEnabled = false;
 
-class SummaryScreen extends StatelessWidget {
+class SummaryScreen extends ConsumerWidget {
   const SummaryScreen({
     super.key,
     required this.stats,
     required this.streak,
+    required this.highestStreak,
     required this.endingSummary,
     required this.scenes,
     required this.currentSceneId,
@@ -23,6 +26,7 @@ class SummaryScreen extends StatelessWidget {
 
   final StatState stats;
   final int streak;
+  final int highestStreak;
   final String endingSummary;
   final List<Scene> scenes;
   final String? currentSceneId;
@@ -32,7 +36,15 @@ class SummaryScreen extends StatelessWidget {
   final VoidCallback? onNavigateScenarioView;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final donateMinStreak = ref
+        .watch(monetizationConfigProvider)
+        .maybeWhen(
+          data: (config) => config.donateMinStreak,
+          orElse: () => 15,
+        );
+    final canShowDonate = highestStreak >= donateMinStreak;
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -114,19 +126,21 @@ class SummaryScreen extends StatelessWidget {
               child: Text(text.situation),
             ),
           ),
-          const SizedBox(height: 8),
-          SizedBox(
-            width: double.infinity,
-            child: OutlinedButton(
-              onPressed: () {
-                showDialog<void>(
-                  context: context,
-                  builder: (_) => const DonateDialog(),
-                );
-              },
-              child: Text(text.donate),
+          if (canShowDonate) ...[
+            const SizedBox(height: 8),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: () {
+                  showDialog<void>(
+                    context: context,
+                    builder: (_) => const DonateDialog(),
+                  );
+                },
+                child: Text(text.donate),
+              ),
             ),
-          ),
+          ],
         ],
       ),
     );

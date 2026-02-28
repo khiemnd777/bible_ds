@@ -118,6 +118,7 @@ class _RootShellState extends ConsumerState<_RootShell>
       SummaryScreen(
         stats: gameState.stats,
         streak: gameState.progress.streak,
+        highestStreak: gameState.progress.highestStreak,
         endingSummary: gameState.endingSummary,
         scenes: gameState.content?.scenes ?? const [],
         currentSceneId: gameState.scene?.id,

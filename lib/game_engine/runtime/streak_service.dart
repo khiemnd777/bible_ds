@@ -19,10 +19,13 @@ class StreakService {
     final yesterday = _yesterdayKey();
     final nextStreak =
         state.lastCompletedDate == yesterday ? state.currentStreak + 1 : 1;
+    final nextHighestStreak =
+        nextStreak > state.highestStreak ? nextStreak : state.highestStreak;
 
     return state.copyWith(
       lastCompletedDate: today,
       currentStreak: nextStreak,
+      highestStreak: nextHighestStreak,
       todayCompleted: true,
       completedToday: true,
       lastPlayedDayKey: today,

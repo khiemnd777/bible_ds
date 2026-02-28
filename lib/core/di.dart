@@ -16,7 +16,9 @@ import 'package:bible_decision_simulator/game_engine/rules/stat_engine.dart';
 import 'package:bible_decision_simulator/game_engine/runtime/game_engine.dart';
 import 'package:bible_decision_simulator/game_engine/runtime/portrait_resolver.dart';
 import 'package:bible_decision_simulator/game_engine/runtime/streak_service.dart';
+import 'package:bible_decision_simulator/models/monetization_config.dart';
 import 'package:bible_decision_simulator/features/monetization/rewarded_ad_service.dart';
+import 'package:bible_decision_simulator/services/monetization_config_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -109,6 +111,15 @@ final progressStoreProvider = Provider<ProgressStore>((ref) {
 
 final rewardedAdServiceProvider = Provider<RewardedAdService>((ref) {
   return RewardedAdService();
+});
+
+final monetizationConfigServiceProvider = Provider<MonetizationConfigService>(
+  (ref) => const MonetizationConfigService(),
+);
+
+final monetizationConfigProvider = FutureProvider<MonetizationConfig>((ref) {
+  final service = ref.read(monetizationConfigServiceProvider);
+  return service.loadConfig();
 });
 
 final gameControllerProvider =

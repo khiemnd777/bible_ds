@@ -83,6 +83,7 @@ class GameFlowScreen extends ConsumerWidget {
       GamePhase.summary => SummaryScreen(
           stats: state.stats,
           streak: state.progress.streak,
+          highestStreak: state.progress.highestStreak,
           endingSummary: state.endingSummary,
           scenes: state.content?.scenes ?? const [],
           currentSceneId: state.scene?.id,
@@ -92,6 +93,7 @@ class GameFlowScreen extends ConsumerWidget {
       GamePhase.dailySummary => SummaryScreen(
           stats: state.stats,
           streak: state.progress.streak,
+          highestStreak: state.progress.highestStreak,
           endingSummary: state.endingSummary,
           scenes: state.content?.scenes ?? const [],
           currentSceneId: state.scene?.id,

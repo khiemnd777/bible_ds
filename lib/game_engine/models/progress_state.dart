@@ -3,6 +3,7 @@ class ProgressState {
   final String? activeSceneId;
   final String? lastCompletedDate;
   final int currentStreak;
+  final int highestStreak;
   final bool todayCompleted;
   final List<String> unlockedSceneIds;
 
@@ -17,6 +18,7 @@ class ProgressState {
     required this.activeSceneId,
     required this.lastCompletedDate,
     required this.currentStreak,
+    required this.highestStreak,
     required this.todayCompleted,
     required this.unlockedSceneIds,
     required this.currentDayKey,
@@ -31,6 +33,7 @@ class ProgressState {
       activeSceneId: null,
       lastCompletedDate: null,
       currentStreak: 0,
+      highestStreak: 0,
       todayCompleted: false,
       unlockedSceneIds: <String>[],
       currentDayKey: '',
@@ -47,6 +50,7 @@ class ProgressState {
     String? lastCompletedDate,
     bool clearLastCompletedDate = false,
     int? currentStreak,
+    int? highestStreak,
     bool? todayCompleted,
     List<String>? unlockedSceneIds,
     String? currentDayKey,
@@ -63,6 +67,7 @@ class ProgressState {
           ? null
           : (lastCompletedDate ?? this.lastCompletedDate),
       currentStreak: currentStreak ?? this.currentStreak,
+      highestStreak: highestStreak ?? this.highestStreak,
       todayCompleted: todayCompleted ?? this.todayCompleted,
       unlockedSceneIds: unlockedSceneIds ?? this.unlockedSceneIds,
       currentDayKey: currentDayKey ?? this.currentDayKey,
@@ -80,6 +85,7 @@ class ProgressState {
       'activeSceneId': activeSceneId,
       'lastCompletedDate': lastCompletedDate,
       'currentStreak': currentStreak,
+      'highestStreak': highestStreak,
       'todayCompleted': todayCompleted,
       'unlockedSceneIds': unlockedSceneIds,
       'currentDayKey': currentDayKey,
@@ -116,6 +122,11 @@ class ProgressState {
       activeSceneId: parsedActiveId,
       lastCompletedDate: json['lastCompletedDate'] as String?,
       currentStreak: (json['currentStreak'] as num?)?.toInt() ??
+          (json['streak'] as num?)?.toInt() ??
+          0,
+      highestStreak: (json['highestStreak'] as num?)?.toInt() ??
+          (json['maxStreak'] as num?)?.toInt() ??
+          (json['currentStreak'] as num?)?.toInt() ??
           (json['streak'] as num?)?.toInt() ??
           0,
       todayCompleted: json['todayCompleted'] as bool? ??
