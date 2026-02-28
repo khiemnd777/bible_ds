@@ -1,0 +1,1257 @@
+{
+  "scenes": [
+    {
+      "id": "scene_humility_01",
+      "topic": "humility",
+      "title": "Wrongly Tagged Credit",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "vy", "name": "Violet", "portraitKey": "friend_01" },
+          { "id": "phuc", "name": "Felix", "portraitKey": "coworker_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "You just shipped an urgent design for the team. The next morning, Felix posts in the group: “Violet did this part so well!” and tags Violet—without mentioning you at all.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Violet",
+            "text": "Uh… that post… feels kinda off. But everyone’s praising it, and I… don’t really know what to do.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Narrator",
+            "text": "You stare at the screen, your chest heating up. How do you respond?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_public_correct",
+                "text": "Message in the group right away to correct the credit clearly.",
+                "playerLine": "Hey everyone, I led that part—Violet supported a few pieces.",
+                "intentTag": "assert",
+                "actionTag": "clarify_public",
+                "effects": [
+                  { "stat": "humility", "delta": -4 },
+                  { "stat": "wisdom", "delta": 3 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "nextTurnId": "t4_after_public",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_private_cover",
+                "text": "DM Violet first, keep it gentle, and ask her to help fix it.",
+                "playerLine": "Violet, the credit’s a bit off. If you can, could you tell Felix for me?",
+                "intentTag": "humble",
+                "actionTag": "clarify_private",
+                "effects": [
+                  { "stat": "humility", "delta": 7 },
+                  { "stat": "wisdom", "delta": 5 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "worried" },
+                "nextTurnId": "t4_after_private",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_public",
+            "speaker": "Felix",
+            "text": "Oh… really? Sorry. But… why not just say it privately so it’s lighter?",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_private",
+            "speaker": "Violet",
+            "text": "I’ll say something. But… I’m scared people will think I’m taking credit. And… Felix DM’d me saying we should leave it to keep things “peaceful.”",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Narrator",
+            "text": "Now it shows: Felix pushed Violet forward to keep the “vibes calm,” but your work is getting erased. What do you do next?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_take_loss_help_vy",
+                "text": "Accept a small loss, protect Violet, and keep the team steady.",
+                "playerLine": "Okay. I’ll talk to the lead in a way that doesn’t corner you. You don’t have to be the shield.",
+                "intentTag": "humble",
+                "actionTag": "protect_other",
+                "effects": [
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "relieved" },
+                "outcome": {
+                  "text": "You lose the spotlight, but you keep people and keep trust. A few days later, the lead double-checks and recognizes the right person for the right work.",
+                  "next": "reflection:ref_humility_01"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_escalate_callout",
+                "text": "Call Felix out directly and make it clear who did what in front of the group.",
+                "playerLine": "Felix, don’t do this. If I did the work, say I did the work. Don’t push someone else forward just to keep it “peaceful.”",
+                "intentTag": "assert",
+                "actionTag": "confront",
+                "effects": [
+                  { "stat": "wisdom", "delta": -3 },
+                  { "stat": "humility", "delta": -6 },
+                  { "stat": "pride", "delta": 10 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "outcome": {
+                  "text": "You get the credit back fast, but Violet gets trapped in the middle and the team atmosphere cracks. People remember “how you said it” longer than “what you were right about.”",
+                  "next": "reflection:ref_humility_01"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_silent_bitter",
+                "text": "Stay quiet, but grow resentful and start distancing yourself from the team.",
+                "playerLine": "Yeah… fine. Whatever.",
+                "intentTag": "avoid",
+                "actionTag": "withdraw",
+                "effects": [
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "cold", "npc": "sad" },
+                "outcome": {
+                  "text": "On the outside it’s calm, on the inside you shut down. You don’t argue, but you also stop wanting unity—and that’s the quietest price.",
+                  "next": "reflection:ref_humility_01"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o01_redemptive",
+            "requiredChoiceIds": ["c1_private_cover", "c2_take_loss_help_vy"],
+            "text": "You choose to lower yourself to protect someone else, while still handling truth the right way. The truth comes out without crushing anyone.",
+            "next": "reflection:ref_humility_01"
+          },
+          {
+            "id": "o01_right_wrong_way",
+            "requiredChoiceIds": ["c2_escalate_callout"],
+            "text": "You’re right, but your approach backs people into a corner. You win a round, but you lose a piece of trust.",
+            "next": "reflection:ref_humility_01"
+          },
+          {
+            "id": "o01_silent_cost",
+            "requiredChoiceIds": ["c2_silent_bitter"],
+            "text": "You avoid conflict, but your ego quietly grows under the silence. The team doesn’t break, but you don’t feel like you belong anymore.",
+            "next": "reflection:ref_humility_01"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_02",
+      "topic": "humility",
+      "title": "Apologizing in the Serving Team",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "lam", "name": "Liam", "portraitKey": "leader_01" },
+          { "id": "nhi", "name": "Nina", "portraitKey": "friend_02" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Sunday rehearsal runs late because you changed the song order without telling anyone. Liam has to redo the whole checklist, and Nina gets blamed for an audio mistake in front of everyone.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Nina",
+            "text": "I’m so embarrassed… everyone looked at me like I messed up everything.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Narrator",
+            "text": "Your head is full of reasons: “I was just trying to make it better.” What do you say right now?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_explain_self",
+                "text": "Explain right away so people know you didn’t mean it.",
+                "playerLine": "I changed it because the flow felt better—not because I don’t respect the process.",
+                "intentTag": "defend",
+                "actionTag": "explain",
+                "effects": [
+                  { "stat": "humility", "delta": -5 },
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "pride", "delta": 7 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "nextTurnId": "t4_after_defend",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_own_fault",
+                "text": "Own it clearly first—no circling around.",
+                "playerLine": "That’s on me. I changed it without telling anyone and it put everyone in a bad spot. I’m sorry.",
+                "intentTag": "humble",
+                "actionTag": "apologize",
+                "effects": [
+                  { "stat": "humility", "delta": 12 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "sad" },
+                "nextTurnId": "t4_after_apology",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_defend",
+            "speaker": "Liam",
+            "text": "Yeah I get what you meant… but someone else carried the consequence. How do you want to fix it?",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_apology",
+            "speaker": "Liam",
+            "text": "Thanks for being straight. I need you to help fix it. Are you willing to do the “dirty work”?",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Narrator",
+            "text": "The “dirty work” is: you post an apology in the group chat, then stay late to clean up and run everything again from the top. What do you choose?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_take_dirty_work",
+                "text": "Take it all: apologize, clean, rerun—no blaming anyone.",
+                "playerLine": "Yeah, I’ll do it. I want things to be right again, and I’ll take responsibility.",
+                "intentTag": "humble",
+                "actionTag": "serve",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "relieved" },
+                "outcome": {
+                  "text": "You lose face a little, but the team’s heart gets lighter. What you fix isn’t just the schedule—it’s trust.",
+                  "next": "reflection:ref_humility_02"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_delegate_save_face",
+                "text": "Ask Nina to post the apology since it’s “audio-related,” while you just stay to help.",
+                "playerLine": "Maybe Nina can message it so it’s quicker… I’ll stay and set things back up so we’re not late…",
+                "intentTag": "avoid",
+                "actionTag": "shift_blame",
+                "effects": [
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "humility", "delta": -8 },
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "pride", "delta": 9 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": {
+                  "text": "You save your image, but Nina carries it again. Nobody yells—people just start keeping distance.",
+                  "next": "reflection:ref_humility_02"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_quiet_fix_only",
+                "text": "Don’t apologize publicly—just quietly fix the technical stuff.",
+                "playerLine": "I’ll rerun everything so we can make it. The apology… later.",
+                "intentTag": "fix",
+                "actionTag": "silent_fix",
+                "effects": [
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "humility", "delta": -2 },
+                  { "stat": "love", "delta": -2 },
+                  { "stat": "pride", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "outcome": {
+                  "text": "The service runs, but the scratch in people’s hearts doesn’t heal by itself. You do the right task, but dodge the place where humility is needed.",
+                  "next": "reflection:ref_humility_02"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o02_restore_trust",
+            "requiredChoiceIds": ["c1_own_fault", "c2_take_dirty_work"],
+            "text": "You humble yourself for real, so the atmosphere changes for real. From then on, the team trusts you not just as capable—but as dependable.",
+            "next": "reflection:ref_humility_02"
+          },
+          {
+            "id": "o02_face_over_people",
+            "requiredChoiceIds": ["c2_delegate_save_face"],
+            "text": "You protect your ego by shifting the burden to someone else. Nobody screams—but they remember.",
+            "next": "reflection:ref_humility_02"
+          },
+          {
+            "id": "o02_half_fix",
+            "requiredChoiceIds": ["c2_quiet_fix_only"],
+            "text": "You fix the tech, but not the relationship. Humility isn’t just “getting it done”—it’s “lowering yourself in the right place.”",
+            "next": "reflection:ref_humility_02"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_03",
+      "topic": "humility",
+      "title": "Your Presentation Gets Hijacked",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "khoa", "name": "Kai", "portraitKey": "classmate_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Your group presents. You prepared the core content; Kai handled the slides. During Q&A, Kai keeps talking like everything was his work.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Kai",
+            "text": "We chose this approach because… (Kai glances at you) uh… basically we analyzed it really deeply.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Narrator",
+            "text": "You have 10 seconds to jump in. What do you do?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_interrupt_take_back",
+                "text": "Cut in gently but take the mic back.",
+                "playerLine": "Let me add this part—because I worked directly on the data analysis.",
+                "intentTag": "assert",
+                "actionTag": "interrupt",
+                "effects": [
+                  { "stat": "wisdom", "delta": 3 },
+                  { "stat": "humility", "delta": -3 },
+                  { "stat": "pride", "delta": 5 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "nextTurnId": "t4_after_interrupt",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_hold_for_now",
+                "text": "Hold it in, wait until after, then talk privately.",
+                "playerLine": "(You breathe in) Yes—our full answer is coming right after this part.",
+                "intentTag": "humble",
+                "actionTag": "hold",
+                "effects": [
+                  { "stat": "humility", "delta": 6 },
+                  { "stat": "pride", "delta": -3 },
+                  { "stat": "wisdom", "delta": -1 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "confident" },
+                "nextTurnId": "t4_after_hold",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_interrupt",
+            "speaker": "Narrator",
+            "text": "The professor nods, but Kai looks a bit stiff. After class, Kai pulls you aside.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_hold",
+            "speaker": "Narrator",
+            "text": "The presentation ends. The grade looks fine, but you feel like you got swallowed. Kai keeps smiling like nothing happened.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Kai",
+            "text": "Were you… annoyed? Did I talk too much? (Kai looks down) Honestly, I was scared of looking bad, so I… grabbed all the answers.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_restore_with_truth",
+                "text": "Tell the truth without crushing him; agree on a fair way next time.",
+                "playerLine": "Yeah, I was annoyed. But I get you were scared. Next time let’s split roles clearly, and say honestly who did what.",
+                "intentTag": "humble",
+                "actionTag": "truth_in_love",
+                "effects": [
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "sad" },
+                "outcome": {
+                  "text": "You don’t swallow the bitterness, and you don’t smash him either. You set truth down with a soft hand—and both of you learn to stand in the right place.",
+                  "next": "reflection:ref_humility_03"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_payback_next_time",
+                "text": "Smile it off, but decide you’ll “win back” next time.",
+                "playerLine": "It’s fine… (but inside: don’t expect anything from me next time).",
+                "intentTag": "resent",
+                "actionTag": "score_keep",
+                "effects": [
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "humility", "delta": -4 },
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "pride", "delta": 8 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "outcome": {
+                  "text": "You don’t blow up, but you start keeping score. Pride doesn’t always shout—sometimes it’s cold.",
+                  "next": "reflection:ref_humility_03"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_shame_him",
+                "text": "Say something that makes Kai remember it forever.",
+                "playerLine": "That’s basically stealing other people’s work. Don’t act like everyone’s dumb.",
+                "intentTag": "anger",
+                "actionTag": "shame",
+                "effects": [
+                  { "stat": "love", "delta": -7 },
+                  { "stat": "humility", "delta": -6 },
+                  { "stat": "pride", "delta": 10 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": {
+                  "text": "You vent your anger, but you make him shrink. You win a feeling, but lose a chance to actually help someone change.",
+                  "next": "reflection:ref_humility_03"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o03_best",
+            "requiredChoiceIds": ["c2_restore_with_truth"],
+            "text": "You set boundaries with humility—not by swallowing anger, but by telling the truth with the goal of building up.",
+            "next": "reflection:ref_humility_03"
+          },
+          {
+            "id": "o03_scorekeeping",
+            "requiredChoiceIds": ["c2_payback_next_time"],
+            "text": "You don’t explode, but you store debt. Pride doesn’t always make noise—sometimes it freezes.",
+            "next": "reflection:ref_humility_03"
+          },
+          {
+            "id": "o03_damage",
+            "requiredChoiceIds": ["c2_shame_him"],
+            "text": "You speak truth, but in a way that breaks someone. Humility doesn’t weaken truth—it gives truth a way back home.",
+            "next": "reflection:ref_humility_03"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_04",
+      "topic": "humility",
+      "title": "The Post That Got Misread",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "han", "name": "Hannah", "portraitKey": "friend_03" },
+          { "id": "mod", "name": "Moderator", "portraitKey": "npc_mod_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "You post a faith story online. Hannah comments with sarcasm: “Wow, so holy.” People start piling on.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Hannah",
+            "text": "Honestly, your post feels like you’re saying you’re better than everyone else.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Narrator",
+            "text": "You feel embarrassed and angry at the same time. How do you reply?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_clapback",
+                "text": "Clap back to protect your image.",
+                "playerLine": "If you read it like that, that’s on you. I’m not here to prove anything.",
+                "intentTag": "anger",
+                "actionTag": "clapback",
+                "effects": [
+                  { "stat": "humility", "delta": -7 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "pride", "delta": 10 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "t4_after_clapback",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_soften_and_ask",
+                "text": "Ask to understand, even while you’re getting poked.",
+                "playerLine": "You might be seeing something real. What part made it feel like I was flexing? I want to hear it honestly.",
+                "intentTag": "humble",
+                "actionTag": "ask",
+                "effects": [
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "t4_after_ask",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_clapback",
+            "speaker": "Moderator",
+            "text": "Quick reminder: keep it respectful. If personal attacks continue, comments will be locked.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_ask",
+            "speaker": "Hannah",
+            "text": "…Honestly, I’m triggered. I’ve been failing a lot lately, and when someone sounds “right,” I get bitter.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Narrator",
+            "text": "The twist is this: Hannah doesn’t hate you—she’s ashamed of herself. What do you do with that?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_dm_reconcile",
+                "text": "DM Hannah, apologize where you might’ve been off, and ask what she’s carrying.",
+                "playerLine": "I’m sorry if my post hit you wrong. If you want, I’m here to listen.",
+                "intentTag": "humble",
+                "actionTag": "reconcile",
+                "effects": [
+                  { "stat": "love", "delta": 9 },
+                  { "stat": "humility", "delta": 9 },
+                  { "stat": "faith", "delta": 3 },
+                  { "stat": "pride", "delta": -7 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "sad" },
+                "outcome": {
+                  "text": "You don’t win the comment section, but you win a person back. Humility makes you smaller so someone else can breathe.",
+                  "next": "reflection:ref_humility_04"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_pin_my_point",
+                "text": "Pin a ‘lesson’ comment to close the conversation.",
+                "playerLine": "People should learn how to receive truth instead of being sarcastic.",
+                "intentTag": "teach",
+                "actionTag": "public_lecture",
+                "effects": [
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "humility", "delta": -5 },
+                  { "stat": "pride", "delta": 7 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "outcome": {
+                  "text": "You might be right, but your tone puts you above people. You keep your image, but you lose a bridge.",
+                  "next": "reflection:ref_humility_04"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_delete_post",
+                "text": "Delete the post to make it all disappear.",
+                "playerLine": "Whatever. I’ll just delete it.",
+                "intentTag": "avoid",
+                "actionTag": "delete",
+                "effects": [
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "wisdom", "delta": -3 },
+                  { "stat": "pride", "delta": 3 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "outcome": {
+                  "text": "You escape the pain, but you also escape the practice. Humility isn’t disappearing—it’s staying the right way.",
+                  "next": "reflection:ref_humility_04"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o04_bridge",
+            "requiredChoiceIds": ["c1_soften_and_ask", "c2_dm_reconcile"],
+            "text": "You lower yourself to understand and heal. A private conversation saves what a hundred comments never could.",
+            "next": "reflection:ref_humility_04"
+          },
+          {
+            "id": "o04_image_over_people",
+            "requiredChoiceIds": ["c2_pin_my_point"],
+            "text": "You keep the ‘right’ stance, but people don’t feel loved. Humility is truth that stays close.",
+            "next": "reflection:ref_humility_04"
+          },
+          {
+            "id": "o04_escape",
+            "requiredChoiceIds": ["c2_delete_post"],
+            "text": "You dodge the heat, but you dodge growth too. Some lessons only show up when you stay in the tension.",
+            "next": "reflection:ref_humility_04"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_05",
+      "topic": "humility",
+      "title": "The Jersey and the Ego",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "huy", "name": "Hugo", "portraitKey": "teammate_01" },
+          { "id": "coach", "name": "Coach", "portraitKey": "coach_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "It’s a casual match. You’ve been the best player on the team for weeks. Then Coach starts Hugo, and puts you on the bench to “balance the team.”",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Hugo",
+            "text": "Uh… this is awkward. Coach said it like that… please don’t be mad.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Narrator",
+            "text": "It feels like you got downgraded. What do you do right now?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_prove_myself",
+                "text": "Demand to sub in and prove who deserves it.",
+                "playerLine": "Coach, put me in. I’m in good form—I’ll take responsibility for the result.",
+                "intentTag": "assert",
+                "actionTag": "demand",
+                "effects": [
+                  { "stat": "pride", "delta": 9 },
+                  { "stat": "humility", "delta": -6 },
+                  { "stat": "wisdom", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "t4_after_demand",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_support_team",
+                "text": "Accept the bench and focus on supporting the team—and Hugo.",
+                "playerLine": "Okay, Coach. Hugo, play free. If you need cues, I’ve got you.",
+                "intentTag": "humble",
+                "actionTag": "support",
+                "effects": [
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "love", "delta": 5 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "relieved" },
+                "nextTurnId": "t4_after_support",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_demand",
+            "speaker": "Coach",
+            "text": "Do you want to go in for the team… or for you? Be honest.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_support",
+            "speaker": "Narrator",
+            "text": "Hugo messes up one play and gets shouted at. You see his eyes go red. Coach looks at you like he wants you to do something.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Narrator",
+            "text": "You have a moment: save the match, or save the person. What do you choose?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_enter_and_credit_huy",
+                "text": "Ask to sub in, but intentionally lift Hugo up and share the spotlight.",
+                "playerLine": "Coach, put me in—but keep Hugo on. I’ll play next to him and call the plays so he can settle.",
+                "intentTag": "humble",
+                "actionTag": "lift_other",
+                "effects": [
+                  { "stat": "humility", "delta": 9 },
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "pride", "delta": -7 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "sad" },
+                "outcome": {
+                  "text": "You get on the field, but you don’t grab the stage. You help someone stand again—and the team plays cleaner than before.",
+                  "next": "reflection:ref_humility_05"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_enter_and_show",
+                "text": "Sub in and ‘show’ Coach you’re clearly better.",
+                "playerLine": "Put me in and you’ll see the difference instantly.",
+                "intentTag": "pride",
+                "actionTag": "show_off",
+                "effects": [
+                  { "stat": "pride", "delta": 12 },
+                  { "stat": "humility", "delta": -8 },
+                  { "stat": "love", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "smirk", "npc": "neutral" },
+                "outcome": {
+                  "text": "You score, but Hugo sits like he got erased. You win a small match, but the team loses unity.",
+                  "next": "reflection:ref_humility_05"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_stay_out_hurt",
+                "text": "Stay out and let them figure it out because you feel hurt.",
+                "playerLine": "Whatever… keep it like this.",
+                "intentTag": "avoid",
+                "actionTag": "withdraw",
+                "effects": [
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "humility", "delta": -2 },
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "cold", "npc": "sad" },
+                "outcome": {
+                  "text": "You don’t do anything ‘wrong’ out loud, but you also don’t do what’s needed. Sometimes humility is putting the shared goal above a bruised ego.",
+                  "next": "reflection:ref_humility_05"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o05_lift",
+            "requiredChoiceIds": ["c1_support_team", "c2_enter_and_credit_huy"],
+            "text": "You’re skilled and you’re soft. You don’t turn talent into a weapon—you turn it into support for others.",
+            "next": "reflection:ref_humility_05"
+          },
+          {
+            "id": "o05_show",
+            "requiredChoiceIds": ["c2_enter_and_show"],
+            "text": "You prove your ability, but you make someone else feel smaller. Humility doesn’t lower ability—it lowers ego.",
+            "next": "reflection:ref_humility_05"
+          },
+          {
+            "id": "o05_withdraw",
+            "requiredChoiceIds": ["c2_stay_out_hurt"],
+            "text": "You protect your feelings by withdrawing. But sometimes withdrawal isn’t humility—it’s wounded pride.",
+            "next": "reflection:ref_humility_05"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_06",
+      "topic": "humility",
+      "title": "The Text with Mom",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "me", "name": "Mom", "portraitKey": "mom_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "You’re busy. Mom texts: “Can you come home for dinner?” You accidentally leave it on read, then forget to reply. At night she calls, voice small: “It’s okay… you’re busy.”",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Mom",
+            "text": "I’m not mad. I just… feel like you’re grown now, and maybe you don’t need me anymore.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Narrator",
+            "text": "That line stings, because you never meant that. How do you respond?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_defend_busy",
+                "text": "Explain you were genuinely busy and she’s misunderstanding.",
+                "playerLine": "You’re overthinking it. I was just busy—that doesn’t mean I’m abandoning you.",
+                "intentTag": "defend",
+                "actionTag": "minimize",
+                "effects": [
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "humility", "delta": -4 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "sad" },
+                "nextTurnId": "t4_after_defend",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_apologize_first",
+                "text": "Apologize first, then talk about being busy.",
+                "playerLine": "I’m sorry. I saw it and didn’t reply—that’s on me. I hurt you.",
+                "intentTag": "humble",
+                "actionTag": "apologize",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "sad" },
+                "nextTurnId": "t4_after_apology",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_defend",
+            "speaker": "Mom",
+            "text": "Yeah… I overthink. (a pause) Just sleep, okay?",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_apology",
+            "speaker": "Mom",
+            "text": "I don’t need you to sound nice. I just need you to remember I’m a person too… I can feel lonely.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Narrator",
+            "text": "The twist is this: what Mom needs isn’t your schedule—it’s your presence. What do you do next?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_make_time_small",
+                "text": "Lower yourself and make a real small space: video call for 10 minutes right now.",
+                "playerLine": "Mom, can we talk for 10 minutes? I want to hear how your day went.",
+                "intentTag": "humble",
+                "actionTag": "be_present",
+                "effects": [
+                  { "stat": "love", "delta": 9 },
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "faith", "delta": 2 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "relieved" },
+                "outcome": {
+                  "text": "You don’t explain it perfectly—you show up for real. Sometimes humility is simply: don’t make the people you love guess.",
+                  "next": "reflection:ref_humility_06"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_send_money_instead",
+                "text": "Send money/food to ‘make up for it,’ but don’t actually talk.",
+                "playerLine": "I’ll order you something to eat so you don’t have to cook, okay?",
+                "intentTag": "fix",
+                "actionTag": "compensate",
+                "effects": [
+                  { "stat": "love", "delta": -2 },
+                  { "stat": "humility", "delta": -2 },
+                  { "stat": "wisdom", "delta": 1 },
+                  { "stat": "pride", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": {
+                  "text": "You give something useful, but she needed something close. You’re not stingy—you just didn’t lower yourself.",
+                  "next": "reflection:ref_humility_06"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_end_call_fast",
+                "text": "End the call fast to avoid feeling guilty.",
+                "playerLine": "Okay… goodnight, Mom. I’m up early tomorrow.",
+                "intentTag": "avoid",
+                "actionTag": "end",
+                "effects": [
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "humility", "delta": -3 },
+                  { "stat": "pride", "delta": 5 }
+                ],
+                "portraitOverrides": { "player": "cold", "npc": "sad" },
+                "outcome": {
+                  "text": "You avoid discomfort, but you leave a gap. Humility is staying in the awkward moment so love can breathe.",
+                  "next": "reflection:ref_humility_06"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o06_presence",
+            "requiredChoiceIds": ["c1_apologize_first", "c2_make_time_small"],
+            "text": "You lower yourself in the right place—not by shrinking your worth, but by shrinking your ego so someone feels loved.",
+            "next": "reflection:ref_humility_06"
+          },
+          {
+            "id": "o06_compensate",
+            "requiredChoiceIds": ["c2_send_money_instead"],
+            "text": "You try to ‘solve it’ with stuff, but the wound is emotional. Humility starts by admitting what the other person actually needs.",
+            "next": "reflection:ref_humility_06"
+          },
+          {
+            "id": "o06_escape",
+            "requiredChoiceIds": ["c2_end_call_fast"],
+            "text": "You dodge guilt, but you dodge love too. Humility is being willing to stay, apologize, and listen.",
+            "next": "reflection:ref_humility_06"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_07",
+      "topic": "humility",
+      "title": "One Sentence: Wisdom and Humility",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "sang", "name": "Sam", "portraitKey": "coworker_02" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Sam messes up a number in the report. Your boss misunderstands and yells at the whole team. You know it’s Sam because you saw the original file.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Sam",
+            "text": "Please don’t say anything… I’m already drowning. If the boss finds out, I’m done.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Narrator",
+            "text": "You’re stuck: tell the truth to protect the team, or cover Sam to save him. What’s your first move?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_cover_sang",
+                "text": "Cover Sam, quietly fix it, and move on.",
+                "playerLine": "Okay. I’ll fix it. I won’t say anything.",
+                "intentTag": "protect",
+                "actionTag": "cover",
+                "effects": [
+                  { "stat": "love", "delta": 3 },
+                  { "stat": "wisdom", "delta": -4 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "pride", "delta": 2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "relieved" },
+                "nextTurnId": "t4_after_cover",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_prepare_truth",
+                "text": "Tell Sam you’ll go with him to tell the truth—without crushing him.",
+                "playerLine": "I don’t want you to die alone, but I also don’t want the whole team to carry this. I’ll go talk to the boss with you.",
+                "intentTag": "humble",
+                "actionTag": "truth_with_support",
+                "effects": [
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "faith", "delta": 3 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "worried" },
+                "nextTurnId": "t4_after_prepare",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_cover",
+            "speaker": "Narrator",
+            "text": "You fix the file and the boss calms down. But Sam texts: “Thanks… next time I’ll probably just… whatever.” That ‘whatever’ makes your stomach drop.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_prepare",
+            "speaker": "Sam",
+            "text": "I’m scared… but if you go with me… I’ll do it.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Narrator",
+            "text": "The twist: if you keep covering, you train Sam that hiding is normal. If you tell the truth, you might lose Sam’s ‘liking.’ What do you choose?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_confess_together",
+                "text": "Tell the truth together, own it as a team, and bring a repair plan.",
+                "playerLine": "Boss, we made a mistake in the numbers. We own it, and here’s the plan to fix it today.",
+                "intentTag": "humble",
+                "actionTag": "confess",
+                "effects": [
+                  { "stat": "humility", "delta": 9 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "love", "delta": 4 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "sad" },
+                "outcome": {
+                  "text": "The boss might not be happy right away, but truth opens a road back to trust. Sam gets saved—and corrected.",
+                  "next": "reflection:ref_humility_07"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_keep_cover_forever",
+                "text": "Keep covering forever, calling it ‘being humble.’",
+                "playerLine": "Whatever, as long as the team stays quiet.",
+                "intentTag": "avoid",
+                "actionTag": "enable",
+                "effects": [
+                  { "stat": "humility", "delta": -3 },
+                  { "stat": "wisdom", "delta": -6 },
+                  { "stat": "love", "delta": -2 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "relieved" },
+                "outcome": {
+                  "text": "You call it ‘lowering yourself,’ but you’re feeding a wrong pattern. Humility isn’t absorbing everything—it’s doing what’s right before God and people.",
+                  "next": "reflection:ref_humility_07"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_expose_sang",
+                "text": "Tell the boss directly so you can stay clean.",
+                "playerLine": "Boss, it wasn’t me. Sam entered it wrong.",
+                "intentTag": "self_save",
+                "actionTag": "expose",
+                "effects": [
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "humility", "delta": -7 },
+                  { "stat": "love", "delta": -8 },
+                  { "stat": "pride", "delta": 9 }
+                ],
+                "portraitOverrides": { "player": "cold", "npc": "sad" },
+                "outcome": {
+                  "text": "You’re clean on paper, but you throw someone under the bus. You choose the right fact with the wrong heart.",
+                  "next": "reflection:ref_humility_07"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o07_truth_and_cover",
+            "requiredChoiceIds": ["c1_prepare_truth", "c2_confess_together"],
+            "text": "You keep truth and you keep people. Humility is refusing to save your ego by destroying someone else.",
+            "next": "reflection:ref_humility_07"
+          },
+          {
+            "id": "o07_enable",
+            "requiredChoiceIds": ["c2_keep_cover_forever"],
+            "text": "You call it ‘humility,’ but it’s avoidance. Real humility always walks with wisdom.",
+            "next": "reflection:ref_humility_07"
+          },
+          {
+            "id": "o07_throw_under_bus",
+            "requiredChoiceIds": ["c2_expose_sang"],
+            "text": "You protect yourself, but you damage a relationship. Humility isn’t weakness—it’s strength to carry your part without throwing others forward.",
+            "next": "reflection:ref_humility_07"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_humility_01",
+      "topic": "humility",
+      "verseRef": "Philippians 2:3-4",
+      "verseText": "Let nothing be done through strife or vainglory; but in lowliness of mind let each esteem other better than themselves. Look not every man on his own things, but every man also on the things of others.",
+      "questions": [
+        "In this story, what is my ego demanding to be “seen” for?",
+        "How can I tell the truth while still protecting a person’s dignity?",
+        "Who can I intentionally lift up today—without needing payback?"
+      ]
+    },
+    {
+      "id": "ref_humility_02",
+      "topic": "humility",
+      "verseRef": "1 Peter 5:5-6",
+      "verseText": "Likewise, ye younger, submit yourselves unto the elder. Yea, all of you be subject one to another, and be clothed with humility: for God resisteth the proud, and giveth grace to the humble. Humble yourselves therefore under the mighty hand of God, that he may exalt you in due time:",
+      "questions": [
+        "What am I afraid of losing that makes it hard to own my fault?",
+        "Am I willing to do the “dirty work” to repair trust, or do I just want to protect my image?",
+        "If God can lift me up in His time, can I lower myself today without panic?"
+      ]
+    },
+    {
+      "id": "ref_humility_03",
+      "topic": "humility",
+      "verseRef": "Romans 12:3",
+      "verseText": "For I say, through the grace given unto me, to every man that is among you, not to think of himself more highly than he ought to think; but to think soberly, according as God hath dealt to every man the measure of faith.",
+      "questions": [
+        "Where am I ‘thinking of myself more highly’—skill, contribution, role?",
+        "How can I set a boundary without humiliating the other person?",
+        "Am I using “being right” to cover my pride?"
+      ]
+    },
+    {
+      "id": "ref_humility_04",
+      "topic": "humility",
+      "verseRef": "James 4:6",
+      "verseText": "But he giveth more grace. Wherefore he saith, God resisteth the proud, but giveth grace unto the humble.",
+      "questions": [
+        "Do I want to win the argument, or restore a person?",
+        "When I’m misunderstood, do I protect my image—or choose humility to understand people?",
+        "Where do I need grace today, and am I willing to lower myself to receive it?"
+      ]
+    },
+    {
+      "id": "ref_humility_05",
+      "topic": "humility",
+      "verseRef": "Matthew 23:12",
+      "verseText": "And whosoever shall exalt himself shall be abased; and he that shall humble himself shall be exalted.",
+      "questions": [
+        "How do I usually ‘exalt myself’—showing off, comparing, proving, cutting others down?",
+        "Can I use my strength to lift others instead of making them feel small?",
+        "If I’m not recognized right away, will I still choose to humble myself?"
+      ]
+    },
+    {
+      "id": "ref_humility_06",
+      "topic": "humility",
+      "verseRef": "Micah 6:8",
+      "verseText": "He hath shewed thee, O man, what is good; and what doth the LORD require of thee, but to do justly, and to love mercy, and to walk humbly with thy God?",
+      "questions": [
+        "In my family, am I “doing things right,” or actually walking humbly in love?",
+        "What is justice here, what is mercy here, and what would humility look like here?",
+        "What small but real action (10 minutes of presence, one apology) can I do today?"
+      ]
+    },
+    {
+      "id": "ref_humility_07",
+      "topic": "humility",
+      "verseRef": "Proverbs 11:2",
+      "verseText": "When pride cometh, then cometh shame: but with the lowly is wisdom.",
+      "questions": [
+        "What am I calling ‘humility’ that might actually be avoidance?",
+        "Where do wisdom and humility meet in this decision (truth, timing, tone)?",
+        "How can I carry my part without throwing someone else forward?"
+      ]
+    }
+  ]
+}

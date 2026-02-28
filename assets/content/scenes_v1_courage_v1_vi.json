@@ -1,0 +1,3293 @@
+{
+  "scenes": [
+    {
+      "id": "scene_courage_church_01",
+      "topic": "courage",
+      "title": "Khi Sự Thật Làm Mình Trả Giá",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "thanh",
+            "name": "Thành",
+            "portraitKey": "friend_01"
+          },
+          {
+            "id": "pastor",
+            "name": "Mục sư An",
+            "portraitKey": "pastor_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Trong buổi họp nhóm phục vụ tối nay, bạn phát hiện ngân sách của nhóm bị sử dụng sai mục đích. Không phải số tiền lớn… nhưng nếu để lâu, có thể ảnh hưởng đến uy tín cả hội thánh.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Thành",
+            "text": "Thôi… chuyện nhỏ mà. Đừng làm lớn lên. Mấy anh em tin tưởng nhau hết rồi.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Bạn",
+            "text": "Nhưng mình thấy có gì đó không ổn…",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Thành",
+            "text": "Bạn đang nghi ngờ ai đó hả? Hay bạn nghĩ mình làm sai?",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Không khí bắt đầu căng. Mọi người im lặng chờ phản ứng của bạn.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_soft_private",
+                "text": "Rủ Thành nói chuyện riêng sau buổi họp.",
+                "playerLine": "Không phải nghi ngờ… nhưng mình muốn làm rõ. Nói riêng chút được không?",
+                "intentTag": "courage",
+                "actionTag": "private_confront",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_private_1"
+              },
+              {
+                "id": "c_public_call",
+                "text": "Nói thẳng trước cả nhóm rằng có sai sót.",
+                "playerLine": "Mình nghĩ chuyện này cần nói rõ ngay bây giờ. Có chỗ sử dụng tiền chưa minh bạch.",
+                "intentTag": "courage",
+                "actionTag": "public_truth",
+                "effects": [
+                  {
+                    "stat": "faith",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "shocked"
+                },
+                "nextTurnId": "t_public_1"
+              }
+            ]
+          },
+          {
+            "id": "t_private_1",
+            "speaker": "Thành",
+            "text": "Bạn nghĩ mình ăn chặn tiền hả?",
+            "nextTurnId": "t_private_2",
+            "choices": []
+          },
+          {
+            "id": "t_private_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Thành nhìn bạn, mắt đỏ lên. Anh ấy rõ ràng bị tổn thương.",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn có thể tiếp tục đào sâu… hoặc rút lại.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_private_push",
+                "text": "Tiếp tục yêu cầu minh bạch, dù mất lòng.",
+                "playerLine": "Mình không nói bạn ăn chặn. Nhưng mình cần sự rõ ràng. Vì cả nhóm.",
+                "intentTag": "courage",
+                "actionTag": "persist_truth",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c_private_drop",
+                "text": "Thôi, cho qua để giữ tình bạn.",
+                "playerLine": "Chắc mình suy nghĩ nhiều quá. Bỏ đi.",
+                "intentTag": "fear",
+                "actionTag": "withdraw",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "uncertain",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_public_1",
+            "speaker": "Mục sư An",
+            "text": "Chuyện này nghiêm trọng hơn mình nghĩ.",
+            "nextTurnId": "t_public_2",
+            "choices": []
+          },
+          {
+            "id": "t_public_2",
+            "speaker": "Thành",
+            "text": "Bạn làm mình mất mặt trước cả nhóm.",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn có thể xin lỗi cách nói… hoặc đứng vững lập trường.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_public_apology_tone",
+                "text": "Xin lỗi vì cách nói, nhưng vẫn giữ nội dung.",
+                "playerLine": "Mình xin lỗi nếu làm bạn khó xử. Nhưng mình tin sự thật cần được rõ ràng.",
+                "intentTag": "courage",
+                "actionTag": "balanced_truth",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 5
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 5
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "conflicted"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c_public_double_down",
+                "text": "Giữ nguyên lập trường cứng rắn.",
+                "playerLine": "Nếu minh bạch làm ai đó khó chịu thì mình chấp nhận.",
+                "intentTag": "courage",
+                "actionTag": "hard_truth",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -5
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Dẫn chuyện",
+            "text": "Buổi họp kết thúc trong bầu không khí nặng nề.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_full_courage",
+            "requiredChoiceIds": [
+              "c_soft_private",
+              "c_private_push"
+            ],
+            "text": "Sự việc được làm rõ. Một sai sót kế toán được phát hiện. Tình bạn bị rạn nứt tạm thời… nhưng nhóm được bảo vệ.",
+            "next": "reflection:ref_courage_church"
+          },
+          {
+            "id": "o_silent_regret",
+            "requiredChoiceIds": [
+              "c_soft_private",
+              "c_private_drop"
+            ],
+            "text": "Bạn giữ được hòa khí… nhưng vài tháng sau vấn đề vỡ lở lớn hơn. Bạn tự hỏi: lẽ ra mình nên nói.",
+            "next": "reflection:ref_courage_church"
+          },
+          {
+            "id": "o_balanced_public",
+            "requiredChoiceIds": [
+              "c_public_call",
+              "c_public_apology_tone"
+            ],
+            "text": "Sự việc được xem xét nghiêm túc. Thành tổn thương nhưng dần hiểu bạn không công kích cá nhân.",
+            "next": "reflection:ref_courage_church"
+          },
+          {
+            "id": "o_hard_public",
+            "requiredChoiceIds": [
+              "c_public_call",
+              "c_public_double_down"
+            ],
+            "text": "Sự thật được phơi bày nhanh chóng. Nhưng mối quan hệ rạn nứt sâu. Bạn phải đối diện cái giá của sự thẳng thắn.",
+            "next": "reflection:ref_courage_church"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "Bạn chọn sự an toàn. Nhưng trong lòng vẫn còn điều chưa yên.",
+            "next": "reflection:ref_courage_church"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_promo_01",
+      "topic": "courage",
+      "title": "Một Chữ Ký, Một Cái Giá",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "boss",
+            "name": "Chị Hạnh",
+            "portraitKey": "boss_01"
+          },
+          {
+            "id": "mentor",
+            "name": "Anh Tín",
+            "portraitKey": "mentor_01"
+          },
+          {
+            "id": "partner",
+            "name": "Linh",
+            "portraitKey": "partner_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Cuối giờ chiều, bạn được gọi lên phòng họp nhỏ. Trên bàn là tờ quyết định: thăng chức quản lý dự án. Lương tăng đủ để bạn thở phào… sau mấy tháng chật vật.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Chị Hạnh",
+            "text": "Chúc mừng nha. Sếp lớn đồng ý rồi. Chỉ còn một chuyện nhỏ trước khi công bố…",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Chị Hạnh đẩy qua bạn một bản báo cáo sự cố. Bạn liếc nhanh và thấy vài chỗ bị sửa nhẹ để “đẹp” hơn thực tế. Nếu giữ như vầy, khách hàng sẽ không biết mức rủi ro thật.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Chị Hạnh",
+            "text": "Ai cũng muốn yên ổn. Bạn ký giúp chị cái này, rồi tuần sau lên chức. Chuyện này… người ta làm hoài.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Bạn",
+            "text": "Chị nói vậy… nhưng nếu khách hàng bị ảnh hưởng thì sao?",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn cảm giác tim mình đập mạnh. Đây không chỉ là chuyện giấy tờ. Nó là ranh giới.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_sign_quiet",
+                "text": "Ký để yên chuyện, tự nhủ “mình sẽ sửa sau khi lên chức”.",
+                "playerLine": "Dạ… để em ký. Rồi em sẽ theo sát dự án cho chắc.",
+                "intentTag": "fear",
+                "actionTag": "comply",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": -6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_after_sign"
+              },
+              {
+                "id": "c1_ask_fix",
+                "text": "Nói thẳng: bạn không ký nếu báo cáo không sửa đúng.",
+                "playerLine": "Em xin lỗi, em không ký bản này. Mình sửa đúng rồi ký được không chị?",
+                "intentTag": "courage",
+                "actionTag": "refuse",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "shocked"
+                },
+                "nextTurnId": "t_after_refuse"
+              }
+            ]
+          },
+          {
+            "id": "t_after_sign",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn ký. Chị Hạnh cười nhẹ, thu giấy lại nhanh như sợ bạn đổi ý.",
+            "nextTurnId": "t6",
+            "choices": []
+          },
+          {
+            "id": "t6",
+            "speaker": "Chị Hạnh",
+            "text": "Ngoan. Mai chị gửi email thông báo thăng chức. À… nhớ giữ kín nha.",
+            "nextTurnId": "t7",
+            "choices": []
+          },
+          {
+            "id": "t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Tối đó về nhà, Linh đang tính tiền điện, tiền học, tiền đủ thứ. Bạn mở lời mà thấy cổ họng nghẹn.",
+            "nextTurnId": "t8",
+            "choices": []
+          },
+          {
+            "id": "t8",
+            "speaker": "Linh",
+            "text": "Ủa sao mặt bạn căng vậy? Thăng chức mà, vui lên chứ.",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn có kể thật không? Hay giữ im để khỏi làm Linh lo?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_keep_silent",
+                "text": "Giữ im, tự gánh một mình.",
+                "playerLine": "Không có gì đâu. Chắc mệt thôi.",
+                "intentTag": "fear",
+                "actionTag": "hide",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t9"
+              },
+              {
+                "id": "c2_confess_partner",
+                "text": "Nói thật với Linh, xin cùng cầu nguyện và tính bước tiếp.",
+                "playerLine": "Mình… có chuyện không ổn. Mình ký một cái mà mình thấy sai. Mình rối quá.",
+                "intentTag": "courage",
+                "actionTag": "confess",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t9"
+              }
+            ]
+          },
+          {
+            "id": "t_after_refuse",
+            "speaker": "Chị Hạnh",
+            "text": "Bạn… nghiêm túc hả? Em nghĩ em đang làm anh hùng à?",
+            "nextTurnId": "t10",
+            "choices": []
+          },
+          {
+            "id": "t10",
+            "speaker": "Dẫn chuyện",
+            "text": "Giọng chị Hạnh hạ thấp. Căn phòng tự nhiên lạnh hẳn.",
+            "nextTurnId": "t11",
+            "choices": []
+          },
+          {
+            "id": "t11",
+            "speaker": "Chị Hạnh",
+            "text": "Chị nói thiệt. Nếu em làm lớn chuyện, em không chỉ mất chức. Em sẽ thành người phá không khí. Em chịu nổi không?",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn có thể rút lại để giữ đường sống… hoặc giữ ranh giới và chấp nhận hậu quả.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_back_down",
+                "text": "Rút lại: nói bạn hiểu lầm và sẽ ký.",
+                "playerLine": "Dạ… chắc em nghĩ nhiều. Đưa em ký lại nha chị.",
+                "intentTag": "fear",
+                "actionTag": "backdown",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "courage",
+                    "delta": -6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "uncertain",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_after_sign"
+              },
+              {
+                "id": "c2_hold_line",
+                "text": "Giữ vững: bạn không ký và đề nghị báo cáo đúng lên cấp trên.",
+                "playerLine": "Em không muốn làm lớn, nhưng em không ký được. Nếu cần, mình báo cáo đúng rồi chịu trách nhiệm.",
+                "intentTag": "courage",
+                "actionTag": "escalate",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 12
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t12"
+              }
+            ]
+          },
+          {
+            "id": "t12",
+            "speaker": "Dẫn chuyện",
+            "text": "Vài ngày sau, bạn bị gọi vào buổi họp với Anh Tín — người từng dẫn dắt bạn lúc mới vào công ty.",
+            "nextTurnId": "t13",
+            "choices": []
+          },
+          {
+            "id": "t13",
+            "speaker": "Anh Tín",
+            "text": "Bạn làm đúng… nhưng bạn có biết cái bạn đang đụng tới là gì không?",
+            "nextTurnId": "t14",
+            "choices": []
+          },
+          {
+            "id": "t14",
+            "speaker": "Dẫn chuyện",
+            "text": "Anh Tín đặt điện thoại xuống. Màn hình hiện ra: email từ khách hàng. Họ đã nghi ngờ từ lâu. Họ chỉ chờ ai đó trong công ty chịu nói thật.",
+            "nextTurnId": "t15",
+            "choices": []
+          },
+          {
+            "id": "t15",
+            "speaker": "Anh Tín",
+            "text": "Plot twist nè: Nếu bạn im, họ kiện cả công ty. Nhưng nếu bạn nói, bạn sẽ bị ghét. Bạn chọn cái nào?",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Dẫn chuyện",
+            "text": "Giờ là quyết định cuối. Không còn đường “đẹp cả đôi bên”.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_report_formal",
+                "text": "Nộp báo cáo chính thức (đúng quy trình), chấp nhận bị cô lập.",
+                "playerLine": "Em sẽ làm đúng quy trình. Dù người ta ghét em, em vẫn chịu.",
+                "intentTag": "courage",
+                "actionTag": "formal_report",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_quiet_exit",
+                "text": "Xin nghỉ trong êm, tránh làm căng nhưng cũng không ký sai.",
+                "playerLine": "Em… xin rút lui. Em không muốn tiếp tay, nhưng em cũng không đủ sức chiến.",
+                "intentTag": "neutral",
+                "actionTag": "exit",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 3
+                  },
+                  {
+                    "stat": "courage",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t9",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nằm trằn trọc. Một chữ ký có thể nuôi gia đình… nhưng cũng có thể làm ai đó chịu hậu quả thay bạn.",
+            "nextTurnId": "t16",
+            "choices": []
+          },
+          {
+            "id": "t16",
+            "speaker": "Anh Tín",
+            "text": "Bạn rảnh không? Mai gặp anh chút. Có chuyện này anh cần bạn xác nhận.",
+            "nextTurnId": "t17",
+            "choices": []
+          },
+          {
+            "id": "t17",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nghe giọng Anh Tín nghiêm. Bạn chợt nhận ra: cái bạn ký hôm đó… không nằm yên trong ngăn kéo.",
+            "nextTurnId": "t_choice_3a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3a",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ sửa sai bằng cách nói thật, hay tiếp tục chôn nó?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_confess_work",
+                "text": "Chủ động thừa nhận: bạn đã ký và muốn sửa lại bằng báo cáo đúng.",
+                "playerLine": "Em đã ký… và em sai. Em muốn nộp bản đúng và chịu trách nhiệm.",
+                "intentTag": "courage",
+                "actionTag": "confess_and_fix",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_double_down",
+                "text": "Giữ im: coi như không biết, bảo vệ vị trí mới.",
+                "playerLine": "Em… không biết gì thêm đâu anh. Chắc do team khác xử lý.",
+                "intentTag": "fear",
+                "actionTag": "deny",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Dẫn chuyện",
+            "text": "Mọi thứ yên bề ngoài… nhưng trong lòng bạn biết, can đảm không phải cảm giác. Nó là hành động.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_truth_full_cost",
+            "requiredChoiceIds": [
+              "c1_ask_fix",
+              "c2_hold_line",
+              "c3_report_formal"
+            ],
+            "text": "Bạn giữ ranh giới tới cùng. Công ty phải sửa sai trước khi gây thiệt hại. Bạn bị xem là “khó chịu”… nhưng bạn cứu nhiều người khỏi hậu quả lớn hơn.",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_truth_exit",
+            "requiredChoiceIds": [
+              "c1_ask_fix",
+              "c2_hold_line",
+              "c3_quiet_exit"
+            ],
+            "text": "Bạn không ký sai, nhưng cũng không ở lại để chiến. Bạn ra đi trong êm… và mang theo bài học: can đảm đôi khi là rời khỏi chỗ khiến mình phải bẻ cong.",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_signed_then_confess",
+            "requiredChoiceIds": [
+              "c1_sign_quiet",
+              "c3_confess_work"
+            ],
+            "text": "Bạn đã chọn an toàn lúc đầu, rồi quay lại sửa. Bạn mất cơ hội thăng chức… nhưng bạn lấy lại sự trong sạch trong lòng. Linh ôm bạn, không trách, chỉ nói: “Mình làm lại được.”",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_signed_and_bury",
+            "requiredChoiceIds": [
+              "c1_sign_quiet",
+              "c3_double_down"
+            ],
+            "text": "Bạn được thăng chức. Tiền về. Nhưng càng lên cao bạn càng phải ký thêm. Bạn nhận ra cái giá của im lặng là… phải im lặng hoài.",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_backdown_loop",
+            "requiredChoiceIds": [
+              "c1_ask_fix",
+              "c2_back_down"
+            ],
+            "text": "Bạn từng nói không… rồi rút lại. Bạn vẫn lên chức, nhưng từ đó bạn hay tự hỏi: “Mình thật sự tin điều mình nói không?”",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "Bạn chọn sự yên ổn trước mắt. Nhưng sự thật vẫn có cách tìm đường ra.",
+            "next": "reflection:ref_courage_promo_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_gossip_01",
+      "topic": "courage",
+      "title": "Một Lời Đồn, Một Người Im",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "my",
+            "name": "My",
+            "portraitKey": "friend_02"
+          },
+          {
+            "id": "khoa",
+            "name": "Khoa",
+            "portraitKey": "friend_01"
+          },
+          {
+            "id": "pastor",
+            "name": "Mục sư An",
+            "portraitKey": "pastor_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Sau giờ nhóm, bạn đi ngang khu vực xếp ghế thì nghe vài người đang thì thầm về My. Giọng nhỏ nhưng đủ để bạn bắt được mấy chữ: “làm màu”, “không đàng hoàng”, “đừng tin”.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Khoa",
+            "text": "Bạn cũng nghe rồi ha? Mình nói thiệt, coi chừng dính vô mệt đó.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Dẫn chuyện",
+            "text": "My đứng cách đó không xa, mắt nhìn xuống điện thoại. Bạn không chắc My có nghe không… nhưng vai My hơi co lại, như đang cố chịu đựng.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Bạn",
+            "text": "Tin này… có chắc không?",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Khoa",
+            "text": "Nghe từ người quen thôi. Mà thôi, trong nhóm mình ai cũng biết mà. Nói ra lại mang tiếng.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đứng giữa hai luồng: lên tiếng thì bị để ý, im lặng thì My bị nghiền nát từ từ.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_stop_gossip",
+                "text": "Chặn lại ngay: không lan truyền khi chưa biết thật.",
+                "playerLine": "Khoan. Chuyện chưa rõ thì mình đừng nói kiểu này. Không công bằng.",
+                "intentTag": "courage",
+                "actionTag": "stop_gossip",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "shocked"
+                },
+                "nextTurnId": "t_after_stop"
+              },
+              {
+                "id": "c1_play_safe",
+                "text": "Giữ im: “không phải chuyện mình”.",
+                "playerLine": "Ờ… mình không biết. Thôi mình đi trước.",
+                "intentTag": "fear",
+                "actionTag": "avoid",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_after_avoid"
+              }
+            ]
+          },
+          {
+            "id": "t_after_stop",
+            "speaker": "Dẫn chuyện",
+            "text": "Không khí khựng lại một nhịp. Khoa nhếch môi, như kiểu bạn vừa làm chuyện “ngây thơ”.",
+            "nextTurnId": "t6",
+            "choices": []
+          },
+          {
+            "id": "t6",
+            "speaker": "Khoa",
+            "text": "Ủa, bạn bênh dữ ha. Hay bạn thân với My quá nên nhạy cảm?",
+            "nextTurnId": "t7",
+            "choices": []
+          },
+          {
+            "id": "t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Câu đó như một cú gài. Nếu bạn phản ứng mạnh, người ta sẽ nói bạn “có vấn đề”. Nếu bạn lùi, lời đồn tiếp tục sống.",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ làm gì tiếp?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_private_confront",
+                "text": "Kéo Khoa ra nói riêng: yêu cầu dừng lan truyền.",
+                "playerLine": "Mình nói riêng chút nha. Mấy chuyện kiểu này dừng lại được không?",
+                "intentTag": "courage",
+                "actionTag": "private_confront",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_private_1"
+              },
+              {
+                "id": "c2_public_boundary",
+                "text": "Đặt ranh giới trước mặt nhóm: không nói xấu trong nhà thờ.",
+                "playerLine": "Mình không tranh cãi ai đúng ai sai. Nhưng trong nhóm mình, đừng nói xấu kiểu này.",
+                "intentTag": "courage",
+                "actionTag": "public_boundary",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "annoyed"
+                },
+                "nextTurnId": "t_public_1"
+              }
+            ]
+          },
+          {
+            "id": "t_private_1",
+            "speaker": "Khoa",
+            "text": "Bạn làm như mình ác lắm vậy. Mình chỉ nhắc cho bạn biết thôi.",
+            "nextTurnId": "t_private_2",
+            "choices": []
+          },
+          {
+            "id": "t_private_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Khoa hạ giọng, nhưng ánh mắt lại sắc hơn. Bạn nhận ra: chuyện này không chỉ là tin đồn, mà là quyền lực nhỏ trong nhóm.",
+            "nextTurnId": "t_private_3",
+            "choices": []
+          },
+          {
+            "id": "t_private_3",
+            "speaker": "Khoa",
+            "text": "Thôi được. Nhưng nói thật nha… My có vấn đề thiệt. Bạn đừng dính sâu.",
+            "nextTurnId": "t_choice_3a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3a",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn chọn tin lời Khoa và đứng xa… hay đi thẳng tới My để hỏi thật?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_talk_to_my",
+                "text": "Đi tới My, hỏi thẳng và lắng nghe.",
+                "playerLine": "My, mình hỏi thiệt… dạo này bạn ổn không? Có chuyện gì mình giúp được không?",
+                "intentTag": "courage",
+                "actionTag": "check_in",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "sad"
+                },
+                "nextTurnId": "t_my_1"
+              },
+              {
+                "id": "c3_keep_distance",
+                "text": "Giữ khoảng cách để tránh rắc rối.",
+                "playerLine": "Ừ… mình hiểu. Thôi để mình tự cân nhắc.",
+                "intentTag": "fear",
+                "actionTag": "distance",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_public_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nói xong, vài người cười gượng. Khoa im, nhưng bạn thấy Khoa nhắn tin gì đó rất nhanh.",
+            "nextTurnId": "t_public_2",
+            "choices": []
+          },
+          {
+            "id": "t_public_2",
+            "speaker": "My",
+            "text": "…Bạn vừa nói về mình hả?",
+            "nextTurnId": "t_public_3",
+            "choices": []
+          },
+          {
+            "id": "t_public_3",
+            "speaker": "Dẫn chuyện",
+            "text": "My nhìn bạn, mắt đỏ. Bạn chợt hiểu: My nghe hết từ đầu. My không chỉ bị nói xấu, My đang cố giữ mình khỏi sụp ngay tại đây.",
+            "nextTurnId": "t_choice_3b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3b",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ làm gì ngay lúc này?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_stay_with_my",
+                "text": "Ở lại với My, đưa My ra chỗ yên tĩnh.",
+                "playerLine": "My, đi với mình chút nha. Mình không để bạn đứng đây một mình.",
+                "intentTag": "courage",
+                "actionTag": "protect",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "cry"
+                },
+                "nextTurnId": "t_my_1"
+              },
+              {
+                "id": "c3_save_face",
+                "text": "Giải thích cho nhẹ chuyện để tránh ồn ào.",
+                "playerLine": "Không, không… ý mình là nói chung thôi. Mình không nhắc tên ai hết.",
+                "intentTag": "fear",
+                "actionTag": "deflect",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -5
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "uncertain",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_my_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn và My ra hành lang. My cố cười, nhưng giọng run.",
+            "nextTurnId": "t_my_2",
+            "choices": []
+          },
+          {
+            "id": "t_my_2",
+            "speaker": "My",
+            "text": "Mình biết người ta nói gì. Mình… đang rối lắm. Mình uống thuốc mấy tuần nay rồi. Có lúc mình chỉ muốn biến mất.",
+            "nextTurnId": "t_my_3",
+            "choices": []
+          },
+          {
+            "id": "t_my_3",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nghe mà lạnh sống lưng. Bạn vừa chạm vào thứ nhạy cảm hơn bạn tưởng. Nếu xử lý dở, My sẽ khép lại. Nếu xử lý đúng, bạn sẽ bị kéo vào câu chuyện mà người ta tránh.",
+            "nextTurnId": "t_choice_4",
+            "choices": []
+          },
+          {
+            "id": "t_choice_4",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ chọn cách giúp My như thế nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c4_tell_pastor",
+                "text": "Khuyên My gặp Mục sư An và bạn sẽ đi cùng.",
+                "playerLine": "My, mình không muốn bạn gồng một mình. Mình đi gặp Mục sư An với bạn nha.",
+                "intentTag": "courage",
+                "actionTag": "seek_help",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "sad"
+                },
+                "nextTurnId": "t_pastor_1"
+              },
+              {
+                "id": "c4_keep_secret",
+                "text": "Hứa giữ bí mật tuyệt đối, chỉ bạn với My biết.",
+                "playerLine": "Ok, mình giữ kín. Chỉ mình với bạn thôi.",
+                "intentTag": "love",
+                "actionTag": "keep_secret",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_pastor_1",
+            "speaker": "Mục sư An",
+            "text": "Cảm ơn con đã không làm lơ. Nhưng con biết không… khi con bênh My, con sẽ bị hiểu lầm. Con có sẵn sàng chịu không?",
+            "nextTurnId": "t_pastor_2",
+            "choices": []
+          },
+          {
+            "id": "t_pastor_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Plot twist cuối: Khoa gửi tin nhắn cho vài người: “Bạn đang che giấu chuyện của My.” Bạn bị biến thành người ‘đồng lõa’ trong lời đồn mới.",
+            "nextTurnId": "t_choice_5",
+            "choices": []
+          },
+          {
+            "id": "t_choice_5",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ phản ứng sao khi bị hiểu lầm vì đã làm đúng?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c5_hold_boundary",
+                "text": "Giữ bình tĩnh, không đôi co, chỉ nhắc lại nguyên tắc: đừng đồn thổi, hãy yêu thương và tôn trọng.",
+                "playerLine": "Mình không tranh cãi. Mình chỉ xin mọi người dừng đồn. Ai cần nói, mình sẵn sàng nói trực tiếp, tôn trọng nhau.",
+                "intentTag": "courage",
+                "actionTag": "hold_boundary",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c5_clap_back",
+                "text": "Đáp trả thẳng: vạch mặt Khoa trước nhóm.",
+                "playerLine": "Khoa, bạn là người nhắn tin lan chuyện. Bạn dừng lại được không?",
+                "intentTag": "courage",
+                "actionTag": "public_callout",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_after_avoid",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đi ra bãi xe. Gió lạnh. Trong đầu bạn vẫn nghe câu “ai cũng biết mà”. Nhưng bạn không biết: My vừa đứng đó, nghe hết, và quyết định rời nhóm luôn.",
+            "nextTurnId": "t_end",
+            "choices": []
+          },
+          {
+            "id": "t_end",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn không thể kiểm soát lời đồn. Nhưng bạn có thể chọn mình là người tiếp tay… hay là người dừng lại.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_courage_protect_and_help",
+            "requiredChoiceIds": [
+              "c1_stop_gossip",
+              "c2_public_boundary",
+              "c3_stay_with_my",
+              "c4_tell_pastor",
+              "c5_hold_boundary"
+            ],
+            "text": "Bạn chọn đứng về phía người yếu, và chọn cách làm có trách nhiệm. Bạn bị hiểu lầm một thời gian… nhưng My được giúp đúng lúc, và nhóm dần học lại văn hóa nói năng.",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_courage_but_burn_bridge",
+            "requiredChoiceIds": [
+              "c1_stop_gossip",
+              "c2_public_boundary",
+              "c3_stay_with_my",
+              "c4_tell_pastor",
+              "c5_clap_back"
+            ],
+            "text": "Bạn bảo vệ My, nhưng cách bạn đáp trả làm nhóm chia phe. Bạn làm đúng, nhưng cũng học rằng can đảm cần đi kèm sự mềm mại để không đốt luôn cây cầu.",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_private_and_check_in",
+            "requiredChoiceIds": [
+              "c1_stop_gossip",
+              "c2_private_confront",
+              "c3_talk_to_my",
+              "c4_tell_pastor"
+            ],
+            "text": "Bạn chọn cách âm thầm mà sâu. Không ồn ào, không phô trương. My cảm thấy có người thật sự thấy mình. Bạn không cứu cả nhóm trong một đêm, nhưng bạn cứu một người khỏi cảm giác cô đơn.",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_secret_then_overload",
+            "requiredChoiceIds": [
+              "c1_stop_gossip",
+              "c2_private_confront",
+              "c3_talk_to_my",
+              "c4_keep_secret"
+            ],
+            "text": "Bạn thương My và giữ kín. Nhưng gánh nặng đổ lên bạn. Bạn bắt đầu kiệt sức vì vừa chống tin đồn vừa ôm bí mật một mình.",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_play_safe_regret",
+            "requiredChoiceIds": [
+              "c1_play_safe"
+            ],
+            "text": "Bạn chọn an toàn. My rời nhóm. Vài tuần sau bạn nghe My chuyển hội thánh… và bạn tự hỏi: im lặng của mình có phải cũng là một câu trả lời không?",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "Bạn muốn mọi thứ yên. Nhưng lời đồn không bao giờ tự yên.",
+            "next": "reflection:ref_courage_gossip_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_parent_01",
+      "topic": "courage",
+      "title": "Xin Lỗi Con, Dù Mình Mất Mặt",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "kid",
+            "name": "Bảo",
+            "portraitKey": "kid_01"
+          },
+          {
+            "id": "teacher",
+            "name": "Cô Thảo",
+            "portraitKey": "teacher_01"
+          },
+          {
+            "id": "partner",
+            "name": "Linh",
+            "portraitKey": "partner_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Chiều tan học, bạn đón Bảo muộn hơn mọi ngày. Bảo chạy ra, mặt căng thẳng, cặp lủng lẳng. Bạn đã nhắn trước rồi, nhưng hôm nay bạn kiệt sức.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Bảo",
+            "text": "Con chờ lâu lắm. Mấy bạn về hết rồi.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Bạn",
+            "text": "Ba/mẹ có việc. Con đừng có mè nheo nữa được không?",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Bảo cắn môi. Bạn thấy cô Thảo đứng gần đó nhìn qua. Bảo nói nhỏ mà nghe như cãi.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Bảo",
+            "text": "Nhưng con… con sợ. Con tưởng ba/mẹ quên con.",
+            "nextTurnId": "t6",
+            "choices": []
+          },
+          {
+            "id": "t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn bực lên, và trước mặt cô Thảo với vài phụ huynh còn lại, bạn buột miệng lớn tiếng. Bảo đứng im, mắt đỏ, như bị đóng băng.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Ngay khoảnh khắc đó, bạn có thể kéo lại… hoặc để cái tôi dẫn đường.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_apologize_now",
+                "text": "Xin lỗi Bảo ngay tại chỗ, dù xung quanh đang nhìn.",
+                "playerLine": "Ba/mẹ xin lỗi. Ba/mẹ nói lớn tiếng là sai. Con có sợ, ba/mẹ hiểu.",
+                "intentTag": "courage",
+                "actionTag": "apologize_public",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": -6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "sad"
+                },
+                "nextTurnId": "t_after_public_apology"
+              },
+              {
+                "id": "c1_save_face",
+                "text": "Giữ uy: nói nhỏ thôi, kéo Bảo đi cho nhanh.",
+                "playerLine": "Đi về. Tối nói chuyện.",
+                "intentTag": "pride",
+                "actionTag": "save_face",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_after_save_face"
+              }
+            ]
+          },
+          {
+            "id": "t_after_public_apology",
+            "speaker": "Dẫn chuyện",
+            "text": "Không khí chùng xuống. Bảo nhìn bạn, như không tin. Cô Thảo bước tới, giọng nhẹ.",
+            "nextTurnId": "t7",
+            "choices": []
+          },
+          {
+            "id": "t7",
+            "speaker": "Cô Thảo",
+            "text": "Cảm ơn bạn đã nói vậy. Hôm nay Bảo ngồi một mình lâu lắm.",
+            "nextTurnId": "t8",
+            "choices": []
+          },
+          {
+            "id": "t8",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn thấy một mũi kim chích vào tim: Bảo không chỉ buồn vì chờ, mà vì cảm giác bị bỏ rơi. Trên xe, Bảo im lặng.",
+            "nextTurnId": "t9",
+            "choices": []
+          },
+          {
+            "id": "t9",
+            "speaker": "Bảo",
+            "text": "Ba/mẹ xin lỗi thiệt không? Hay nói vậy cho cô Thảo nghe?",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Dẫn chuyện",
+            "text": "Bảo nghi ngờ động cơ của bạn. Bạn sẽ làm rõ bằng cách nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_own_it",
+                "text": "Nhận lỗi trọn vẹn: xin lỗi vì đã làm Bảo xấu hổ và sợ.",
+                "playerLine": "Xin lỗi thiệt. Ba/mẹ sai vì để mệt mỏi điều khiển. Con không phải cái để ba/mẹ trút.",
+                "intentTag": "courage",
+                "actionTag": "own_mistake",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "cry"
+                },
+                "nextTurnId": "t10"
+              },
+              {
+                "id": "c2_deflect",
+                "text": "Biện minh: nhắc công việc, nhắc trách nhiệm, nhắc con phải hiểu.",
+                "playerLine": "Ba/mẹ mệt quá. Con lớn rồi, con phải hiểu chứ.",
+                "intentTag": "pride",
+                "actionTag": "justify",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -6
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t10"
+              }
+            ]
+          },
+          {
+            "id": "t_after_save_face",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn kéo Bảo đi. Trên đường ra xe, bạn nghe tiếng phụ huynh xì xầm. Bảo không khóc, nhưng mặt cứng như đá.",
+            "nextTurnId": "t11",
+            "choices": []
+          },
+          {
+            "id": "t11",
+            "speaker": "Linh",
+            "text": "Ủa sao con im ru? Có chuyện gì hả?",
+            "nextTurnId": "t12",
+            "choices": []
+          },
+          {
+            "id": "t12",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn định nói “không có gì”, nhưng Linh nhìn thẳng: Linh biết có gì đó vừa xảy ra. Bạn vừa bị kẹt giữa việc giữ hình ảnh và việc cứu trái tim con.",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ xử lý ở nhà như thế nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_confess_to_partner",
+                "text": "Nói thật với Linh, nhờ Linh cùng bạn xin lỗi và sửa.",
+                "playerLine": "Mình lỡ lớn tiếng trước mặt cô giáo… mình sai. Tối nay mình muốn xin lỗi con đàng hoàng.",
+                "intentTag": "courage",
+                "actionTag": "confess_partner",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t10"
+              },
+              {
+                "id": "c2_double_down",
+                "text": "Giữ uy: nói Linh đừng can thiệp, bạn tự dạy con.",
+                "playerLine": "Chuyện nhỏ thôi. Mình xử lý được. Đừng làm lớn.",
+                "intentTag": "pride",
+                "actionTag": "control",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t10"
+              }
+            ]
+          },
+          {
+            "id": "t10",
+            "speaker": "Dẫn chuyện",
+            "text": "Tối đó, Bảo không đòi chơi, không đòi ăn. Bảo chỉ ôm gối, nhìn vào khoảng trống. Plot twist cuối: Bảo không giận vì bị la. Bảo sợ bạn sẽ bỏ Bảo lần nữa.",
+            "nextTurnId": "t13",
+            "choices": []
+          },
+          {
+            "id": "t13",
+            "speaker": "Bảo",
+            "text": "Nếu mai ba/mẹ bận nữa… con phải làm sao?",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Dẫn chuyện",
+            "text": "Giờ là quyết định: bạn sửa bằng hành động cụ thể, hay chỉ xin lỗi cho xong?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_make_plan",
+                "text": "Lập kế hoạch rõ ràng: giờ đón cố định + phương án dự phòng, và cam kết làm lại niềm tin.",
+                "playerLine": "Mai ba/mẹ sẽ đón đúng giờ. Nếu có trễ, ba/mẹ sẽ báo trước và nhờ cô Thảo ở lại. Ba/mẹ không bỏ con.",
+                "intentTag": "courage",
+                "actionTag": "repair_with_plan",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "sad"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_generic_sorry",
+                "text": "Chỉ xin lỗi chung chung rồi yêu cầu Bảo quên đi.",
+                "playerLine": "Thôi, xin lỗi rồi. Con đừng nhớ nữa.",
+                "intentTag": "fear",
+                "actionTag": "minimize",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Dẫn chuyện",
+            "text": "Can đảm đôi khi không phải đối đầu với người ngoài. Mà là hạ cái tôi xuống… trước mặt con mình.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_public_apology_repair",
+            "requiredChoiceIds": [
+              "c1_apologize_now",
+              "c2_own_it",
+              "c3_make_plan"
+            ],
+            "text": "Bạn xin lỗi thật và sửa bằng hành động. Bảo vẫn còn sợ, nhưng bắt đầu tin lại. Bạn mất ‘uy’ trước người ta… nhưng bạn giữ được trái tim con.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_public_apology_but_minimize",
+            "requiredChoiceIds": [
+              "c1_apologize_now",
+              "c2_own_it",
+              "c3_generic_sorry"
+            ],
+            "text": "Bạn xin lỗi, nhưng không có kế hoạch. Bảo nghe lời xin lỗi như một câu nói cho qua. Vết thương nhỏ trở thành thói quen: Bảo học cách không kỳ vọng.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_apology_as_performance",
+            "requiredChoiceIds": [
+              "c1_apologize_now",
+              "c2_deflect"
+            ],
+            "text": "Bạn xin lỗi trước mặt người khác, nhưng trong xe bạn biện minh. Bảo nhận ra: lời xin lỗi của bạn có thể chỉ để ‘đẹp’. Niềm tin tụt mạnh hơn bạn tưởng.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_save_face_then_confess_and_fix",
+            "requiredChoiceIds": [
+              "c1_save_face",
+              "c2_confess_to_partner",
+              "c3_make_plan"
+            ],
+            "text": "Bạn chọn giữ mặt lúc đầu, rồi can đảm quay lại sửa. Bạn phải nuốt tự ái, nhưng gia đình trở thành nơi an toàn hơn cho Bảo.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_save_face_double_down",
+            "requiredChoiceIds": [
+              "c1_save_face",
+              "c2_double_down"
+            ],
+            "text": "Bạn giữ uy và kiểm soát câu chuyện. Bảo không dám nói nữa, chỉ lùi lại. Bạn giữ được hình ảnh… nhưng mất sự gần gũi.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "Bạn muốn quên đi cho nhanh. Nhưng trẻ con không quên kiểu người lớn. Nó chỉ học cách im.",
+            "next": "reflection:ref_courage_parent_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_relationship_01",
+      "topic": "courage",
+      "title": "Yêu Chúa, Nhưng Yêu Kiểu Giam",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "partner",
+            "name": "Nam",
+            "portraitKey": "partner_male_01"
+          },
+          {
+            "id": "friend",
+            "name": "Hà",
+            "portraitKey": "friend_02"
+          },
+          {
+            "id": "pastor",
+            "name": "Mục sư An",
+            "portraitKey": "pastor_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Nam hay đăng câu Kinh Thánh, hay nhắc bạn cầu nguyện, và luôn nói: “Anh chỉ muốn điều tốt cho em.” Nhưng dạo này, Nam bắt đầu hỏi dồn: bạn đi với ai, nhắn với ai, và tại sao bạn online mà không trả lời.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Nam",
+            "text": "Em đừng giấu anh. Người yêu nhau thì không có bí mật.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nhìn tin nhắn của Nam: ảnh chụp màn hình “đang hoạt động” của bạn, kèm câu: “Sao em không trả lời?” Bạn thấy nghẹt thở, nhưng cũng thấy tội… vì Nam có vẻ rất ‘lo’ cho bạn.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Bạn",
+            "text": "Anh làm vậy… em thấy bị kiểm soát.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Nam",
+            "text": "Kiểm soát gì? Anh chỉ bảo vệ em. Em yếu lòng, em dễ bị kéo đi lắm.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đứng giữa hai điều: tình cảm và ranh giới. Can đảm ở đây không phải cãi thắng, mà là nhìn thẳng sự thật.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_set_boundary",
+                "text": "Đặt ranh giới rõ: bạn cần không gian và sự tôn trọng.",
+                "playerLine": "Em hiểu anh lo. Nhưng em không chấp nhận bị theo dõi và bị hỏi cung. Em cần ranh giới.",
+                "intentTag": "courage",
+                "actionTag": "set_boundary",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_boundary_1"
+              },
+              {
+                "id": "c1_comply",
+                "text": "Nhượng bộ: đưa mật khẩu/cho Nam yên tâm để khỏi căng thẳng.",
+                "playerLine": "Thôi… để em đưa anh coi cho anh yên tâm.",
+                "intentTag": "fear",
+                "actionTag": "comply",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_comply_1"
+              }
+            ]
+          },
+          {
+            "id": "t_boundary_1",
+            "speaker": "Nam",
+            "text": "Vậy là em nghi anh? Em đang phản nghịch lại ‘đầu’ của em đó.",
+            "nextTurnId": "t_boundary_2",
+            "choices": []
+          },
+          {
+            "id": "t_boundary_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Nam kéo Kinh Thánh ra làm ‘lá chắn’. Bạn thấy chột dạ: lỡ mình sai thì sao? Nhưng sâu trong lòng, bạn cũng thấy câu đó bị dùng sai ngữ cảnh.",
+            "nextTurnId": "t_boundary_3",
+            "choices": []
+          },
+          {
+            "id": "t_boundary_3",
+            "speaker": "Hà",
+            "text": "Bạn ơi… cái này không ổn. Bạn có thấy bạn đang sợ người yêu mình không?",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ tìm ai đồng hành? Hay tự chịu một mình?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_seek_counsel",
+                "text": "Gặp Mục sư An/cố vấn để xin lời khuyên và bảo vệ an toàn.",
+                "playerLine": "Mình muốn gặp Mục sư An. Không phải để kể xấu, mà để mình nhìn đúng và giữ an toàn.",
+                "intentTag": "courage",
+                "actionTag": "seek_counsel",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_pastor_1"
+              },
+              {
+                "id": "c2_handle_alone",
+                "text": "Tự xử: tránh gặp ai để khỏi “làm lớn chuyện”.",
+                "playerLine": "Thôi… chắc mình tự nói chuyện với Nam được. Đừng kéo ai vô.",
+                "intentTag": "fear",
+                "actionTag": "handle_alone",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_alone_1"
+              }
+            ]
+          },
+          {
+            "id": "t_comply_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đưa mật khẩu. Nam cười nhẹ: “Thấy chưa, có gì đâu.” Nhưng từ hôm đó, Nam bắt đầu ‘góp ý’ cả cách bạn nhắn tin, cách bạn trả lời người khác, và cả việc bạn nên cắt liên lạc với Hà.",
+            "nextTurnId": "t_comply_2",
+            "choices": []
+          },
+          {
+            "id": "t_comply_2",
+            "speaker": "Nam",
+            "text": "Hà không tốt cho em. Em chặn bạn đó đi. Anh lo cho em đó.",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Dẫn chuyện",
+            "text": "sự nhượng bộ không làm Nam yên, nó làm Nam ‘mạnh’ hơn. Bạn sẽ chọn gì?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_reclaim_boundary",
+                "text": "Lấy lại ranh giới: đổi mật khẩu, nói rõ bạn không chấp nhận nữa.",
+                "playerLine": "Em sẽ đổi mật khẩu. Em không chặn Hà. Anh có thể lo, nhưng anh không được điều khiển đời em.",
+                "intentTag": "courage",
+                "actionTag": "reclaim_boundary",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_pastor_1"
+              },
+              {
+                "id": "c2_cut_friend",
+                "text": "Nghe theo: chặn Hà để tránh cãi nhau.",
+                "playerLine": "Ừ… để em chặn. Em không muốn căng nữa.",
+                "intentTag": "fear",
+                "actionTag": "isolate",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_pastor_1",
+            "speaker": "Mục sư An",
+            "text": "Con phân biệt giúp cô: yêu thương là chăm sóc… hay là kiểm soát? Và con có đang sợ người đó không?",
+            "nextTurnId": "t_pastor_2",
+            "choices": []
+          },
+          {
+            "id": "t_pastor_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Mục sư An không nói xấu Nam. Nhưng cô hỏi thẳng: ‘Nếu con đặt ranh giới, người đó có tôn trọng không?’ Câu đó làm bạn lặng người.",
+            "nextTurnId": "t_pastor_3",
+            "choices": []
+          },
+          {
+            "id": "t_pastor_3",
+            "speaker": "Nam",
+            "text": "Em đi gặp mục sư để nói xấu anh hả? Em làm anh quê đó. Em chọn ai?",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Dẫn chuyện",
+            "text": "Quyết định cuối: bạn chọn ‘yên ổn’ bằng cách nhún nhường… hay chọn can đảm bằng cách đặt ranh giới thật sự (có thể phải rời đi)?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_leave_with_plan",
+                "text": "Tạm rời để an toàn: nói rõ điều kiện quay lại (counseling + ranh giới), và có người đồng hành.",
+                "playerLine": "Em không chọn chống anh. Em chọn an toàn và sự lành mạnh. Em sẽ tạm dừng, và chỉ quay lại nếu anh chịu tư vấn và tôn trọng ranh giới.",
+                "intentTag": "courage",
+                "actionTag": "leave_with_plan",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 12
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "shocked"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_stay_and_smooth",
+                "text": "Ở lại để “êm”: xin lỗi Nam để dập căng thẳng, hy vọng Nam tự thay đổi.",
+                "playerLine": "Thôi được rồi, em xin lỗi. Em chỉ… hơi quá. Mình bỏ qua đi.",
+                "intentTag": "fear",
+                "actionTag": "smooth_over",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "courage",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_alone_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn cố tự xử. Bạn nói nhẹ nhàng, bạn chọn từ cho khéo. Nam nghe xong, im một lúc rồi cười.",
+            "nextTurnId": "t_alone_2",
+            "choices": []
+          },
+          {
+            "id": "t_alone_2",
+            "speaker": "Nam",
+            "text": "Em nói hay lắm. Vậy từ nay, em cho anh coi lịch của em nha. Để anh ‘đỡ lo’.",
+            "nextTurnId": "t_end",
+            "choices": []
+          },
+          {
+            "id": "t_end",
+            "speaker": "Dẫn chuyện",
+            "text": "Can đảm trong tình yêu không phải là giữ người lại بأي giá. Mà là giữ sự thật… dù có thể mất người đó.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_boundary_counsel_leave",
+            "requiredChoiceIds": [
+              "c1_set_boundary",
+              "c2_seek_counsel",
+              "c3_leave_with_plan"
+            ],
+            "text": "Bạn chọn ranh giới và an toàn. Bạn buồn, nhưng bạn thở lại được. Hà và Mục sư An đi cùng bạn, không để bạn cô đơn trong quyết định khó.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_boundary_handle_alone_stuck",
+            "requiredChoiceIds": [
+              "c1_set_boundary",
+              "c2_handle_alone"
+            ],
+            "text": "Bạn cố tự xử để khỏi ‘ồn ào’. Nhưng Nam kéo thêm quyền kiểm soát. Bạn nhận ra: tránh làm lớn chuyện đôi khi là cách vấn đề lớn lên.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_comply_then_reclaim_then_leave",
+            "requiredChoiceIds": [
+              "c1_comply",
+              "c2_reclaim_boundary",
+              "c3_leave_with_plan"
+            ],
+            "text": "Bạn từng nhượng bộ, rồi tỉnh ra và lấy lại ranh giới. Bạn học được: can đảm không phải không sai, mà là dám quay lại sửa khi thấy mình đang mất chính mình.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_comply_isolate",
+            "requiredChoiceIds": [
+              "c1_comply",
+              "c2_cut_friend"
+            ],
+            "text": "Bạn chọn yên ổn bằng cách cắt dần những người bên cạnh. Nam ‘yên’ hơn, nhưng bạn cô lập hơn. Bạn chợt nhận ra: mình đang sống nhỏ lại.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_stay_smooth_over",
+            "requiredChoiceIds": [
+              "c3_stay_and_smooth"
+            ],
+            "text": "Bạn xin lỗi để mọi thứ êm. Nam tạm dịu, nhưng ranh giới không hề được tôn trọng. Bạn giữ được mối quan hệ… nhưng đánh rơi sự tự do.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "Bạn muốn tin mọi thứ sẽ tự tốt lên. Nhưng không có ranh giới nào tự mọc ra nếu mình không đặt.",
+            "next": "reflection:ref_courage_relationship_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_forgive_01",
+      "topic": "courage",
+      "title": "Tha Thứ, Nhưng Không Bị Lợi Dụng",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "relative",
+            "name": "Dũng",
+            "portraitKey": "relative_01"
+          },
+          {
+            "id": "mom",
+            "name": "Mẹ",
+            "portraitKey": "mom_01"
+          },
+          {
+            "id": "friend",
+            "name": "Hà",
+            "portraitKey": "friend_02"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Dũng nhắn bạn lúc khuya: “Cho tao mượn gấp 12 triệu, tuần sau tao trả.” Bạn nhìn số dư, rồi nhìn lịch đóng tiền nhà. Bạn nhớ lần trước Dũng cũng nói “tuần sau”… và bạn đã chờ mấy tháng.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Dũng",
+            "text": "Tin tao đi. Lần này thiệt. Tao kẹt quá rồi.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Sáng hôm sau, Mẹ gọi: “Nó là em con, con giúp được thì giúp. Đừng làm gia đình mất hòa khí.” Bạn nghe câu đó mà nghẹn: giúp thì đau, không giúp thì mang tiếng.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ chọn cách nào để vừa thương người, vừa không tự đẩy mình xuống?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_lend_with_boundary",
+                "text": "Cho mượn một phần + đặt ranh giới trả rõ ràng (giấy/plan).",
+                "playerLine": "Mình giúp được 5 triệu. Nhưng phải có lịch trả và xác nhận rõ. Mình không muốn chuyện này lặp lại.",
+                "intentTag": "courage",
+                "actionTag": "boundary_help",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "annoyed"
+                },
+                "nextTurnId": "t_boundary_1"
+              },
+              {
+                "id": "c1_lend_full",
+                "text": "Cho mượn đủ để ‘êm chuyện’, hy vọng lần này khác.",
+                "playerLine": "Ok, tao chuyển. Nhớ trả đúng nha.",
+                "intentTag": "love",
+                "actionTag": "lend_full",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_full_1"
+              },
+              {
+                "id": "c1_refuse",
+                "text": "Từ chối thẳng: bạn không cho mượn nữa.",
+                "playerLine": "Mình không cho mượn nữa. Mình đã bị trễ nhiều lần rồi.",
+                "intentTag": "courage",
+                "actionTag": "refuse",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_refuse_1"
+              }
+            ]
+          },
+          {
+            "id": "t_boundary_1",
+            "speaker": "Dũng",
+            "text": "Ủa? Sao làm dữ vậy? Anh em mà, giấy tờ gì. Mày không tin tao hả?",
+            "nextTurnId": "t_boundary_2",
+            "choices": []
+          },
+          {
+            "id": "t_boundary_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nghe chữ ‘anh em’ bị dùng như cái dây trói. Nếu bạn mềm, ranh giới tan. Nếu bạn cứng, bạn bị nói là ‘tính toán’.",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ giữ ranh giới kiểu nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_hold_boundary",
+                "text": "Giữ ranh giới, không tranh cãi: chỉ có plan rõ ràng mới giúp.",
+                "playerLine": "Mình tin bạn là người, nhưng mình không tin cái ‘lời hứa’ mơ hồ nữa. Có plan thì mình giúp.",
+                "intentTag": "courage",
+                "actionTag": "hold_line",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 2
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "annoyed"
+                },
+                "nextTurnId": "t_twist_1"
+              },
+              {
+                "id": "c2_soften_boundary",
+                "text": "Mềm lại để khỏi căng: bỏ giấy tờ, chỉ nhắc miệng.",
+                "playerLine": "Thôi… khỏi giấy tờ. Nhưng hứa lần này trả đúng nha.",
+                "intentTag": "fear",
+                "actionTag": "soften",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_twist_1"
+              }
+            ]
+          },
+          {
+            "id": "t_full_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn chuyển đủ tiền. Dũng gửi icon ‘🙏’ với câu: “Chúa trả ơn mày.” Bạn cười gượng. Một phần trong bạn thấy mình vừa mua sự yên ổn.",
+            "nextTurnId": "t_full_2",
+            "choices": []
+          },
+          {
+            "id": "t_full_2",
+            "speaker": "Hà",
+            "text": "Bạn ơi, bạn đang tha thứ… hay đang bị lợi dụng? Tha thứ không có nghĩa là cho người ta quyền làm vậy hoài.",
+            "nextTurnId": "t_twist_1",
+            "choices": []
+          },
+          {
+            "id": "t_refuse_1",
+            "speaker": "Dũng",
+            "text": "Vậy là mày coi tiền hơn tình thân. Ok. Để tao nói với Mẹ.",
+            "nextTurnId": "t_refuse_2",
+            "choices": []
+          },
+          {
+            "id": "t_refuse_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn chưa kịp thở thì Mẹ gọi liền: “Sao con làm vậy? Người ta đang kẹt!” Giọng Mẹ vừa lo vừa trách. Bạn thấy mình bị kẹp giữa ranh giới và bổn phận.",
+            "nextTurnId": "t_twist_1",
+            "choices": []
+          },
+          {
+            "id": "t_twist_1",
+            "speaker": "Dẫn chuyện",
+            "text": "tối đó, bạn vô tình thấy story của Dũng — đang ngồi quán, khoe mua điện thoại mới trả góp. Bạn không chắc đó là ‘vì kẹt’ hay ‘vì muốn’. Nhưng bạn biết: nếu bạn không làm rõ, vòng lặp sẽ tiếp tục.",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Dẫn chuyện",
+            "text": "Quyết định cuối: can đảm là nói thật trong tình thân, hay cắt đứt để tự bảo vệ?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_confront_truth",
+                "text": "Nói thẳng với Dũng (có bằng chứng), yêu cầu minh bạch và cam kết trả.",
+                "playerLine": "Mình thấy bạn đăng story mua điện thoại. Mình không phán xét, nhưng mình cần sự thật. Bạn dùng tiền vào việc gì, và trả khi nào?",
+                "intentTag": "courage",
+                "actionTag": "confront_truth",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_forgive_and_limit",
+                "text": "Tha thứ nhưng giới hạn: từ nay chỉ giúp bằng cách khác (đồ ăn/việc làm), không đưa tiền.",
+                "playerLine": "Mình tha cho chuyện cũ. Nhưng từ nay mình không đưa tiền nữa. Mình có thể giúp bạn tìm việc, hoặc hỗ trợ kiểu khác.",
+                "intentTag": "courage",
+                "actionTag": "forgive_with_limits",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "annoyed"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_cut_contact",
+                "text": "Cắt liên lạc một thời gian để tự bảo vệ.",
+                "playerLine": "Mình cần dừng lại. Mình không thể tiếp tục kiểu này. Khi nào bạn sẵn sàng minh bạch, mình nói chuyện lại.",
+                "intentTag": "fear",
+                "actionTag": "cut_contact",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "courage",
+                    "delta": 2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Dẫn chuyện",
+            "text": "Tha thứ không phải là cho phép người ta làm mình chảy máu hoài. Can đảm là yêu… mà vẫn giữ ranh giới.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_help_with_boundary_hold_line_confront",
+            "requiredChoiceIds": [
+              "c1_lend_with_boundary",
+              "c2_hold_boundary",
+              "c3_confront_truth"
+            ],
+            "text": "Bạn giúp nhưng không bị dắt. Dũng giận, gia đình căng. Nhưng sau đó Dũng buộc phải đối diện sự thật và bắt đầu trả dần. Bạn mất hòa khí một thời gian… nhưng bạn cứu cả vòng lặp.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_help_with_boundary_soften_then_limit",
+            "requiredChoiceIds": [
+              "c1_lend_with_boundary",
+              "c2_soften_boundary",
+              "c3_forgive_and_limit"
+            ],
+            "text": "Bạn mềm lúc đầu, rồi tỉnh ra và đổi cách giúp. Bạn giữ được tình thân phần nào, nhưng vẫn phải chịu ánh nhìn ‘lạnh’ của vài người vì bạn không đưa tiền nữa.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_lend_full_then_limit",
+            "requiredChoiceIds": [
+              "c1_lend_full",
+              "c3_forgive_and_limit"
+            ],
+            "text": "Bạn cho đủ để êm chuyện, rồi nhận ra mình đang mua sự yên ổn. Bạn chọn tha thứ, nhưng chuyển sang giúp bằng cách lành mạnh hơn. Bạn mất tiền… nhưng học được ranh giới.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_refuse_then_limit",
+            "requiredChoiceIds": [
+              "c1_refuse",
+              "c3_forgive_and_limit"
+            ],
+            "text": "Bạn từ chối và bị nói ‘lạnh’. Nhưng bạn vẫn giữ lòng: sẵn sàng giúp theo cách khác, không tiếp tay. Vài người không hiểu bạn… nhưng bạn không còn bị lợi dụng.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_cut_contact_regret",
+            "requiredChoiceIds": [
+              "c3_cut_contact"
+            ],
+            "text": "Bạn cắt liên lạc để tự bảo vệ. Bạn nhẹ người… nhưng đôi lúc thấy nhói vì gia đình nhìn bạn như kẻ ‘bỏ rơi’. Bạn học rằng cắt đứt cũng có cái giá của nó.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "Bạn muốn mọi thứ yên. Nhưng nếu không có ranh giới, ‘yên’ chỉ là tạm thời.",
+            "next": "reflection:ref_courage_forgive_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_calling_01",
+      "topic": "courage",
+      "title": "Ổn Định Hay Ơn Gọi",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "Bạn",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "partner",
+            "name": "Linh",
+            "portraitKey": "partner_01"
+          },
+          {
+            "id": "mentor",
+            "name": "Anh Tín",
+            "portraitKey": "mentor_01"
+          },
+          {
+            "id": "mom",
+            "name": "Mẹ",
+            "portraitKey": "mom_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn vừa được offer hợp đồng mới: lương cao hơn, phúc lợi tốt hơn. Nhưng cùng lúc, bạn cũng được mời tham gia một dự án phục vụ dài hạn — kiểu không ai trả lương, chỉ trả bằng niềm tin và trách nhiệm.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Anh Tín",
+            "text": "Bạn có ơn gọi đó. Nhưng ơn gọi không miễn phí. Nó đòi bạn trả giá thật.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Tối về, Linh đang ngồi tính tiền: tiền nhà, tiền điện, tiền dự phòng. Bạn nhìn tờ giấy, thấy bụng mình nặng. Bạn muốn bước đi với Chúa… nhưng cũng không muốn làm gia đình khổ thêm.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Linh",
+            "text": "Mình nói thiệt nha… nếu bạn nghỉ việc ổn định, mình sợ lắm. Không phải mình không tin Chúa… mình sợ mình không gồng nổi.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đứng giữa: đức tin và trách nhiệm. Không có lựa chọn nào ‘đẹp’ cho cả đôi bên.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_jump_now",
+                "text": "Bước đi ngay: từ chối hợp đồng mới để đi phục vụ toàn thời gian.",
+                "playerLine": "Mình muốn bước đi liền. Mình tin Chúa sẽ mở đường… dù mình sợ.",
+                "intentTag": "courage",
+                "actionTag": "jump_now",
+                "effects": [
+                  {
+                    "stat": "faith",
+                    "delta": 12
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t_jump_1"
+              },
+              {
+                "id": "c1_hold_job",
+                "text": "Ở lại hoàn toàn: nhận hợp đồng mới để đảm bảo gia đình trước.",
+                "playerLine": "Mình… sẽ nhận hợp đồng. Mình không muốn gia đình bất an.",
+                "intentTag": "fear",
+                "actionTag": "hold_job",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_hold_1"
+              },
+              {
+                "id": "c1_trial_period",
+                "text": "Thử 6 tháng: giữ job bán thời gian + phục vụ có ranh giới.",
+                "playerLine": "Mình thử 6 tháng nha. Mình không chạy trốn trách nhiệm, nhưng cũng không muốn dập tắt ơn gọi.",
+                "intentTag": "courage",
+                "actionTag": "trial_period",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_trial_1"
+              }
+            ]
+          },
+          {
+            "id": "t_jump_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn từ chối hợp đồng. Tuần đầu bạn thấy lòng nhẹ, như vừa thở lại. Nhưng tuần thứ ba, hóa đơn dồn. Linh bắt đầu im lặng nhiều hơn.",
+            "nextTurnId": "t_jump_2",
+            "choices": []
+          },
+          {
+            "id": "t_jump_2",
+            "speaker": "Linh",
+            "text": "Mình không trách bạn… nhưng mình thấy mình đang gánh một mình. Bạn có chắc đây là Chúa kêu gọi… hay là bạn đang muốn chứng minh gì đó?",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Dẫn chuyện",
+            "text": "Linh không chống Chúa. Linh sợ cái tôi của bạn đang núp sau chữ ‘đức tin’. Bạn sẽ phản ứng sao?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_humble_adjust",
+                "text": "Hạ mình: thừa nhận rủi ro, cùng Linh lập kế hoạch tài chính, xin cố vấn.",
+                "playerLine": "Bạn nói đúng. Mình không muốn biến đức tin thành cái cớ. Mình cùng bạn lập plan, và mình sẽ gặp Anh Tín để xin cố vấn.",
+                "intentTag": "courage",
+                "actionTag": "humble_adjust",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t_final_1"
+              },
+              {
+                "id": "c2_defend_ego",
+                "text": "Phòng thủ: nói Linh thiếu đức tin, ép Linh phải theo.",
+                "playerLine": "Bạn nói vậy là bạn không tin Chúa. Mình đã quyết rồi, bạn phải ủng hộ.",
+                "intentTag": "pride",
+                "actionTag": "defend_ego",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_final_1"
+              }
+            ]
+          },
+          {
+            "id": "t_hold_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nhận hợp đồng. Tiền về đều. Linh bớt lo. Nhưng tối nào bạn cũng mệt, và lời mời phục vụ bị bạn ‘để đó’.",
+            "nextTurnId": "t_hold_2",
+            "choices": []
+          },
+          {
+            "id": "t_hold_2",
+            "speaker": "Anh Tín",
+            "text": "Bạn có thể chọn ổn định. Nhưng bạn có đang dùng ổn định để né một tiếng gọi không?",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ làm gì với tiếng gọi đang bị hoãn?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_schedule_serving",
+                "text": "Cam kết phục vụ có giờ giấc cố định (không phải “rảnh thì làm”).",
+                "playerLine": "Mình không bỏ hết, nhưng mình sẽ đặt lịch phục vụ rõ ràng. Không để nó chết vì mệt.",
+                "intentTag": "courage",
+                "actionTag": "schedule_serving",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_final_1"
+              },
+              {
+                "id": "c2_keep_postponing",
+                "text": "Hoãn tiếp: nói “đợi khi ổn hơn” rồi tính.",
+                "playerLine": "Đợi mình ổn hơn đã. Giờ mình bận quá.",
+                "intentTag": "fear",
+                "actionTag": "postpone",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_final_1"
+              }
+            ]
+          },
+          {
+            "id": "t_trial_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn chọn thử 6 tháng. Bạn làm job bán thời gian và phục vụ theo lịch. Ban đầu ổn. Nhưng sau vài tuần, dự án phục vụ đòi thêm thời gian, và công việc cũng bắt đầu ép deadline.",
+            "nextTurnId": "t_trial_2",
+            "choices": []
+          },
+          {
+            "id": "t_trial_2",
+            "speaker": "Mẹ",
+            "text": "Con làm gì cũng được, miễn đừng để gia đình con khổ. Ơn gọi gì mà làm người ta căng thẳng hoài vậy?",
+            "nextTurnId": "t_choice_2c",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2c",
+            "speaker": "Dẫn chuyện",
+            "text": "người yêu thương bạn nhất lại là người kéo bạn về ‘an toàn’. Bạn sẽ điều chỉnh ra sao?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_reset_boundaries",
+                "text": "Điều chỉnh: giảm bớt, đặt ranh giới phục vụ để giữ gia đình và sức khỏe.",
+                "playerLine": "Con không bỏ ơn gọi, nhưng con phải làm đúng nhịp. Con sẽ đặt ranh giới để không đốt gia đình con.",
+                "intentTag": "courage",
+                "actionTag": "reset_boundaries",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_final_1"
+              },
+              {
+                "id": "c2_overcommit",
+                "text": "Đổ hết: cố làm mọi thứ để chứng minh mình ‘đủ đức tin’.",
+                "playerLine": "Con làm được. Con không sao. Con chỉ cần cố thêm chút nữa.",
+                "intentTag": "pride",
+                "actionTag": "overcommit",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t_final_1"
+              }
+            ]
+          },
+          {
+            "id": "t_final_1",
+            "speaker": "Dẫn chuyện",
+            "text": "Quyết định cuối cùng không chỉ là bạn làm gì. Mà là bạn làm với động cơ gì. Can đảm đôi khi là bước đi. Đôi khi là chậm lại. Và đôi khi là thú nhận: mình đang sợ mất mặt hơn sợ mất Chúa.",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sẽ chốt lại con đường của mình như thế nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_commit_with_plan",
+                "text": "Chốt bằng kế hoạch: timeline 6 tháng, ngân sách, cố vấn, và ranh giới rõ.",
+                "playerLine": "Mình sẽ bước đi, nhưng có plan. 6 tháng, có ngân sách, có cố vấn, và có ranh giới. Mình không muốn gia đình bị kéo lê.",
+                "intentTag": "courage",
+                "actionTag": "commit_with_plan",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_choose_safe",
+                "text": "Chọn an toàn: bỏ dự án phục vụ để giữ đời sống ổn định.",
+                "playerLine": "Mình xin lỗi… mình không làm được. Mình chọn ổn định.",
+                "intentTag": "fear",
+                "actionTag": "choose_safe",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Dẫn chuyện",
+            "text": "Can đảm không phải là lao xuống mà không nghĩ. Cũng không phải là trốn trong chữ ‘ổn định’. Can đảm là bước đi trong ánh sáng — có kế hoạch, có ranh giới, có người đồng hành.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_jump_humble_plan_commit",
+            "requiredChoiceIds": [
+              "c1_jump_now",
+              "c2_humble_adjust",
+              "c3_commit_with_plan"
+            ],
+            "text": "Bạn bước đi, nhưng không tự cao. Bạn hạ mình, lập kế hoạch và giữ gia đình cùng đi. Khó khăn vẫn có, nhưng bạn không kéo ai kiệt sức theo.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_jump_ego_break",
+            "requiredChoiceIds": [
+              "c1_jump_now",
+              "c2_defend_ego"
+            ],
+            "text": "Bạn bước đi vì muốn chứng minh. Linh bị bỏ lại trong áp lực. Ơn gọi biến thành gánh nặng. Bạn làm ‘đúng’ bên ngoài, nhưng mất sự mềm mại bên trong.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_hold_job_schedule_commit",
+            "requiredChoiceIds": [
+              "c1_hold_job",
+              "c2_schedule_serving",
+              "c3_commit_with_plan"
+            ],
+            "text": "Bạn không bỏ ổn định, nhưng bạn không trốn tiếng gọi. Bạn đặt lịch phục vụ thật, và từ đó đời sống thuộc linh không bị chết vì mệt.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_hold_job_postpone_safe",
+            "requiredChoiceIds": [
+              "c1_hold_job",
+              "c2_keep_postponing",
+              "c3_choose_safe"
+            ],
+            "text": "Bạn chọn an toàn và hoãn mãi. Không có biến cố gì lớn… chỉ là lửa nhỏ dần tắt. Bạn thấy mình ‘ổn’, nhưng không còn rạo rực.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_trial_reset_plan_commit",
+            "requiredChoiceIds": [
+              "c1_trial_period",
+              "c2_reset_boundaries",
+              "c3_commit_with_plan"
+            ],
+            "text": "Bạn thử, rồi chỉnh nhịp. Bạn học rằng ơn gọi cần bền, không cần gồng. Gia đình vẫn là nơi ơn gọi được nuôi chứ không bị hy sinh.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "Bạn muốn mọi thứ rõ ràng 100% rồi mới bước. Nhưng đời thật hiếm khi cho bạn sự chắc chắn đó.",
+            "next": "reflection:ref_courage_calling_01"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_courage_church",
+      "topic": "courage",
+      "verseRef": "Joshua 1:9",
+      "verseText": "Hãy mạnh mẽ và can đảm. Đừng sợ hãi, vì Đức Giê-hô-va Đức Chúa Trời ngươi ở cùng ngươi.",
+      "questions": [
+        "Điều gì làm bạn sợ nhất khi phải nói sự thật?",
+        "Bạn có đang nhầm lẫn giữa can đảm và làm tổn thương người khác?",
+        "Lần tới, bạn sẽ chọn nói sự thật theo cách nào?"
+      ]
+    },
+    {
+      "id": "ref_courage_promo_01",
+      "topic": "courage",
+      "verseRef": "Proverbs 10:9",
+      "verseText": "Ai bước đi cách trọn vẹn sẽ được an toàn; còn ai làm cong đường lối mình sẽ bị phát hiện.",
+      "questions": [
+        "Bạn đang sợ mất điều gì nhất khi phải nói thật?",
+        "Có khi nào bạn dùng “trách nhiệm gia đình” để biện minh cho việc thỏa hiệp không?",
+        "Nếu can đảm không thay đổi kết quả ngay, bạn vẫn chọn làm đúng không?",
+        "Bạn cần ai đồng hành để không phải gồng một mình?"
+      ]
+    },
+    {
+      "id": "ref_courage_gossip_01",
+      "topic": "courage",
+      "verseRef": "Ephesians 4:29",
+      "verseText": "Chớ có một lời dữ nào ra từ miệng anh em, nhưng chỉ nói điều lành để gây dựng, tùy theo nhu cầu, hầu cho đem ân phước đến cho kẻ nghe.",
+      "questions": [
+        "Bạn thường sợ điều gì khi đứng ra chặn chuyện nói xấu?",
+        "Bạn có đang giữ ‘hòa khí’ bằng cách để người khác bị tổn thương không?",
+        "Can đảm của bạn hôm nay nên thể hiện qua lời nói hay sự hiện diện?",
+        "Bạn có thể làm gì để cộng đồng của mình an toàn hơn cho người yếu?"
+      ]
+    },
+    {
+      "id": "ref_courage_parent_01",
+      "topic": "courage",
+      "verseRef": "James 5:16",
+      "verseText": "Hãy xưng tội cùng nhau và cầu nguyện cho nhau, hầu cho anh em được chữa lành.",
+      "questions": [
+        "Bạn có đang sợ ‘mất uy’ hơn sợ làm tổn thương người mình thương không?",
+        "Khi xin lỗi, bạn đang xin lỗi thật hay chỉ xin lỗi để xong chuyện?",
+        "Bạn cần thay đổi điều gì cụ thể để xây lại niềm tin?",
+        "Bạn có thể hạ cái tôi xuống thêm một chút ở đâu trong gia đình?"
+      ]
+    },
+    {
+      "id": "ref_courage_relationship_01",
+      "topic": "courage",
+      "verseRef": "2 Timothy 1:7",
+      "verseText": "Vì Đức Chúa Trời không ban cho chúng ta tâm thần nhút nhát, nhưng ban cho quyền năng, tình yêu thương và sự tiết độ.",
+      "questions": [
+        "Bạn có đang gọi ‘kiểm soát’ là ‘yêu thương’ không?",
+        "Ranh giới nào bạn đã né đặt vì sợ mất người đó?",
+        "Bạn có người đồng hành an toàn để nói ra sự thật không?",
+        "Nếu tình yêu khiến bạn sợ, bạn nghĩ Chúa muốn bạn làm gì để được tự do?"
+      ]
+    },
+    {
+      "id": "ref_courage_forgive_01",
+      "topic": "courage",
+      "verseRef": "Proverbs 4:23",
+      "verseText": "Hãy giữ lòng con hơn hết, vì các nguồn sự sống do nơi đó mà ra.",
+      "questions": [
+        "Bạn có đang dùng ‘tha thứ’ để né một cuộc nói chuyện khó không?",
+        "Ranh giới nào bạn cần đặt để vừa thương người, vừa không tự hủy mình?",
+        "Bạn sợ điều gì nhất khi nói thật với người thân?",
+        "Giúp kiểu nào là giúp thật, và kiểu nào là tiếp tay?"
+      ]
+    },
+    {
+      "id": "ref_courage_calling_01",
+      "topic": "courage",
+      "verseRef": "Proverbs 16:3",
+      "verseText": "Hãy phó thác công việc con cho Đức Giê-hô-va, thì những mưu kế con sẽ được thành lập.",
+      "questions": [
+        "Bạn đang sợ thiếu tiền… hay sợ người khác đánh giá quyết định của bạn?",
+        "Ơn gọi của bạn đang xuất phát từ tình yêu, hay từ cái tôi muốn chứng minh?",
+        "Kế hoạch và ranh giới nào giúp bạn bước đi mà không làm gia đình kiệt sức?",
+        "Bạn có ai cố vấn để phân định tiếng gọi một cách tỉnh táo không?"
+      ]
+    }
+  ]
+}

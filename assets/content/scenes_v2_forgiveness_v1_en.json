@@ -1,0 +1,1100 @@
+{
+  "scenes": [
+    {
+      "id": "scene_forgive_02",
+      "topic": "forgiveness",
+      "title": "The Deleted Text Still Hurts",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_lena", "name": "Lena", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Late at night, Lena texts in the serving team group chat: “You always do things your way.” She deletes it right after—but you already saw it.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Lena",
+            "text": "I slipped… I didn’t mean it like that. But… you get it, right? I’ve been a mess lately.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Lena",
+            "text": "How do you reply?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f02_1_soft",
+                "text": "Reply gently: “I saw it. Let’s talk one-on-one tomorrow.”",
+                "playerLine": "“I saw the message. Let’s talk one-on-one tomorrow—I want to understand you.”",
+                "intentTag": "calm",
+                "actionTag": "invite_talk",
+                "effects": [
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 6 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Lena goes quiet for a few minutes, then sends “…” like she’s thinking.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f02_1_sharp",
+                "text": "Snap back: “You think deleting it makes it okay? Say it straight.”",
+                "playerLine": "“So deleting it makes it disappear? If you’ve got something to say, say it.”",
+                "intentTag": "hurt",
+                "actionTag": "pressure",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "outcome": { "text": "The group chat goes dead silent. Lena types… then deletes… over and over.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Narrator",
+            "text": "A little later, you get a DM from Lena: “I was mad because I thought you told the leader I missed the deadline… but it turns out it wasn’t you who said it.”",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Lena",
+            "text": "What do you do next?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f02_2_forgive",
+                "text": "Forgive her and offer to clear the misunderstanding together, without naming and shaming anyone.",
+                "playerLine": "“Okay, I forgive you. Tomorrow we’ll talk and clear it up—I don’t want anyone getting dragged.”",
+                "intentTag": "forgive",
+                "actionTag": "restore",
+                "effects": [
+                  { "stat": "love", "delta": 9 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": {
+                  "text": "Lena exhales in relief. You both agree to talk in person and stop the blame spiral.",
+                  "next": "reflection:ref_forgive_02"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f02_2_hold",
+                "text": "Keep distance: “I don’t want to talk right now.”",
+                "playerLine": "“I hear you. But give me a few days—I’m not okay yet.”",
+                "intentTag": "guarded",
+                "actionTag": "distance",
+                "effects": [
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "love", "delta": -3 },
+                  { "stat": "pride", "delta": 3 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "outcome": {
+                  "text": "You stay calm, but something still sticks inside. The relationship basically “freezes.”",
+                  "next": "reflection:ref_forgive_02"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f02_heal_fast",
+            "requiredChoiceIds": ["c_f02_1_soft", "c_f02_2_forgive"],
+            "text": "You start soft and forgive once you learn the truth. The misunderstanding gets cleared fast, and the serving team feels lighter again.",
+            "next": "reflection:ref_forgive_02"
+          },
+          {
+            "id": "o_f02_soft_but_hold",
+            "requiredChoiceIds": ["c_f02_1_soft", "c_f02_2_hold"],
+            "text": "You keep your kindness, but you still need time to recover. The silence becomes both a boundary and a test.",
+            "next": "reflection:ref_forgive_02"
+          },
+          {
+            "id": "o_f02_sharp_then_forgive",
+            "requiredChoiceIds": ["c_f02_1_sharp", "c_f02_2_forgive"],
+            "text": "You react sharply, then still forgive. Lena thanks you, but both of you remember the sting at the start.",
+            "next": "reflection:ref_forgive_02"
+          },
+          {
+            "id": "o_f02_sharp_and_hold",
+            "requiredChoiceIds": ["c_f02_1_sharp", "c_f02_2_hold"],
+            "text": "You snap and pull away. Nobody says more, but the scratch just sits there—quietly aching in the next few meetups.",
+            "next": "reflection:ref_forgive_02"
+          },
+          {
+            "id": "o_f02_fallback",
+            "requiredChoiceIds": [],
+            "text": "You go to sleep with one question hanging: do you want to heal this, or do you want to win?",
+            "next": "reflection:ref_forgive_02"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_03",
+      "topic": "forgiveness",
+      "title": "Getting Blamed in the Meeting",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_ethan", "name": "Ethan", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "In the project meeting, Ethan says in front of everyone: “This part is late because of you.” Your face heats up—because you submitted it on time.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Ethan",
+            "text": "I said it so the boss wouldn’t look at me. Please understand—I’m stuck right now.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Ethan",
+            "text": "How do you respond right then?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f03_1_correct",
+                "text": "Correct the facts calmly, without attacking.",
+                "playerLine": "“I sent that yesterday at 5 PM. I’ll forward the email so everyone can see it clearly.”",
+                "intentTag": "truth",
+                "actionTag": "clarify",
+                "effects": [
+                  { "stat": "wisdom", "delta": 8 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "pride", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "The room goes quiet. The boss looks at Ethan, then at the email.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f03_1_expose",
+                "text": "Call Ethan out directly in front of everyone—just to vent.",
+                "playerLine": "“That’s blame-shifting. It’s late because you’re stuck, not because of me.”",
+                "intentTag": "anger",
+                "actionTag": "expose",
+                "effects": [
+                  { "stat": "pride", "delta": 11 },
+                  { "stat": "love", "delta": -7 },
+                  { "stat": "wisdom", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "outcome": { "text": "The tension spikes. Ethan’s face turns red, eyes avoiding everyone.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Narrator",
+            "text": "After the meeting, Ethan pulls you aside: “I’m sorry. But if the boss knows I’m late, I might lose my contract. I’m taking care of my sick mom.”",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Ethan",
+            "text": "How do you respond now?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f03_2_mercy_plan",
+                "text": "Forgive him, but set a clear plan: next time tell you early, and you’ll address it with the boss together.",
+                "playerLine": "“I forgive you. But don’t put me in that spot again. Right now, I’ll help you talk to the boss in a way that won’t blow up.”",
+                "intentTag": "mercy",
+                "actionTag": "boundary_with_help",
+                "effects": [
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "humility", "delta": 4 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "You hold a boundary while still making space to repair things. Ethan bows his head and thanks you.", "next": "reflection:ref_forgive_03" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f03_2_cold",
+                "text": "Don’t forgive: “Figure it out yourself. I don’t trust you anymore.”",
+                "playerLine": "“I hear you, but I can’t accept that. Handle it with the boss yourself.”",
+                "intentTag": "cut_off",
+                "actionTag": "withdraw",
+                "effects": [
+                  { "stat": "pride", "delta": 6 },
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "faith", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": { "text": "You protect yourself, but you also close the door on Ethan. You feel lighter for a moment… then heavier.", "next": "reflection:ref_forgive_03" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f03_best",
+            "requiredChoiceIds": ["c_f03_1_correct", "c_f03_2_mercy_plan"],
+            "text": "You choose truth with wisdom, then forgiveness with boundaries. The relationship can still be saved—and you don’t get used.",
+            "next": "reflection:ref_forgive_03"
+          },
+          {
+            "id": "o_f03_correct_cold",
+            "requiredChoiceIds": ["c_f03_1_correct", "c_f03_2_cold"],
+            "text": "You handle the meeting the right way, but you don’t open a path toward forgiveness. You keep your reputation, but lose a chance to heal.",
+            "next": "reflection:ref_forgive_03"
+          },
+          {
+            "id": "o_f03_expose_then_mercy",
+            "requiredChoiceIds": ["c_f03_1_expose", "c_f03_2_mercy_plan"],
+            "text": "You let it out first, then forgive. Ethan is grateful, but the awkwardness still lingers in the team.",
+            "next": "reflection:ref_forgive_03"
+          },
+          {
+            "id": "o_f03_expose_cold",
+            "requiredChoiceIds": ["c_f03_1_expose", "c_f03_2_cold"],
+            "text": "You call him out and cut him off. You win that moment, but inside you don’t feel peace.",
+            "next": "reflection:ref_forgive_03"
+          },
+          {
+            "id": "o_f03_fallback",
+            "requiredChoiceIds": [],
+            "text": "Truth and mercy keep pulling you in opposite directions. The question is: which choice looks more like Jesus?",
+            "next": "reflection:ref_forgive_03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_04",
+      "topic": "forgiveness",
+      "title": "The Missing Wallet",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_noah", "name": "Noah", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "You leave your wallet behind after the group meeting. The next day, the cash inside is missing. Noah was the last person cleaning up with you.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Noah",
+            "text": "Why are you looking at me like that? I… I didn’t take anything.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Noah",
+            "text": "How are you going to talk about this the right way?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f04_1_private",
+                "text": "Ask privately without accusing: “I’m stressed—help me remember that night.”",
+                "playerLine": "“Noah, I’m asking privately. What time did we finish cleaning that night? Can you help me remember?”",
+                "intentTag": "gentle",
+                "actionTag": "seek_truth",
+                "effects": [
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "love", "delta": 5 },
+                  { "stat": "pride", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Noah looks down and sighs, like he’s wrestling with something inside.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f04_1_accuse",
+                "text": "Ask bluntly: “Did you take it?”",
+                "playerLine": "“Be honest… did you take the money from my wallet?”",
+                "intentTag": "suspicion",
+                "actionTag": "accuse",
+                "effects": [
+                  { "stat": "pride", "delta": 8 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Noah freezes. His eyes redden—his pride got hit hard.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Narrator",
+            "text": "The lobby camera shows a stranger picking up your wallet. Noah didn’t take it. But that same night, Noah’s family asked to borrow money, and the way you looked at him felt like a verdict.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Noah",
+            "text": "What do you say to close this out?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f04_2_apologize",
+                "text": "Apologize clearly and own that you suspected him.",
+                "playerLine": "“I’m sorry. I suspected you. I was wrong. Let me make it right, okay?”",
+                "intentTag": "repent",
+                "actionTag": "apologize",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "outcome": { "text": "Noah stays quiet for a moment, then nods. You feel lighter… and also embarrassed.", "next": "reflection:ref_forgive_04" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f04_2_minimize",
+                "text": "Downplay it: “Forget it—no big deal.”",
+                "playerLine": "“It’s fine, forget it. At least it wasn’t you.”",
+                "intentTag": "avoid",
+                "actionTag": "minimize",
+                "effects": [
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "humility", "delta": -3 },
+                  { "stat": "pride", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": { "text": "Noah forces a smile. It’s “over,” but your look still left a mark.", "next": "reflection:ref_forgive_04" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f04_clean_restore",
+            "requiredChoiceIds": ["c_f04_1_private", "c_f04_2_apologize"],
+            "text": "You choose a wise approach, then humble yourself with a real apology. Trust gets rebuilt even stronger than before.",
+            "next": "reflection:ref_forgive_04"
+          },
+          {
+            "id": "o_f04_private_minimize",
+            "requiredChoiceIds": ["c_f04_1_private", "c_f04_2_minimize"],
+            "text": "You do the first half right, but avoid a heartfelt apology. A small scratch remains in Noah’s eyes.",
+            "next": "reflection:ref_forgive_04"
+          },
+          {
+            "id": "o_f04_accuse_apologize",
+            "requiredChoiceIds": ["c_f04_1_accuse", "c_f04_2_apologize"],
+            "text": "You judged wrong, but you come back and apologize. The price is awkwardness—but that’s the price of healing.",
+            "next": "reflection:ref_forgive_04"
+          },
+          {
+            "id": "o_f04_accuse_minimize",
+            "requiredChoiceIds": ["c_f04_1_accuse", "c_f04_2_minimize"],
+            "text": "You suspect him, then act like it’s nothing. Noah doesn’t argue—but neither of your hearts feels settled.",
+            "next": "reflection:ref_forgive_04"
+          },
+          {
+            "id": "o_f04_fallback",
+            "requiredChoiceIds": [],
+            "text": "Sometimes forgiveness starts with admitting: I looked at someone through an unfair lens.",
+            "next": "reflection:ref_forgive_04"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_05",
+      "topic": "forgiveness",
+      "title": "Tagged Wrong in a Photo",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "npc_mia", "name": "Mia", "portraitKey": "friend_01" },
+          { "id": "npc_kyle", "name": "Kyle", "portraitKey": "friend_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Mia posts a photo from the meeting and tags you with a sarcastic caption: “Everyone serves… except one person who’s busy with ‘personal stuff.’” People start assuming you’re lazy.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Kyle",
+            "text": "Hey, did you see Mia’s post? I read it and it feels… weird.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Mia",
+            "text": "What do you do about that post?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f05_1_dm",
+                "text": "DM Mia: ask why and request she removes the tag—don’t make it big.",
+                "playerLine": "“Mia, I saw the post. I’m really hurt. Can I ask why you wrote that—and can you remove the tag for me?”",
+                "intentTag": "seek_peace",
+                "actionTag": "dm",
+                "effects": [
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Mia sees it but doesn’t reply yet. Your heart beats a little faster.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f05_1_comment",
+                "text": "Comment publicly: “Who are you talking about? Say it.”",
+                "playerLine": "“Are you talking about me? Say it clearly.”",
+                "intentTag": "defend",
+                "actionTag": "public_callout",
+                "effects": [
+                  { "stat": "pride", "delta": 12 },
+                  { "stat": "love", "delta": -7 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "outcome": { "text": "The comments explode. Even outsiders jump in with opinions.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Narrator",
+            "text": "Mia assumed you were “busy with personal stuff” because she saw you step out mid-meeting. In reality, you ran out to take a hospital call—your relative was in emergency care. You haven’t told anyone.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Kyle",
+            "text": "How do you want to handle it now?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f05_2_explain_soft",
+                "text": "Share just enough truth with Mia (and if needed, the group), then forgive.",
+                "playerLine": "“Mia, I stepped out because the hospital called. I didn’t want to share it, but I also don’t want to be misunderstood. I forgive you—I just need you to fix it.”",
+                "intentTag": "truth_in_love",
+                "actionTag": "explain_and_forgive",
+                "effects": [
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 5 },
+                  { "stat": "wisdom", "delta": 5 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "outcome": { "text": "Mia freezes, then apologizes. Kyle steps in and shuts the drama down.", "next": "reflection:ref_forgive_05" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f05_2_keep_secret",
+                "text": "Say nothing more, remove the tag yourself, and swallow the hurt.",
+                "playerLine": "“It’s fine. I’ll handle it myself. I don’t want to share personal stuff.”",
+                "intentTag": "silent_endure",
+                "actionTag": "withdraw",
+                "effects": [
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "pride", "delta": 5 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "outcome": { "text": "You keep your privacy, but the misunderstanding still hangs over the group.", "next": "reflection:ref_forgive_05" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f05_dm_explain",
+            "requiredChoiceIds": ["c_f05_1_dm", "c_f05_2_explain_soft"],
+            "text": "You keep it private, then share just enough truth and forgive. The drama dies down, and Mia learns to be more careful.",
+            "next": "reflection:ref_forgive_05"
+          },
+          {
+            "id": "o_f05_dm_silent",
+            "requiredChoiceIds": ["c_f05_1_dm", "c_f05_2_keep_secret"],
+            "text": "You keep it quiet, but you leave people guessing. You look calm outside, but inside you feel worn out.",
+            "next": "reflection:ref_forgive_05"
+          },
+          {
+            "id": "o_f05_public_then_explain",
+            "requiredChoiceIds": ["c_f05_1_comment", "c_f05_2_explain_soft"],
+            "text": "You go public first, then soften. The truth clears your name, but your approach makes people avoid you for a while.",
+            "next": "reflection:ref_forgive_05"
+          },
+          {
+            "id": "o_f05_public_then_silent",
+            "requiredChoiceIds": ["c_f05_1_comment", "c_f05_2_keep_secret"],
+            "text": "You blow up, then go silent. The silence afterward turns the misunderstanding into a longer-lasting rumor.",
+            "next": "reflection:ref_forgive_05"
+          },
+          {
+            "id": "o_f05_fallback",
+            "requiredChoiceIds": [],
+            "text": "Forgiveness sometimes isn’t about forgetting—it’s choosing how to tell the truth without adding more damage.",
+            "next": "reflection:ref_forgive_05"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_06",
+      "topic": "forgiveness",
+      "title": "Borrowed Money, Late Promise",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_sophia", "name": "Sophia", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Sophia borrowed a small amount and promised to pay you back by the end of the month. Two months later, she’s still silent. You see her posting coffee check-ins like nothing’s wrong.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Sophia",
+            "text": "Hey, let’s grab food sometime. I’ve been crazy busy lately.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Sophia",
+            "text": "How do you bring up the money and actually make it real?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f06_1_clear_gentle",
+                "text": "Be direct but polite: set a clear deadline and offer a payment plan.",
+                "playerLine": "“Sophia, about the money from before… I need clarity. Weekly payments are fine, but I need a concrete timeline.”",
+                "intentTag": "boundary",
+                "actionTag": "clarify_terms",
+                "effects": [
+                  { "stat": "wisdom", "delta": 8 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "pride", "delta": -1 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Sophia stiffens, then forces a little laugh.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f06_1_sarcasm",
+                "text": "Be sarcastic: “Coffee on time, but paying me back? Forgot, huh.”",
+                "playerLine": "“You’re on time for coffee, but paying me back is… just forgotten?”",
+                "intentTag": "resent",
+                "actionTag": "sarcasm",
+                "effects": [
+                  { "stat": "pride", "delta": 9 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Sophia goes quiet. The air suddenly feels heavy.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Narrator",
+            "text": "Sophia admits she’s been paying off hospital debt for her dad, so she was too ashamed to say anything. But you’re also tight on money—your sibling’s school fees are due. Both of you have real reasons.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Sophia",
+            "text": "Which direction do you choose next?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f06_2_restructure",
+                "text": "Forgive her and renegotiate a payment plan without embarrassing her.",
+                "playerLine": "“I get it. I won’t force you to pay it all at once. I forgive the silence—but I still need a clear plan so I can handle things at home.”",
+                "intentTag": "mercy_with_structure",
+                "actionTag": "restructure",
+                "effects": [
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "humility", "delta": 4 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Sophia tears up. You agree on a schedule, and everything feels lighter.", "next": "reflection:ref_forgive_06" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f06_2_demand",
+                "text": "Refuse: demand payment now or cut ties.",
+                "playerLine": "“I understand, but I need it too. Find a way to pay me back this week. Otherwise… we’re done.”",
+                "intentTag": "hardline",
+                "actionTag": "demand",
+                "effects": [
+                  { "stat": "pride", "delta": 7 },
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "faith", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": { "text": "You might get your money back fast… or lose a long-time friend.", "next": "reflection:ref_forgive_06" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f06_clear_restructure",
+            "requiredChoiceIds": ["c_f06_1_clear_gentle", "c_f06_2_restructure"],
+            "text": "You stay clear and compassionate. Forgiveness doesn’t make you weak—it makes you mature and wise.",
+            "next": "reflection:ref_forgive_06"
+          },
+          {
+            "id": "o_f06_clear_demand",
+            "requiredChoiceIds": ["c_f06_1_clear_gentle", "c_f06_2_demand"],
+            "text": "You bring it up respectfully, but you end with an ultimatum. Your rights are protected, but the friendship shakes hard.",
+            "next": "reflection:ref_forgive_06"
+          },
+          {
+            "id": "o_f06_sarcasm_restructure",
+            "requiredChoiceIds": ["c_f06_1_sarcasm", "c_f06_2_restructure"],
+            "text": "You slip into sarcasm, but then choose structured forgiveness. You learn a lesson about how you speak.",
+            "next": "reflection:ref_forgive_06"
+          },
+          {
+            "id": "o_f06_sarcasm_demand",
+            "requiredChoiceIds": ["c_f06_1_sarcasm", "c_f06_2_demand"],
+            "text": "You go sarcastic and then push hard. You might be “right,” but your heart isn’t soft anymore.",
+            "next": "reflection:ref_forgive_06"
+          },
+          {
+            "id": "o_f06_fallback",
+            "requiredChoiceIds": [],
+            "text": "Forgiveness doesn’t erase the debt. Forgiveness is how you choose to talk when both of you are under pressure.",
+            "next": "reflection:ref_forgive_06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_07",
+      "topic": "forgiveness",
+      "title": "A Sharp Line at Dinner",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_mom", "name": "Mom", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "At dinner, Mom blurts out: “If you do that, you’re no different from them.” It feels like she just wiped out months of your effort in one sentence.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Mom",
+            "text": "I didn’t mean it like that… I’m just worried about you.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Mom",
+            "text": "How do you react in that moment?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f07_1_hold_tongue",
+                "text": "Pause for a beat, then be honest without being disrespectful.",
+                "playerLine": "“Mom, that hurt. I’m not trying to fight, but I need you to know I’m really trying.”",
+                "intentTag": "honest_soft",
+                "actionTag": "express",
+                "effects": [
+                  { "stat": "humility", "delta": 6 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "wisdom", "delta": 5 },
+                  { "stat": "pride", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "outcome": { "text": "Mom looks at you longer than usual, like you hit something real.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f07_1_snap",
+                "text": "Snap back: “You never understand me!”",
+                "playerLine": "“You always say stuff like that! You never understand me!”",
+                "intentTag": "explode",
+                "actionTag": "snap",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Dinner freezes. Mom sets her chopsticks down.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Narrator",
+            "text": "Later, you overhear Mom on the phone: “I’m scared they’ll break… I don’t know how to say things to make them stronger.” Mom doesn’t hate you—she’s scared of losing you.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Mom",
+            "text": "How do you choose to repair things now?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f07_2_forgive_hug",
+                "text": "Initiate repair: apologize for any heat (if you had it) and forgive Mom’s words.",
+                "playerLine": "“Mom, I’m sorry for how I reacted. And I forgive what you said earlier. Don’t carry the worry alone—I’m learning how to be strong too.”",
+                "intentTag": "reconcile",
+                "actionTag": "forgive",
+                "effects": [
+                  { "stat": "love", "delta": 9 },
+                  { "stat": "humility", "delta": 7 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Mom exhales, eyes red. No big speech—just a softer moment.", "next": "reflection:ref_forgive_07" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f07_2_silent_wall",
+                "text": "Stay quiet and let time cool things down.",
+                "playerLine": "“I’m tired. I’m going to my room.”",
+                "intentTag": "withdraw",
+                "actionTag": "wall",
+                "effects": [
+                  { "stat": "wisdom", "delta": 1 },
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "pride", "delta": 5 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": { "text": "You avoid more hurtful words, but the distance at home stretches longer.", "next": "reflection:ref_forgive_07" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f07_soft_reconcile",
+            "requiredChoiceIds": ["c_f07_1_hold_tongue", "c_f07_2_forgive_hug"],
+            "text": "You speak honestly but softly, then choose forgiveness. The bond gets rebuilt through understanding—not winning.",
+            "next": "reflection:ref_forgive_07"
+          },
+          {
+            "id": "o_f07_soft_wall",
+            "requiredChoiceIds": ["c_f07_1_hold_tongue", "c_f07_2_silent_wall"],
+            "text": "You handle the first moment wisely, but end with silence. You feel calm, but the house still feels cold.",
+            "next": "reflection:ref_forgive_07"
+          },
+          {
+            "id": "o_f07_snap_reconcile",
+            "requiredChoiceIds": ["c_f07_1_snap", "c_f07_2_forgive_hug"],
+            "text": "You blow up, but you turn back. Apologizing doesn’t make you small—it makes you real.",
+            "next": "reflection:ref_forgive_07"
+          },
+          {
+            "id": "o_f07_snap_wall",
+            "requiredChoiceIds": ["c_f07_1_snap", "c_f07_2_silent_wall"],
+            "text": "You snap and then withdraw. Your ego is protected, but love doesn’t get healed.",
+            "next": "reflection:ref_forgive_07"
+          },
+          {
+            "id": "o_f07_fallback",
+            "requiredChoiceIds": [],
+            "text": "Some sharp words are rooted in fear. Forgiveness is seeing deeper than the sentence you heard.",
+            "next": "reflection:ref_forgive_07"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_08",
+      "topic": "forgiveness",
+      "title": "Removed from the List",
+      "characters": {
+        "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_grace", "name": "Grace", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "You find out Grace changed the serving schedule and removed your name without telling you. You hear it from someone else. It feels disrespectful.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Grace",
+            "text": "Oh… you already know? I was going to tell you later.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Grace",
+            "text": "How do you respond?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f08_1_ask_why",
+                "text": "Ask for the reason first, without accusing right away.",
+                "playerLine": "“Grace, I want to understand. Why did you change the schedule without telling me?”",
+                "intentTag": "clarify",
+                "actionTag": "ask",
+                "effects": [
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "humility", "delta": 3 },
+                  { "stat": "pride", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Grace bites her lip, like she’s weighing whether to tell the truth.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f08_1_attack",
+                "text": "Go straight at her: “What am I to you?”",
+                "playerLine": "“What am I to you that you can just cross my name out like that?”",
+                "intentTag": "hurt_pride",
+                "actionTag": "accuse",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Grace’s face turns red, and her voice starts getting sharp.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Narrator",
+            "text": "Grace tells the truth: someone said you tend to “rush to finish,” so people hesitate to give you tasks that require patience. Grace was afraid saying it directly would hurt your pride, so she avoided you instead.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Grace",
+            "text": "How do you respond to that truth?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f08_2_forgive_and_learn",
+                "text": "Forgive Grace’s approach and ask for specific feedback so you can grow.",
+                "playerLine": "“I’m hurt you avoided me, but I forgive you. Tell me specifically what I do that bothers people—so I can change.”",
+                "intentTag": "teachability",
+                "actionTag": "forgive_and_grow",
+                "effects": [
+                  { "stat": "humility", "delta": 9 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "love", "delta": 5 },
+                  { "stat": "pride", "delta": -7 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Grace exhales in relief. You plan to serve together once so you can practice slowing down.", "next": "reflection:ref_forgive_08" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f08_2_defend",
+                "text": "Defend yourself: “I’m just efficient. If they can’t handle it, whatever.”",
+                "playerLine": "“I move fast because I want things done. If people can’t handle it, fine—I just won’t serve anymore.”",
+                "intentTag": "defend_pride",
+                "actionTag": "withdraw_in_pride",
+                "effects": [
+                  { "stat": "pride", "delta": 11 },
+                  { "stat": "humility", "delta": -5 },
+                  { "stat": "love", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "You protect your ego, but you lose a chance to grow—and you lose the team’s trust too.", "next": "reflection:ref_forgive_08" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f08_ask_learn",
+            "requiredChoiceIds": ["c_f08_1_ask_why", "c_f08_2_forgive_and_learn"],
+            "text": "You ask first, then forgive and learn. Result: you keep relationships—and you grow in how you serve.",
+            "next": "reflection:ref_forgive_08"
+          },
+          {
+            "id": "o_f08_ask_defend",
+            "requiredChoiceIds": ["c_f08_1_ask_why", "c_f08_2_defend"],
+            "text": "You stay calm at first, but end up defending yourself. The truth arrives… and you refuse it.",
+            "next": "reflection:ref_forgive_08"
+          },
+          {
+            "id": "o_f08_attack_learn",
+            "requiredChoiceIds": ["c_f08_1_attack", "c_f08_2_forgive_and_learn"],
+            "text": "You blame first, then soften. Healing still happens, but you pay for it with awkwardness and a small hit to your reputation.",
+            "next": "reflection:ref_forgive_08"
+          },
+          {
+            "id": "o_f08_attack_defend",
+            "requiredChoiceIds": ["c_f08_1_attack", "c_f08_2_defend"],
+            "text": "You attack and then defend. The relationship fractures, and you leave the team with your ego intact—but your heart unchanged.",
+            "next": "reflection:ref_forgive_08"
+          },
+          {
+            "id": "o_f08_fallback",
+            "requiredChoiceIds": [],
+            "text": "Sometimes forgiveness looks like accepting hard feedback—and choosing to grow instead of choosing to win.",
+            "next": "reflection:ref_forgive_08"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_forgive_02",
+      "topic": "forgiveness",
+      "verseRef": "Proverbs 15:1",
+      "verseText": "A gentle answer turns away anger, but a harsh word stirs up wrath. (paraphrase)",
+      "questions": [
+        "What did the deleted text hit in you: pride, fear of being misunderstood, or the feeling of betrayal?",
+        "Do you want to repair things—or do you want the other person to “admit you were right”?",
+        "If you choose to forgive, what specific boundary do you need so this doesn’t repeat?"
+      ]
+    },
+    {
+      "id": "ref_forgive_03",
+      "topic": "forgiveness",
+      "verseRef": "Matthew 5:9",
+      "verseText": "Blessed are the peacemakers, for they will be called children of God. (paraphrase)",
+      "questions": [
+        "When you get blamed, what are you most afraid of losing: your reputation or your peace?",
+        "Can you hold truth and mercy at the same time? What would “peacemaking” look like instead of “crushing” them?",
+        "What kind of change would you need from them to truly forgive?"
+      ]
+    },
+    {
+      "id": "ref_forgive_04",
+      "topic": "forgiveness",
+      "verseRef": "1 Corinthians 13:7",
+      "verseText": "Love… believes all things, hopes all things, endures all things. (paraphrase)",
+      "questions": [
+        "Have you “convicted” someone in your heart before you had the full truth?",
+        "How do you tell the difference between wise caution and suspicion that harms people?",
+        "If you need to apologize, what would an apology look like that actually heals—not just ends the conversation?"
+      ]
+    },
+    {
+      "id": "ref_forgive_05",
+      "topic": "forgiveness",
+      "verseRef": "James 1:19",
+      "verseText": "Be quick to listen, slow to speak, and slow to become angry. (paraphrase)",
+      "questions": [
+        "Are you hurting more because you were misunderstood—or because you were embarrassed in public?",
+        "Do you want to protect your image or protect the relationship? Is it possible to do both?",
+        "What would it look like to share “just enough” truth without turning private pain into a weapon?"
+      ]
+    },
+    {
+      "id": "ref_forgive_06",
+      "topic": "forgiveness",
+      "verseRef": "Matthew 6:12",
+      "verseText": "Forgive us our debts, as we also have forgiven our debtors. (paraphrase)",
+      "questions": [
+        "Is it hard to forgive because of the money—or because you felt ignored and disrespected?",
+        "Does forgiveness mean removing responsibility? What kind of “plan” do you need to stay compassionate and clear?",
+        "Are you making them repay you with shame, instead of repaying you with responsibility?"
+      ]
+    },
+    {
+      "id": "ref_forgive_07",
+      "topic": "forgiveness",
+      "verseRef": "Ephesians 4:26-27",
+      "verseText": "In your anger do not sin… and do not give the devil a foothold. (paraphrase)",
+      "questions": [
+        "Did Mom’s words hurt more because of the content—or because you felt unseen and unrecognized?",
+        "Can you tell the truth about your feelings while still showing respect? What’s one sentence you’d say again—but softer?",
+        "Who do you need to forgive first: Mom, or yourself for how you reacted?"
+      ]
+    },
+    {
+      "id": "ref_forgive_08",
+      "topic": "forgiveness",
+      "verseRef": "Proverbs 27:5-6",
+      "verseText": "Better is open rebuke than hidden love… Wounds from a friend can be trusted. (paraphrase)",
+      "questions": [
+        "Does it hurt more that you were removed—or that feedback came indirectly instead of face-to-face?",
+        "Can you treat hard feedback as a chance to grow? If yes, what specific area do you want feedback on?",
+        "What would forgiveness look like here: reconnection, change, or stepping back with peace?"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1094 @@
+{
+  "scenes": [
+    {
+      "id": "scene_forgive_02",
+      "topic": "forgiveness",
+      "title": "Tin Nhắn Đã Gỡ Mà Vẫn Đau",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_linh", "name": "Linh", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Tối muộn, Linh nhắn trong nhóm phục vụ: “Bạn lúc nào cũng làm theo ý mình.” Tin nhắn vừa gửi xong thì bị gỡ, nhưng bạn đã đọc kịp.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Linh",
+            "text": "Mình lỡ tay… Ý mình không phải vậy. Nhưng… bạn cũng hiểu mà, dạo này mình rối.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Linh",
+            "text": "Bạn trả lời sao?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f02_1_soft",
+                "text": "Nhắn lại nhẹ nhàng: “Mình nghe rồi. Mai mình nói chuyện riêng nha.”",
+                "playerLine": "“Mình thấy tin nhắn rồi. Mai mình nói chuyện riêng nha, mình muốn hiểu bạn.”",
+                "intentTag": "calm",
+                "actionTag": "invite_talk",
+                "effects": [
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 6 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Linh im vài phút rồi thả một cái “…” như đang suy nghĩ.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f02_1_sharp",
+                "text": "Nhắn gắt: “Gỡ rồi tưởng không sao hả? Nói thẳng đi.”",
+                "playerLine": "“Gỡ rồi là xong hả? Bạn muốn nói gì thì nói thẳng luôn đi.”",
+                "intentTag": "hurt",
+                "actionTag": "pressure",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "outcome": { "text": "Nhóm chat im phăng phắc. Linh gõ rồi xoá liên tục.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Một lát sau, bạn nhận được tin nhắn riêng từ Linh: “Mình bực vì tưởng bạn kể chuyện mình trễ deadline với trưởng nhóm… nhưng hoá ra người nói không phải bạn.”",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Linh",
+            "text": "Giờ bạn làm gì tiếp?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f02_2_forgive",
+                "text": "Tha thứ và đề nghị cùng dọn hiểu lầm, không bêu tên ai.",
+                "playerLine": "“Ok, mình tha cho bạn. Mai mình với bạn nói lại cho rõ, mình không muốn ai bị bêu.”",
+                "intentTag": "forgive",
+                "actionTag": "restore",
+                "effects": [
+                  { "stat": "love", "delta": 9 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Linh thở phào. Hai bạn thống nhất nói chuyện trực tiếp, tránh đổ lỗi vòng vòng.", "next": "reflection:ref_forgive_02" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f02_2_hold",
+                "text": "Giữ khoảng cách: “Tạm thời mình không muốn nói nữa.”",
+                "playerLine": "“Mình nghe rồi. Nhưng cho mình vài bữa, mình chưa ổn.”",
+                "intentTag": "guarded",
+                "actionTag": "distance",
+                "effects": [
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "love", "delta": -3 },
+                  { "stat": "pride", "delta": 3 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "outcome": { "text": "Bạn giữ được bình tĩnh, nhưng trong lòng vẫn còn cấn. Mối quan hệ tạm “đóng băng”.", "next": "reflection:ref_forgive_02" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f02_heal_fast",
+            "requiredChoiceIds": ["c_f02_1_soft", "c_f02_2_forgive"],
+            "text": "Bạn chọn mềm từ đầu và tha thứ lúc biết sự thật. Hiểu lầm được tháo gỡ nhanh, nhóm phục vụ cũng nhẹ lại.",
+            "next": "reflection:ref_forgive_02"
+          },
+          {
+            "id": "o_f02_soft_but_hold",
+            "requiredChoiceIds": ["c_f02_1_soft", "c_f02_2_hold"],
+            "text": "Bạn giữ được sự tử tế, nhưng vẫn cần thời gian hồi phục. Sự im lặng này vừa là ranh giới vừa là thử thách.",
+            "next": "reflection:ref_forgive_02"
+          },
+          {
+            "id": "o_f02_sharp_then_forgive",
+            "requiredChoiceIds": ["c_f02_1_sharp", "c_f02_2_forgive"],
+            "text": "Bạn phản ứng gắt, rồi vẫn tha thứ. Linh cảm ơn, nhưng cả hai đều nhớ cái “đau” lúc đầu.",
+            "next": "reflection:ref_forgive_02"
+          },
+          {
+            "id": "o_f02_sharp_and_hold",
+            "requiredChoiceIds": ["c_f02_1_sharp", "c_f02_2_hold"],
+            "text": "Bạn gắt và rút lui. Không ai nói thêm, nhưng vết xước cứ nằm đó, âm ỉ trong các buổi gặp sau.",
+            "next": "reflection:ref_forgive_02"
+          },
+          {
+            "id": "o_f02_fallback",
+            "requiredChoiceIds": [],
+            "text": "Bạn đi ngủ với một câu hỏi lơ lửng: mình đang muốn hàn gắn, hay đang muốn thắng?",
+            "next": "reflection:ref_forgive_02"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_03",
+      "topic": "forgiveness",
+      "title": "Bị “Gắn Tên” Trong Cuộc Họp",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_huy", "name": "Huy", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Trong cuộc họp nhóm dự án, Huy nói trước mặt mọi người: “Phần này bị trễ là do bạn.” Bạn nghe mà nóng mặt, vì bạn đã gửi đúng hạn.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Huy",
+            "text": "Mình nói vậy để sếp khỏi nhìn qua mình. Bạn thông cảm đi, mình đang kẹt.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Huy",
+            "text": "Bạn chọn cách phản ứng nào ngay lúc đó?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f03_1_correct",
+                "text": "Sửa lại sự thật một cách bình tĩnh, không công kích.",
+                "playerLine": "“Mình gửi phần đó hôm qua 5 giờ. Mình forward lại mail để mọi người nắm cho rõ nha.”",
+                "intentTag": "truth",
+                "actionTag": "clarify",
+                "effects": [
+                  { "stat": "wisdom", "delta": 8 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "pride", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Phòng họp im lại. Sếp nhìn Huy, rồi nhìn mail.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f03_1_expose",
+                "text": "Bóc thẳng Huy trước mặt mọi người để “đỡ tức”.",
+                "playerLine": "“Bạn nói vậy là đổ thừa. Trễ là do bạn kẹt chứ không phải mình.”",
+                "intentTag": "anger",
+                "actionTag": "expose",
+                "effects": [
+                  { "stat": "pride", "delta": 11 },
+                  { "stat": "love", "delta": -7 },
+                  { "stat": "wisdom", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "outcome": { "text": "Không khí căng ra. Huy đỏ mặt, mắt né tránh.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Tan họp, Huy kéo bạn ra một góc: “Mình xin lỗi. Nhưng nếu sếp biết mình trễ, chắc mình bị cắt hợp đồng. Mình đang nuôi mẹ bệnh.”",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Huy",
+            "text": "Bạn phản hồi sao bây giờ?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f03_2_mercy_plan",
+                "text": "Tha thứ nhưng đặt kế hoạch rõ: lần sau báo sớm, cùng gỡ với sếp.",
+                "playerLine": "“Mình tha cho bạn. Nhưng lần sau đừng đẩy mình vô thế nữa. Giờ mình giúp bạn nói với sếp theo cách đỡ sốc.”",
+                "intentTag": "mercy",
+                "actionTag": "boundary_with_help",
+                "effects": [
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "humility", "delta": 4 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Bạn vừa giữ ranh giới vừa mở đường hàn gắn. Huy cúi đầu cảm ơn.", "next": "reflection:ref_forgive_03" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f03_2_cold",
+                "text": "Không tha: “Bạn tự lo đi, mình hết tin bạn rồi.”",
+                "playerLine": "“Mình nghe rồi, nhưng mình không chấp nhận. Bạn tự giải quyết với sếp đi.”",
+                "intentTag": "cut_off",
+                "actionTag": "withdraw",
+                "effects": [
+                  { "stat": "pride", "delta": 6 },
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "faith", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": { "text": "Bạn bảo vệ mình, nhưng cũng đóng cửa với Huy. Lòng bạn nhẹ một chút… rồi lại nặng.", "next": "reflection:ref_forgive_03" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f03_best",
+            "requiredChoiceIds": ["c_f03_1_correct", "c_f03_2_mercy_plan"],
+            "text": "Bạn chọn sự thật có khôn ngoan, rồi tha thứ có ranh giới. Mối quan hệ vẫn cứu được, và bạn không bị lợi dụng.",
+            "next": "reflection:ref_forgive_03"
+          },
+          {
+            "id": "o_f03_correct_cold",
+            "requiredChoiceIds": ["c_f03_1_correct", "c_f03_2_cold"],
+            "text": "Bạn xử lý đúng trong phòng họp, nhưng không mở đường tha thứ. Bạn giữ được danh dự, mất một cơ hội chữa lành.",
+            "next": "reflection:ref_forgive_03"
+          },
+          {
+            "id": "o_f03_expose_then_mercy",
+            "requiredChoiceIds": ["c_f03_1_expose", "c_f03_2_mercy_plan"],
+            "text": "Bạn “xả” cho đã rồi mới tha. Huy cảm ơn, nhưng vết ngượng vẫn còn đó trong nhóm.",
+            "next": "reflection:ref_forgive_03"
+          },
+          {
+            "id": "o_f03_expose_cold",
+            "requiredChoiceIds": ["c_f03_1_expose", "c_f03_2_cold"],
+            "text": "Bạn bóc thẳng và cắt đứt. Bạn thắng trận đó, nhưng trong lòng lại không thấy bình an.",
+            "next": "reflection:ref_forgive_03"
+          },
+          {
+            "id": "o_f03_fallback",
+            "requiredChoiceIds": [],
+            "text": "Sự thật và lòng thương xót cứ kéo bạn về hai phía. Câu hỏi là: bạn chọn cách nào giống Chúa hơn?",
+            "next": "reflection:ref_forgive_03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_04",
+      "topic": "forgiveness",
+      "title": "Cái Ví Thất Lạc",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_tuan", "name": "Tuấn", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn để quên ví sau giờ nhóm. Hôm sau, trong ví thiếu tiền mặt. Tuấn là người cuối cùng ở lại dọn với bạn.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Tuấn",
+            "text": "Bạn nhìn mình kiểu đó là sao? Mình… mình đâu có lấy.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Tuấn",
+            "text": "Bạn nói chuyện sao cho đúng đây?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f04_1_private",
+                "text": "Hỏi riêng, không kết tội: “Mình đang rối, giúp mình nhớ lại tối đó.”",
+                "playerLine": "“Tuấn, mình hỏi riêng thôi. Tối đó tụi mình dọn xong lúc mấy giờ? Bạn giúp mình nhớ lại được không?”",
+                "intentTag": "gentle",
+                "actionTag": "seek_truth",
+                "effects": [
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "love", "delta": 5 },
+                  { "stat": "pride", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Tuấn nhìn xuống, thở dài như đang đấu tranh.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f04_1_accuse",
+                "text": "Nói thẳng: “Có phải bạn lấy không?”",
+                "playerLine": "“Nói thiệt đi… có phải bạn lấy tiền trong ví mình không?”",
+                "intentTag": "suspicion",
+                "actionTag": "accuse",
+                "effects": [
+                  { "stat": "pride", "delta": 8 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Tuấn sững người. Mắt đỏ lên vì bị chạm tự ái.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Plot twist: Camera ở sảnh cho thấy một người lạ nhặt ví bạn. Tuấn không lấy. Nhưng Tuấn cũng vừa bị người nhà hỏi mượn tiền tối đó, nên bạn nhìn ánh mắt Tuấn là bạn đã “kết án” rồi.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Tuấn",
+            "text": "Bạn nói gì để kết lại chuyện này?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f04_2_apologize",
+                "text": "Xin lỗi rõ ràng, nhận sai vì đã nghi ngờ.",
+                "playerLine": "“Mình xin lỗi. Mình đã nghi bạn. Mình sai. Cho mình sửa, được không?”",
+                "intentTag": "repent",
+                "actionTag": "apologize",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "outcome": { "text": "Tuấn im một lát rồi gật đầu. Bạn thấy nhẹ, nhưng cũng xấu hổ.", "next": "reflection:ref_forgive_04" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f04_2_minimize",
+                "text": "Giảm nhẹ: “Thôi bỏ qua đi, chuyện nhỏ mà.”",
+                "playerLine": "“Thôi bỏ qua nha, cũng may là không phải bạn.”",
+                "intentTag": "avoid",
+                "actionTag": "minimize",
+                "effects": [
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "humility", "delta": -3 },
+                  { "stat": "pride", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": { "text": "Tuấn cười gượng. Chuyện qua, nhưng cái nhìn của bạn vẫn để lại dấu.", "next": "reflection:ref_forgive_04" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f04_clean_restore",
+            "requiredChoiceIds": ["c_f04_1_private", "c_f04_2_apologize"],
+            "text": "Bạn chọn cách hỏi khôn ngoan, rồi hạ mình xin lỗi. Niềm tin được hàn gắn sâu hơn cả trước đó.",
+            "next": "reflection:ref_forgive_04"
+          },
+          {
+            "id": "o_f04_private_minimize",
+            "requiredChoiceIds": ["c_f04_1_private", "c_f04_2_minimize"],
+            "text": "Bạn làm đúng nửa đầu, nhưng né xin lỗi thật lòng. Vết xước nhỏ vẫn còn trong ánh mắt Tuấn.",
+            "next": "reflection:ref_forgive_04"
+          },
+          {
+            "id": "o_f04_accuse_apologize",
+            "requiredChoiceIds": ["c_f04_1_accuse", "c_f04_2_apologize"],
+            "text": "Bạn đã kết án sai, nhưng biết quay lại xin lỗi. Cái giá là sự ngượng ngùng—nhưng đó là giá của chữa lành.",
+            "next": "reflection:ref_forgive_04"
+          },
+          {
+            "id": "o_f04_accuse_minimize",
+            "requiredChoiceIds": ["c_f04_1_accuse", "c_f04_2_minimize"],
+            "text": "Bạn nghi ngờ rồi coi như không có gì. Tuấn không cãi, nhưng lòng bạn và lòng Tuấn đều không yên.",
+            "next": "reflection:ref_forgive_04"
+          },
+          {
+            "id": "o_f04_fallback",
+            "requiredChoiceIds": [],
+            "text": "Có lúc tha thứ bắt đầu từ việc thừa nhận: mình đã nhìn người khác bằng ánh mắt không công bằng.",
+            "next": "reflection:ref_forgive_04"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_05",
+      "topic": "forgiveness",
+      "title": "Ảnh Chụp Bị Tag Sai",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "npc_my", "name": "My", "portraitKey": "friend_01" },
+          { "id": "npc_khoa", "name": "Khoa", "portraitKey": "friend_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "My đăng một tấm ảnh trong buổi nhóm và tag bạn vào caption nghe mỉa: “Ai cũng phục vụ, trừ một người bận ‘việc riêng’.” Nhiều người hiểu lầm là bạn lười.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Khoa",
+            "text": "Ê, bạn có thấy post của My chưa? Mình đọc mà thấy kỳ…",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "My",
+            "text": "Bạn làm gì với cái post đó?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f05_1_dm",
+                "text": "Nhắn riêng My: hỏi lý do và xin gỡ tag, không làm lớn.",
+                "playerLine": "“My, mình thấy post rồi. Mình buồn lắm. Bạn cho mình hỏi sao bạn viết vậy, và gỡ tag giúp mình được không?”",
+                "intentTag": "seek_peace",
+                "actionTag": "dm",
+                "effects": [
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "My seen nhưng chưa trả lời. Tim bạn đập hơi nhanh.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f05_1_comment",
+                "text": "Cmt công khai: “Bạn nói ai vậy? Nói rõ coi.”",
+                "playerLine": "“Bạn đang nói mình hả? Bạn nói rõ ra đi.”",
+                "intentTag": "defend",
+                "actionTag": "public_callout",
+                "effects": [
+                  { "stat": "pride", "delta": 12 },
+                  { "stat": "love", "delta": -7 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "outcome": { "text": "Comment nổ ra. Người ngoài cũng nhảy vô góp ý.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Plot twist: My tưởng bạn “bận việc riêng” vì thấy bạn đi ra ngoài giữa buổi. Thật ra bạn chạy ra nghe điện thoại bệnh viện báo tin người thân đang cấp cứu. Bạn chưa kể với ai.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Khoa",
+            "text": "Giờ bạn muốn xử lý thế nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f05_2_explain_soft",
+                "text": "Nói sự thật vừa đủ với My (và nếu cần, với nhóm), rồi tha thứ.",
+                "playerLine": "“My, hôm đó mình ra ngoài vì bệnh viện gọi. Mình không muốn kể, nhưng mình cũng không muốn bị hiểu lầm. Mình tha cho bạn, chỉ mong bạn sửa lại giúp mình.”",
+                "intentTag": "truth_in_love",
+                "actionTag": "explain_and_forgive",
+                "effects": [
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 5 },
+                  { "stat": "wisdom", "delta": 5 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "outcome": { "text": "My sững lại, rồi xin lỗi. Khoa cũng đứng ra dập drama.", "next": "reflection:ref_forgive_05" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f05_2_keep_secret",
+                "text": "Không nói gì thêm, tự gỡ tag và nuốt ấm ức.",
+                "playerLine": "“Thôi, mình tự xử lý. Mình không muốn kể chuyện riêng.”",
+                "intentTag": "silent_endure",
+                "actionTag": "withdraw",
+                "effects": [
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "pride", "delta": 5 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "outcome": { "text": "Bạn giữ được bí mật, nhưng cái hiểu lầm vẫn lơ lửng trong nhóm.", "next": "reflection:ref_forgive_05" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f05_dm_explain",
+            "requiredChoiceIds": ["c_f05_1_dm", "c_f05_2_explain_soft"],
+            "text": "Bạn chọn riêng tư, rồi nói sự thật vừa đủ và tha thứ. Drama được dập, và My học cách cẩn trọng.",
+            "next": "reflection:ref_forgive_05"
+          },
+          {
+            "id": "o_f05_dm_silent",
+            "requiredChoiceIds": ["c_f05_1_dm", "c_f05_2_keep_secret"],
+            "text": "Bạn xử lý êm, nhưng để người khác tự suy đoán. Bạn yên ngoài mặt, trong lòng thì mỏi.",
+            "next": "reflection:ref_forgive_05"
+          },
+          {
+            "id": "o_f05_public_then_explain",
+            "requiredChoiceIds": ["c_f05_1_comment", "c_f05_2_explain_soft"],
+            "text": "Bạn kéo chuyện ra công khai rồi mới hạ giọng. Sự thật cứu bạn, nhưng cách làm khiến nhiều người ngại bạn một thời gian.",
+            "next": "reflection:ref_forgive_05"
+          },
+          {
+            "id": "o_f05_public_then_silent",
+            "requiredChoiceIds": ["c_f05_1_comment", "c_f05_2_keep_secret"],
+            "text": "Bạn bùng lên rồi im luôn. Cái im lặng sau đó khiến hiểu lầm thành “tin đồn” dai hơn.",
+            "next": "reflection:ref_forgive_05"
+          },
+          {
+            "id": "o_f05_fallback",
+            "requiredChoiceIds": [],
+            "text": "Tha thứ đôi khi không phải quên đi—mà là chọn cách nói sự thật mà không làm tổn thương thêm.",
+            "next": "reflection:ref_forgive_05"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_06",
+      "topic": "forgiveness",
+      "title": "Tiền Mượn, Lời Hứa Trễ",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_thao", "name": "Thảo", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Thảo mượn bạn một khoản nhỏ, hứa cuối tháng trả. Hai tháng rồi vẫn im. Bạn thấy Thảo vẫn đi cà phê, check-in bình thường.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Thảo",
+            "text": "Ê, bữa nào tụi mình đi ăn nha. Dạo này mình bận quá trời.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Thảo",
+            "text": "Bạn nhắc tiền sao cho ra chuyện?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f06_1_clear_gentle",
+                "text": "Nhắc thẳng nhưng lịch sự: đưa hạn cụ thể và phương án trả dần.",
+                "playerLine": "“Thảo ơi, chuyện tiền bữa trước… mình cần rõ. Bạn trả dần mỗi tuần cũng được, nhưng mình cần mốc cụ thể.”",
+                "intentTag": "boundary",
+                "actionTag": "clarify_terms",
+                "effects": [
+                  { "stat": "wisdom", "delta": 8 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "pride", "delta": -1 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Thảo cứng người, rồi cười gượng.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f06_1_sarcasm",
+                "text": "Mỉa: “Cà phê đều mà trả tiền thì quên ha.”",
+                "playerLine": "“Bạn đi cà phê đều, còn tiền trả mình thì… quên luôn hả?”",
+                "intentTag": "resent",
+                "actionTag": "sarcasm",
+                "effects": [
+                  { "stat": "pride", "delta": 9 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Thảo im. Không khí tự nhiên nặng hẳn.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Plot twist: Thảo thú nhận đang trả nợ viện phí cho ba, nên không dám nói. Nhưng bạn cũng đang kẹt tiền học cho em. Hai người đều có lý do thật.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Thảo",
+            "text": "Bạn chọn hướng nào tiếp theo?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f06_2_restructure",
+                "text": "Tha thứ và thương lượng lại kế hoạch trả, không làm Thảo mất mặt.",
+                "playerLine": "“Mình hiểu. Mình không ép bạn trả một cục. Mình tha cho cái chuyện im luôn, nhưng mình cần lịch trả rõ để mình lo việc nhà.”",
+                "intentTag": "mercy_with_structure",
+                "actionTag": "restructure",
+                "effects": [
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "humility", "delta": 4 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Thảo rưng rưng. Hai người chốt lịch trả, nhẹ hẳn.", "next": "reflection:ref_forgive_06" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f06_2_demand",
+                "text": "Không chấp nhận: yêu cầu trả ngay hoặc cắt liên lạc.",
+                "playerLine": "“Mình thông cảm, nhưng mình cũng cần. Bạn xoay cách nào trả mình trong tuần này. Không thì… thôi.”",
+                "intentTag": "hardline",
+                "actionTag": "demand",
+                "effects": [
+                  { "stat": "pride", "delta": 7 },
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "faith", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": { "text": "Bạn có thể lấy lại tiền nhanh… hoặc mất một người bạn lâu năm.", "next": "reflection:ref_forgive_06" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f06_clear_restructure",
+            "requiredChoiceIds": ["c_f06_1_clear_gentle", "c_f06_2_restructure"],
+            "text": "Bạn vừa rõ ràng vừa thương xót. Tha thứ không làm bạn yếu—nó làm bạn trưởng thành và khôn ngoan.",
+            "next": "reflection:ref_forgive_06"
+          },
+          {
+            "id": "o_f06_clear_demand",
+            "requiredChoiceIds": ["c_f06_1_clear_gentle", "c_f06_2_demand"],
+            "text": "Bạn nói chuyện đàng hoàng, nhưng kết lại bằng tối hậu thư. Bạn giữ được quyền lợi, nhưng tình bạn rung mạnh.",
+            "next": "reflection:ref_forgive_06"
+          },
+          {
+            "id": "o_f06_sarcasm_restructure",
+            "requiredChoiceIds": ["c_f06_1_sarcasm", "c_f06_2_restructure"],
+            "text": "Bạn lỡ mỉa mai, nhưng sau đó chọn tha thứ có cấu trúc. Bạn học được bài học về cách nói.",
+            "next": "reflection:ref_forgive_06"
+          },
+          {
+            "id": "o_f06_sarcasm_demand",
+            "requiredChoiceIds": ["c_f06_1_sarcasm", "c_f06_2_demand"],
+            "text": "Bạn mỉa mai rồi dồn ép. Có thể bạn đúng, nhưng trái tim bạn không còn mềm.",
+            "next": "reflection:ref_forgive_06"
+          },
+          {
+            "id": "o_f06_fallback",
+            "requiredChoiceIds": [],
+            "text": "Tha thứ không xoá nợ. Tha thứ là cách bạn chọn nói chuyện khi cả hai đều đang kẹt.",
+            "next": "reflection:ref_forgive_06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_07",
+      "topic": "forgiveness",
+      "title": "Bữa Cơm Có Câu Nói Độc",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_me", "name": "Mẹ", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Trong bữa cơm, Mẹ buột miệng: “Con làm vậy thì có khác gì người ta đâu.” Câu nói nghe như phủi sạch cố gắng của bạn suốt mấy tháng.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Mẹ",
+            "text": "Mẹ nói vậy thôi… chứ Mẹ lo cho con.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Mẹ",
+            "text": "Bạn phản ứng sao ngay lúc đó?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f07_1_hold_tongue",
+                "text": "Im một nhịp, rồi nói thật cảm xúc mà không hỗn.",
+                "playerLine": "“Mẹ, con nghe câu đó con đau. Con không muốn cãi, nhưng con muốn Mẹ biết con đang cố thật.”",
+                "intentTag": "honest_soft",
+                "actionTag": "express",
+                "effects": [
+                  { "stat": "humility", "delta": 6 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "wisdom", "delta": 5 },
+                  { "stat": "pride", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "outcome": { "text": "Mẹ nhìn bạn lâu hơn bình thường, như bị chạm đúng chỗ.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f07_1_snap",
+                "text": "Bật lại: “Mẹ có bao giờ hiểu con đâu!”",
+                "playerLine": "“Mẹ lúc nào cũng nói vậy! Mẹ có hiểu con đâu!”",
+                "intentTag": "explode",
+                "actionTag": "snap",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Không khí bữa cơm đóng băng. Mẹ đặt đũa xuống.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Plot twist: Bạn vô tình nghe Mẹ nói chuyện điện thoại với dì: “Tui sợ nó gục… tui không biết nói sao cho nó mạnh lên.” Mẹ không ghét bạn—Mẹ sợ mất bạn.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Mẹ",
+            "text": "Giờ bạn chọn cách hàn gắn thế nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f07_2_forgive_hug",
+                "text": "Chủ động xin lỗi phần nóng nảy (nếu có) và tha thứ cho lời nói của Mẹ.",
+                "playerLine": "“Mẹ, con xin lỗi vì con phản ứng. Con cũng tha cho câu nói lúc nãy. Mẹ đừng lo một mình, con cũng đang học mạnh lên.”",
+                "intentTag": "reconcile",
+                "actionTag": "forgive",
+                "effects": [
+                  { "stat": "love", "delta": 9 },
+                  { "stat": "humility", "delta": 7 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Mẹ thở ra, mắt đỏ. Không cần nhiều chữ, chỉ cần một nhịp mềm lại.", "next": "reflection:ref_forgive_07" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f07_2_silent_wall",
+                "text": "Giữ im lặng, để thời gian tự nguội.",
+                "playerLine": "“Con mệt. Con lên phòng trước.”",
+                "intentTag": "withdraw",
+                "actionTag": "wall",
+                "effects": [
+                  { "stat": "wisdom", "delta": 1 },
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "pride", "delta": 5 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": { "text": "Bạn tránh được thêm lời tổn thương, nhưng khoảng cách trong nhà dài ra.", "next": "reflection:ref_forgive_07" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f07_soft_reconcile",
+            "requiredChoiceIds": ["c_f07_1_hold_tongue", "c_f07_2_forgive_hug"],
+            "text": "Bạn chọn nói thật mà mềm, rồi chọn tha thứ. Mối quan hệ mẹ-con được nối lại bằng sự hiểu, không phải thắng thua.",
+            "next": "reflection:ref_forgive_07"
+          },
+          {
+            "id": "o_f07_soft_wall",
+            "requiredChoiceIds": ["c_f07_1_hold_tongue", "c_f07_2_silent_wall"],
+            "text": "Bạn xử lý khôn ngoan lúc đầu, nhưng kết lại bằng im lặng. Bạn yên, nhưng nhà vẫn lạnh.",
+            "next": "reflection:ref_forgive_07"
+          },
+          {
+            "id": "o_f07_snap_reconcile",
+            "requiredChoiceIds": ["c_f07_1_snap", "c_f07_2_forgive_hug"],
+            "text": "Bạn lỡ nổ, nhưng biết quay đầu. Sự xin lỗi không làm bạn nhỏ—nó làm bạn thật.",
+            "next": "reflection:ref_forgive_07"
+          },
+          {
+            "id": "o_f07_snap_wall",
+            "requiredChoiceIds": ["c_f07_1_snap", "c_f07_2_silent_wall"],
+            "text": "Bạn nổ rồi rút. Cái tôi được bảo vệ, nhưng tình yêu không được chữa.",
+            "next": "reflection:ref_forgive_07"
+          },
+          {
+            "id": "o_f07_fallback",
+            "requiredChoiceIds": [],
+            "text": "Có những lời nói độc bắt nguồn từ nỗi sợ. Tha thứ là nhìn sâu hơn cái chữ mình nghe.",
+            "next": "reflection:ref_forgive_07"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_forgive_08",
+      "topic": "forgiveness",
+      "title": "Bị Loại Khỏi Danh Sách",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [{ "id": "npc_trang", "name": "Trang", "portraitKey": "friend_01" }]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn phát hiện Trang đã đổi lịch phục vụ và bỏ tên bạn khỏi danh sách mà không nói. Bạn biết chuyện qua người khác. Cảm giác như bị coi thường.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Trang",
+            "text": "Ủa… bạn biết rồi hả? Mình định nói sau.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Trang",
+            "text": "Bạn chọn nói sao?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f08_1_ask_why",
+                "text": "Hỏi lý do trước, không kết tội ngay.",
+                "playerLine": "“Trang, mình muốn hiểu. Sao bạn đổi lịch mà không nói mình một tiếng?”",
+                "intentTag": "clarify",
+                "actionTag": "ask",
+                "effects": [
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "humility", "delta": 3 },
+                  { "stat": "pride", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Trang cắn môi, nhìn như đang cân đo có nên nói thật.", "next": "" },
+                "nextTurnId": "t4"
+              },
+              {
+                "id": "c_f08_1_attack",
+                "text": "Nói thẳng kiểu trách: “Bạn coi mình ra gì vậy?”",
+                "playerLine": "“Bạn coi mình ra gì mà tự ý gạch tên mình vậy?”",
+                "intentTag": "hurt_pride",
+                "actionTag": "accuse",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Trang đỏ mặt, giọng bắt đầu gắt lại.", "next": "" },
+                "nextTurnId": "t4"
+              }
+            ]
+          },
+          {
+            "id": "t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Plot twist: Trang nói thật—có người góp ý bạn hay “làm nhanh cho xong” nên các bạn mới không dám giao phần cần kiên nhẫn. Trang sợ nói thẳng sẽ làm bạn tự ái, nên chọn cách né.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Trang",
+            "text": "Bạn phản ứng sao với sự thật này?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_f08_2_forgive_and_learn",
+                "text": "Tha thứ cho cách làm của Trang, và xin feedback cụ thể để sửa.",
+                "playerLine": "“Mình buồn vì bạn né, nhưng mình tha. Bạn nói rõ giúp mình chỗ nào mình làm người ta khó chịu, để mình sửa.”",
+                "intentTag": "teachability",
+                "actionTag": "forgive_and_grow",
+                "effects": [
+                  { "stat": "humility", "delta": 9 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "love", "delta": 5 },
+                  { "stat": "pride", "delta": -7 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "outcome": { "text": "Trang thở phào. Hai bạn hẹn nhau làm chung một buổi để bạn tập chậm lại.", "next": "reflection:ref_forgive_08" },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c_f08_2_defend",
+                "text": "Tự vệ: “Mình vậy mới hiệu quả. Ai không chịu thì thôi.”",
+                "playerLine": "“Mình làm nhanh là vì mình muốn xong việc. Ai không chịu thì thôi, mình khỏi phục vụ nữa.”",
+                "intentTag": "defend_pride",
+                "actionTag": "withdraw_in_pride",
+                "effects": [
+                  { "stat": "pride", "delta": 11 },
+                  { "stat": "humility", "delta": -5 },
+                  { "stat": "love", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": { "text": "Bạn bảo vệ cái tôi, nhưng mất cơ hội trưởng thành và mất luôn sự tin tưởng của nhóm.", "next": "reflection:ref_forgive_08" },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_f08_ask_learn",
+            "requiredChoiceIds": ["c_f08_1_ask_why", "c_f08_2_forgive_and_learn"],
+            "text": "Bạn hỏi trước, rồi tha thứ và học. Kết quả: bạn giữ được lòng người và còn nâng chất phục vụ.",
+            "next": "reflection:ref_forgive_08"
+          },
+          {
+            "id": "o_f08_ask_defend",
+            "requiredChoiceIds": ["c_f08_1_ask_why", "c_f08_2_defend"],
+            "text": "Bạn bình tĩnh ban đầu, nhưng cuối cùng vẫn tự vệ. Sự thật đến rồi… mà bạn không nhận.",
+            "next": "reflection:ref_forgive_08"
+          },
+          {
+            "id": "o_f08_attack_learn",
+            "requiredChoiceIds": ["c_f08_1_attack", "c_f08_2_forgive_and_learn"],
+            "text": "Bạn trách trước, rồi mới mềm lại. Vẫn có chữa lành, nhưng bạn phải trả giá bằng sự ngượng và một chút mất điểm.",
+            "next": "reflection:ref_forgive_08"
+          },
+          {
+            "id": "o_f08_attack_defend",
+            "requiredChoiceIds": ["c_f08_1_attack", "c_f08_2_defend"],
+            "text": "Bạn công kích rồi tự vệ. Mối quan hệ rạn, và bạn rời nhóm trong cái tôi.",
+            "next": "reflection:ref_forgive_08"
+          },
+          {
+            "id": "o_f08_fallback",
+            "requiredChoiceIds": [],
+            "text": "Tha thứ đôi khi là chấp nhận feedback khó nghe—và chọn lớn lên thay vì chọn hơn thua.",
+            "next": "reflection:ref_forgive_08"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_forgive_02",
+      "topic": "forgiveness",
+      "verseRef": "Châm-ngôn 15:1",
+      "verseText": "Lời đáp êm dịu làm nguôi cơn giận; lời nói thô bạo khơi dậy cơn thịnh nộ.",
+      "questions": [
+        "Tin nhắn bị gỡ chạm đúng chỗ nào trong lòng bạn: tự ái, sợ bị hiểu lầm, hay cảm giác bị phản bội?",
+        "Bạn đang muốn hàn gắn, hay đang muốn người kia “thấy mình đúng”?",
+        "Nếu bạn chọn tha thứ, bạn cần đặt ranh giới cụ thể nào để chuyện này không lặp lại?"
+      ]
+    },
+    {
+      "id": "ref_forgive_03",
+      "topic": "forgiveness",
+      "verseRef": "Ma-thi-ơ 5:9",
+      "verseText": "Phước cho những người hòa giải, vì họ sẽ được gọi là con cái Đức Chúa Trời.",
+      "questions": [
+        "Trong lúc bị đổ lỗi, điều bạn sợ mất nhất là danh dự hay sự bình an?",
+        "Bạn có thể vừa giữ sự thật vừa giữ lòng thương xót không? Cách nào là “hòa giải” chứ không phải “dập” người ta?",
+        "Bạn muốn người kia sửa sai theo cách nào để bạn thật sự có thể tha thứ?"
+      ]
+    },
+    {
+      "id": "ref_forgive_04",
+      "topic": "forgiveness",
+      "verseRef": "I Cô-rinh-tô 13:7",
+      "verseText": "Tình yêu… tin mọi sự, hy vọng mọi sự, chịu đựng mọi sự.",
+      "questions": [
+        "Bạn đã “kết án” ai trong lòng trước khi có đủ sự thật chưa?",
+        "Bạn phân biệt sao giữa cẩn trọng khôn ngoan và nghi ngờ làm tổn thương người khác?",
+        "Nếu bạn cần xin lỗi, bạn sẽ xin lỗi kiểu nào để chữa lành thật, không phải cho xong chuyện?"
+      ]
+    },
+    {
+      "id": "ref_forgive_05",
+      "topic": "forgiveness",
+      "verseRef": "Gia-cơ 1:19",
+      "verseText": "Hãy mau nghe, chậm nói, chậm giận.",
+      "questions": [
+        "Bạn đang đau vì bị hiểu lầm, hay vì bị “bêu” trước đám đông?",
+        "Bạn muốn bảo vệ hình ảnh của mình, hay bảo vệ mối quan hệ? Có thể làm cả hai không?",
+        "Bạn có thể nói sự thật “vừa đủ” như thế nào để không biến chuyện riêng thành vũ khí?"
+      ]
+    },
+    {
+      "id": "ref_forgive_06",
+      "topic": "forgiveness",
+      "verseRef": "Ma-thi-ơ 6:12",
+      "verseText": "Xin tha tội cho chúng con, như chúng con cũng tha cho kẻ phạm tội với chúng con.",
+      "questions": [
+        "Bạn đang khó tha thứ vì tiền, hay vì cảm giác bị coi thường và bị im lặng?",
+        "Tha thứ có nghĩa là bỏ qua trách nhiệm không? Bạn cần một “kế hoạch” nào để vừa thương xót vừa rõ ràng?",
+        "Bạn có đang đòi người kia trả bằng sự xấu hổ thay vì chỉ trả bằng trách nhiệm không?"
+      ]
+    },
+    {
+      "id": "ref_forgive_07",
+      "topic": "forgiveness",
+      "verseRef": "Ê-phê-sô 4:26-27",
+      "verseText": "Dầu giận cũng đừng phạm tội… đừng để ma quỷ có cơ hội.",
+      "questions": [
+        "Câu nói của Mẹ làm bạn đau vì nội dung, hay vì bạn thấy mình “không được nhìn nhận”?",
+        "Bạn có thể vừa nói thật cảm xúc vừa tôn trọng không? Một câu bạn muốn nói lại theo cách mềm hơn là gì?",
+        "Bạn cần tha thứ cho ai trước: Mẹ, hay chính mình vì phản ứng của mình?"
+      ]
+    },
+    {
+      "id": "ref_forgive_08",
+      "topic": "forgiveness",
+      "verseRef": "Châm-ngôn 27:5-6",
+      "verseText": "Lời quở trách công khai tốt hơn tình yêu giấu kín… Vết thương của bạn hữu là thành thật.",
+      "questions": [
+        "Bạn thấy đau vì bị gạch tên, hay vì bị góp ý mà không ai nói thẳng với bạn?",
+        "Bạn có sẵn sàng coi feedback khó nghe là cơ hội lớn lên không? Nếu có, bạn muốn xin feedback cụ thể chỗ nào?",
+        "Tha thứ trong tình huống này sẽ trông như thế nào: hàn gắn, thay đổi, hay rút lui có bình an?"
+      ]
+    }
+  ]
+}

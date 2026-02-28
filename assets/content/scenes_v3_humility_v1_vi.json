@@ -1,0 +1,1263 @@
+{
+  "scenes": [
+    {
+      "id": "scene_humility_01",
+      "topic": "humility",
+      "title": "Tín Nhắn Credit Bị Gắn Sai",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "vy", "name": "Vy", "portraitKey": "friend_01" },
+          { "id": "phuc", "name": "Phúc", "portraitKey": "coworker_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn vừa đẩy xong bản thiết kế gấp cho team. Sáng ra, Phúc đăng lên group: “Vy làm phần này đỉnh quá!” rồi gắn tag Vy, không hề nhắc bạn.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Vy",
+            "text": "Ê… cái post đó… tao thấy kỳ kỳ. Nhưng mọi người đang khen, tao cũng… không biết xử sao.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nhìn màn hình, tim nóng lên. Bạn chọn phản ứng nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_public_correct",
+                "text": "Nhắn ngay trong group để chỉnh lại credit cho rõ ràng.",
+                "playerLine": "Mọi người ơi, phần đó mình làm chính, Vy có support vài đoạn nha.",
+                "intentTag": "assert",
+                "actionTag": "clarify_public",
+                "effects": [
+                  { "stat": "humility", "delta": -4 },
+                  { "stat": "wisdom", "delta": 3 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "nextTurnId": "t4_after_public",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_private_cover",
+                "text": "Inbox Vy trước, nói nhẹ và xin bạn ấy tự sửa lại.",
+                "playerLine": "Vy ơi, cái credit đó hơi sai. Nếu được, mày nói lại với Phúc giúp tao nha.",
+                "intentTag": "humble",
+                "actionTag": "clarify_private",
+                "effects": [
+                  { "stat": "humility", "delta": 7 },
+                  { "stat": "wisdom", "delta": 5 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "worried" },
+                "nextTurnId": "t4_after_private",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_public",
+            "speaker": "Phúc",
+            "text": "Ơ… vậy hả? Xin lỗi nha. Mà… sao không nói riêng cho nhẹ?",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_private",
+            "speaker": "Vy",
+            "text": "Tao sẽ nói lại. Nhưng… tao sợ mọi người nghĩ tao “ăn ké”. Với lại… Phúc nhắn riêng tao kêu cứ để vậy cho “êm”.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Bây giờ mới lộ ra: Phúc cố tình đẩy Vy lên để giữ “hòa khí”, nhưng đang làm bạn bị mất công sức. Bạn làm gì tiếp?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_take_loss_help_vy",
+                "text": "Chấp nhận thiệt một chút, nhưng bảo vệ Vy và giữ team yên.",
+                "playerLine": "Thôi được, để tao nói với lead theo cách không làm mày kẹt. Mày khỏi đứng mũi chịu sào.",
+                "intentTag": "humble",
+                "actionTag": "protect_other",
+                "effects": [
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "relieved" },
+                "outcome": {
+                  "text": "Bạn chịu mất spotlight, nhưng giữ được người và giữ được lòng. Vài ngày sau, lead tự hỏi lại và công nhận đúng người đúng việc.",
+                  "next": "reflection:ref_humility_01"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_escalate_callout",
+                "text": "Gọi thẳng Phúc ra, làm rõ ai làm gì trước cả nhóm.",
+                "playerLine": "Phúc, ông đừng chơi kiểu này nữa. Tôi làm thì nói tôi làm. Đừng đẩy người khác lên cho “êm”.",
+                "intentTag": "assert",
+                "actionTag": "confront",
+                "effects": [
+                  { "stat": "wisdom", "delta": -3 },
+                  { "stat": "humility", "delta": -6 },
+                  { "stat": "pride", "delta": 10 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "outcome": {
+                  "text": "Bạn lấy lại credit ngay, nhưng Vy bị kẹt giữa hai bên và bầu không khí team rạn nứt. Người ta nhớ “cách bạn nói” lâu hơn “điều bạn đúng”.",
+                  "next": "reflection:ref_humility_01"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_silent_bitter",
+                "text": "Im luôn cho xong, nhưng trong lòng bực và bắt đầu xa team.",
+                "playerLine": "Ừ… thôi. Tùy.",
+                "intentTag": "avoid",
+                "actionTag": "withdraw",
+                "effects": [
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "cold", "npc": "sad" },
+                "outcome": {
+                  "text": "Bề ngoài yên, bên trong bạn đóng lại. Bạn không cãi, nhưng cũng không còn muốn hiệp nhất—và đó là cái giá âm thầm nhất.",
+                  "next": "reflection:ref_humility_01"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o01_redemptive",
+            "requiredChoiceIds": ["c1_private_cover", "c2_take_loss_help_vy"],
+            "text": "Bạn chọn hạ mình để bảo vệ người khác, nhưng vẫn xử lý đúng cách. Sự thật được sáng tỏ mà không làm ai bị nghiền nát.",
+            "next": "reflection:ref_humility_01"
+          },
+          {
+            "id": "o01_right_wrong_way",
+            "requiredChoiceIds": ["c2_escalate_callout"],
+            "text": "Bạn đúng, nhưng cách bạn đẩy người khác vào góc khiến lòng người bị trầy. Bạn thắng một trận, nhưng mất một phần niềm tin.",
+            "next": "reflection:ref_humility_01"
+          },
+          {
+            "id": "o01_silent_cost",
+            "requiredChoiceIds": ["c2_silent_bitter"],
+            "text": "Bạn né được xung đột, nhưng cái tôi âm thầm lớn lên dưới lớp im lặng. Team không đổ, nhưng bạn cũng không còn thuộc về nữa.",
+            "next": "reflection:ref_humility_01"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_02",
+      "topic": "humility",
+      "title": "Xin Lỗi Trong Nhóm Phục Vụ",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "lam", "name": "Lâm", "portraitKey": "leader_01" },
+          { "id": "nhi", "name": "Nhi", "portraitKey": "friend_02" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Buổi tập chương trình Chúa nhật bị trễ vì bạn đổi thứ tự bài mà không báo. Lâm phải chạy lại hết checklist, còn Nhi thì bị “dính” lỗi âm thanh trước mọi người.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Nhi",
+            "text": "Mình bị quê quá… mọi người nhìn mình như mình làm sai hết vậy.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Dẫn chuyện",
+            "text": "Trong đầu bạn có đủ lý do: “mình chỉ muốn mọi thứ tốt hơn thôi”. Bạn chọn nói gì ngay lúc này?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_explain_self",
+                "text": "Giải thích ngay để mọi người hiểu bạn không cố ý.",
+                "playerLine": "Mình đổi vì thấy flow hợp hơn, chứ không phải mình coi thường quy trình đâu.",
+                "intentTag": "defend",
+                "actionTag": "explain",
+                "effects": [
+                  { "stat": "humility", "delta": -5 },
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "pride", "delta": 7 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "nextTurnId": "t4_after_defend",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_own_fault",
+                "text": "Nhận lỗi rõ ràng trước, không vòng vo.",
+                "playerLine": "Lỗi mình. Mình đổi mà không báo, làm mọi người bị kẹt. Xin lỗi nha.",
+                "intentTag": "humble",
+                "actionTag": "apologize",
+                "effects": [
+                  { "stat": "humility", "delta": 12 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "sad" },
+                "nextTurnId": "t4_after_apology",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_defend",
+            "speaker": "Lâm",
+            "text": "Ừ mình hiểu ý bạn… nhưng hậu quả là người khác gánh. Giờ bạn muốn sửa sao?",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_apology",
+            "speaker": "Lâm",
+            "text": "Cảm ơn bạn nói thẳng. Giờ mình cần bạn giúp sửa. Bạn chịu làm phần “dơ” không?",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Dẫn chuyện",
+            "text": "“Phần dơ” là: bạn đứng ra nhắn xin lỗi nhóm chung, rồi ở lại dọn dẹp và chạy thử lại từ đầu. Bạn chọn sao?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_take_dirty_work",
+                "text": "Nhận làm hết: xin lỗi, dọn, chạy lại, không đổ cho ai.",
+                "playerLine": "Ừ, để mình làm. Mình muốn mọi thứ trở lại ổn, và mình chịu trách nhiệm.",
+                "intentTag": "humble",
+                "actionTag": "serve",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "relieved" },
+                "outcome": {
+                  "text": "Bạn mất mặt một chút, nhưng lòng nhóm nhẹ lại. Điều bạn sửa không chỉ là chương trình—mà là niềm tin.",
+                  "next": "reflection:ref_humility_02"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_delegate_save_face",
+                "text": "Nhờ Nhi nhắn xin lỗi vì “liên quan âm thanh”, bạn chỉ ở lại hỗ trợ.",
+                "playerLine": "Hay để Nhi nhắn cho nhanh, mình ở lại set up lại cho kịp…",
+                "intentTag": "avoid",
+                "actionTag": "shift_blame",
+                "effects": [
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "humility", "delta": -8 },
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "pride", "delta": 9 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn giữ được mặt, nhưng Nhi gánh thêm một lần nữa. Nhóm không nói ra, mà bắt đầu giữ khoảng cách với bạn.",
+                  "next": "reflection:ref_humility_02"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_quiet_fix_only",
+                "text": "Không xin lỗi công khai, chỉ âm thầm sửa kỹ thuật cho xong.",
+                "playerLine": "Để mình làm lại từ đầu cho kịp giờ. Chuyện xin lỗi… để sau.",
+                "intentTag": "fix",
+                "actionTag": "silent_fix",
+                "effects": [
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "humility", "delta": -2 },
+                  { "stat": "love", "delta": -2 },
+                  { "stat": "pride", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "outcome": {
+                  "text": "Chương trình chạy được, nhưng vết xước trong lòng người không tự lành. Bạn làm đúng việc, nhưng né đúng chỗ cần hạ mình.",
+                  "next": "reflection:ref_humility_02"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o02_restore_trust",
+            "requiredChoiceIds": ["c1_own_fault", "c2_take_dirty_work"],
+            "text": "Bạn hạ mình thật, nên bầu không khí đổi thật. Từ đó nhóm tin bạn không chỉ giỏi—mà còn đáng tin.",
+            "next": "reflection:ref_humility_02"
+          },
+          {
+            "id": "o02_face_over_people",
+            "requiredChoiceIds": ["c2_delegate_save_face"],
+            "text": "Bạn bảo vệ cái tôi bằng cách đẩy gánh qua người khác. Nhóm không la, nhưng họ nhớ.",
+            "next": "reflection:ref_humility_02"
+          },
+          {
+            "id": "o02_half_fix",
+            "requiredChoiceIds": ["c2_quiet_fix_only"],
+            "text": "Bạn sửa kỹ thuật, nhưng không sửa mối quan hệ. Khiêm nhường không phải chỉ ‘làm cho xong’—mà là ‘hạ mình cho đúng’.",
+            "next": "reflection:ref_humility_02"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_03",
+      "topic": "humility",
+      "title": "Bài Thuyết Trình Bị Cướp Mic",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "khoa", "name": "Khoa", "portraitKey": "classmate_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Nhóm bạn thuyết trình. Bạn chuẩn bị nội dung chính, Khoa phụ slide. Lên tới phần Q&A, Khoa nói liên tục như thể mọi thứ là do bạn ấy làm.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Khoa",
+            "text": "Tụi em chọn hướng này vì… (Khoa quay qua nhìn bạn) ừ… nói chung là tụi em đã phân tích rất kỹ.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn có 10 giây để chen vào. Bạn chọn cách nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_interrupt_take_back",
+                "text": "Cắt lời nhẹ nhưng giành mic lại.",
+                "playerLine": "Cho mình bổ sung chỗ này nha, vì phần phân tích dữ liệu mình làm trực tiếp.",
+                "intentTag": "assert",
+                "actionTag": "interrupt",
+                "effects": [
+                  { "stat": "wisdom", "delta": 3 },
+                  { "stat": "humility", "delta": -3 },
+                  { "stat": "pride", "delta": 5 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "nextTurnId": "t4_after_interrupt",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_hold_for_now",
+                "text": "Nhịn trước, chờ hết buổi rồi nói riêng.",
+                "playerLine": "(Bạn hít sâu) Dạ… tụi em sẽ trả lời đầy đủ sau phần này ạ.",
+                "intentTag": "humble",
+                "actionTag": "hold",
+                "effects": [
+                  { "stat": "humility", "delta": 6 },
+                  { "stat": "pride", "delta": -3 },
+                  { "stat": "wisdom", "delta": -1 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "confident" },
+                "nextTurnId": "t4_after_hold",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_interrupt",
+            "speaker": "Dẫn chuyện",
+            "text": "Giảng viên gật gù, nhưng Khoa hơi sượng. Kết thúc giờ, Khoa kéo bạn lại.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_hold",
+            "speaker": "Dẫn chuyện",
+            "text": "Buổi thuyết trình trôi qua. Điểm có vẻ ổn, nhưng bạn thấy mình như bị nuốt mất. Khoa vẫn cười cười như không có gì.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Khoa",
+            "text": "Nãy bạn… có khó chịu không? Mình nói nhiều quá hả? (Khoa nhìn xuống) Thật ra mình sợ bị đánh giá dở, nên mình ‘lụm’ hết câu trả lời.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_restore_with_truth",
+                "text": "Nói thật nhưng không dằn mặt; đề nghị cách làm công bằng cho lần sau.",
+                "playerLine": "Có chứ, mình khó chịu. Nhưng mình hiểu bạn sợ. Lần sau chia vai rõ, ai làm gì thì nói đúng vậy nha.",
+                "intentTag": "humble",
+                "actionTag": "truth_in_love",
+                "effects": [
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn không nuốt ấm ức, cũng không đập người ta. Bạn đặt sự thật xuống bằng tay mềm—và cả hai cùng học được cách đứng đúng vị trí.",
+                  "next": "reflection:ref_humility_03"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_payback_next_time",
+                "text": "Cười cho qua, nhưng quyết tâm lần sau ‘đè’ lại để khỏi thua.",
+                "playerLine": "Không sao… (nhưng trong đầu: lần sau khỏi mong).",
+                "intentTag": "resent",
+                "actionTag": "score_keep",
+                "effects": [
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "humility", "delta": -4 },
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "pride", "delta": 8 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "outcome": {
+                  "text": "Bạn không nói ra, nhưng bắt đầu tính điểm. Khiêm nhường chết dần trong những ‘lần sau mình sẽ…’.",
+                  "next": "reflection:ref_humility_03"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_shame_him",
+                "text": "Nói một câu cho Khoa nhớ đời.",
+                "playerLine": "Bạn làm vậy là ăn cắp công sức người khác đó. Đừng có tưởng ai cũng ngu.",
+                "intentTag": "anger",
+                "actionTag": "shame",
+                "effects": [
+                  { "stat": "love", "delta": -7 },
+                  { "stat": "humility", "delta": -6 },
+                  { "stat": "pride", "delta": 10 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn giải tỏa được cơn tức, nhưng bạn cũng làm người ta co rúm. Bạn thắng cảm giác, nhưng mất cơ hội sửa một người.",
+                  "next": "reflection:ref_humility_03"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o03_best",
+            "requiredChoiceIds": ["c2_restore_with_truth"],
+            "text": "Bạn đặt ranh giới bằng khiêm nhường: không nhịn nhục kiểu nuốt giận, mà là nói thật với mục đích dựng lên.",
+            "next": "reflection:ref_humility_03"
+          },
+          {
+            "id": "o03_scorekeeping",
+            "requiredChoiceIds": ["c2_payback_next_time"],
+            "text": "Bạn không bùng nổ, nhưng bạn lưu nợ. Kiêu ngạo đôi khi không ồn—nó lạnh.",
+            "next": "reflection:ref_humility_03"
+          },
+          {
+            "id": "o03_damage",
+            "requiredChoiceIds": ["c2_shame_him"],
+            "text": "Bạn nói đúng, nhưng nói kiểu làm người ta gãy. Khiêm nhường không làm yếu sự thật—nó làm sự thật có đường về.",
+            "next": "reflection:ref_humility_03"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_04",
+      "topic": "humility",
+      "title": "Bài Post Bị Hiểu Lầm",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "han", "name": "Hân", "portraitKey": "friend_03" },
+          { "id": "mod", "name": "Mod", "portraitKey": "npc_mod_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đăng một status chia sẻ trải nghiệm đức tin. Hân comment kiểu mỉa: “Nghe đạo đức ghê ha.” Mọi người bắt đầu hùa theo.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Hân",
+            "text": "Mình nói thiệt, post bạn giống khoe mình tốt hơn người khác á.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn vừa quê vừa tức. Bạn trả lời sao?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_clapback",
+                "text": "Đáp trả cho ‘đã’ và giữ thể diện.",
+                "playerLine": "Bạn đọc kiểu đó là do bạn đang khó chịu với ai đó thôi. Mình đâu rảnh chứng minh gì.",
+                "intentTag": "anger",
+                "actionTag": "clapback",
+                "effects": [
+                  { "stat": "humility", "delta": -7 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "pride", "delta": 10 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "t4_after_clapback",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_soften_and_ask",
+                "text": "Hỏi lại để hiểu, dù bạn đang bị chọc.",
+                "playerLine": "Bạn nói vậy chắc có lý do. Chỗ nào làm bạn thấy mình ‘khoe’ vậy? Mình muốn nghe thật.",
+                "intentTag": "humble",
+                "actionTag": "ask",
+                "effects": [
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "t4_after_ask",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_clapback",
+            "speaker": "Mod",
+            "text": "Nhắc nhẹ mọi người: giữ lịch sự. Nếu tiếp tục công kích cá nhân, mình sẽ khóa comment.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_ask",
+            "speaker": "Hân",
+            "text": "…Thật ra mình đang bị chạm. Dạo này mình fail nhiều, thấy ai nói chuyện ‘đúng đắn’ là mình bị nhột.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nhận ra ‘plot twist’ nằm ở chỗ: Hân không ghét bạn—Hân đang xấu hổ về chính mình. Bạn làm gì với điều này?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_dm_reconcile",
+                "text": "Inbox Hân, xin lỗi phần bạn có thể sai, rồi hỏi xem bạn ấy cần gì.",
+                "playerLine": "Mình xin lỗi nếu post làm bạn khó chịu. Nếu bạn muốn, mình nghe bạn kể nha.",
+                "intentTag": "humble",
+                "actionTag": "reconcile",
+                "effects": [
+                  { "stat": "love", "delta": 9 },
+                  { "stat": "humility", "delta": 9 },
+                  { "stat": "faith", "delta": 3 },
+                  { "stat": "pride", "delta": -7 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn không thắng comment section, nhưng bạn thắng lại một người. Khiêm nhường làm bạn nhỏ lại để người khác có chỗ thở.",
+                  "next": "reflection:ref_humility_04"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_pin_my_point",
+                "text": "Ghim một comment ‘dạy’ để chốt hạ bài học.",
+                "playerLine": "Mọi người nên học cách tiếp nhận sự thật thay vì mỉa mai.",
+                "intentTag": "teach",
+                "actionTag": "public_lecture",
+                "effects": [
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "humility", "delta": -5 },
+                  { "stat": "pride", "delta": 7 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "neutral" },
+                "outcome": {
+                  "text": "Bạn nói đúng ý, nhưng cái cách ‘trên cơ’ làm người ta càng phòng thủ. Bạn giữ được hình ảnh, nhưng mất một cây cầu.",
+                  "next": "reflection:ref_humility_04"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_delete_post",
+                "text": "Xóa bài cho xong, coi như chưa từng đăng.",
+                "playerLine": "Thôi xóa cho nhẹ đầu.",
+                "intentTag": "avoid",
+                "actionTag": "delete",
+                "effects": [
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "wisdom", "delta": -3 },
+                  { "stat": "pride", "delta": 3 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "outcome": {
+                  "text": "Bạn thoát khỏi drama, nhưng cũng thoát khỏi cơ hội luyện lòng. Khiêm nhường không phải là biến mất—mà là ở lại đúng cách.",
+                  "next": "reflection:ref_humility_04"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o04_bridge",
+            "requiredChoiceIds": ["c1_soften_and_ask", "c2_dm_reconcile"],
+            "text": "Bạn chọn hạ mình để hiểu và chữa lành. Một cuộc trò chuyện riêng cứu được điều mà trăm comment không cứu nổi.",
+            "next": "reflection:ref_humility_04"
+          },
+          {
+            "id": "o04_image_over_people",
+            "requiredChoiceIds": ["c2_pin_my_point"],
+            "text": "Bạn giữ được ‘đúng’, nhưng người ta không cảm thấy được yêu. Khiêm nhường là đúng mà vẫn gần.",
+            "next": "reflection:ref_humility_04"
+          },
+          {
+            "id": "o04_escape",
+            "requiredChoiceIds": ["c2_delete_post"],
+            "text": "Bạn né được đau, nhưng cũng né luôn trưởng thành. Có bài học chỉ học được khi bạn ở lại trong căng thẳng.",
+            "next": "reflection:ref_humility_04"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_05",
+      "topic": "humility",
+      "title": "Chiếc Áo Đấu Và Cái Tôi",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "huy", "name": "Huy", "portraitKey": "teammate_01" },
+          { "id": "coach", "name": "Coach", "portraitKey": "coach_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Trận bóng phong trào. Bạn đá hay nhất đội mấy tuần nay. Bỗng Coach xếp Huy đá chính, còn bạn dự bị để “đội cân bằng hơn”.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Huy",
+            "text": "Ê… mình cũng ngại. Nhưng Coach nói vậy… bạn đừng giận nha.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nghe như bị hạ thấp. Bạn làm gì ngay lúc này?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_prove_myself",
+                "text": "Đòi vào sân ngay để chứng minh ai mới xứng đáng.",
+                "playerLine": "Coach, cho em vô. Em đang form tốt, em chịu trách nhiệm kết quả.",
+                "intentTag": "assert",
+                "actionTag": "demand",
+                "effects": [
+                  { "stat": "pride", "delta": 9 },
+                  { "stat": "humility", "delta": -6 },
+                  { "stat": "wisdom", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "t4_after_demand",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_support_team",
+                "text": "Chấp nhận dự bị, tập trung hỗ trợ đội và Huy.",
+                "playerLine": "Ok Coach. Huy, cứ đá tự tin đi, cần gì mình nhắc.",
+                "intentTag": "humble",
+                "actionTag": "support",
+                "effects": [
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "love", "delta": 5 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "relieved" },
+                "nextTurnId": "t4_after_support",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_demand",
+            "speaker": "Coach",
+            "text": "Bạn muốn vô vì đội hay vì bạn? Nói thiệt đi.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_support",
+            "speaker": "Dẫn chuyện",
+            "text": "Huy đá hỏng một pha, bị la. Bạn thấy mắt Huy đỏ lên. Coach nhìn bạn như muốn bạn làm gì đó.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn có cơ hội: hoặc bước lên cứu đội, hoặc cứu người. Bạn chọn?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_enter_and_credit_huy",
+                "text": "Xin vào sân, nhưng chủ động nâng Huy lên và chia công.",
+                "playerLine": "Coach cho em vô. Nhưng để Huy ở lại, em đá cặp, em gọi bài cho Huy tự tin lại.",
+                "intentTag": "humble",
+                "actionTag": "lift_other",
+                "effects": [
+                  { "stat": "humility", "delta": 9 },
+                  { "stat": "love", "delta": 7 },
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "pride", "delta": -7 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn được vào sân, nhưng bạn không lấy sân khấu. Bạn làm người khác đứng vững, và đội chơi đẹp hơn hẳn.",
+                  "next": "reflection:ref_humility_05"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_enter_and_show",
+                "text": "Vào sân và ‘show’ cho Coach thấy bạn hơn hẳn.",
+                "playerLine": "Cho em vô là mình sẽ thấy khác liền.",
+                "intentTag": "pride",
+                "actionTag": "show_off",
+                "effects": [
+                  { "stat": "pride", "delta": 12 },
+                  { "stat": "humility", "delta": -8 },
+                  { "stat": "love", "delta": -3 }
+                ],
+                "portraitOverrides": { "player": "smirk", "npc": "neutral" },
+                "outcome": {
+                  "text": "Bạn ghi bàn, nhưng Huy ngồi ngoài như bị loại. Bạn thắng trận nhỏ, nhưng đội mất sự hiệp một.",
+                  "next": "reflection:ref_humility_05"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_stay_out_hurt",
+                "text": "Ở ngoài luôn, để đội tự xoay vì bạn đang bị tổn thương.",
+                "playerLine": "Thôi… cứ vậy đi.",
+                "intentTag": "avoid",
+                "actionTag": "withdraw",
+                "effects": [
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "humility", "delta": -2 },
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "cold", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn không làm gì sai rõ ràng, nhưng bạn cũng không làm điều đúng cần thiết. Khiêm nhường đôi khi là đặt mục tiêu chung lên trên cái tôi bị đau.",
+                  "next": "reflection:ref_humility_05"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o05_lift",
+            "requiredChoiceIds": ["c1_support_team", "c2_enter_and_credit_huy"],
+            "text": "Bạn vừa giỏi vừa mềm. Bạn không biến tài năng thành vũ khí—bạn biến nó thành chỗ dựa cho người khác.",
+            "next": "reflection:ref_humility_05"
+          },
+          {
+            "id": "o05_show",
+            "requiredChoiceIds": ["c2_enter_and_show"],
+            "text": "Bạn chứng minh được năng lực, nhưng làm người khác cảm thấy nhỏ đi. Khiêm nhường không hạ năng lực—nó hạ cái tôi.",
+            "next": "reflection:ref_humility_05"
+          },
+          {
+            "id": "o05_withdraw",
+            "requiredChoiceIds": ["c2_stay_out_hurt"],
+            "text": "Bạn bảo vệ cảm xúc mình bằng cách rút lui. Nhưng đôi khi rút lui không phải khiêm nhường—mà là kiêu ngạo bị tổn thương.",
+            "next": "reflection:ref_humility_05"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_06",
+      "topic": "humility",
+      "title": "Tin Nhắn Với Mẹ",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "me", "name": "Mẹ", "portraitKey": "mom_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đang bận. Mẹ nhắn: “Con về ăn cơm được không?” Bạn lỡ seen, rồi quên trả lời. Tối mẹ gọi, giọng nhỏ: “Ờ… thôi con bận thì thôi.”",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Mẹ",
+            "text": "Mẹ không giận. Mẹ chỉ… thấy con lớn rồi, chắc không cần mẹ nữa.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nghe câu đó là đau ngay, vì bạn không hề có ý vậy. Bạn phản ứng sao?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_defend_busy",
+                "text": "Giải thích bạn bận thiệt, mẹ hiểu lầm.",
+                "playerLine": "Mẹ nghĩ nhiều quá. Con bận thôi mà, đâu phải con bỏ mẹ.",
+                "intentTag": "defend",
+                "actionTag": "minimize",
+                "effects": [
+                  { "stat": "love", "delta": -5 },
+                  { "stat": "humility", "delta": -4 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "sad" },
+                "nextTurnId": "t4_after_defend",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_apologize_first",
+                "text": "Xin lỗi trước, rồi mới nói chuyện bận.",
+                "playerLine": "Con xin lỗi. Con seen mà không trả lời là con sai. Con làm mẹ buồn.",
+                "intentTag": "humble",
+                "actionTag": "apologize",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "sad" },
+                "nextTurnId": "t4_after_apology",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_defend",
+            "speaker": "Mẹ",
+            "text": "Ừ… mẹ nghĩ nhiều. (im một chút) Thôi ngủ đi con.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_apology",
+            "speaker": "Mẹ",
+            "text": "Mẹ không cần con nói hay. Mẹ chỉ cần con nhớ mẹ cũng là người… cũng tủi thân được.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nhận ra ‘plot twist’: thứ mẹ cần không phải lịch, mà là sự hiện diện. Bạn chọn bước tiếp theo?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_make_time_small",
+                "text": "Hạ mình và tạo một khoảng nhỏ thật: gọi video 10 phút ngay.",
+                "playerLine": "Mẹ ơi, mình nói 10 phút được không? Con muốn nghe mẹ kể hôm nay sao.",
+                "intentTag": "humble",
+                "actionTag": "be_present",
+                "effects": [
+                  { "stat": "love", "delta": 9 },
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "faith", "delta": 2 },
+                  { "stat": "pride", "delta": -5 }
+                ],
+                "portraitOverrides": { "player": "soft", "npc": "relieved" },
+                "outcome": {
+                  "text": "Bạn không giải thích cho hay—bạn ở lại cho thật. Khiêm nhường đôi khi chỉ là: đừng để người mình yêu phải đoán.",
+                  "next": "reflection:ref_humility_06"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_send_money_instead",
+                "text": "Gửi tiền/đồ cho mẹ để ‘bù’, nhưng không nói chuyện.",
+                "playerLine": "Thôi để con đặt đồ ăn cho mẹ nha, mẹ đỡ cực.",
+                "intentTag": "fix",
+                "actionTag": "compensate",
+                "effects": [
+                  { "stat": "love", "delta": -2 },
+                  { "stat": "humility", "delta": -2 },
+                  { "stat": "wisdom", "delta": 1 },
+                  { "stat": "pride", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn cho mẹ thứ ‘hữu ích’, nhưng mẹ cần thứ ‘gần’. Bạn không keo, nhưng bạn cũng không hạ mình.",
+                  "next": "reflection:ref_humility_06"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_end_call_fast",
+                "text": "Kết thúc nhanh để tránh cảm giác tội lỗi.",
+                "playerLine": "Dạ… con ngủ đây mẹ. Mai con bận sớm.",
+                "intentTag": "avoid",
+                "actionTag": "end",
+                "effects": [
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "humility", "delta": -3 },
+                  { "stat": "pride", "delta": 5 }
+                ],
+                "portraitOverrides": { "player": "cold", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn tránh được cảm giác khó, nhưng bạn để lại một khoảng trống. Khiêm nhường là dám ở lại trong sự khó chịu để yêu.",
+                  "next": "reflection:ref_humility_06"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o06_presence",
+            "requiredChoiceIds": ["c1_apologize_first", "c2_make_time_small"],
+            "text": "Bạn hạ mình đúng chỗ: không phải hạ giá trị bản thân, mà hạ cái tôi để người khác được thấy mình được yêu.",
+            "next": "reflection:ref_humility_06"
+          },
+          {
+            "id": "o06_compensate",
+            "requiredChoiceIds": ["c2_send_money_instead"],
+            "text": "Bạn cố ‘giải quyết’ bằng vật chất, nhưng vết thương là cảm xúc. Khiêm nhường bắt đầu từ việc công nhận nhu cầu thật của người khác.",
+            "next": "reflection:ref_humility_06"
+          },
+          {
+            "id": "o06_escape",
+            "requiredChoiceIds": ["c2_end_call_fast"],
+            "text": "Bạn né tội lỗi, nhưng cũng né tình yêu. Khiêm nhường là dám ở lại, dám xin lỗi, dám nghe.",
+            "next": "reflection:ref_humility_06"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "scene_humility_07",
+      "topic": "humility",
+      "title": "Khôn Ngoan Và Khiêm Nhường Trong Một Câu",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "sang", "name": "Sang", "portraitKey": "coworker_02" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Sang làm sai một con số trong báo cáo, sếp hiểu lầm và la cả team. Bạn biết lỗi nằm ở Sang vì bạn thấy file gốc.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Sang",
+            "text": "Bạn đừng nói nha… mình đang kẹt quá. Nếu sếp biết, chắc mình tiêu.",
+            "nextTurnId": "t3_choice",
+            "choices": []
+          },
+          {
+            "id": "t3_choice",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đứng giữa: nói thật để bảo vệ đội, hay che để cứu Sang. Bạn chọn bước đầu?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_cover_sang",
+                "text": "Che cho Sang, tự sửa quietly để qua chuyện.",
+                "playerLine": "Ok, để mình sửa lại. Mình không nói.",
+                "intentTag": "protect",
+                "actionTag": "cover",
+                "effects": [
+                  { "stat": "love", "delta": 3 },
+                  { "stat": "wisdom", "delta": -4 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "pride", "delta": 2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "relieved" },
+                "nextTurnId": "t4_after_cover",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "c1_prepare_truth",
+                "text": "Nói với Sang: bạn sẽ cùng bạn ấy nói thật, nhưng theo cách không nghiền nát.",
+                "playerLine": "Mình không muốn bạn chết một mình, nhưng mình cũng không muốn cả team gánh. Mình đi nói với sếp cùng bạn.",
+                "intentTag": "humble",
+                "actionTag": "truth_with_support",
+                "effects": [
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "wisdom", "delta": 7 },
+                  { "stat": "faith", "delta": 3 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "worried" },
+                "nextTurnId": "t4_after_prepare",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "t4_after_cover",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn sửa được file, sếp dịu lại. Nhưng Sang nhắn: “Cảm ơn nha, lần sau mình chắc cũng… thôi.” Bạn nghe chữ “thôi” mà lạnh sống lưng.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t4_after_prepare",
+            "speaker": "Sang",
+            "text": "Mình sợ… nhưng nếu bạn đi cùng thì… mình chịu.",
+            "nextTurnId": "t5_choice_2",
+            "choices": []
+          },
+          {
+            "id": "t5_choice_2",
+            "speaker": "Dẫn chuyện",
+            "text": "Plot twist: nếu bạn che, bạn vô tình dạy Sang rằng trốn là bình thường. Nếu bạn nói thật, bạn có thể mất “thiện cảm” của Sang. Bạn chọn cuối cùng?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_confess_together",
+                "text": "Đi nói thật cùng Sang, nhận trách nhiệm chung và đưa plan sửa.",
+                "playerLine": "Sếp ơi, tụi em có lỗi ở số liệu. Tụi em xin nhận và đưa kế hoạch sửa ngay hôm nay.",
+                "intentTag": "humble",
+                "actionTag": "confess",
+                "effects": [
+                  { "stat": "humility", "delta": 9 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "love", "delta": 4 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "serious", "npc": "sad" },
+                "outcome": {
+                  "text": "Sếp có thể không vui ngay, nhưng sự thật mở đường cho niềm tin. Sang vừa được cứu, vừa được sửa.",
+                  "next": "reflection:ref_humility_07"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_keep_cover_forever",
+                "text": "Tiếp tục che, coi như ‘mình làm phước’.",
+                "playerLine": "Thôi kệ, miễn team yên là được.",
+                "intentTag": "avoid",
+                "actionTag": "enable",
+                "effects": [
+                  { "stat": "humility", "delta": -3 },
+                  { "stat": "wisdom", "delta": -6 },
+                  { "stat": "love", "delta": -2 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "relieved" },
+                "outcome": {
+                  "text": "Bạn nghĩ mình khiêm nhường, nhưng bạn đang nuôi một thói quen sai. Khiêm nhường không phải là chịu hết—mà là làm đúng trước mặt Chúa và người.",
+                  "next": "reflection:ref_humility_07"
+                },
+                "nextTurnId": ""
+              },
+              {
+                "id": "c2_expose_sang",
+                "text": "Nói thẳng với sếp để ‘rửa tay’ cho sạch.",
+                "playerLine": "Sếp, lỗi đó không phải em. Sang nhập sai.",
+                "intentTag": "self_save",
+                "actionTag": "expose",
+                "effects": [
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "humility", "delta": -7 },
+                  { "stat": "love", "delta": -8 },
+                  { "stat": "pride", "delta": 9 }
+                ],
+                "portraitOverrides": { "player": "cold", "npc": "sad" },
+                "outcome": {
+                  "text": "Bạn sạch trách nhiệm, nhưng bạn làm người ta bị ném ra trước đầu xe. Bạn chọn đúng sự thật, sai trái tim.",
+                  "next": "reflection:ref_humility_07"
+                },
+                "nextTurnId": ""
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o07_truth_and_cover",
+            "requiredChoiceIds": ["c1_prepare_truth", "c2_confess_together"],
+            "text": "Bạn giữ sự thật và giữ con người. Khiêm nhường là không cứu cái tôi của mình bằng cách phá người khác.",
+            "next": "reflection:ref_humility_07"
+          },
+          {
+            "id": "o07_enable",
+            "requiredChoiceIds": ["c2_keep_cover_forever"],
+            "text": "Bạn gọi đó là ‘hạ mình’, nhưng thật ra là né đối diện. Khiêm nhường thật luôn đi cùng khôn ngoan.",
+            "next": "reflection:ref_humility_07"
+          },
+          {
+            "id": "o07_throw_under_bus",
+            "requiredChoiceIds": ["c2_expose_sang"],
+            "text": "Bạn bảo vệ bản thân, nhưng làm hư một mối quan hệ. Khiêm nhường không phải yếu—nó là mạnh để gánh đúng phần mình.",
+            "next": "reflection:ref_humility_07"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_humility_01",
+      "topic": "humility",
+      "verseRef": "Phi-líp 2:3-4",
+      "verseText": "Chớ làm sự chi vì lòng tranh-cạnh hoặc vì hư-vinh, nhưng hãy khiêm-nhường, coi người khác như tôn-trọng hơn mình. Mỗi một người trong anh em chớ chăm về lợi riêng mình, nhưng phải chăm về lợi kẻ khác nữa.",
+      "questions": [
+        "Trong câu chuyện này, cái tôi của mình đang muốn “được thấy” điều gì?",
+        "Mình có thể nói sự thật mà vẫn giữ được lòng người bằng cách nào?",
+        "Hôm nay, mình có thể chủ động nâng ai lên (mà không cần người ta trả ơn) không?"
+      ]
+    },
+    {
+      "id": "ref_humility_02",
+      "topic": "humility",
+      "verseRef": "I Phi-e-rơ 5:5-6",
+      "verseText": "Cũng khuyên bọn trẻ tuổi, hãy phục theo các trưởng-lão. Hết thảy đối-đãi với nhau phải trang-sức bằng khiêm-nhường; vì Đức Chúa Trời chống-cự kẻ kiêu-ngạo, mà ban ơn cho kẻ khiêm-nhường. Vậy, hãy hạ mình xuống dưới tay quyền-phép của Đức Chúa Trời, hầu cho đến kỳ thuận-hiệp Ngài nhắc anh em lên;",
+      "questions": [
+        "Mình đang sợ mất gì mà mình khó nhận lỗi?",
+        "Mình có dám làm “phần dơ” để hàn gắn không, hay chỉ muốn giữ hình ảnh?",
+        "Nếu Đức Chúa Trời nâng mình lên “đúng kỳ”, mình có thể yên tâm hạ mình ngay bây giờ không?"
+      ]
+    },
+    {
+      "id": "ref_humility_03",
+      "topic": "humility",
+      "verseRef": "Rô-ma 12:3",
+      "verseText": "Vậy, nhờ ơn đã ban cho tôi, tôi nói với mỗi người trong anh em chớ có tư-tưởng cao quá lẽ, nhưng phải có tâm-tình tầm-thường, y theo lượng đức-tin mà Đức Chúa Trời đã phú cho từng người.",
+      "questions": [
+        "Mình có đang ‘tư tưởng cao quá lẽ’ ở chỗ nào (năng lực, đóng góp, vai trò) không?",
+        "Mình có thể vừa đặt ranh giới, vừa không làm người khác bị nhục bằng cách nào?",
+        "Đức tin của mình đang giúp mình hạ mình, hay mình đang dùng “đúng” để che “tự ái”?"
+      ]
+    },
+    {
+      "id": "ref_humility_04",
+      "topic": "humility",
+      "verseRef": "Gia-cơ 4:6",
+      "verseText": "Nhưng ân điển Ngài ban cho càng lớn hơn, nên Kinh Thánh nói: “Đức Chúa Trời chống cự kẻ kiêu ngạo, nhưng ban ân điển cho người khiêm nhường.”",
+      "questions": [
+        "Mình đang muốn ‘thắng’ một cuộc tranh luận, hay muốn ‘cứu’ một con người?",
+        "Khi bị hiểu lầm, mình thường chọn bảo vệ hình ảnh hay chọn khiêm nhường để hiểu người?",
+        "Hôm nay mình cần ân điển ở điểm nào—và mình có dám hạ mình để nhận ân điển đó không?"
+      ]
+    },
+    {
+      "id": "ref_humility_05",
+      "topic": "humility",
+      "verseRef": "Ma-thi-ơ 23:12",
+      "verseText": "Kẻ nào tôn mình lên thì sẽ bị hạ xuống, còn kẻ nào hạ mình xuống thì sẽ được tôn lên.",
+      "questions": [
+        "Mình có đang ‘tôn mình lên’ bằng cách nào (thể hiện, so sánh, dằn mặt) không?",
+        "Mình có thể dùng năng lực để nâng người khác lên, thay vì làm người khác thấy nhỏ đi không?",
+        "Nếu không được công nhận ngay, mình có vẫn chọn hạ mình không?"
+      ]
+    },
+    {
+      "id": "ref_humility_06",
+      "topic": "humility",
+      "verseRef": "Mi-chê 6:8",
+      "verseText": "Hỡi người! Ngài đã tỏ cho ngươi điều gì là thiện; cái điều mà Đức Giê-hô-va đòi ngươi há chẳng phải là làm sự công-bình, ưa sự nhân-từ và bước đi cách khiêm-nhường với Đức Chúa Trời ngươi sao?",
+      "questions": [
+        "Mình có đang ‘bước đi khiêm nhường’ trong gia đình, hay chỉ ‘làm cho đúng’?",
+        "Trong mối quan hệ này, điều công bình là gì, điều nhân từ là gì, và cách khiêm nhường là gì?",
+        "Một hành động nhỏ nhưng thật (10 phút hiện diện, một lời xin lỗi) hôm nay là gì?"
+      ]
+    },
+    {
+      "id": "ref_humility_07",
+      "topic": "humility",
+      "verseRef": "Châm-ngôn 11:2",
+      "verseText": "Khi kiêu-ngạo đến, sỉ-nhục cũng đến nữa; Nhưng sự khôn-ngoan vẫn ở với người khiêm-nhượng.",
+      "questions": [
+        "Trong tình huống này, mình đang gọi ‘khiêm nhường’ cho điều gì—nhưng thật ra là né tránh?",
+        "Khôn ngoan và khiêm nhường gặp nhau ở quyết định nào (nói thật, nói cách nào, với ai)?",
+        "Mình có thể gánh đúng phần mình mà không “ném” người khác ra trước, bằng cách nào?"
+      ]
+    }
+  ]
+}

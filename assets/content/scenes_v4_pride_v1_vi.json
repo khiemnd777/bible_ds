@@ -1,0 +1,1423 @@
+{
+  "scenes": [
+    {
+      "id": "scene_pride_01",
+      "topic": "pride",
+      "title": "Cái Danh Trong Nhóm Phục Vụ",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "linh", "name": "Linh", "portraitKey": "friend_01" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "p01_t1",
+        "turns": [
+          {
+            "id": "p01_t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Sau buổi nhóm, trưởng nhóm khen bạn trước mặt mọi người vì phần bạn làm. Linh đứng kế bên, im lặng hơi lâu.",
+            "nextTurnId": "p01_t2",
+            "choices": []
+          },
+          {
+            "id": "p01_t2",
+            "speaker": "Linh",
+            "text": "Ủa… phần đó thật ra là mình sửa lại từ hôm qua mà. Nhưng thôi, chắc không sao.",
+            "nextTurnId": "p01_t3",
+            "choices": []
+          },
+          {
+            "id": "p01_t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Không khí tự nhiên bị khựng. Mấy người khác nhìn qua lại. Bạn thấy tim mình nóng lên: vừa quê vừa bực.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p01_c1_defend",
+                "text": "Nói liền: “Ừ nhưng bạn cũng làm phần lớn mà, có gì đâu.”",
+                "playerLine": "Ừ nhưng bạn cũng làm phần lớn mà, có gì đâu.",
+                "intentTag": "defend",
+                "actionTag": "save_face",
+                "effects": [
+                  { "stat": "pride", "delta": 12 },
+                  { "stat": "humility", "delta": -8 },
+                  { "stat": "love", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p01_t4_defend",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p01_c1_own",
+                "text": "Nhận ngay trước nhóm: “Ủa đúng rồi… hồi đó Linh sửa nhiều. Mình xin lỗi, để mình nói lại với trưởng nhóm.”",
+                "playerLine": "Ủa đúng rồi… hồi đó Linh sửa nhiều. Mình xin lỗi, để mình nói lại với trưởng nhóm.",
+                "intentTag": "repent",
+                "actionTag": "own_it",
+                "effects": [
+                  { "stat": "humility", "delta": 14 },
+                  { "stat": "pride", "delta": -10 },
+                  { "stat": "love", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "p01_t4_own",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p01_t4_defend",
+            "speaker": "Linh",
+            "text": "Bạn nói vậy… nghe như mình đang làm quá. Mình chỉ nói sự thật thôi.",
+            "nextTurnId": "p01_t5",
+            "choices": []
+          },
+          {
+            "id": "p01_t4_own",
+            "speaker": "Linh",
+            "text": "…Cảm ơn bạn nói vậy. Mình không muốn giành công đâu, chỉ sợ mọi người hiểu sai.",
+            "nextTurnId": "p01_t5",
+            "choices": []
+          },
+          {
+            "id": "p01_t5",
+            "speaker": "Dẫn chuyện",
+            "text": "Trưởng nhóm đi tới hỏi nhỏ: “Ủa nãy có chuyện gì vậy?” Linh đứng đó, mắt đỏ nhẹ.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p01_c2_private",
+                "text": "Kéo trưởng nhóm ra chỗ khác, nói riêng để khỏi làm Linh quê.",
+                "playerLine": "Để mình nói riêng với anh/chị, cho đỡ kỳ.",
+                "intentTag": "protect",
+                "actionTag": "private_truth",
+                "effects": [
+                  { "stat": "wisdom", "delta": 8 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "pride", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "p01_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p01_c2_public",
+                "text": "Nói ngay trước nhóm để sửa liền, dù hơi ngại.",
+                "playerLine": "Cho mình nói rõ luôn: phần đó Linh sửa nhiều, nãy mình nhận khen hơi quá.",
+                "intentTag": "truth",
+                "actionTag": "public_credit",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "pride", "delta": -6 },
+                  { "stat": "wisdom", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "p01_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p01_c2_blame",
+                "text": "Lái qua chuyện khác, để Linh tự hiểu ‘đừng làm lớn’ nữa.",
+                "playerLine": "Chắc hiểu lầm thôi, không có gì đâu, mình đi dọn tiếp nha.",
+                "intentTag": "avoid",
+                "actionTag": "dismiss",
+                "effects": [
+                  { "stat": "pride", "delta": 8 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p01_t6",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p01_t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Tối đó, bạn mở điện thoại ra thấy Linh nhắn: “Mình không giận. Chỉ buồn vì mình cảm giác bạn cần thắng hơn cần mình.”",
+            "nextTurnId": "p01_t7",
+            "choices": []
+          },
+          {
+            "id": "p01_t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn gõ tin nhắn trả lời. Tay bạn dừng lại mấy lần.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p01_c3_apologize",
+                "text": "Nhắn xin lỗi rõ ràng, không biện minh, rồi hỏi Linh muốn bạn sửa sao.",
+                "playerLine": "Mình xin lỗi thật. Nãy mình bảo vệ cái danh của mình. Bạn cho mình cơ hội sửa, bạn muốn mình làm gì?",
+                "intentTag": "repent",
+                "actionTag": "apology",
+                "effects": [
+                  { "stat": "humility", "delta": 12 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "pride", "delta": -10 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_01" }
+              },
+              {
+                "id": "p01_c3_fix_image",
+                "text": "Nhắn kiểu ‘giải thích nhẹ’ để giữ hình ảnh, nhưng vẫn hứa lần sau sẽ để ý.",
+                "playerLine": "Mình không có ý vậy đâu. Chắc do lúc đó đông người nên mình phản ứng hơi nhanh. Lần sau mình sẽ cẩn thận hơn.",
+                "intentTag": "justify",
+                "actionTag": "soft_defense",
+                "effects": [
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "pride", "delta": 6 },
+                  { "stat": "humility", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_01" }
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "p01_o_restore",
+            "requiredChoiceIds": ["p01_c1_own", "p01_c2_private", "p01_c3_apologize"],
+            "text": "Bạn chọn hạ mình từ đầu tới cuối. Linh mềm lại, nhóm cũng học được cách chia công bằng mà không làm nhau quê.",
+            "next": "reflection:ref_pride_01"
+          },
+          {
+            "id": "p01_o_costly_truth",
+            "requiredChoiceIds": ["p01_c1_own", "p01_c2_public", "p01_c3_apologize"],
+            "text": "Bạn nói thật công khai, hơi đau nhưng sạch. Linh tôn trọng bạn hơn, còn bạn thì mất ‘cái oai’ để được bình an.",
+            "next": "reflection:ref_pride_01"
+          },
+          {
+            "id": "p01_o_freeze",
+            "requiredChoiceIds": ["p01_c1_defend", "p01_c2_blame"],
+            "text": "Bạn thắng câu nói, nhưng thua sự thân. Linh dần rút khỏi bạn, còn bạn thì tự thấy mình cô đơn ngay trong nhóm.",
+            "next": "reflection:ref_pride_01"
+          },
+          {
+            "id": "p01_o_half",
+            "requiredChoiceIds": ["p01_c1_own", "p01_c3_fix_image"],
+            "text": "Bạn nhận lỗi một phần nhưng vẫn giữ đường lui. Mối quan hệ không vỡ, nhưng cái gai ‘biện minh’ còn đó.",
+            "next": "reflection:ref_pride_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_pride_02",
+      "topic": "pride",
+      "title": "Bài Đăng Và Cái Tên",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "khoa", "name": "Khoa", "portraitKey": "friend_02" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "p02_t1",
+        "turns": [
+          {
+            "id": "p02_t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đăng một bài về dự án nhóm, vô tình ghi tên bạn trước và kể công khá kỹ. Bài đang lên tương tác mạnh.",
+            "nextTurnId": "p02_t2",
+            "choices": []
+          },
+          {
+            "id": "p02_t2",
+            "speaker": "Khoa",
+            "text": "Ê… bạn có thấy bài bạn đăng không? Mấy bạn trong team đọc xong hơi… cấn đó.",
+            "nextTurnId": "p02_t3",
+            "choices": []
+          },
+          {
+            "id": "p02_t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nhìn lại bài. Bạn nhận ra: bạn không nói dối, nhưng cách kể làm người ta thấy bạn ‘là nhân vật chính’.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p02_c1_edit",
+                "text": "Sửa bài ngay, đưa team lên trước, rồi nhắn xin lỗi trong group.",
+                "playerLine": "Để mình sửa lại bài nha. Nãy mình kể kiểu đó nghe kỳ thiệt.",
+                "intentTag": "repent",
+                "actionTag": "edit_credit",
+                "effects": [
+                  { "stat": "humility", "delta": 12 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "p02_t4",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p02_c1_leave",
+                "text": "Giữ nguyên, tự nhủ: ‘Mình có làm mà, sao phải sợ?’",
+                "playerLine": "Mình có làm thiệt mà… người ta tự nhạy cảm thôi.",
+                "intentTag": "defend",
+                "actionTag": "hold_post",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "humility", "delta": -6 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p02_t4",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p02_t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Một bạn trong team comment dưới bài: “Cảm ơn đã nhắc tới team 🙂” Có cái gì đó vừa lịch sự vừa nhói.",
+            "nextTurnId": "p02_t5",
+            "choices": []
+          },
+          {
+            "id": "p02_t5",
+            "speaker": "Khoa",
+            "text": "Bạn tính phản hồi sao? Bây giờ bạn trả lời câu nào cũng sẽ bị nhìn kỹ.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p02_c2_public_apology",
+                "text": "Reply thẳng dưới comment, nhận thiếu sót, tag từng người đúng vai trò.",
+                "playerLine": "Bạn nói đúng. Mình kể thiếu công bằng. Mình tag lại mọi người đây, cảm ơn team nhiều.",
+                "intentTag": "repent",
+                "actionTag": "public_humble",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "p02_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p02_c2_dm_only",
+                "text": "Không reply công khai, chỉ nhắn riêng xin lỗi bạn đó để đỡ quê.",
+                "playerLine": "Để mình nhắn riêng… chứ trả lời công khai quê chết.",
+                "intentTag": "avoid",
+                "actionTag": "dm_only",
+                "effects": [
+                  { "stat": "wisdom", "delta": 4 },
+                  { "stat": "humility", "delta": 2 },
+                  { "stat": "pride", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "p02_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p02_c2_snap",
+                "text": "Reply kiểu ‘mỉa nhẹ’: “Ủa mình có nhắc rồi mà 🙂”",
+                "playerLine": "Ủa mình có nhắc rồi mà 🙂",
+                "intentTag": "retaliate",
+                "actionTag": "sarcasm",
+                "effects": [
+                  { "stat": "pride", "delta": 12 },
+                  { "stat": "love", "delta": -8 },
+                  { "stat": "wisdom", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p02_t6",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p02_t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Tối đó, bạn thấy Khoa gửi ảnh chụp màn hình: có người trong team nói “thôi, khỏi làm chung nữa”.",
+            "nextTurnId": "p02_t7",
+            "choices": []
+          },
+          {
+            "id": "p02_t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nhận ra: cái bạn muốn không phải chỉ là ghi nhận… mà là được nhìn là người giỏi nhất.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p02_c3_step_down",
+                "text": "Đề nghị nhường vai trò lead, xin làm phần hậu cần để rebuild lòng tin.",
+                "playerLine": "Mình xin rút khỏi vị trí lead một thời gian. Để mình làm hậu cần, còn mọi người quyết định hướng đi.",
+                "intentTag": "repent",
+                "actionTag": "step_down",
+                "effects": [
+                  { "stat": "humility", "delta": 14 },
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "pride", "delta": -10 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_02" }
+              },
+              {
+                "id": "p02_c3_double_down",
+                "text": "Giữ nguyên stance: ‘ai hiểu thì hiểu’, tập trung làm cho ra kết quả để chứng minh.",
+                "playerLine": "Thôi kệ. Mình cứ làm cho ra kết quả, rồi mọi người sẽ thấy.",
+                "intentTag": "defend",
+                "actionTag": "prove",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "love", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_02" }
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "p02_o_clean",
+            "requiredChoiceIds": ["p02_c1_edit", "p02_c2_public_apology", "p02_c3_step_down"],
+            "text": "Bạn chọn mất ‘hào quang’ để giữ người. Team chưa tin lại liền, nhưng họ thấy bạn thật lòng.",
+            "next": "reflection:ref_pride_02"
+          },
+          {
+            "id": "p02_o_private_only",
+            "requiredChoiceIds": ["p02_c1_edit", "p02_c2_dm_only"],
+            "text": "Bạn sửa và xin lỗi, nhưng né phần công khai. Mọi thứ dịu xuống, mà vẫn còn cảm giác bạn sợ mất mặt hơn sợ mất người.",
+            "next": "reflection:ref_pride_02"
+          },
+          {
+            "id": "p02_o_burn",
+            "requiredChoiceIds": ["p02_c1_leave", "p02_c2_snap"],
+            "text": "Một câu reply làm đổ hết. Bạn giữ được ‘đúng’, nhưng mất luôn cơ hội đi chung đường với team.",
+            "next": "reflection:ref_pride_02"
+          },
+          {
+            "id": "p02_o_prove_alone",
+            "requiredChoiceIds": ["p02_c1_leave", "p02_c3_double_down"],
+            "text": "Bạn làm ra kết quả… nhưng cảm giác thắng mà lạnh. Bạn nhìn quanh, ít người còn muốn ăn mừng chung.",
+            "next": "reflection:ref_pride_02"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_pride_03",
+      "topic": "pride",
+      "title": "Lời Góp Ý Trước Mặt Ba",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "mai", "name": "Mai", "portraitKey": "friend_03" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "p03_t1",
+        "turns": [
+          {
+            "id": "p03_t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đang ăn cơm nhà Mai. Ba của Mai hỏi về công việc. Bạn kể hăng, vô tình chê ngành của Mai ‘dễ mà’.",
+            "nextTurnId": "p03_t2",
+            "choices": []
+          },
+          {
+            "id": "p03_t2",
+            "speaker": "Mai",
+            "text": "Bạn nói vậy… nghe như mấy năm mình cố gắng là chuyện nhỏ xíu á.",
+            "nextTurnId": "p03_t3",
+            "choices": []
+          },
+          {
+            "id": "p03_t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Ba Mai cười gượng rồi im. Bạn thấy mình bị ‘đánh’ ngay chỗ tự tin nhất: cái hiểu biết của mình.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p03_c1_joke",
+                "text": "Đùa trớt: “Ủa mình nói chơi thôi mà”, để hạ nhiệt nhanh.",
+                "playerLine": "Ủa mình nói chơi thôi mà, Mai căng quá.",
+                "intentTag": "defend",
+                "actionTag": "joke_off",
+                "effects": [
+                  { "stat": "pride", "delta": 8 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "wisdom", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "p03_t4",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p03_c1_apologize_now",
+                "text": "Xin lỗi liền trước mặt ba, không vòng vo.",
+                "playerLine": "Con xin lỗi. Con nói thiếu tôn trọng. Con không hiểu đủ mà lại phán.",
+                "intentTag": "repent",
+                "actionTag": "apology",
+                "effects": [
+                  { "stat": "humility", "delta": 14 },
+                  { "stat": "pride", "delta": -10 },
+                  { "stat": "love", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "p03_t4",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p03_t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Trên đường về, Mai không nói nhiều. Bạn nhớ lại ánh mắt của ba Mai: không giận, mà thất vọng.",
+            "nextTurnId": "p03_t5",
+            "choices": []
+          },
+          {
+            "id": "p03_t5",
+            "speaker": "Mai",
+            "text": "Thật ra… mình đã từng tự ti vì ngành mình. Bạn nói đúng chỗ đau nhất luôn.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p03_c2_listen",
+                "text": "Im một chút rồi hỏi: “Bạn muốn mình sửa sao?”",
+                "playerLine": "Mình xin lỗi. Bạn muốn mình sửa sao để bạn thấy được tôn trọng lại?",
+                "intentTag": "love",
+                "actionTag": "listen",
+                "effects": [
+                  { "stat": "love", "delta": 10 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "p03_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p03_c2_explain",
+                "text": "Giải thích dài: ‘ý mình không phải vậy’, cố chứng minh bạn không sai.",
+                "playerLine": "Ý mình là… về mặt thị trường thôi. Chứ mình đâu có coi thường bạn.",
+                "intentTag": "justify",
+                "actionTag": "explain",
+                "effects": [
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "pride", "delta": 6 },
+                  { "stat": "humility", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "p03_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p03_c2_silent",
+                "text": "Im luôn vì ngại đối diện, để thời gian tự trôi.",
+                "playerLine": "…",
+                "intentTag": "avoid",
+                "actionTag": "silence",
+                "effects": [
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "pride", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "p03_t6",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p03_t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Về tới nhà, bạn nhìn gương. Bạn nhận ra: bạn nói mạnh vì bạn sợ người khác nghĩ bạn bình thường.",
+            "nextTurnId": "p03_t7",
+            "choices": []
+          },
+          {
+            "id": "p03_t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn cân nhắc làm một việc cụ thể để ‘đền’ lại, không phải bằng lời hay.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p03_c3_honor",
+                "text": "Đăng một lời ghi nhận công khai về năng lực của Mai (nhưng hỏi Mai trước).",
+                "playerLine": "Mình muốn ghi nhận bạn đàng hoàng. Mình hỏi bạn trước, bạn ok thì mình mới đăng.",
+                "intentTag": "love",
+                "actionTag": "honor_other",
+                "effects": [
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_03" }
+              },
+              {
+                "id": "p03_c3_buy_gift",
+                "text": "Mua quà xin lỗi cho xong chuyện, khỏi nói thêm.",
+                "playerLine": "Mình mua gì đó cho Mai… chắc ổn.",
+                "intentTag": "avoid",
+                "actionTag": "gift_cover",
+                "effects": [
+                  { "stat": "wisdom", "delta": 2 },
+                  { "stat": "pride", "delta": 6 },
+                  { "stat": "humility", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_03" }
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "p03_o_soften",
+            "requiredChoiceIds": ["p03_c1_apologize_now", "p03_c2_listen", "p03_c3_honor"],
+            "text": "Bạn hạ mình ngay tại chỗ khó nhất. Mai thấy bạn không chỉ xin lỗi, mà còn tôn trọng thật.",
+            "next": "reflection:ref_pride_03"
+          },
+          {
+            "id": "p03_o_partial",
+            "requiredChoiceIds": ["p03_c1_apologize_now", "p03_c2_explain"],
+            "text": "Bạn xin lỗi, nhưng vẫn muốn ‘đúng’. Mai nguội bớt, mà vết đau vẫn còn mỏng mỏng.",
+            "next": "reflection:ref_pride_03"
+          },
+          {
+            "id": "p03_o_damage",
+            "requiredChoiceIds": ["p03_c1_joke", "p03_c2_silent"],
+            "text": "Bạn né cho qua. Mai không cãi, nhưng cũng không còn mở lòng như trước.",
+            "next": "reflection:ref_pride_03"
+          },
+          {
+            "id": "p03_o_cover_up",
+            "requiredChoiceIds": ["p03_c3_buy_gift"],
+            "text": "Bạn dùng quà để che sự ngại. Chuyện có thể êm, nhưng bạn biết mình chưa thật sự đối diện cái tôi.",
+            "next": "reflection:ref_pride_03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_pride_04",
+      "topic": "pride",
+      "title": "Đúng Nhưng Làm Người Ta Gãy",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "thao", "name": "Thảo", "portraitKey": "friend_04" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "p04_t1",
+        "turns": [
+          {
+            "id": "p04_t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Trong nhóm học Kinh Thánh, Thảo chia sẻ chuyện thất bại. Bạn thấy Thảo đang tự thương hại quá nhiều.",
+            "nextTurnId": "p04_t2",
+            "choices": []
+          },
+          {
+            "id": "p04_t2",
+            "speaker": "Thảo",
+            "text": "Mình thấy mình vô dụng ghê. Nói thật, mình không biết Chúa còn dùng mình được không.",
+            "nextTurnId": "p04_t3",
+            "choices": []
+          },
+          {
+            "id": "p04_t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn có câu ‘đúng’ trong đầu. Nhưng bạn cũng thấy Thảo đang mong một bàn tay, không phải một bài giảng.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p04_c1_correct",
+                "text": "Nói thẳng: “Bạn đang yếu đức tin đó. Đừng có than nữa.”",
+                "playerLine": "Bạn đang yếu đức tin đó. Đừng có than nữa, đứng dậy đi.",
+                "intentTag": "judge",
+                "actionTag": "harsh_truth",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -10 },
+                  { "stat": "wisdom", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p04_t4",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p04_c1_hold",
+                "text": "Ngồi gần hơn: “Bạn kể thêm đi, mình nghe.”",
+                "playerLine": "Bạn kể thêm đi. Mình nghe đây.",
+                "intentTag": "love",
+                "actionTag": "listen_first",
+                "effects": [
+                  { "stat": "love", "delta": 10 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "p04_t4",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p04_t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Sau buổi đó, bạn nghe người khác nói nhỏ: “Thảo khóc trong toilet.” Bạn giật mình: mình tưởng mình đang giúp.",
+            "nextTurnId": "p04_t5",
+            "choices": []
+          },
+          {
+            "id": "p04_t5",
+            "speaker": "Thảo",
+            "text": "Mình không giận bạn. Chỉ là… câu bạn nói làm mình thấy mình còn tệ hơn.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p04_c2_own",
+                "text": "Nhận lỗi: “Mình muốn tỏ ra mạnh, nên mình nói nặng.”",
+                "playerLine": "Mình xin lỗi. Mình muốn tỏ ra mình ‘đúng’, nên mình nói nặng quá.",
+                "intentTag": "repent",
+                "actionTag": "own_it",
+                "effects": [
+                  { "stat": "humility", "delta": 12 },
+                  { "stat": "pride", "delta": -8 },
+                  { "stat": "love", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "p04_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p04_c2_fix",
+                "text": "Bẻ lại: “Nhưng mình nói đúng mà, bạn cần nghe.”",
+                "playerLine": "Nhưng mình nói đúng mà… bạn cần nghe để mạnh lên.",
+                "intentTag": "defend",
+                "actionTag": "double_down",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -8 },
+                  { "stat": "humility", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p04_t6",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p04_t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Đêm đó, bạn cầu nguyện mà cứ kẹt ở câu: ‘Con muốn đúng… hay con muốn yêu?’",
+            "nextTurnId": "p04_t7",
+            "choices": []
+          },
+          {
+            "id": "p04_t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn quyết định làm gì trong buổi nhóm tới?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p04_c3_public_own",
+                "text": "Chia sẻ ngắn trước nhóm: bạn đã lỡ làm đau Thảo, xin mọi người học cách nói bằng tình yêu.",
+                "playerLine": "Mình muốn xin lỗi vì lời nói của mình đã làm đau bạn Thảo. Mình cũng xin mọi người nhắc mình nói bằng tình yêu.",
+                "intentTag": "repent",
+                "actionTag": "public_own",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_04" }
+              },
+              {
+                "id": "p04_c3_private_only",
+                "text": "Giữ chuyện trong riêng tư, chỉ chăm sóc Thảo âm thầm.",
+                "playerLine": "Mình sẽ chăm bạn Thảo âm thầm thôi, khỏi nói ra trước nhóm.",
+                "intentTag": "protect",
+                "actionTag": "private_care",
+                "effects": [
+                  { "stat": "love", "delta": 6 },
+                  { "stat": "wisdom", "delta": 6 },
+                  { "stat": "pride", "delta": 2 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_04" }
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "p04_o_heal",
+            "requiredChoiceIds": ["p04_c1_hold", "p04_c2_own", "p04_c3_public_own"],
+            "text": "Bạn chọn hạ mình và để cả nhóm học chung. Thảo không còn thấy mình một mình trong nỗi đau.",
+            "next": "reflection:ref_pride_04"
+          },
+          {
+            "id": "p04_o_silent_heal",
+            "requiredChoiceIds": ["p04_c2_own", "p04_c3_private_only"],
+            "text": "Bạn xin lỗi thật và chăm sóc âm thầm. Mối quan hệ được chữa, nhưng bạn vẫn né chỗ mất mặt trước đám đông.",
+            "next": "reflection:ref_pride_04"
+          },
+          {
+            "id": "p04_o_hard_truth",
+            "requiredChoiceIds": ["p04_c1_correct", "p04_c2_fix"],
+            "text": "Bạn giữ được ‘đúng’ kiểu của bạn. Thảo không cãi, nhưng niềm tin của bạn ấy với bạn bị bào mòn.",
+            "next": "reflection:ref_pride_04"
+          },
+          {
+            "id": "p04_o_mixed",
+            "requiredChoiceIds": ["p04_c1_correct", "p04_c2_own"],
+            "text": "Bạn lỡ nói nặng rồi mới nhận lỗi. Vẫn có hy vọng, nhưng cái giá là sự xấu hổ phải nuốt xuống.",
+            "next": "reflection:ref_pride_04"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_pride_05",
+      "topic": "pride",
+      "title": "Được Khen Hay Được Thật",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "huy", "name": "Huy", "portraitKey": "friend_05" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "p05_t1",
+        "turns": [
+          {
+            "id": "p05_t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn làm việc chung với Huy. Sếp khen bạn trước mặt phòng. Huy bị giao phần ‘dọn rác’ phía sau.",
+            "nextTurnId": "p05_t2",
+            "choices": []
+          },
+          {
+            "id": "p05_t2",
+            "speaker": "Huy",
+            "text": "Chúc mừng nha. Bạn giỏi thật… còn mình thì chắc hợp làm mấy việc lặt vặt thôi.",
+            "nextTurnId": "p05_t3",
+            "choices": []
+          },
+          {
+            "id": "p05_t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn nghe ra mùi chua. Nhưng bạn cũng nhớ: mấy lần bạn được lên sân khấu là do Huy ‘đỡ’ phía sau.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p05_c1_take",
+                "text": "Cười cho qua: “Thôi mà, ai làm cũng vậy.”",
+                "playerLine": "Thôi mà, ai làm cũng vậy, đừng nghĩ nhiều.",
+                "intentTag": "avoid",
+                "actionTag": "minimize",
+                "effects": [
+                  { "stat": "pride", "delta": 6 },
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "wisdom", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "p05_t4",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p05_c1_share",
+                "text": "Nói thẳng với sếp (sau buổi họp): thành quả có phần Huy, đề nghị chia lại credit.",
+                "playerLine": "Để mình nói với sếp chuyện chia credit lại, vì Huy gánh nhiều phần quan trọng.",
+                "intentTag": "love",
+                "actionTag": "share_credit",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "p05_t4",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p05_t4",
+            "speaker": "Dẫn chuyện",
+            "text": "Hôm sau, sếp gọi bạn vào: “Bạn nói vậy là bạn tự nhận mình không đủ năng lực hả?” Câu hỏi nghe như cái bẫy.",
+            "nextTurnId": "p05_t5",
+            "choices": []
+          },
+          {
+            "id": "p05_t5",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn trả lời sao để vừa thật vừa không tự hạ nhục mình?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p05_c2_brave",
+                "text": "Nói rõ: bạn làm tốt, nhưng cũng có phần Huy; công bằng giúp team bền.",
+                "playerLine": "Em làm phần của em tốt. Nhưng phần của Huy cũng quyết định kết quả. Em muốn team bền, nên em xin chia đúng.",
+                "intentTag": "truth",
+                "actionTag": "balanced_truth",
+                "effects": [
+                  { "stat": "wisdom", "delta": 10 },
+                  { "stat": "humility", "delta": 6 },
+                  { "stat": "faith", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "p05_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p05_c2_backtrack",
+                "text": "Back lại: “Dạ thôi… em nói vậy cho vui.”",
+                "playerLine": "Dạ thôi… chắc em nghĩ nhiều. Em xin lỗi sếp.",
+                "intentTag": "fear",
+                "actionTag": "backtrack",
+                "effects": [
+                  { "stat": "pride", "delta": 6 },
+                  { "stat": "faith", "delta": -4 },
+                  { "stat": "humility", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "p05_t6",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p05_t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Chiều đó, Huy nhắn: “Mình không cần bạn ‘cứu’. Mình chỉ cần bạn coi mình là người đồng đội.”",
+            "nextTurnId": "p05_t7",
+            "choices": []
+          },
+          {
+            "id": "p05_t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn chọn cách đáp lại thế nào?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p05_c3_walk_with",
+                "text": "Rủ Huy cùng lên kế hoạch tuần sau, để Huy được thấy và được nghe.",
+                "playerLine": "Tuần sau mình làm chung từ đầu nha. Bạn vô phần quyết định luôn, mình không muốn bạn đứng sau nữa.",
+                "intentTag": "love",
+                "actionTag": "co_lead",
+                "effects": [
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 6 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_05" }
+              },
+              {
+                "id": "p05_c3_keep_spotlight",
+                "text": "Trả lời lịch sự thôi, giữ nhịp cũ vì bạn sợ mất spotlight.",
+                "playerLine": "Ừ mình hiểu. Cảm ơn bạn nha. Có gì cần thì cứ nói.",
+                "intentTag": "avoid",
+                "actionTag": "polite_distance",
+                "effects": [
+                  { "stat": "pride", "delta": 8 },
+                  { "stat": "love", "delta": -4 },
+                  { "stat": "wisdom", "delta": 0 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_05" }
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "p05_o_team_first",
+            "requiredChoiceIds": ["p05_c1_share", "p05_c2_brave", "p05_c3_walk_with"],
+            "text": "Bạn chọn sự thật có khôn ngoan và bước đi chung. Bạn vẫn làm tốt, nhưng không cần đứng một mình trên sân khấu.",
+            "next": "reflection:ref_pride_05"
+          },
+          {
+            "id": "p05_o_fear_back",
+            "requiredChoiceIds": ["p05_c1_share", "p05_c2_backtrack"],
+            "text": "Bạn bắt đầu đúng, nhưng sợ mất chỗ đứng nên lùi. Huy không ghét bạn, chỉ bớt tin bạn.",
+            "next": "reflection:ref_pride_05"
+          },
+          {
+            "id": "p05_o_minimize",
+            "requiredChoiceIds": ["p05_c1_take"],
+            "text": "Bạn chọn êm cho nhanh. Spotlight ở lại, mà lòng bạn cứ thấy trống vì biết có người bị bỏ lại phía sau.",
+            "next": "reflection:ref_pride_05"
+          },
+          {
+            "id": "p05_o_split",
+            "requiredChoiceIds": ["p05_c1_share", "p05_c2_brave", "p05_c3_keep_spotlight"],
+            "text": "Bạn nói đúng với sếp, nhưng trong lòng vẫn muốn giữ ánh nhìn. Bạn nhận ra: cái tôi không chết vì một hành động tốt.",
+            "next": "reflection:ref_pride_05"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_pride_06",
+      "topic": "pride",
+      "title": "Xin Lỗi Mà Vẫn Muốn Thắng",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "trang", "name": "Trang", "portraitKey": "friend_06" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "p06_t1",
+        "turns": [
+          {
+            "id": "p06_t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn và Trang cãi nhau vì một hiểu lầm. Bạn đã xin lỗi, nhưng Trang vẫn chưa nguôi. Bạn thấy ‘mình đã xin lỗi rồi còn gì’.",
+            "nextTurnId": "p06_t2",
+            "choices": []
+          },
+          {
+            "id": "p06_t2",
+            "speaker": "Trang",
+            "text": "Bạn xin lỗi… nhưng mình nghe như bạn chỉ muốn kết thúc chuyện, chứ không muốn hiểu mình.",
+            "nextTurnId": "p06_t3",
+            "choices": []
+          },
+          {
+            "id": "p06_t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Câu đó đụng cái tự ái của bạn. Bạn muốn nói: ‘Vậy bạn muốn gì nữa?’",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p06_c1_push",
+                "text": "Nói thẳng: “Vậy bạn muốn mình làm gì nữa?”",
+                "playerLine": "Vậy bạn muốn mình làm gì nữa? Mình xin lỗi rồi mà.",
+                "intentTag": "defend",
+                "actionTag": "pressure",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "love", "delta": -6 },
+                  { "stat": "humility", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p06_t4",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p06_c1_slow",
+                "text": "Hạ giọng: “Bạn nói rõ giúp mình, mình muốn hiểu thiệt.”",
+                "playerLine": "Bạn nói rõ giúp mình nha. Mình muốn hiểu thiệt, không phải cho xong.",
+                "intentTag": "love",
+                "actionTag": "slow_down",
+                "effects": [
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "p06_t4",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p06_t4",
+            "speaker": "Trang",
+            "text": "Mình muốn bạn thừa nhận là lúc đó bạn coi cảm xúc mình là ‘phiền’, chứ không phải ‘quan trọng’.",
+            "nextTurnId": "p06_t5",
+            "choices": []
+          },
+          {
+            "id": "p06_t5",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn giật mình vì Trang nói đúng. Nhưng nhận vậy đồng nghĩa bạn phải nhìn mình xấu đi trong mắt chính mình.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p06_c2_admit",
+                "text": "Thừa nhận: “Đúng, mình đã coi nhẹ cảm xúc bạn.”",
+                "playerLine": "Đúng. Mình đã coi nhẹ cảm xúc bạn. Mình xin lỗi vì cái đó, không phải vì ‘cãi nhau’ thôi.",
+                "intentTag": "repent",
+                "actionTag": "admit",
+                "effects": [
+                  { "stat": "humility", "delta": 14 },
+                  { "stat": "pride", "delta": -10 },
+                  { "stat": "love", "delta": 6 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "p06_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p06_c2_semantics",
+                "text": "Bắt chữ: “Mình không coi nhẹ, mình chỉ bận.”",
+                "playerLine": "Mình không coi nhẹ. Lúc đó mình bận quá nên mình phản ứng vậy thôi.",
+                "intentTag": "justify",
+                "actionTag": "word_game",
+                "effects": [
+                  { "stat": "pride", "delta": 8 },
+                  { "stat": "wisdom", "delta": -2 },
+                  { "stat": "love", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "p06_t6",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p06_t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Một tuần sau, Trang cần bạn giúp đúng lúc bạn cũng đang stress. Đây là bài test thật, không còn là lời nói.",
+            "nextTurnId": "p06_t7",
+            "choices": []
+          },
+          {
+            "id": "p06_t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn chọn sao?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p06_c3_show_up",
+                "text": "Tới giúp, dù bạn không vui, nhưng bạn chọn yêu bằng hành động.",
+                "playerLine": "Mình tới được. Mình đang mệt, nhưng mình không muốn bỏ bạn một mình.",
+                "intentTag": "love",
+                "actionTag": "show_up",
+                "effects": [
+                  { "stat": "love", "delta": 10 },
+                  { "stat": "faith", "delta": 4 },
+                  { "stat": "pride", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_06" }
+              },
+              {
+                "id": "p06_c3_boundary",
+                "text": "Từ chối khéo, giữ ranh giới để khỏi bùng nổ lần nữa.",
+                "playerLine": "Mình sợ mình đang không đủ sức. Mình không muốn giúp kiểu miễn cưỡng rồi lại làm bạn đau.",
+                "intentTag": "wisdom",
+                "actionTag": "healthy_boundary",
+                "effects": [
+                  { "stat": "wisdom", "delta": 10 },
+                  { "stat": "love", "delta": 2 },
+                  { "stat": "pride", "delta": 2 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_06" }
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "p06_o_rebuild",
+            "requiredChoiceIds": ["p06_c1_slow", "p06_c2_admit", "p06_c3_show_up"],
+            "text": "Bạn không chỉ xin lỗi, bạn thay đổi cách hiện diện. Trang cảm được bạn tôn trọng họ hơn cái tôi của bạn.",
+            "next": "reflection:ref_pride_06"
+          },
+          {
+            "id": "p06_o_mature_boundary",
+            "requiredChoiceIds": ["p06_c1_slow", "p06_c2_admit", "p06_c3_boundary"],
+            "text": "Bạn thật lòng nhận lỗi và giữ ranh giới khôn ngoan. Tình bạn không ‘ngọt’ liền, nhưng bền và sạch.",
+            "next": "reflection:ref_pride_06"
+          },
+          {
+            "id": "p06_o_semantics",
+            "requiredChoiceIds": ["p06_c2_semantics"],
+            "text": "Bạn không chịu nhận phần sâu nhất. Xin lỗi của bạn nghe như thủ tục, và Trang nghe được điều đó.",
+            "next": "reflection:ref_pride_06"
+          },
+          {
+            "id": "p06_o_pressure",
+            "requiredChoiceIds": ["p06_c1_push"],
+            "text": "Bạn muốn ‘xong chuyện’ hơn muốn hiểu người. Trang không cãi nữa, nhưng lòng thì đóng lại.",
+            "next": "reflection:ref_pride_06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_pride_07",
+      "topic": "pride",
+      "title": "Làm Vì Chúa Hay Vì Mình",
+      "characters": {
+        "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
+        "npcs": [
+          { "id": "phuc", "name": "Phúc", "portraitKey": "friend_07" }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "p07_t1",
+        "turns": [
+          {
+            "id": "p07_t1",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đăng ký phục vụ liên tục. Mọi người khen bạn ‘nhiệt’. Nhưng gần đây bạn hay cáu khi việc không theo ý.",
+            "nextTurnId": "p07_t2",
+            "choices": []
+          },
+          {
+            "id": "p07_t2",
+            "speaker": "Phúc",
+            "text": "Mình nói thiệt nha… dạo này bạn phục vụ mà ai góp ý là bạn đổi mood liền. Bạn có ổn không?",
+            "nextTurnId": "p07_t3",
+            "choices": []
+          },
+          {
+            "id": "p07_t3",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn chạm đúng nỗi sợ: nếu không được khen, bạn còn là ai? Bạn thấy mình làm nhiều… nhưng lòng thì khô.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p07_c1_deflect",
+                "text": "Đổ cho mệt: “Mình làm nhiều quá nên vậy thôi.”",
+                "playerLine": "Mình làm nhiều quá nên mệt, chứ mình đâu có vấn đề gì.",
+                "intentTag": "defend",
+                "actionTag": "deflect",
+                "effects": [
+                  { "stat": "pride", "delta": 10 },
+                  { "stat": "humility", "delta": -6 },
+                  { "stat": "faith", "delta": -2 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p07_t4",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p07_c1_open",
+                "text": "Thừa nhận: “Mình sợ bị coi thường, nên mình kiểm soát.”",
+                "playerLine": "Mình nghĩ… mình sợ bị coi thường. Nên mình hay kiểm soát để khỏi bị chê.",
+                "intentTag": "repent",
+                "actionTag": "open_up",
+                "effects": [
+                  { "stat": "humility", "delta": 12 },
+                  { "stat": "pride", "delta": -8 },
+                  { "stat": "faith", "delta": 4 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "p07_t4",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p07_t4",
+            "speaker": "Phúc",
+            "text": "Nếu bạn muốn, bạn có thể nghỉ một tuần. Không ai ghét bạn hết. Nhưng bạn đang tự đốt mình.",
+            "nextTurnId": "p07_t5",
+            "choices": []
+          },
+          {
+            "id": "p07_t5",
+            "speaker": "Dẫn chuyện",
+            "text": "Nghỉ một tuần nghĩa là không ai thấy bạn ‘đang làm gì’. Mà đó mới là chỗ bạn run.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p07_c2_rest",
+                "text": "Chấp nhận nghỉ, nhường vị trí, và âm thầm cầu nguyện để sửa động cơ.",
+                "playerLine": "Ừ… mình sẽ nghỉ một tuần. Mình muốn coi lại động cơ của mình trước Chúa.",
+                "intentTag": "repent",
+                "actionTag": "rest",
+                "effects": [
+                  { "stat": "faith", "delta": 8 },
+                  { "stat": "humility", "delta": 8 },
+                  { "stat": "pride", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "sad", "npc": "neutral" },
+                "nextTurnId": "p07_t6",
+                "outcome": { "text": "", "next": "end" }
+              },
+              {
+                "id": "p07_c2_keep",
+                "text": "Không nghỉ: ‘Mình mà nghỉ là hư việc’, tiếp tục ôm hết.",
+                "playerLine": "Mình nghỉ là hư việc liền. Thôi để mình làm tiếp, cho chắc.",
+                "intentTag": "control",
+                "actionTag": "overwork",
+                "effects": [
+                  { "stat": "pride", "delta": 12 },
+                  { "stat": "wisdom", "delta": -6 },
+                  { "stat": "love", "delta": -4 }
+                ],
+                "portraitOverrides": { "player": "angry", "npc": "neutral" },
+                "nextTurnId": "p07_t6",
+                "outcome": { "text": "", "next": "end" }
+              }
+            ]
+          },
+          {
+            "id": "p07_t6",
+            "speaker": "Dẫn chuyện",
+            "text": "Chủ nhật đó, khi bạn không đứng trong đội phục vụ, một người mới lên thay… và làm tốt. Bạn vừa nhẹ lòng vừa… hơi nhói.",
+            "nextTurnId": "p07_t7",
+            "choices": []
+          },
+          {
+            "id": "p07_t7",
+            "speaker": "Dẫn chuyện",
+            "text": "Bạn đối diện cảm xúc đó kiểu gì?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "p07_c3_bless",
+                "text": "Chúc mừng người mới, thật lòng nâng họ lên.",
+                "playerLine": "Bạn làm tốt lắm. Cảm ơn bạn đứng lên. Mình mừng vì Chúa dùng nhiều người, không phải chỉ mình.",
+                "intentTag": "love",
+                "actionTag": "bless_other",
+                "effects": [
+                  { "stat": "love", "delta": 8 },
+                  { "stat": "humility", "delta": 10 },
+                  { "stat": "pride", "delta": -8 }
+                ],
+                "portraitOverrides": { "player": "calm", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_07" }
+              },
+              {
+                "id": "p07_c3_compare",
+                "text": "Âm thầm so sánh, rồi quyết định quay lại ‘làm mạnh’ để không bị quên.",
+                "playerLine": "…Chắc tuần sau mình phải quay lại làm cho chuẩn hơn.",
+                "intentTag": "pride",
+                "actionTag": "compare",
+                "effects": [
+                  { "stat": "pride", "delta": 12 },
+                  { "stat": "faith", "delta": -2 },
+                  { "stat": "humility", "delta": -6 }
+                ],
+                "portraitOverrides": { "player": "neutral", "npc": "neutral" },
+                "nextTurnId": "",
+                "outcome": { "text": "", "next": "reflection:ref_pride_07" }
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "p07_o_free",
+            "requiredChoiceIds": ["p07_c1_open", "p07_c2_rest", "p07_c3_bless"],
+            "text": "Bạn học cách phục vụ mà không cần được thấy. Cái tôi nhỏ lại, lòng bạn lại có sự vui thật.",
+            "next": "reflection:ref_pride_07"
+          },
+          {
+            "id": "p07_o_burnout",
+            "requiredChoiceIds": ["p07_c1_deflect", "p07_c2_keep"],
+            "text": "Bạn ôm hết để giữ vị trí. Bạn vẫn được khen… cho tới lúc bạn kiệt sức và cáu với người bạn đang muốn ‘giúp’.",
+            "next": "reflection:ref_pride_07"
+          },
+          {
+            "id": "p07_o_rest_but_compare",
+            "requiredChoiceIds": ["p07_c2_rest", "p07_c3_compare"],
+            "text": "Bạn dám nghỉ, nhưng lòng vẫn so sánh. Bạn nhận ra: nghỉ thân xác dễ hơn nghỉ cái tôi.",
+            "next": "reflection:ref_pride_07"
+          },
+          {
+            "id": "p07_o_control_loop",
+            "requiredChoiceIds": ["p07_c2_keep", "p07_c3_compare"],
+            "text": "Bạn bị kẹt trong vòng lặp: làm để được nhìn, rồi càng làm càng sợ mất chỗ đứng. Không ai ép bạn—chính cái tôi ép bạn.",
+            "next": "reflection:ref_pride_07"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_pride_01",
+      "topic": "pride",
+      "verseRef": "Châm-ngôn 16:18",
+      "verseText": "Kiêu ngạo dẫn tới sụp đổ; tự cao làm mình vấp ngã.",
+      "questions": [
+        "Trong câu chuyện này, mình đang bảo vệ điều gì: sự thật hay cái danh?",
+        "Mình có đang xin lỗi để được yên, hay xin lỗi để được đổi?",
+        "Hôm nay mình có thể ‘nhường’ một điều nhỏ nào để luyện khiêm nhường?"
+      ]
+    },
+    {
+      "id": "ref_pride_02",
+      "topic": "pride",
+      "verseRef": "Gia-cơ 4:6",
+      "verseText": "Chúa chống kẻ tự cao, ban ơn cho người khiêm nhường.",
+      "questions": [
+        "Mình làm tốt vì muốn được thấy hay vì muốn phục vụ thật?",
+        "Có chỗ nào mình đang ‘biện minh’ để giữ hình ảnh?",
+        "Một bước cụ thể để trả lại công bằng cho người khác là gì?"
+      ]
+    },
+    {
+      "id": "ref_pride_03",
+      "topic": "pride",
+      "verseRef": "Phi-líp 2:3",
+      "verseText": "Đừng làm vì tranh thắng; hãy coi người khác quan trọng hơn mình.",
+      "questions": [
+        "Lúc bị chạm tự ái, phản xạ đầu tiên của mình là gì?",
+        "Mình có sợ bị xem thường nên phải tỏ ra ‘hơn’ không?",
+        "Mình sẽ tôn trọng người khác bằng hành động nào, không chỉ bằng lời?"
+      ]
+    },
+    {
+      "id": "ref_pride_04",
+      "topic": "pride",
+      "verseRef": "1 Cô-rinh-tô 13:1",
+      "verseText": "Nói đúng mà thiếu tình yêu thì chỉ là tiếng ồn.",
+      "questions": [
+        "Mình có dùng ‘lẽ phải’ để thắng người ta không?",
+        "Mình có đang muốn đúng hơn muốn yêu?",
+        "Lần tới, mình sẽ nói thật theo cách nào để không làm người ta vấp phạm?"
+      ]
+    },
+    {
+      "id": "ref_pride_05",
+      "topic": "pride",
+      "verseRef": "Rô-ma 12:10",
+      "verseText": "Hãy tôn trọng nhau, nhường phần hơn cho nhau.",
+      "questions": [
+        "Mình có dám chia spotlight không? Vì sao khó vậy?",
+        "Mình đang sợ mất gì khi người khác được nâng lên?",
+        "Một cách mình có thể đi chung với đồng đội ‘từ đầu’ là gì?"
+      ]
+    },
+    {
+      "id": "ref_pride_06",
+      "topic": "pride",
+      "verseRef": "Châm-ngôn 18:13",
+      "verseText": "Nghe trước khi đáp; nếu không sẽ tự mang hổ thẹn.",
+      "questions": [
+        "Xin lỗi của mình có đi kèm sự lắng nghe không?",
+        "Mình có đang bắt chữ để khỏi phải nhận phần sâu nhất?",
+        "Mình sẽ thực hành tôn trọng cảm xúc người khác bằng cách nào?"
+      ]
+    },
+    {
+      "id": "ref_pride_07",
+      "topic": "pride",
+      "verseRef": "Ma-thi-ơ 6:1",
+      "verseText": "Đừng làm để được người ta thấy; hãy giữ lòng ngay thẳng trước Chúa.",
+      "questions": [
+        "Khi không ai thấy mình, mình còn muốn làm điều tốt không?",
+        "Mình đang phục vụ vì Chúa hay vì cảm giác mình ‘có giá trị’?",
+        "Tuần này mình có thể hạ mình bằng một quyết định cụ thể nào?"
+      ]
+    }
+  ]
+}

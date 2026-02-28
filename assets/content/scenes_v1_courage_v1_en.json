@@ -1,0 +1,3293 @@
+{
+  "scenes": [
+    {
+      "id": "scene_courage_church_01",
+      "topic": "courage",
+      "title": "When the Truth Costs Me",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "thanh",
+            "name": "Ethan",
+            "portraitKey": "friend_01"
+          },
+          {
+            "id": "pastor",
+            "name": "Pastor Andrew",
+            "portraitKey": "pastor_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "During tonight’s ministry team meeting, you notice the group budget is being used for the wrong purpose. It’s not a huge amount… but if this keeps going, it could damage the church’s credibility.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Ethan",
+            "text": "Come on… it’s a small thing. Don’t make it a big deal. We all trust each other here.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "You",
+            "text": "But it feels… off.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Ethan",
+            "text": "Are you suspecting someone? Or are you saying I did something wrong?",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Narrator",
+            "text": "The air tightens. Everyone goes quiet, waiting for your response.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_soft_private",
+                "text": "Ask Ethan to talk privately after the meeting.",
+                "playerLine": "I’m not trying to accuse anyone… I just want to clarify. Can we talk one-on-one for a minute?",
+                "intentTag": "courage",
+                "actionTag": "private_confront",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_private_1"
+              },
+              {
+                "id": "c_public_call",
+                "text": "Say it directly in front of the group that something’s off.",
+                "playerLine": "I think we need to address this right now. There’s been some spending that hasn’t been transparent.",
+                "intentTag": "courage",
+                "actionTag": "public_truth",
+                "effects": [
+                  {
+                    "stat": "faith",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "shocked"
+                },
+                "nextTurnId": "t_public_1"
+              }
+            ]
+          },
+          {
+            "id": "t_private_1",
+            "speaker": "Ethan",
+            "text": "So you think I’m stealing money?",
+            "nextTurnId": "t_private_2",
+            "choices": []
+          },
+          {
+            "id": "t_private_2",
+            "speaker": "Narrator",
+            "text": "Ethan looks at you, eyes turning red. He’s clearly hurt.",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Narrator",
+            "text": "You can keep digging… or you can back off.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_private_push",
+                "text": "Keep pushing for transparency, even if it costs the friendship.",
+                "playerLine": "I’m not saying you’re stealing. But I need clarity—for the whole team.",
+                "intentTag": "courage",
+                "actionTag": "persist_truth",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c_private_drop",
+                "text": "Let it go to keep the peace.",
+                "playerLine": "Maybe I’m overthinking it. Forget it.",
+                "intentTag": "fear",
+                "actionTag": "withdraw",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "uncertain",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_public_1",
+            "speaker": "Pastor Andrew",
+            "text": "This is more serious than I thought.",
+            "nextTurnId": "t_public_2",
+            "choices": []
+          },
+          {
+            "id": "t_public_2",
+            "speaker": "Ethan",
+            "text": "You embarrassed me in front of everyone.",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Narrator",
+            "text": "You can apologize for your delivery… or stand firm on your stance.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c_public_apology_tone",
+                "text": "Apologize for how you said it, but keep your point.",
+                "playerLine": "I’m sorry if I put you on the spot. But I really believe the truth needs to be clear.",
+                "intentTag": "courage",
+                "actionTag": "balanced_truth",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 5
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 5
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "conflicted"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c_public_double_down",
+                "text": "Hold your ground hard.",
+                "playerLine": "If transparency makes someone uncomfortable, then I’ll accept that.",
+                "intentTag": "courage",
+                "actionTag": "hard_truth",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -5
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Narrator",
+            "text": "The meeting ends in a heavy atmosphere.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_full_courage",
+            "requiredChoiceIds": [
+              "c_soft_private",
+              "c_private_push"
+            ],
+            "text": "Everything gets clarified. A bookkeeping mistake is discovered. The friendship cracks for a while… but the team is protected.",
+            "next": "reflection:ref_courage_church"
+          },
+          {
+            "id": "o_silent_regret",
+            "requiredChoiceIds": [
+              "c_soft_private",
+              "c_private_drop"
+            ],
+            "text": "You keep the peace… but months later the issue blows up bigger. You wonder: I should’ve spoken up.",
+            "next": "reflection:ref_courage_church"
+          },
+          {
+            "id": "o_balanced_public",
+            "requiredChoiceIds": [
+              "c_public_call",
+              "c_public_apology_tone"
+            ],
+            "text": "The issue gets taken seriously. Ethan is hurt, but slowly realizes you weren’t attacking him personally.",
+            "next": "reflection:ref_courage_church"
+          },
+          {
+            "id": "o_hard_public",
+            "requiredChoiceIds": [
+              "c_public_call",
+              "c_public_double_down"
+            ],
+            "text": "The truth comes out fast. But the relationship fractures deeply. You face the cost of being blunt.",
+            "next": "reflection:ref_courage_church"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "You choose safety. But something inside still won’t settle.",
+            "next": "reflection:ref_courage_church"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_promo_01",
+      "topic": "courage",
+      "title": "One Signature, One Price",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "boss",
+            "name": "Ms. Hannah",
+            "portraitKey": "boss_01"
+          },
+          {
+            "id": "mentor",
+            "name": "Tim",
+            "portraitKey": "mentor_01"
+          },
+          {
+            "id": "partner",
+            "name": "Lily",
+            "portraitKey": "partner_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Near the end of the day, you’re called into a small meeting room. On the table is a decision letter: project manager promotion. The raise is enough to finally breathe… after months of barely getting by.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Ms. Hannah",
+            "text": "Congrats. Upper management approved it. Just one tiny thing before we announce it…",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Narrator",
+            "text": "Ms. Hannah slides an incident report toward you. You skim it and notice a few parts were lightly edited to look “better” than reality. If it stays like this, the client won’t know the real risk.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Ms. Hannah",
+            "text": "Everyone wants things smooth. Just sign this for me, and next week you’re promoted. This… people do it all the time.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "You",
+            "text": "But… if the client gets affected, then what?",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Narrator",
+            "text": "Your heart pounds. This isn’t just paperwork. It’s a line.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_sign_quiet",
+                "text": "Sign to keep things quiet, telling yourself “I’ll fix it after I’m promoted.”",
+                "playerLine": "Okay… I’ll sign. And I’ll keep a close eye on the project so it’s solid.",
+                "intentTag": "fear",
+                "actionTag": "comply",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": -6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_after_sign"
+              },
+              {
+                "id": "c1_ask_fix",
+                "text": "Be direct: you won’t sign unless the report is corrected.",
+                "playerLine": "I’m sorry, I can’t sign this version. Can we fix it properly first, then sign?",
+                "intentTag": "courage",
+                "actionTag": "refuse",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "shocked"
+                },
+                "nextTurnId": "t_after_refuse"
+              }
+            ]
+          },
+          {
+            "id": "t_after_sign",
+            "speaker": "Narrator",
+            "text": "You sign. Ms. Hannah smiles faintly and takes the paper back fast—like she’s afraid you’ll change your mind.",
+            "nextTurnId": "t6",
+            "choices": []
+          },
+          {
+            "id": "t6",
+            "speaker": "Ms. Hannah",
+            "text": "Good. Tomorrow I’ll send the promotion email. Oh… keep it quiet, okay?",
+            "nextTurnId": "t7",
+            "choices": []
+          },
+          {
+            "id": "t7",
+            "speaker": "Narrator",
+            "text": "That night at home, Lily is calculating bills—electricity, school, everything. You try to speak, but your throat tightens.",
+            "nextTurnId": "t8",
+            "choices": []
+          },
+          {
+            "id": "t8",
+            "speaker": "Lily",
+            "text": "Why do you look so tense? You got promoted—shouldn’t you be happy?",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Narrator",
+            "text": "Do you tell Lily the truth? Or stay quiet so she won’t worry?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_keep_silent",
+                "text": "Stay quiet and carry it alone.",
+                "playerLine": "It’s nothing. Just tired, I guess.",
+                "intentTag": "fear",
+                "actionTag": "hide",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t9"
+              },
+              {
+                "id": "c2_confess_partner",
+                "text": "Tell Lily the truth, pray together, and figure out the next step.",
+                "playerLine": "I… did something that doesn’t feel right. I signed something I think is wrong. I’m really messed up about it.",
+                "intentTag": "courage",
+                "actionTag": "confess",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t9"
+              }
+            ]
+          },
+          {
+            "id": "t_after_refuse",
+            "speaker": "Ms. Hannah",
+            "text": "You… serious? You think you’re some kind of hero?",
+            "nextTurnId": "t10",
+            "choices": []
+          },
+          {
+            "id": "t10",
+            "speaker": "Narrator",
+            "text": "Ms. Hannah lowers her voice. The room suddenly feels colder.",
+            "nextTurnId": "t11",
+            "choices": []
+          },
+          {
+            "id": "t11",
+            "speaker": "Ms. Hannah",
+            "text": "Let me be real. If you make this a big thing, you won’t just lose the promotion. You’ll be the person who ruins the vibe. Can you handle that?",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Narrator",
+            "text": "You can back down to survive… or hold the line and accept the consequences.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_back_down",
+                "text": "Back down: say you misunderstood and you’ll sign.",
+                "playerLine": "Yeah… maybe I overthought it. Let me sign it, okay?",
+                "intentTag": "fear",
+                "actionTag": "backdown",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "courage",
+                    "delta": -6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "uncertain",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_after_sign"
+              },
+              {
+                "id": "c2_hold_line",
+                "text": "Hold firm: you won’t sign, and you suggest reporting the truth upward.",
+                "playerLine": "I don’t want drama, but I can’t sign it. If needed, we report it accurately and take responsibility.",
+                "intentTag": "courage",
+                "actionTag": "escalate",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 12
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t12"
+              }
+            ]
+          },
+          {
+            "id": "t12",
+            "speaker": "Narrator",
+            "text": "A few days later, you get called into a meeting with Tim—the person who mentored you when you first joined the company.",
+            "nextTurnId": "t13",
+            "choices": []
+          },
+          {
+            "id": "t13",
+            "speaker": "Tim",
+            "text": "You did the right thing… but do you realize what you’re messing with?",
+            "nextTurnId": "t14",
+            "choices": []
+          },
+          {
+            "id": "t14",
+            "speaker": "Narrator",
+            "text": "Tim sets his phone down. The screen shows an email from the client. They’ve suspected this for a long time. They’re just waiting for someone inside the company to finally tell the truth.",
+            "nextTurnId": "t15",
+            "choices": []
+          },
+          {
+            "id": "t15",
+            "speaker": "Tim",
+            "text": "If you stay quiet, they sue the whole company. But if you speak up, people will hate you. Which one do you choose?",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Narrator",
+            "text": "This is the final decision. There’s no “nice for everyone” option.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_report_formal",
+                "text": "File an official report (proper process), accept being isolated.",
+                "playerLine": "I’ll do it the right way. Even if people hate me, I’ll take it.",
+                "intentTag": "courage",
+                "actionTag": "formal_report",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_quiet_exit",
+                "text": "Resign quietly—avoid escalation, but also refuse to participate.",
+                "playerLine": "I’m stepping away. I don’t want to enable this, but I also don’t have the strength to fight it here.",
+                "intentTag": "neutral",
+                "actionTag": "exit",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 3
+                  },
+                  {
+                    "stat": "courage",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t9",
+            "speaker": "Narrator",
+            "text": "You lie awake. One signature can feed your family… but it can also make someone else pay the consequences for you.",
+            "nextTurnId": "t16",
+            "choices": []
+          },
+          {
+            "id": "t16",
+            "speaker": "Tim",
+            "text": "Are you free? Let’s meet tomorrow. I need you to confirm something.",
+            "nextTurnId": "t17",
+            "choices": []
+          },
+          {
+            "id": "t17",
+            "speaker": "Narrator",
+            "text": "Tim’s voice is serious. You suddenly realize: what you signed that day… isn’t staying in a drawer.",
+            "nextTurnId": "t_choice_3a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3a",
+            "speaker": "Narrator",
+            "text": "Will you fix it by telling the truth, or keep burying it?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_confess_work",
+                "text": "Admit it: you signed, and you want to correct it with an accurate report.",
+                "playerLine": "I signed it… and I was wrong. I want to submit the correct version and take responsibility.",
+                "intentTag": "courage",
+                "actionTag": "confess_and_fix",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_double_down",
+                "text": "Stay quiet: act like you don’t know anything and protect your new position.",
+                "playerLine": "I… don’t know anything else, Tim. Maybe another team handled it.",
+                "intentTag": "fear",
+                "actionTag": "deny",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Narrator",
+            "text": "Everything looks fine on the outside… but inside you know: courage isn’t a feeling. It’s an action.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_truth_full_cost",
+            "requiredChoiceIds": [
+              "c1_ask_fix",
+              "c2_hold_line",
+              "c3_report_formal"
+            ],
+            "text": "You hold the line to the end. The company has to correct things before real damage happens. People label you “difficult”… but you save many from a bigger fallout.",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_truth_exit",
+            "requiredChoiceIds": [
+              "c1_ask_fix",
+              "c2_hold_line",
+              "c3_quiet_exit"
+            ],
+            "text": "You don’t sign the wrong thing, but you also don’t stay to fight. You leave quietly… carrying this lesson: sometimes courage is walking away from a place that keeps bending you.",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_signed_then_confess",
+            "requiredChoiceIds": [
+              "c1_sign_quiet",
+              "c3_confess_work"
+            ],
+            "text": "You chose safety first, then came back to fix it. You lose the promotion… but you get your clean conscience back. Lily hugs you—no blame—just: “We can start over.”",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_signed_and_bury",
+            "requiredChoiceIds": [
+              "c1_sign_quiet",
+              "c3_double_down"
+            ],
+            "text": "You get promoted. The money comes. But the higher you go, the more you’re asked to sign. You realize the price of silence is… having to stay silent forever.",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_backdown_loop",
+            "requiredChoiceIds": [
+              "c1_ask_fix",
+              "c2_back_down"
+            ],
+            "text": "You said no… then took it back. You still get promoted, but from then on you keep wondering: “Do I really believe what I say?”",
+            "next": "reflection:ref_courage_promo_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "You choose short-term peace. But the truth still finds a way out.",
+            "next": "reflection:ref_courage_promo_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_gossip_01",
+      "topic": "courage",
+      "title": "A Rumor, and One Silent Person",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "my",
+            "name": "Mia",
+            "portraitKey": "friend_02"
+          },
+          {
+            "id": "khoa",
+            "name": "Kyle",
+            "portraitKey": "friend_01"
+          },
+          {
+            "id": "pastor",
+            "name": "Pastor Andrew",
+            "portraitKey": "pastor_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "After group time, you walk past the chair-stacking area and hear people whispering about Mia. Their voices are low, but you catch words like: “fake,” “not decent,” “don’t trust her.”",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Kyle",
+            "text": "You heard it too, huh? Honestly… be careful. Getting involved is exhausting.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Narrator",
+            "text": "Mia stands not far away, eyes down on her phone. You’re not sure if she heard… but her shoulders tighten, like she’s trying to endure it.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "You",
+            "text": "Is that… confirmed?",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Kyle",
+            "text": "Just heard it from someone I know. And honestly, everyone in the group knows. If you speak up, you’ll get labeled.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Narrator",
+            "text": "You’re stuck between two currents: speak up and get noticed, or stay quiet and let Mia get crushed little by little.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_stop_gossip",
+                "text": "Stop it now: don’t spread things you don’t actually know are true.",
+                "playerLine": "Hold up. If we don’t know the truth, we shouldn’t talk like this. It’s not fair.",
+                "intentTag": "courage",
+                "actionTag": "stop_gossip",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "shocked"
+                },
+                "nextTurnId": "t_after_stop"
+              },
+              {
+                "id": "c1_play_safe",
+                "text": "Stay quiet: “not my business.”",
+                "playerLine": "Uh… I don’t know. I’m gonna head out.",
+                "intentTag": "fear",
+                "actionTag": "avoid",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_after_avoid"
+              }
+            ]
+          },
+          {
+            "id": "t_after_stop",
+            "speaker": "Narrator",
+            "text": "The moment stalls. Kyle smirks, like you just did something “naive.”",
+            "nextTurnId": "t6",
+            "choices": []
+          },
+          {
+            "id": "t6",
+            "speaker": "Kyle",
+            "text": "Wow, you’re defending her hard. Or… are you super close to Mia, so you’re sensitive?",
+            "nextTurnId": "t7",
+            "choices": []
+          },
+          {
+            "id": "t7",
+            "speaker": "Narrator",
+            "text": "It feels like a trap. If you react too strongly, people will say you’re “hiding something.” If you back off, the rumor keeps breathing.",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Narrator",
+            "text": "What do you do next?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_private_confront",
+                "text": "Pull Kyle aside: ask him to stop spreading it.",
+                "playerLine": "Can we talk privately for a sec? Can we stop this kind of stuff?",
+                "intentTag": "courage",
+                "actionTag": "private_confront",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_private_1"
+              },
+              {
+                "id": "c2_public_boundary",
+                "text": "Set a boundary in front of everyone: no trash-talking in church.",
+                "playerLine": "I’m not here to debate who’s right. But in our group, we’re not doing this kind of trash talk.",
+                "intentTag": "courage",
+                "actionTag": "public_boundary",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "annoyed"
+                },
+                "nextTurnId": "t_public_1"
+              }
+            ]
+          },
+          {
+            "id": "t_private_1",
+            "speaker": "Kyle",
+            "text": "You’re acting like I’m evil. I’m just giving you a heads-up.",
+            "nextTurnId": "t_private_2",
+            "choices": []
+          },
+          {
+            "id": "t_private_2",
+            "speaker": "Narrator",
+            "text": "Kyle lowers his voice, but his eyes sharpen. You realize: this isn’t just gossip—it’s a little power game inside the group.",
+            "nextTurnId": "t_private_3",
+            "choices": []
+          },
+          {
+            "id": "t_private_3",
+            "speaker": "Kyle",
+            "text": "Fine. But honestly… Mia really does have issues. Don’t get too involved.",
+            "nextTurnId": "t_choice_3a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3a",
+            "speaker": "Narrator",
+            "text": "Do you believe Kyle and keep your distance… or go straight to Mia and ask her directly?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_talk_to_my",
+                "text": "Go to Mia, ask directly, and listen.",
+                "playerLine": "Mia, can I ask for real… are you okay lately? Is there anything I can do to help?",
+                "intentTag": "courage",
+                "actionTag": "check_in",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "sad"
+                },
+                "nextTurnId": "t_my_1"
+              },
+              {
+                "id": "c3_keep_distance",
+                "text": "Keep your distance to avoid trouble.",
+                "playerLine": "Yeah… I get it. I’ll think about it.",
+                "intentTag": "fear",
+                "actionTag": "distance",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_public_1",
+            "speaker": "Narrator",
+            "text": "After you speak, a few people force an awkward laugh. Kyle stays quiet, but you see him texting something fast.",
+            "nextTurnId": "t_public_2",
+            "choices": []
+          },
+          {
+            "id": "t_public_2",
+            "speaker": "Mia",
+            "text": "…Were you talking about me?",
+            "nextTurnId": "t_public_3",
+            "choices": []
+          },
+          {
+            "id": "t_public_3",
+            "speaker": "Narrator",
+            "text": "Mia looks at you, eyes red. You suddenly realize: Mia heard everything from the start. She’s not just being gossiped about—she’s trying not to fall apart right here.",
+            "nextTurnId": "t_choice_3b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3b",
+            "speaker": "Narrator",
+            "text": "What do you do right now?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_stay_with_my",
+                "text": "Stay with Mia and take her somewhere quiet.",
+                "playerLine": "Mia, come with me for a bit. I’m not leaving you standing here alone.",
+                "intentTag": "courage",
+                "actionTag": "protect",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "cry"
+                },
+                "nextTurnId": "t_my_1"
+              },
+              {
+                "id": "c3_save_face",
+                "text": "Soften it to avoid a scene.",
+                "playerLine": "No, no… I meant it generally. I didn’t name anyone.",
+                "intentTag": "fear",
+                "actionTag": "deflect",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -5
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "uncertain",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_my_1",
+            "speaker": "Narrator",
+            "text": "You and Mia step into the hallway. She tries to smile, but her voice shakes.",
+            "nextTurnId": "t_my_2",
+            "choices": []
+          },
+          {
+            "id": "t_my_2",
+            "speaker": "Mia",
+            "text": "I know what people are saying. I’ve been really confused lately. I’ve been on medication for weeks. Sometimes I just want to disappear.",
+            "nextTurnId": "t_my_3",
+            "choices": []
+          },
+          {
+            "id": "t_my_3",
+            "speaker": "Narrator",
+            "text": "Your spine goes cold. You just touched something more fragile than you expected. If you handle this badly, Mia will shut down. If you handle it well, you’ll get pulled into a story everyone else avoids.",
+            "nextTurnId": "t_choice_4",
+            "choices": []
+          },
+          {
+            "id": "t_choice_4",
+            "speaker": "Narrator",
+            "text": "How will you choose to help Mia?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c4_tell_pastor",
+                "text": "Encourage Mia to talk to Pastor Andrew, and go with her.",
+                "playerLine": "Mia, I don’t want you carrying this alone. Let’s go talk to Pastor Andrew together.",
+                "intentTag": "courage",
+                "actionTag": "seek_help",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "sad"
+                },
+                "nextTurnId": "t_pastor_1"
+              },
+              {
+                "id": "c4_keep_secret",
+                "text": "Promise absolute secrecy—only you and Mia will know.",
+                "playerLine": "Okay, I’ll keep it completely private. Just you and me.",
+                "intentTag": "love",
+                "actionTag": "keep_secret",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_pastor_1",
+            "speaker": "Pastor Andrew",
+            "text": "Thank you for not ignoring this. But you know… if you stand with Mia, people will misunderstand you. Are you ready to carry that?",
+            "nextTurnId": "t_pastor_2",
+            "choices": []
+          },
+          {
+            "id": "t_pastor_2",
+            "speaker": "Narrator",
+            "text": "Final plot twist: Kyle messages a few people: “You’re hiding Mia’s situation.” You become the “accomplice” in a brand-new rumor.",
+            "nextTurnId": "t_choice_5",
+            "choices": []
+          },
+          {
+            "id": "t_choice_5",
+            "speaker": "Narrator",
+            "text": "How do you respond when you’re misunderstood for doing the right thing?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c5_hold_boundary",
+                "text": "Stay calm, don’t argue, just restate the principle: stop rumors—choose love and respect.",
+                "playerLine": "I’m not here to fight. I’m just asking everyone to stop the rumors. If anyone needs to talk, I’m willing to talk directly—with respect.",
+                "intentTag": "courage",
+                "actionTag": "hold_boundary",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c5_clap_back",
+                "text": "Call it out publicly: confront Kyle in front of the group.",
+                "playerLine": "Kyle, you’re the one texting and spreading this. Can you stop?",
+                "intentTag": "courage",
+                "actionTag": "public_callout",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_after_avoid",
+            "speaker": "Narrator",
+            "text": "You walk out to the parking lot. The wind is cold. In your head, you still hear: “everyone knows.” But you don’t know this: Mia heard everything—and decided to leave the group for good.",
+            "nextTurnId": "t_end",
+            "choices": []
+          },
+          {
+            "id": "t_end",
+            "speaker": "Narrator",
+            "text": "You can’t control rumors. But you can choose whether you’ll help them spread… or help them stop.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_courage_protect_and_help",
+            "requiredChoiceIds": [
+              "c1_stop_gossip",
+              "c2_public_boundary",
+              "c3_stay_with_my",
+              "c4_tell_pastor",
+              "c5_hold_boundary"
+            ],
+            "text": "You choose to stand with someone vulnerable—and you choose a responsible way to do it. You’re misunderstood for a while… but Mia gets help in time, and the group slowly relearns a healthier culture of speech.",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_courage_but_burn_bridge",
+            "requiredChoiceIds": [
+              "c1_stop_gossip",
+              "c2_public_boundary",
+              "c3_stay_with_my",
+              "c4_tell_pastor",
+              "c5_clap_back"
+            ],
+            "text": "You protect Mia, but your response splits the group into sides. You did the right thing, but you learn that courage needs gentleness too—so you don’t burn the bridge along with the fire.",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_private_and_check_in",
+            "requiredChoiceIds": [
+              "c1_stop_gossip",
+              "c2_private_confront",
+              "c3_talk_to_my",
+              "c4_tell_pastor"
+            ],
+            "text": "You choose a quiet but deep path. No spotlight, no performance. Mia feels truly seen. You don’t fix the whole group overnight, but you pull one person back from feeling alone.",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_secret_then_overload",
+            "requiredChoiceIds": [
+              "c1_stop_gossip",
+              "c2_private_confront",
+              "c3_talk_to_my",
+              "c4_keep_secret"
+            ],
+            "text": "You care about Mia and keep it secret. But the weight lands on you. You start burning out—fighting rumors while holding a heavy secret alone.",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_play_safe_regret",
+            "requiredChoiceIds": [
+              "c1_play_safe"
+            ],
+            "text": "You choose safety. Mia leaves the group. Weeks later you hear she switched churches… and you wonder: was your silence also an answer?",
+            "next": "reflection:ref_courage_gossip_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "You want everything to stay calm. But rumors don’t calm down on their own.",
+            "next": "reflection:ref_courage_gossip_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_parent_01",
+      "topic": "courage",
+      "title": "Sorry, Kid—Even If I Look Bad",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "kid",
+            "name": "Ben",
+            "portraitKey": "kid_01"
+          },
+          {
+            "id": "teacher",
+            "name": "Ms. Taylor",
+            "portraitKey": "teacher_01"
+          },
+          {
+            "id": "partner",
+            "name": "Lily",
+            "portraitKey": "partner_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "After school, you pick Ben up later than usual. Ben runs out—tense face, backpack swinging. You did text ahead, but today you’re exhausted.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Ben",
+            "text": "I waited forever. Everyone went home already.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "You",
+            "text": "Your mom/dad had stuff to do. Can you stop whining?",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Narrator",
+            "text": "Ben bites their lip. You notice Ms. Taylor standing nearby, watching. Ben speaks softly, but it sounds like backtalk.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Ben",
+            "text": "But I… I was scared. I thought you forgot me.",
+            "nextTurnId": "t6",
+            "choices": []
+          },
+          {
+            "id": "t6",
+            "speaker": "Narrator",
+            "text": "You get irritated, and in front of Ms. Taylor and a few remaining parents, you snap loudly. Ben freezes, eyes red, like time stopped.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Narrator",
+            "text": "In that exact moment, you can pull it back… or let your ego drive.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_apologize_now",
+                "text": "Apologize to Ben right there, even with everyone watching.",
+                "playerLine": "I’m sorry. I shouldn’t have raised my voice. You being scared makes sense—I get it.",
+                "intentTag": "courage",
+                "actionTag": "apologize_public",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "pride",
+                    "delta": -6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "sad"
+                },
+                "nextTurnId": "t_after_public_apology"
+              },
+              {
+                "id": "c1_save_face",
+                "text": "Save face: lower your voice and drag Ben away quickly.",
+                "playerLine": "Let’s go. We’ll talk tonight.",
+                "intentTag": "pride",
+                "actionTag": "save_face",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_after_save_face"
+              }
+            ]
+          },
+          {
+            "id": "t_after_public_apology",
+            "speaker": "Narrator",
+            "text": "The air softens. Ben looks at you like they can’t believe it. Ms. Taylor walks over, voice gentle.",
+            "nextTurnId": "t7",
+            "choices": []
+          },
+          {
+            "id": "t7",
+            "speaker": "Ms. Taylor",
+            "text": "Thank you for saying that. Ben sat alone for a long time today.",
+            "nextTurnId": "t8",
+            "choices": []
+          },
+          {
+            "id": "t8",
+            "speaker": "Narrator",
+            "text": "It stings your heart: Ben isn’t just sad about waiting—Ben felt abandoned. In the car, Ben stays quiet.",
+            "nextTurnId": "t9",
+            "choices": []
+          },
+          {
+            "id": "t9",
+            "speaker": "Ben",
+            "text": "Were you really sorry? Or did you just say it so Ms. Taylor would hear?",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Narrator",
+            "text": "Ben doubts your motive. How do you make it clear?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_own_it",
+                "text": "Own it fully: apologize for embarrassing Ben and making Ben scared.",
+                "playerLine": "I’m truly sorry. I let my exhaustion control me. You’re not someone I get to dump on.",
+                "intentTag": "courage",
+                "actionTag": "own_mistake",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "cry"
+                },
+                "nextTurnId": "t10"
+              },
+              {
+                "id": "c2_deflect",
+                "text": "Justify it: bring up work, responsibility, how Ben should understand.",
+                "playerLine": "I’m exhausted. You’re older now—you should understand.",
+                "intentTag": "pride",
+                "actionTag": "justify",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -6
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t10"
+              }
+            ]
+          },
+          {
+            "id": "t_after_save_face",
+            "speaker": "Narrator",
+            "text": "You pull Ben away. On the walk to the car, you hear parents whispering. Ben doesn’t cry, but their face turns hard like stone.",
+            "nextTurnId": "t11",
+            "choices": []
+          },
+          {
+            "id": "t11",
+            "speaker": "Lily",
+            "text": "Why is Ben so quiet? Did something happen?",
+            "nextTurnId": "t12",
+            "choices": []
+          },
+          {
+            "id": "t12",
+            "speaker": "Narrator",
+            "text": "You want to say “nothing,” but Lily looks straight at you—she knows something happened. You’re caught between saving your image and saving your child’s heart.",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Narrator",
+            "text": "How will you handle it at home?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_confess_to_partner",
+                "text": "Tell Lily the truth—ask her to help you apologize and repair it.",
+                "playerLine": "I snapped in front of the teacher… I was wrong. Tonight I want to apologize properly.",
+                "intentTag": "courage",
+                "actionTag": "confess_partner",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t10"
+              },
+              {
+                "id": "c2_double_down",
+                "text": "Save face: tell Lily not to interfere—you’ll “teach” Ben yourself.",
+                "playerLine": "It’s nothing. I can handle it. Don’t make it bigger.",
+                "intentTag": "pride",
+                "actionTag": "control",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t10"
+              }
+            ]
+          },
+          {
+            "id": "t10",
+            "speaker": "Narrator",
+            "text": "That night, Ben doesn’t ask to play, doesn’t ask to eat. Ben just hugs a pillow and stares into empty space. Final plot twist: Ben isn’t scared because you yelled—Ben is scared you’ll leave Ben again.",
+            "nextTurnId": "t13",
+            "choices": []
+          },
+          {
+            "id": "t13",
+            "speaker": "Ben",
+            "text": "If you’re busy again tomorrow… what am I supposed to do?",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Narrator",
+            "text": "Now it’s the decision: do you repair this with real action, or just apologize to end it?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_make_plan",
+                "text": "Make a clear plan: fixed pickup time + backup option, and rebuild trust on purpose.",
+                "playerLine": "Tomorrow I’ll pick you up on time. If I’m late, I’ll tell you ahead and ask Ms. Taylor to stay with you. I won’t leave you.",
+                "intentTag": "courage",
+                "actionTag": "repair_with_plan",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "soft",
+                  "npc": "sad"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_generic_sorry",
+                "text": "Give a vague apology, then tell Ben to forget it.",
+                "playerLine": "Okay, I said sorry. Don’t hold onto it.",
+                "intentTag": "fear",
+                "actionTag": "minimize",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "neutral",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Narrator",
+            "text": "Sometimes courage isn’t confronting strangers. It’s lowering your ego… in front of your own child.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_public_apology_repair",
+            "requiredChoiceIds": [
+              "c1_apologize_now",
+              "c2_own_it",
+              "c3_make_plan"
+            ],
+            "text": "You apologize for real and repair it with action. Ben is still scared, but starts trusting again. You lose “face” in public… but you keep your child’s heart.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_public_apology_but_minimize",
+            "requiredChoiceIds": [
+              "c1_apologize_now",
+              "c2_own_it",
+              "c3_generic_sorry"
+            ],
+            "text": "You apologize, but there’s no plan. Ben hears it like a throwaway line. A small wound becomes a habit: Ben learns not to expect much.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_apology_as_performance",
+            "requiredChoiceIds": [
+              "c1_apologize_now",
+              "c2_deflect"
+            ],
+            "text": "You apologize in front of people, then justify yourself in the car. Ben realizes: your apology might have been for appearances. Trust drops harder than you expected.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_save_face_then_confess_and_fix",
+            "requiredChoiceIds": [
+              "c1_save_face",
+              "c2_confess_to_partner",
+              "c3_make_plan"
+            ],
+            "text": "You save face at first, then find the courage to come back and repair it. You swallow your pride, and your home becomes safer for Ben.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_save_face_double_down",
+            "requiredChoiceIds": [
+              "c1_save_face",
+              "c2_double_down"
+            ],
+            "text": "You protect your image and control the story. Ben stops speaking up and just backs away. You keep appearances… but lose closeness.",
+            "next": "reflection:ref_courage_parent_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "You want to move on fast. But kids don’t forget like adults do. They just learn to go quiet.",
+            "next": "reflection:ref_courage_parent_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_relationship_01",
+      "topic": "courage",
+      "title": "Loving God, But Loving Like a Cage",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "partner",
+            "name": "Noah",
+            "portraitKey": "partner_male_01"
+          },
+          {
+            "id": "friend",
+            "name": "Hazel",
+            "portraitKey": "friend_02"
+          },
+          {
+            "id": "pastor",
+            "name": "Pastor Andrew",
+            "portraitKey": "pastor_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Noah posts Bible verses a lot, reminds you to pray, and always says, “I just want what’s best for you.” But lately, he’s started interrogating you: who you’re with, who you’re texting, and why you’re online but not replying.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Noah",
+            "text": "Don’t hide anything from me. If you love someone, you don’t keep secrets.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Narrator",
+            "text": "You stare at Noah’s message: a screenshot of your “active” status, with: “Why aren’t you replying?” You feel suffocated… but also guilty—because Noah looks like he’s just “worried” about you.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "You",
+            "text": "When you do that… I feel controlled.",
+            "nextTurnId": "t5",
+            "choices": []
+          },
+          {
+            "id": "t5",
+            "speaker": "Noah",
+            "text": "Controlled? I’m protecting you. You’re soft-hearted—you get pulled away easily.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Narrator",
+            "text": "You’re stuck between feelings and boundaries. Courage here isn’t “winning an argument”—it’s facing the truth.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_set_boundary",
+                "text": "Set a clear boundary: you need space and respect.",
+                "playerLine": "I get that you’re worried. But I won’t accept being monitored and interrogated. I need boundaries.",
+                "intentTag": "courage",
+                "actionTag": "set_boundary",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_boundary_1"
+              },
+              {
+                "id": "c1_comply",
+                "text": "Give in: share passwords to “reassure” Noah so things won’t be tense.",
+                "playerLine": "Fine… I’ll show you so you can feel okay.",
+                "intentTag": "fear",
+                "actionTag": "comply",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_comply_1"
+              }
+            ]
+          },
+          {
+            "id": "t_boundary_1",
+            "speaker": "Noah",
+            "text": "So you don’t trust me? You’re rebelling against your “head.”",
+            "nextTurnId": "t_boundary_2",
+            "choices": []
+          },
+          {
+            "id": "t_boundary_2",
+            "speaker": "Narrator",
+            "text": "Noah uses the Bible like a shield. You feel a flicker of doubt—what if you’re wrong? But deep down, you also sense he’s twisting it out of context.",
+            "nextTurnId": "t_boundary_3",
+            "choices": []
+          },
+          {
+            "id": "t_boundary_3",
+            "speaker": "Hazel",
+            "text": "Hey… this isn’t okay. Do you realize you’re afraid of your boyfriend?",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Narrator",
+            "text": "Who will you bring in for support? Or will you carry it alone?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_seek_counsel",
+                "text": "Meet Pastor Andrew/a counselor for guidance and safety.",
+                "playerLine": "I want to talk to Pastor Andrew. Not to trash Noah—just so I can see clearly and stay safe.",
+                "intentTag": "courage",
+                "actionTag": "seek_counsel",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_pastor_1"
+              },
+              {
+                "id": "c2_handle_alone",
+                "text": "Handle it alone: avoid involving anyone so it won’t “become a big deal.”",
+                "playerLine": "I’ll… talk to Noah myself. No need to drag anyone in.",
+                "intentTag": "fear",
+                "actionTag": "handle_alone",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_alone_1"
+              }
+            ]
+          },
+          {
+            "id": "t_comply_1",
+            "speaker": "Narrator",
+            "text": "You hand over your passwords. Noah smiles: “See? It’s nothing.” But from that day, he starts “critiquing” how you text, how you reply to others, and even tells you to cut off Hazel.",
+            "nextTurnId": "t_comply_2",
+            "choices": []
+          },
+          {
+            "id": "t_comply_2",
+            "speaker": "Noah",
+            "text": "Hazel isn’t good for you. Block her. I’m doing this because I care.",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Narrator",
+            "text": "giving in doesn’t calm Noah down—it makes him feel more entitled. What do you choose?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_reclaim_boundary",
+                "text": "Reclaim boundaries: change passwords and clearly say you won’t accept this anymore.",
+                "playerLine": "I’m changing my passwords. I’m not blocking Hazel. You can worry, but you don’t get to control my life.",
+                "intentTag": "courage",
+                "actionTag": "reclaim_boundary",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_pastor_1"
+              },
+              {
+                "id": "c2_cut_friend",
+                "text": "Go along with it: block Hazel to avoid fighting.",
+                "playerLine": "Okay… I’ll block her. I don’t want things to be tense anymore.",
+                "intentTag": "fear",
+                "actionTag": "isolate",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_pastor_1",
+            "speaker": "Pastor Andrew",
+            "text": "Help me separate this: is it love… or is it control? And are you afraid of him?",
+            "nextTurnId": "t_pastor_2",
+            "choices": []
+          },
+          {
+            "id": "t_pastor_2",
+            "speaker": "Narrator",
+            "text": "Pastor Andrew doesn’t trash Noah. But she asks bluntly: “If you set a boundary, will he respect it?” That question leaves you silent.",
+            "nextTurnId": "t_pastor_3",
+            "choices": []
+          },
+          {
+            "id": "t_pastor_3",
+            "speaker": "Noah",
+            "text": "You went to the pastor to talk bad about me? You embarrassed me. Who are you choosing?",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Narrator",
+            "text": "Final decision: do you choose “peace” by shrinking yourself… or courage by setting real boundaries (maybe even leaving)?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_leave_with_plan",
+                "text": "Step away for safety: set conditions to return (counseling + boundaries), with support around you.",
+                "playerLine": "I’m not choosing against you. I’m choosing safety and health. I’m stepping back, and I’ll only consider coming back if you get counseling and respect boundaries.",
+                "intentTag": "courage",
+                "actionTag": "leave_with_plan",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 12
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "shocked"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_stay_and_smooth",
+                "text": "Stay to keep it “smooth”: apologize to Noah, hoping he changes on his own.",
+                "playerLine": "Okay, I’m sorry. I… went too far. Let’s just drop it.",
+                "intentTag": "fear",
+                "actionTag": "smooth_over",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "courage",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_alone_1",
+            "speaker": "Narrator",
+            "text": "You try to handle it alone. You speak gently, choose your words carefully. Noah listens, pauses, then smiles.",
+            "nextTurnId": "t_alone_2",
+            "choices": []
+          },
+          {
+            "id": "t_alone_2",
+            "speaker": "Noah",
+            "text": "You talk so nicely. So from now on, let me see your schedule, okay? So I can ‘worry less.’",
+            "nextTurnId": "t_end",
+            "choices": []
+          },
+          {
+            "id": "t_end",
+            "speaker": "Narrator",
+            "text": "Courage in love isn’t holding someone at any cost. It’s holding the truth… even if it means losing them.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_boundary_counsel_leave",
+            "requiredChoiceIds": [
+              "c1_set_boundary",
+              "c2_seek_counsel",
+              "c3_leave_with_plan"
+            ],
+            "text": "You choose boundaries and safety. You’re sad, but you can breathe again. Hazel and Pastor Andrew stay close—you don’t have to make the hard decision alone.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_boundary_handle_alone_stuck",
+            "requiredChoiceIds": [
+              "c1_set_boundary",
+              "c2_handle_alone"
+            ],
+            "text": "You try to keep it quiet so it won’t be “a thing.” But Noah takes more control. You realize: avoiding a big deal can be exactly how a problem becomes big.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_comply_then_reclaim_then_leave",
+            "requiredChoiceIds": [
+              "c1_comply",
+              "c2_reclaim_boundary",
+              "c3_leave_with_plan"
+            ],
+            "text": "You gave in, then woke up and reclaimed your boundaries. You learn: courage isn’t never messing up—it’s being brave enough to correct course when you’re losing yourself.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_comply_isolate",
+            "requiredChoiceIds": [
+              "c1_comply",
+              "c2_cut_friend"
+            ],
+            "text": "You choose “peace” by cutting off the people around you. Noah feels calmer, but you feel more isolated. Then it hits you: your life is shrinking.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_stay_smooth_over",
+            "requiredChoiceIds": [
+              "c3_stay_and_smooth"
+            ],
+            "text": "You apologize to keep things smooth. Noah calms down for a moment, but your boundaries still aren’t respected. You keep the relationship… and lose your freedom.",
+            "next": "reflection:ref_courage_relationship_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "You want to believe things will get better on their own. But boundaries don’t grow by themselves if you don’t set them.",
+            "next": "reflection:ref_courage_relationship_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_forgive_01",
+      "topic": "courage",
+      "title": "Forgive, But Don’t Get Used",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "relative",
+            "name": "Dylan",
+            "portraitKey": "relative_01"
+          },
+          {
+            "id": "mom",
+            "name": "Mom",
+            "portraitKey": "mom_01"
+          },
+          {
+            "id": "friend",
+            "name": "Hazel",
+            "portraitKey": "friend_02"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "Dylan texts you late at night: “Loan me 12 million, I’ll pay you back next week.” You look at your balance, then your rent due date. You remember last time Dylan said “next week”… and you waited for months.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Dylan",
+            "text": "Trust me. This time for real. I’m stuck.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Narrator",
+            "text": "The next morning, Mom calls: “He’s your brother. If you can help, help. Don’t let the family lose peace.” You hear that and choke inside: help and you bleed, don’t help and you’re the villain.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Narrator",
+            "text": "How do you care about him without dragging yourself under?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_lend_with_boundary",
+                "text": "Loan part of it + set a clear repayment boundary (paper/plan).",
+                "playerLine": "I can help with 5 million. But we need a clear repayment plan and confirmation. I don’t want this loop again.",
+                "intentTag": "courage",
+                "actionTag": "boundary_help",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "annoyed"
+                },
+                "nextTurnId": "t_boundary_1"
+              },
+              {
+                "id": "c1_lend_full",
+                "text": "Loan the full amount to keep things “smooth,” hoping this time is different.",
+                "playerLine": "Okay, I’ll transfer it. Pay me back on time.",
+                "intentTag": "love",
+                "actionTag": "lend_full",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_full_1"
+              },
+              {
+                "id": "c1_refuse",
+                "text": "Refuse directly: you’re not lending anymore.",
+                "playerLine": "I’m not lending anymore. I’ve been repaid late too many times.",
+                "intentTag": "courage",
+                "actionTag": "refuse",
+                "effects": [
+                  {
+                    "stat": "courage",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_refuse_1"
+              }
+            ]
+          },
+          {
+            "id": "t_boundary_1",
+            "speaker": "Dylan",
+            "text": "What? Why are you being like this? We’re family—why paperwork? You don’t trust me?",
+            "nextTurnId": "t_boundary_2",
+            "choices": []
+          },
+          {
+            "id": "t_boundary_2",
+            "speaker": "Narrator",
+            "text": "You hear “family” used like a rope. If you soften, the boundary disappears. If you stay firm, you get labeled “calculating.”",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Narrator",
+            "text": "How will you hold the boundary?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_hold_boundary",
+                "text": "Hold the line without arguing: only a clear plan makes help real.",
+                "playerLine": "I trust you as a person, but I don’t trust vague promises anymore. If there’s a plan, I’ll help.",
+                "intentTag": "courage",
+                "actionTag": "hold_line",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 2
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "annoyed"
+                },
+                "nextTurnId": "t_twist_1"
+              },
+              {
+                "id": "c2_soften_boundary",
+                "text": "Soften it to avoid tension: drop the paperwork, just remind him verbally.",
+                "playerLine": "Fine… no paperwork. But promise you’ll pay on time this time.",
+                "intentTag": "fear",
+                "actionTag": "soften",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_twist_1"
+              }
+            ]
+          },
+          {
+            "id": "t_full_1",
+            "speaker": "Narrator",
+            "text": "You transfer the full amount. Dylan sends a “🙏” and says: “God will repay you.” You laugh awkwardly. Part of you feels like you just bought peace.",
+            "nextTurnId": "t_full_2",
+            "choices": []
+          },
+          {
+            "id": "t_full_2",
+            "speaker": "Hazel",
+            "text": "Hey… are you forgiving, or are you being used? Forgiveness doesn’t mean giving someone permission to do this forever.",
+            "nextTurnId": "t_twist_1",
+            "choices": []
+          },
+          {
+            "id": "t_refuse_1",
+            "speaker": "Dylan",
+            "text": "So you care more about money than family. Okay. I’ll tell Mom.",
+            "nextTurnId": "t_refuse_2",
+            "choices": []
+          },
+          {
+            "id": "t_refuse_2",
+            "speaker": "Narrator",
+            "text": "Before you can even breathe, Mom calls: “Why would you do that? He’s stuck!” Mom’s voice is worried and disappointed. You feel pinned between boundaries and duty.",
+            "nextTurnId": "t_twist_1",
+            "choices": []
+          },
+          {
+            "id": "t_twist_1",
+            "speaker": "Narrator",
+            "text": "that night, you accidentally see Dylan’s story—he’s at a café, showing off a new phone on installment. You’re not sure if it’s “because he’s stuck” or “because he wants it.” But you do know: if you don’t clarify this, the loop continues.",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Narrator",
+            "text": "Final decision: is courage telling the truth inside family, or cutting off contact to protect yourself?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_confront_truth",
+                "text": "Confront Dylan with proof: demand transparency and a real repayment commitment.",
+                "playerLine": "I saw your story about the phone. I’m not judging, but I need the truth. What are you using the money for—and when will you repay?",
+                "intentTag": "courage",
+                "actionTag": "confront_truth",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "firm",
+                  "npc": "angry"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_forgive_and_limit",
+                "text": "Forgive but limit: from now on you only help in other ways (food/job help), not cash.",
+                "playerLine": "I’m letting the past go. But from now on, I’m not giving money. I can help you look for work, or support you in other ways.",
+                "intentTag": "courage",
+                "actionTag": "forgive_with_limits",
+                "effects": [
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "annoyed"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_cut_contact",
+                "text": "Cut contact for a while to protect yourself.",
+                "playerLine": "I need to pause. I can’t keep doing this. When you’re ready to be transparent, we can talk again.",
+                "intentTag": "fear",
+                "actionTag": "cut_contact",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "courage",
+                    "delta": 2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Narrator",
+            "text": "Forgiveness doesn’t mean letting someone keep making you bleed. Courage is loving… while still holding boundaries.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_help_with_boundary_hold_line_confront",
+            "requiredChoiceIds": [
+              "c1_lend_with_boundary",
+              "c2_hold_boundary",
+              "c3_confront_truth"
+            ],
+            "text": "You help without getting dragged. Dylan is angry, the family gets tense. But later, Dylan is forced to face reality and starts repaying little by little. You lose peace for a season… but you break the cycle.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_help_with_boundary_soften_then_limit",
+            "requiredChoiceIds": [
+              "c1_lend_with_boundary",
+              "c2_soften_boundary",
+              "c3_forgive_and_limit"
+            ],
+            "text": "You soften at first, then wake up and change how you help. You keep some family warmth, but you still get cold looks from people because you stop giving cash.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_lend_full_then_limit",
+            "requiredChoiceIds": [
+              "c1_lend_full",
+              "c3_forgive_and_limit"
+            ],
+            "text": "You give the full amount to keep things smooth, then realize you’ve been buying peace. You forgive, but shift to healthier support. You lose money… but gain boundaries.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_refuse_then_limit",
+            "requiredChoiceIds": [
+              "c1_refuse",
+              "c3_forgive_and_limit"
+            ],
+            "text": "You refuse and get called “cold.” But you still keep your heart—ready to help in other ways, without enabling. Some people won’t understand you… but you’re no longer being used.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_cut_contact_regret",
+            "requiredChoiceIds": [
+              "c3_cut_contact"
+            ],
+            "text": "You cut contact to protect yourself. You feel lighter… but sometimes it stings when family looks at you like the one who “abandoned” them. You learn that cutting off has a price too.",
+            "next": "reflection:ref_courage_forgive_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "You want everything to be calm. But without boundaries, “calm” is just temporary.",
+            "next": "reflection:ref_courage_forgive_01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene_courage_calling_01",
+      "topic": "courage",
+      "title": "Stability or Calling",
+      "characters": {
+        "player": {
+          "id": "mc",
+          "name": "You",
+          "portraitKey": "mc_01"
+        },
+        "npcs": [
+          {
+            "id": "partner",
+            "name": "Lily",
+            "portraitKey": "partner_01"
+          },
+          {
+            "id": "mentor",
+            "name": "Tim",
+            "portraitKey": "mentor_01"
+          },
+          {
+            "id": "mom",
+            "name": "Mom",
+            "portraitKey": "mom_01"
+          }
+        ]
+      },
+      "conversation": {
+        "startTurnId": "t1",
+        "turns": [
+          {
+            "id": "t1",
+            "speaker": "Narrator",
+            "text": "You just got offered a new contract: higher pay, better benefits. But at the same time, you’re invited into a long-term ministry project—no paycheck, only faith and responsibility.",
+            "nextTurnId": "t2",
+            "choices": []
+          },
+          {
+            "id": "t2",
+            "speaker": "Tim",
+            "text": "You have a calling. But calling isn’t free. It demands real cost.",
+            "nextTurnId": "t3",
+            "choices": []
+          },
+          {
+            "id": "t3",
+            "speaker": "Narrator",
+            "text": "That night, Lily is running numbers: rent, utilities, emergency savings. You look at the paper and feel your stomach drop. You want to walk with God… but you don’t want to crush your family either.",
+            "nextTurnId": "t4",
+            "choices": []
+          },
+          {
+            "id": "t4",
+            "speaker": "Lily",
+            "text": "I’m gonna be honest… if you quit a stable job, I’m scared. Not because I don’t believe God… I’m scared I can’t carry it.",
+            "nextTurnId": "t_choice_1",
+            "choices": []
+          },
+          {
+            "id": "t_choice_1",
+            "speaker": "Narrator",
+            "text": "You’re stuck between faith and responsibility. There’s no option that looks “good” for everyone.",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c1_jump_now",
+                "text": "Jump now: decline the new contract and go full-time into ministry.",
+                "playerLine": "I want to step in now. I believe God will open the way… even though I’m scared.",
+                "intentTag": "courage",
+                "actionTag": "jump_now",
+                "effects": [
+                  {
+                    "stat": "faith",
+                    "delta": 12
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -2
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t_jump_1"
+              },
+              {
+                "id": "c1_hold_job",
+                "text": "Stay fully: take the new contract to secure the family first.",
+                "playerLine": "I… I’ll take the contract. I don’t want our family to feel unsafe.",
+                "intentTag": "fear",
+                "actionTag": "hold_job",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": -2
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "relieved"
+                },
+                "nextTurnId": "t_hold_1"
+              },
+              {
+                "id": "c1_trial_period",
+                "text": "Try 6 months: keep part-time work + serve with boundaries.",
+                "playerLine": "Let’s try 6 months. I’m not running from responsibility, but I also don’t want to kill the calling.",
+                "intentTag": "courage",
+                "actionTag": "trial_period",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_trial_1"
+              }
+            ]
+          },
+          {
+            "id": "t_jump_1",
+            "speaker": "Narrator",
+            "text": "You decline the contract. The first week feels lighter, like you can breathe again. But by week three, bills pile up. Lily starts going quiet more often.",
+            "nextTurnId": "t_jump_2",
+            "choices": []
+          },
+          {
+            "id": "t_jump_2",
+            "speaker": "Lily",
+            "text": "I’m not blaming you… but I feel like I’m carrying this alone. Are you sure this is God calling you… or are you trying to prove something?",
+            "nextTurnId": "t_choice_2a",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2a",
+            "speaker": "Narrator",
+            "text": "Lily isn’t against God. Lily is afraid your ego is hiding behind the word “faith.” How do you respond?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_humble_adjust",
+                "text": "Humble yourself: admit the risk, plan finances with Lily, seek counsel.",
+                "playerLine": "You’re right. I don’t want to use faith as an excuse. Let’s make a plan together—and I’ll meet Tim for guidance.",
+                "intentTag": "courage",
+                "actionTag": "humble_adjust",
+                "effects": [
+                  {
+                    "stat": "humility",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "vulnerable",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t_final_1"
+              },
+              {
+                "id": "c2_defend_ego",
+                "text": "Get defensive: accuse Lily of lacking faith, pressure Lily to follow.",
+                "playerLine": "If you say that, you’re not trusting God. I already decided—you need to support me.",
+                "intentTag": "pride",
+                "actionTag": "defend_ego",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -6
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "angry",
+                  "npc": "hurt"
+                },
+                "nextTurnId": "t_final_1"
+              }
+            ]
+          },
+          {
+            "id": "t_hold_1",
+            "speaker": "Narrator",
+            "text": "You take the contract. Money comes steadily. Lily worries less. But every night you’re exhausted, and the ministry invitation stays “on the side.”",
+            "nextTurnId": "t_hold_2",
+            "choices": []
+          },
+          {
+            "id": "t_hold_2",
+            "speaker": "Tim",
+            "text": "You can choose stability. But are you using stability to avoid a calling?",
+            "nextTurnId": "t_choice_2b",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2b",
+            "speaker": "Narrator",
+            "text": "What will you do with the calling you keep postponing?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_schedule_serving",
+                "text": "Commit to serving with a fixed schedule (not “if I’m free”).",
+                "playerLine": "I won’t drop everything, but I’ll set a real serving schedule. I won’t let it die just because I’m tired.",
+                "intentTag": "courage",
+                "actionTag": "schedule_serving",
+                "effects": [
+                  {
+                    "stat": "obedience",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_final_1"
+              },
+              {
+                "id": "c2_keep_postponing",
+                "text": "Postpone again: “I’ll do it when things settle.”",
+                "playerLine": "Let me get more stable first. I’m too busy right now.",
+                "intentTag": "fear",
+                "actionTag": "postpone",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": -3
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": 1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_final_1"
+              }
+            ]
+          },
+          {
+            "id": "t_trial_1",
+            "speaker": "Narrator",
+            "text": "You choose a 6-month trial. You work part-time and serve on a schedule. At first, it’s fine. But after a few weeks, the ministry project asks for more time—and your job deadlines start squeezing too.",
+            "nextTurnId": "t_trial_2",
+            "choices": []
+          },
+          {
+            "id": "t_trial_2",
+            "speaker": "Mom",
+            "text": "Do whatever you want, just don’t make your family suffer. What kind of calling keeps making everyone stressed?",
+            "nextTurnId": "t_choice_2c",
+            "choices": []
+          },
+          {
+            "id": "t_choice_2c",
+            "speaker": "Narrator",
+            "text": "the person who loves you most pulls you toward “safety.” How do you adjust?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c2_reset_boundaries",
+                "text": "Adjust: scale back, set serving boundaries to protect family and health.",
+                "playerLine": "I’m not quitting the calling, but I need to move at a healthy pace. I’ll set boundaries so I don’t burn out my family.",
+                "intentTag": "courage",
+                "actionTag": "reset_boundaries",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "humility",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "love",
+                    "delta": 4
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "calm",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_final_1"
+              },
+              {
+                "id": "c2_overcommit",
+                "text": "Overcommit: try to do everything to prove you have “enough faith.”",
+                "playerLine": "I can do it. I’m fine. I just need to push a little harder.",
+                "intentTag": "pride",
+                "actionTag": "overcommit",
+                "effects": [
+                  {
+                    "stat": "pride",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "fear",
+                    "delta": 4
+                  },
+                  {
+                    "stat": "wisdom",
+                    "delta": -3
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "concerned"
+                },
+                "nextTurnId": "t_final_1"
+              }
+            ]
+          },
+          {
+            "id": "t_final_1",
+            "speaker": "Narrator",
+            "text": "The final decision isn’t only what you do—it’s why you do it. Sometimes courage is stepping forward. Sometimes it’s slowing down. And sometimes it’s admitting: you’re more afraid of losing face than losing God.",
+            "nextTurnId": "t_choice_3",
+            "choices": []
+          },
+          {
+            "id": "t_choice_3",
+            "speaker": "Narrator",
+            "text": "How will you finalize your path?",
+            "nextTurnId": "",
+            "choices": [
+              {
+                "id": "c3_commit_with_plan",
+                "text": "Commit with a plan: 6-month timeline, budget, counsel, clear boundaries.",
+                "playerLine": "I’ll step forward, but with a plan. Six months, a budget, guidance, and boundaries. I don’t want my family dragged behind me.",
+                "intentTag": "courage",
+                "actionTag": "commit_with_plan",
+                "effects": [
+                  {
+                    "stat": "wisdom",
+                    "delta": 10
+                  },
+                  {
+                    "stat": "obedience",
+                    "delta": 6
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": 6
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "serious",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              },
+              {
+                "id": "c3_choose_safe",
+                "text": "Choose safety: drop the ministry project to keep life stable.",
+                "playerLine": "I’m sorry… I can’t do it. I’m choosing stability.",
+                "intentTag": "fear",
+                "actionTag": "choose_safe",
+                "effects": [
+                  {
+                    "stat": "fear",
+                    "delta": 8
+                  },
+                  {
+                    "stat": "faith",
+                    "delta": -4
+                  },
+                  {
+                    "stat": "love",
+                    "delta": -1
+                  }
+                ],
+                "portraitOverrides": {
+                  "player": "tired",
+                  "npc": "neutral"
+                },
+                "nextTurnId": "t_end"
+              }
+            ]
+          },
+          {
+            "id": "t_end",
+            "speaker": "Narrator",
+            "text": "Courage isn’t jumping without thinking. It isn’t hiding behind “stability” either. Courage is walking in the light—with planning, boundaries, and people beside you.",
+            "nextTurnId": "",
+            "choices": []
+          }
+        ],
+        "outcomes": [
+          {
+            "id": "o_jump_humble_plan_commit",
+            "requiredChoiceIds": [
+              "c1_jump_now",
+              "c2_humble_adjust",
+              "c3_commit_with_plan"
+            ],
+            "text": "You step forward without arrogance. You humble yourself, plan carefully, and bring your family along. It’s still hard, but you don’t drag anyone into burnout.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_jump_ego_break",
+            "requiredChoiceIds": [
+              "c1_jump_now",
+              "c2_defend_ego"
+            ],
+            "text": "You move forward to prove something. Lily gets left under pressure. Calling becomes a burden. You look “right” on the outside, but you lose softness on the inside.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_hold_job_schedule_commit",
+            "requiredChoiceIds": [
+              "c1_hold_job",
+              "c2_schedule_serving",
+              "c3_commit_with_plan"
+            ],
+            "text": "You don’t abandon stability, but you also don’t run from the calling. You set a real serving schedule, and your spiritual life doesn’t die from exhaustion.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_hold_job_postpone_safe",
+            "requiredChoiceIds": [
+              "c1_hold_job",
+              "c2_keep_postponing",
+              "c3_choose_safe"
+            ],
+            "text": "You choose safety and keep postponing. Nothing explodes… the fire just slowly goes out. You feel “fine,” but not alive.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_trial_reset_plan_commit",
+            "requiredChoiceIds": [
+              "c1_trial_period",
+              "c2_reset_boundaries",
+              "c3_commit_with_plan"
+            ],
+            "text": "You try it, then adjust your pace. You learn calling needs endurance, not constant strain. Family becomes where calling is nourished—not sacrificed.",
+            "next": "reflection:ref_courage_calling_01"
+          },
+          {
+            "id": "o_default",
+            "requiredChoiceIds": [],
+            "text": "You want 100% clarity before you move. But real life rarely gives you that kind of certainty.",
+            "next": "reflection:ref_courage_calling_01"
+          }
+        ]
+      }
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref_courage_church",
+      "topic": "courage",
+      "verseRef": "Joshua 1:9",
+      "verseText": "Be strong and courageous; don’t be afraid, because the Lord your God is with you wherever you go.",
+      "questions": [
+        "What scares you the most about telling the truth?",
+        "Are you confusing courage with hurting people?",
+        "Next time, how will you speak the truth—with what kind of tone?"
+      ]
+    },
+    {
+      "id": "ref_courage_promo_01",
+      "topic": "courage",
+      "verseRef": "Proverbs 10:9",
+      "verseText": "Whoever walks with integrity lives securely, but crooked paths don’t stay hidden forever.",
+      "questions": [
+        "What are you most afraid of losing when you tell the truth?",
+        "Have you ever used “family responsibility” to excuse compromise?",
+        "If courage doesn’t change the outcome right away, will you still choose what’s right?",
+        "Who do you need beside you so you don’t have to carry it alone?"
+      ]
+    },
+    {
+      "id": "ref_courage_gossip_01",
+      "topic": "courage",
+      "verseRef": "Ephesians 4:29",
+      "verseText": "Don’t let harmful words come out of your mouth—speak what builds others up and brings grace to those who hear.",
+      "questions": [
+        "What do you usually fear when you step in to stop gossip?",
+        "Are you keeping “peace” by letting someone else get hurt?",
+        "Should your courage today show up more in words, or in presence?",
+        "What can you do to make your community safer for people who are fragile?"
+      ]
+    },
+    {
+      "id": "ref_courage_parent_01",
+      "topic": "courage",
+      "verseRef": "James 5:16",
+      "verseText": "Confess and pray together so healing can happen.",
+      "questions": [
+        "Are you more afraid of “losing face” than hurting someone you love?",
+        "When you apologize, is it real—or just to end the situation?",
+        "What specific change do you need to rebuild trust?",
+        "Where in your family do you need to lower your ego one more step?"
+      ]
+    },
+    {
+      "id": "ref_courage_relationship_01",
+      "topic": "courage",
+      "verseRef": "2 Timothy 1:7",
+      "verseText": "God doesn’t give us a spirit of fear, but of power, love, and self-control.",
+      "questions": [
+        "Have you been calling “control” by the name “love”?",
+        "Which boundary have you avoided because you’re afraid of losing that person?",
+        "Do you have a safe person to walk with you as you tell the truth?",
+        "If love makes you afraid, what do you think God wants for your freedom?"
+      ]
+    },
+    {
+      "id": "ref_courage_forgive_01",
+      "topic": "courage",
+      "verseRef": "Proverbs 4:23",
+      "verseText": "Guard your heart carefully, because your life flows from it.",
+      "questions": [
+        "Are you using “forgiveness” to avoid a hard conversation?",
+        "What boundary do you need so you can love without destroying yourself?",
+        "What are you most afraid of when telling the truth to family?",
+        "What kind of help is truly help—and what kind is enabling?"
+      ]
+    },
+    {
+      "id": "ref_courage_calling_01",
+      "topic": "courage",
+      "verseRef": "Proverbs 16:3",
+      "verseText": "Commit your work to the Lord, and your plans will be established.",
+      "questions": [
+        "Are you more afraid of not having money… or of people judging your decision?",
+        "Is your calling flowing from love—or from ego trying to prove something?",
+        "What plans and boundaries help you move forward without exhausting your family?",
+        "Who can mentor you so you can discern your calling with clarity?"
+      ]
+    }
+  ]
+}
