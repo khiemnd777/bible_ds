@@ -37,11 +37,11 @@ class SummaryScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final donateMinStreak = ref.watch(monetizationConfigProvider).maybeWhen(
-          data: (config) => config.donateMinStreak,
-          orElse: () => 15,
+    final canShowDonate = ref.watch(monetizationConfigProvider).maybeWhen(
+          data: (config) =>
+              config.enableDonate && highestStreak >= config.donateMinStreak,
+          orElse: () => false,
         );
-    final canShowDonate = highestStreak >= donateMinStreak;
 
     return Padding(
       padding: const EdgeInsets.all(16),
