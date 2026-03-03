@@ -7,8 +7,8 @@
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "vy", "name": "Vy", "portraitKey": "friend_01" },
-          { "id": "phuc", "name": "Phúc", "portraitKey": "coworker_01" }
+          { "id": "vy", "name": "Vy", "portraitKey": "female_01" },
+          { "id": "phuc", "name": "Phúc", "portraitKey": "male_01" }
         ]
       },
       "conversation": {
@@ -176,8 +176,8 @@
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "lam", "name": "Lâm", "portraitKey": "leader_01" },
-          { "id": "nhi", "name": "Nhi", "portraitKey": "friend_02" }
+          { "id": "lam", "name": "Lâm", "portraitKey": "male_02" },
+          { "id": "nhi", "name": "Nhi", "portraitKey": "female_01" }
         ]
       },
       "conversation": {
@@ -345,7 +345,7 @@
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "khoa", "name": "Khoa", "portraitKey": "classmate_01" }
+          { "id": "khoa", "name": "Khoa", "portraitKey": "male_01" }
         ]
       },
       "conversation": {
@@ -512,8 +512,8 @@
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "han", "name": "Hân", "portraitKey": "friend_03" },
-          { "id": "mod", "name": "Mod", "portraitKey": "npc_mod_01" }
+          { "id": "han", "name": "Hân", "portraitKey": "female_02" },
+          { "id": "mod", "name": "Mod", "portraitKey": "male_03" }
         ]
       },
       "conversation": {
@@ -681,8 +681,8 @@
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "huy", "name": "Huy", "portraitKey": "teammate_01" },
-          { "id": "coach", "name": "Coach", "portraitKey": "coach_01" }
+          { "id": "huy", "name": "Huy", "portraitKey": "male_02" },
+          { "id": "coach", "name": "Coach", "portraitKey": "male_03" }
         ]
       },
       "conversation": {
@@ -849,7 +849,7 @@
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "me", "name": "Mẹ", "portraitKey": "mom_01" }
+          { "id": "me", "name": "Mẹ", "portraitKey": "female_03" }
         ]
       },
       "conversation": {
@@ -1017,7 +1017,7 @@
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "sang", "name": "Sang", "portraitKey": "coworker_02" }
+          { "id": "sang", "name": "Sang", "portraitKey": "male_01" }
         ]
       },
       "conversation": {

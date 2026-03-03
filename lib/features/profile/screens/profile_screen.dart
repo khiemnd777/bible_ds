@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:bible_decision_simulator/controllers/notification_controller.dart';
 import 'package:bible_decision_simulator/core/di.dart';
 import 'package:bible_decision_simulator/features/profile/providers/profile_avatar_provider.dart';
+import 'package:bible_decision_simulator/game_engine/models/progress_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +23,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   static const _namePrefsKey = 'bds.profile.name';
   static const _emailPrefsKey = 'bds.profile.email';
   static const _phonePrefsKey = 'bds.profile.phone';
+  static const _progressStatePrefsKey = 'progress_state';
+  static const _legacyProgressStatePrefsKey = 'bds.progress';
 
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -230,6 +235,115 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     );
   }
 
+  Future<void> _resetAllStorage() async {
+    final text = ref.read(uiTextProvider);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(text.resetStorageTitle),
+        content: Text(text.resetStorageDescription),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(text.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(dialogContext).colorScheme.error,
+              foregroundColor: Theme.of(dialogContext).colorScheme.onError,
+            ),
+            child: Text(text.resetStorageConfirm),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+
+    FocusScope.of(context).unfocus();
+
+    final prefs = ref.read(sharedPreferencesProvider);
+    final savedName = prefs.getString(_namePrefsKey);
+    final savedEmail = prefs.getString(_emailPrefsKey);
+    final savedPhone = prefs.getString(_phonePrefsKey);
+    final savedAvatarRef = prefs.getString(profileAvatarPathPrefsKey);
+    final savedLocale = prefs.getString(AppLocaleController.prefsKey);
+    final liveProgress = ref.read(gameControllerProvider).progress;
+    final rawProgress = prefs.getString(_progressStatePrefsKey) ??
+        prefs.getString(_legacyProgressStatePrefsKey);
+    var savedCurrentStreak = liveProgress.currentStreak;
+    var savedHighestStreak = liveProgress.highestStreak;
+    if (rawProgress != null && rawProgress.isNotEmpty) {
+      try {
+        final progressMap = jsonDecode(rawProgress) as Map<String, dynamic>;
+        final persistedCurrentStreak =
+            (progressMap['currentStreak'] as num?)?.toInt() ??
+                (progressMap['streak'] as num?)?.toInt() ??
+                0;
+        final persistedHighestStreak =
+            (progressMap['highestStreak'] as num?)?.toInt() ??
+                persistedCurrentStreak;
+        if (persistedCurrentStreak > savedCurrentStreak) {
+          savedCurrentStreak = persistedCurrentStreak;
+        }
+        if (persistedHighestStreak > savedHighestStreak) {
+          savedHighestStreak = persistedHighestStreak;
+        }
+      } catch (_) {
+        // Keep live progress values when persisted payload is malformed.
+      }
+    }
+
+    final notificationService = ref.read(notificationServiceProvider);
+    try {
+      await notificationService.init();
+      await notificationService.cancelAll();
+    } catch (_) {
+      // Notification cleanup failure should not block storage reset.
+    }
+
+    await prefs.clear();
+    if (savedName != null) {
+      await prefs.setString(_namePrefsKey, savedName);
+    }
+    if (savedEmail != null) {
+      await prefs.setString(_emailPrefsKey, savedEmail);
+    }
+    if (savedPhone != null) {
+      await prefs.setString(_phonePrefsKey, savedPhone);
+    }
+    if (savedAvatarRef != null) {
+      await prefs.setString(profileAvatarPathPrefsKey, savedAvatarRef);
+    }
+    if (savedLocale != null) {
+      await prefs.setString(AppLocaleController.prefsKey, savedLocale);
+    }
+    if (savedCurrentStreak > 0 || savedHighestStreak > 0) {
+      final preservedProgress = ProgressState.initial().copyWith(
+        currentStreak: savedCurrentStreak,
+        highestStreak: savedHighestStreak < savedCurrentStreak
+            ? savedCurrentStreak
+            : savedHighestStreak,
+      );
+      await prefs.setString(
+        _progressStatePrefsKey,
+        jsonEncode(preservedProgress.toJson()),
+      );
+    }
+
+    ref.invalidate(profileAvatarPathProvider);
+    ref.invalidate(appLocaleProvider);
+    ref.invalidate(gameControllerProvider);
+    ref.invalidate(notificationControllerProvider);
+
+    await _loadProfileData();
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(text.storageResetSuccess)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final text = ref.watch(uiTextProvider);
@@ -367,6 +481,15 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 );
               },
               child: Text(text.submit),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton(
+              onPressed: _resetAllStorage,
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.error,
+                side: BorderSide(color: Theme.of(context).colorScheme.error),
+              ),
+              child: Text(text.resetAllStorage),
             ),
           ],
         ),

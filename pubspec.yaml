@@ -39,3 +39,9 @@ flutter:
     - assets/i18n/en_us.json
     - assets/i18n/vi_vn.json
     - assets/portraits/
+    - assets/portraits/male_01/
+    - assets/portraits/male_02/
+    - assets/portraits/male_03/
+    - assets/portraits/female_01/
+    - assets/portraits/female_02/
+    - assets/portraits/female_03/

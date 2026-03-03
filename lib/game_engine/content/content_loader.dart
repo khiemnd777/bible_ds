@@ -90,6 +90,17 @@ class ContentLoader {
 
   Future<List<String>> _discoverSceneAssets() async {
     try {
+      final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+      return manifest
+          .listAssets()
+          .where((asset) => asset.startsWith(_contentAssetDir))
+          .where((asset) => asset.endsWith('.json'))
+          .toList(growable: false);
+    } catch (_) {
+      // Fall back to JSON manifest for older runtimes/tooling.
+    }
+
+    try {
       final raw = await rootBundle.loadString('AssetManifest.json');
       final manifest = jsonDecode(raw) as Map<String, dynamic>;
       return manifest.keys

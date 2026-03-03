@@ -6,7 +6,7 @@
       "title": "Tin Nhắn Đã Gỡ Mà Vẫn Đau",
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_linh", "name": "Linh", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_linh", "name": "Linh", "portraitKey": "female_01" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -149,7 +149,7 @@
       "title": "Bị “Gắn Tên” Trong Cuộc Họp",
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_huy", "name": "Huy", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_huy", "name": "Huy", "portraitKey": "male_01" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -293,7 +293,7 @@
       "title": "Cái Ví Thất Lạc",
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_tuan", "name": "Tuấn", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_tuan", "name": "Tuấn", "portraitKey": "male_01" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -437,8 +437,8 @@
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "npc_my", "name": "My", "portraitKey": "friend_01" },
-          { "id": "npc_khoa", "name": "Khoa", "portraitKey": "friend_01" }
+          { "id": "npc_my", "name": "My", "portraitKey": "female_01" },
+          { "id": "npc_khoa", "name": "Khoa", "portraitKey": "male_02" }
         ]
       },
       "conversation": {
@@ -584,7 +584,7 @@
       "title": "Tiền Mượn, Lời Hứa Trễ",
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_thao", "name": "Thảo", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_thao", "name": "Thảo", "portraitKey": "female_01" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -728,7 +728,7 @@
       "title": "Bữa Cơm Có Câu Nói Độc",
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_me", "name": "Mẹ", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_me", "name": "Mẹ", "portraitKey": "female_02" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -873,7 +873,7 @@
       "title": "Bị Loại Khỏi Danh Sách",
       "characters": {
         "player": { "id": "mc", "name": "Bạn", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_trang", "name": "Trang", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_trang", "name": "Trang", "portraitKey": "female_02" }]
       },
       "conversation": {
         "startTurnId": "t1",

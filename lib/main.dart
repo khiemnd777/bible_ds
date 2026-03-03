@@ -1,4 +1,5 @@
 import 'package:bible_decision_simulator/features/game/screens/scenario_screen.dart';
+import 'package:bible_decision_simulator/features/onboarding/screens/onboarding_screen.dart';
 import 'package:bible_decision_simulator/features/game/screens/summary_screen.dart';
 import 'package:bible_decision_simulator/features/preview/content_preview_screen.dart';
 import 'package:bible_decision_simulator/features/profile/screens/profile_screen.dart';
@@ -58,13 +59,17 @@ class _RootShell extends ConsumerStatefulWidget {
 
 class _RootShellState extends ConsumerState<_RootShell>
     with WidgetsBindingObserver {
+  static const String _onboardingSeenPrefsKey = 'bds.onboarding.seen';
   static const bool _isPreviewEnabled = false;
   int _index = _isPreviewEnabled ? 2 : 1;
+  bool _isCheckingOnboarding = true;
+  bool _showOnboarding = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _loadOnboardingState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _handleNotificationAppOpen();
     });
@@ -105,10 +110,43 @@ class _RootShellState extends ConsumerState<_RootShell>
         );
   }
 
+  Future<void> _loadOnboardingState() async {
+    final prefs = ref.read(sharedPreferencesProvider);
+    final hasSeenOnboarding = prefs.getBool(_onboardingSeenPrefsKey) ?? false;
+    if (!mounted) return;
+    setState(() {
+      _showOnboarding = !hasSeenOnboarding;
+      _isCheckingOnboarding = false;
+    });
+  }
+
+  Future<void> _finishOnboarding() async {
+    await ref
+        .read(sharedPreferencesProvider)
+        .setBool(_onboardingSeenPrefsKey, true);
+    if (!mounted) return;
+    setState(() {
+      _showOnboarding = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final localeCode = ref.watch(appLocaleProvider);
     final text = ref.watch(uiTextProvider);
+
+    if (_isCheckingOnboarding) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+    if (_showOnboarding) {
+      return OnboardingScreen(
+        text: text,
+        onFinish: _finishOnboarding,
+      );
+    }
+
     final gameState = ref.watch(gameControllerProvider);
     final gameController = ref.read(gameControllerProvider.notifier);
 

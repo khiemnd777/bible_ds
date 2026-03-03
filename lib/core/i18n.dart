@@ -30,6 +30,17 @@ class UiText {
   String get ok => _t('ok', 'OK');
   String get profileSavedSuccess =>
       _t('profile_saved_success', 'Profile saved successfully.');
+  String get resetAllStorage => _t('reset_all_storage', 'Reset all storage');
+  String get resetStorageTitle =>
+      _t('reset_storage_title', 'Reset all storage?');
+  String get resetStorageDescription => _t(
+        'reset_storage_description',
+        'This will permanently clear your local progress, app settings, and reminders on this device.',
+      );
+  String get resetStorageConfirm =>
+      _t('reset_storage_confirm', 'Reset storage');
+  String get storageResetSuccess =>
+      _t('storage_reset_success', 'All local storage has been reset.');
   String get daySummary => _t('day_summary', 'Day Summary');
   String get currentStreak => _t('current_streak', 'Current Streak');
   String get summaryMenu => _t('summary_menu', 'Summary');
@@ -49,6 +60,27 @@ class UiText {
   String get selectSituation => _t('select_situation', 'Select a situation');
   String get today => _t('today', 'Today');
   String get donate => _t('donate', 'Donate');
+  String get onboardingSkip => _t('onboarding_skip', 'Skip');
+  String get onboardingNext => _t('onboarding_next', 'Next');
+  String get onboardingStart => _t('onboarding_start', 'Start');
+  String get onboardingTitle1 =>
+      _t('onboarding_title_1', 'Welcome to Daily Turning');
+  String get onboardingBody1 => _t(
+        'onboarding_body_1',
+        'Read each story and choose what your character should do.',
+      );
+  String get onboardingTitle2 =>
+      _t('onboarding_title_2', 'Your choices shape the day');
+  String get onboardingBody2 => _t(
+        'onboarding_body_2',
+        'Every decision changes your spiritual stats and your ending summary.',
+      );
+  String get onboardingTitle3 =>
+      _t('onboarding_title_3', 'Build your daily streak');
+  String get onboardingBody3 => _t(
+        'onboarding_body_3',
+        'Come back each day, complete a scenario, and grow your streak.',
+      );
 
   String get contentPreview => _t('content_preview', 'Content Preview');
   String get scene => _t('scene', 'Scene');

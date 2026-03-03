@@ -14,12 +14,12 @@
           {
             "id": "thanh",
             "name": "Ethan",
-            "portraitKey": "friend_01"
+            "portraitKey": "male_01"
           },
           {
             "id": "pastor",
             "name": "Pastor Andrew",
-            "portraitKey": "pastor_01"
+            "portraitKey": "male_03"
           }
         ]
       },
@@ -310,17 +310,17 @@
           {
             "id": "boss",
             "name": "Ms. Hannah",
-            "portraitKey": "boss_01"
+            "portraitKey": "female_02"
           },
           {
             "id": "mentor",
             "name": "Tim",
-            "portraitKey": "mentor_01"
+            "portraitKey": "male_01"
           },
           {
             "id": "partner",
             "name": "Lily",
-            "portraitKey": "partner_01"
+            "portraitKey": "female_02"
           }
         ]
       },
@@ -839,17 +839,17 @@
           {
             "id": "my",
             "name": "Mia",
-            "portraitKey": "friend_02"
+            "portraitKey": "female_01"
           },
           {
             "id": "khoa",
             "name": "Kyle",
-            "portraitKey": "friend_01"
+            "portraitKey": "male_01"
           },
           {
             "id": "pastor",
             "name": "Pastor Andrew",
-            "portraitKey": "pastor_01"
+            "portraitKey": "male_03"
           }
         ]
       },
@@ -1438,17 +1438,17 @@
           {
             "id": "kid",
             "name": "Ben",
-            "portraitKey": "kid_01"
+            "portraitKey": "male_01"
           },
           {
             "id": "teacher",
             "name": "Ms. Taylor",
-            "portraitKey": "teacher_01"
+            "portraitKey": "female_02"
           },
           {
             "id": "partner",
             "name": "Lily",
-            "portraitKey": "partner_01"
+            "portraitKey": "female_02"
           }
         ]
       },
@@ -1880,17 +1880,17 @@
           {
             "id": "partner",
             "name": "Noah",
-            "portraitKey": "partner_male_01"
+            "portraitKey": "male_02"
           },
           {
             "id": "friend",
             "name": "Hazel",
-            "portraitKey": "friend_02"
+            "portraitKey": "male_01"
           },
           {
             "id": "pastor",
             "name": "Pastor Andrew",
-            "portraitKey": "pastor_01"
+            "portraitKey": "male_03"
           }
         ]
       },
@@ -2320,17 +2320,17 @@
           {
             "id": "relative",
             "name": "Dylan",
-            "portraitKey": "relative_01"
+            "portraitKey": "male_03"
           },
           {
             "id": "mom",
             "name": "Mom",
-            "portraitKey": "mom_01"
+            "portraitKey": "female_03"
           },
           {
             "id": "friend",
             "name": "Hazel",
-            "portraitKey": "friend_02"
+            "portraitKey": "male_01"
           }
         ]
       },
@@ -2717,17 +2717,17 @@
           {
             "id": "partner",
             "name": "Lily",
-            "portraitKey": "partner_01"
+            "portraitKey": "female_02"
           },
           {
             "id": "mentor",
             "name": "Tim",
-            "portraitKey": "mentor_01"
+            "portraitKey": "male_01"
           },
           {
             "id": "mom",
             "name": "Mom",
-            "portraitKey": "mom_01"
+            "portraitKey": "female_03"
           }
         ]
       },

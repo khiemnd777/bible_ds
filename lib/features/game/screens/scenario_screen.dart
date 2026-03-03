@@ -107,6 +107,7 @@ class GameFlowScreen extends ConsumerWidget {
 
 class ScenarioScreen extends StatelessWidget {
   static const double _chatSpacing = 16;
+  static final RegExp _avatarPortraitPattern = RegExp(r'^(male|female)_\d+$');
   static TextStyle _conversationTextStyle(BuildContext context) {
     final base = Theme.of(context).textTheme.bodyMedium;
     return (base ?? const TextStyle())
@@ -185,8 +186,17 @@ class ScenarioScreen extends StatelessWidget {
   }
 
   String _portraitPathFor(Character character) {
-    return portraitPaths[character.id] ??
-        'assets/portraits/${character.portraitKey}/neutral.png';
+    final resolvedPath = portraitPaths[character.id];
+    if (resolvedPath != null) {
+      return resolvedPath;
+    }
+
+    final normalizedKey = character.portraitKey.trim().toLowerCase();
+    if (_avatarPortraitPattern.hasMatch(normalizedKey)) {
+      return 'assets/portraits/$normalizedKey/avatar.png';
+    }
+
+    return 'assets/portraits/${character.portraitKey}/neutral.png';
   }
 
   @override

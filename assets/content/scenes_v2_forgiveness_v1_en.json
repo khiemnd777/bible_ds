@@ -6,7 +6,7 @@
       "title": "The Deleted Text Still Hurts",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_lena", "name": "Lena", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_lena", "name": "Lena", "portraitKey": "female_01" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -155,7 +155,7 @@
       "title": "Getting Blamed in the Meeting",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_ethan", "name": "Ethan", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_ethan", "name": "Ethan", "portraitKey": "male_01" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -299,7 +299,7 @@
       "title": "The Missing Wallet",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_noah", "name": "Noah", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_noah", "name": "Noah", "portraitKey": "male_01" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -443,8 +443,8 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "npc_mia", "name": "Mia", "portraitKey": "friend_01" },
-          { "id": "npc_kyle", "name": "Kyle", "portraitKey": "friend_01" }
+          { "id": "npc_mia", "name": "Mia", "portraitKey": "female_01" },
+          { "id": "npc_kyle", "name": "Kyle", "portraitKey": "male_01" }
         ]
       },
       "conversation": {
@@ -590,7 +590,7 @@
       "title": "Borrowed Money, Late Promise",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_sophia", "name": "Sophia", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_sophia", "name": "Sophia", "portraitKey": "female_02" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -734,7 +734,7 @@
       "title": "A Sharp Line at Dinner",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_mom", "name": "Mom", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_mom", "name": "Mom", "portraitKey": "female_03" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -879,7 +879,7 @@
       "title": "Removed from the List",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "npc_grace", "name": "Grace", "portraitKey": "friend_01" }]
+        "npcs": [{ "id": "npc_grace", "name": "Grace", "portraitKey": "female_02" }]
       },
       "conversation": {
         "startTurnId": "t1",

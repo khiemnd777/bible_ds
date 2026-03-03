@@ -7,7 +7,7 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "linh", "name": "Lily", "portraitKey": "friend_01" }
+          { "id": "linh", "name": "Lily", "portraitKey": "female_01" }
         ]
       },
       "conversation": {
@@ -213,7 +213,7 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "khoa", "name": "Kyle", "portraitKey": "friend_02" }
+          { "id": "khoa", "name": "Kyle", "portraitKey": "male_01" }
         ]
       },
       "conversation": {
@@ -412,7 +412,7 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "mai", "name": "Maya", "portraitKey": "friend_03" }
+          { "id": "mai", "name": "Maya", "portraitKey": "female_02" }
         ]
       },
       "conversation": {
@@ -611,7 +611,7 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "thao", "name": "Talia", "portraitKey": "friend_04" }
+          { "id": "thao", "name": "Talia", "portraitKey": "female_03" }
         ]
       },
       "conversation": {
@@ -795,7 +795,7 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "huy", "name": "Hugo", "portraitKey": "friend_05" }
+          { "id": "huy", "name": "Hugo", "portraitKey": "male_02" }
         ]
       },
       "conversation": {
@@ -979,7 +979,7 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "trang", "name": "Tracy", "portraitKey": "friend_06" }
+          { "id": "trang", "name": "Tracy", "portraitKey": "female_01" }
         ]
       },
       "conversation": {
@@ -1163,7 +1163,7 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "phuc", "name": "Felix", "portraitKey": "friend_07" }
+          { "id": "phuc", "name": "Felix", "portraitKey": "male_03" }
         ]
       },
       "conversation": {

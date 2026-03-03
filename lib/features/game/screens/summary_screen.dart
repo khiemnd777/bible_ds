@@ -37,9 +37,7 @@ class SummaryScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final donateMinStreak = ref
-        .watch(monetizationConfigProvider)
-        .maybeWhen(
+    final donateMinStreak = ref.watch(monetizationConfigProvider).maybeWhen(
           data: (config) => config.donateMinStreak,
           orElse: () => 15,
         );
@@ -59,33 +57,37 @@ class SummaryScreen extends ConsumerWidget {
               subtitle: Text(text.dayCount(streak)),
             ),
           ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: Text(text.endingSummary(endingSummary)),
+          if (scenes.isNotEmpty && endingSummary.isNotEmpty)
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Text(text.endingSummary(endingSummary)),
+              ),
             ),
-          ),
           const SizedBox(height: 8),
           Expanded(
             child: Card(
               child: Padding(
                 padding: const EdgeInsets.all(12),
                 child: ListView(
-                  children: _orderedStatKeys.map(
-                    (key) => Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(text.statLabel(key)),
-                          const SizedBox(height: 4),
-                          LinearProgressIndicator(value: _statValue(key) / 100),
-                          const SizedBox(height: 2),
-                          Text('${_statValue(key)}/100'),
-                        ],
-                      ),
-                    ),
-                  ).toList(),
+                  children: _orderedStatKeys
+                      .map(
+                        (key) => Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(text.statLabel(key)),
+                              const SizedBox(height: 4),
+                              LinearProgressIndicator(
+                                  value: _statValue(key) / 100),
+                              const SizedBox(height: 2),
+                              Text('${_statValue(key)}/100'),
+                            ],
+                          ),
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
             ),
@@ -156,14 +158,15 @@ class SummaryScreen extends ConsumerWidget {
       };
 
   Future<void> _openSituation(BuildContext context) async {
-    if (scenes.isEmpty) return;
+    if (scenes.isEmpty) {
+      onNavigateScenarioView?.call();
+      return;
+    }
     final currentIndex =
         scenes.indexWhere((scene) => scene.id == currentSceneId);
     if (currentIndex >= 0 && currentIndex < scenes.length) {
-      final opened = await onOpenSceneByIndex(currentIndex);
-      if (opened) {
-        onNavigateScenarioView?.call();
-      }
+      await onOpenSceneByIndex(currentIndex);
+      onNavigateScenarioView?.call();
       return;
     }
 
@@ -186,10 +189,8 @@ class SummaryScreen extends ConsumerWidget {
       ),
     );
     if (selectedIndex == null) return;
-    final opened = await onOpenSceneByIndex(selectedIndex);
-    if (opened) {
-      onNavigateScenarioView?.call();
-    }
+    await onOpenSceneByIndex(selectedIndex);
+    onNavigateScenarioView?.call();
   }
 }
 
@@ -218,7 +219,8 @@ class _TrendRow extends StatelessWidget {
         Expanded(child: Text(label)),
         Text(
           icon,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(color: color),
+          style:
+              Theme.of(context).textTheme.titleMedium?.copyWith(color: color),
         ),
       ],
     );

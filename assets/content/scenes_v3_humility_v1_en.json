@@ -7,8 +7,8 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "vy", "name": "Violet", "portraitKey": "friend_01" },
-          { "id": "phuc", "name": "Felix", "portraitKey": "coworker_01" }
+          { "id": "vy", "name": "Violet", "portraitKey": "female_01" },
+          { "id": "phuc", "name": "Felix", "portraitKey": "male_01" }
         ]
       },
       "conversation": {
@@ -176,8 +176,8 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "lam", "name": "Liam", "portraitKey": "leader_01" },
-          { "id": "nhi", "name": "Nina", "portraitKey": "friend_02" }
+          { "id": "lam", "name": "Liam", "portraitKey": "male_02" },
+          { "id": "nhi", "name": "Nina", "portraitKey": "female_01" }
         ]
       },
       "conversation": {
@@ -344,7 +344,7 @@
       "title": "Your Presentation Gets Hijacked",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "khoa", "name": "Kai", "portraitKey": "classmate_01" }]
+        "npcs": [{ "id": "khoa", "name": "Kai", "portraitKey": "male_01" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -510,8 +510,8 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "han", "name": "Hannah", "portraitKey": "friend_03" },
-          { "id": "mod", "name": "Moderator", "portraitKey": "npc_mod_01" }
+          { "id": "han", "name": "Hannah", "portraitKey": "female_02" },
+          { "id": "mod", "name": "Moderator", "portraitKey": "male_03" }
         ]
       },
       "conversation": {
@@ -679,8 +679,8 @@
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
         "npcs": [
-          { "id": "huy", "name": "Hugo", "portraitKey": "teammate_01" },
-          { "id": "coach", "name": "Coach", "portraitKey": "coach_01" }
+          { "id": "huy", "name": "Hugo", "portraitKey": "male_02" },
+          { "id": "coach", "name": "Coach", "portraitKey": "male_03" }
         ]
       },
       "conversation": {
@@ -846,7 +846,7 @@
       "title": "The Text with Mom",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "me", "name": "Mom", "portraitKey": "mom_01" }]
+        "npcs": [{ "id": "me", "name": "Mom", "portraitKey": "female_03" }]
       },
       "conversation": {
         "startTurnId": "t1",
@@ -1012,7 +1012,7 @@
       "title": "One Sentence: Wisdom and Humility",
       "characters": {
         "player": { "id": "mc", "name": "You", "portraitKey": "mc_01" },
-        "npcs": [{ "id": "sang", "name": "Sam", "portraitKey": "coworker_02" }]
+        "npcs": [{ "id": "sang", "name": "Sam", "portraitKey": "male_01" }]
       },
       "conversation": {
         "startTurnId": "t1",

@@ -3,6 +3,7 @@ import 'package:bible_decision_simulator/game_engine/models/portrait_models.dart
 
 class PortraitResolver {
   const PortraitResolver();
+  static final RegExp _avatarPortraitPattern = RegExp(r'^(male|female)_\d+$');
 
   Map<String, String> resolveScenePortraits(
     Scene scene, {
@@ -52,6 +53,10 @@ class PortraitResolver {
   }
 
   String _assetPath(String portraitKey, String expression) {
+    final normalizedKey = portraitKey.trim().toLowerCase();
+    if (_avatarPortraitPattern.hasMatch(normalizedKey)) {
+      return 'assets/portraits/$normalizedKey/avatar.png';
+    }
     return 'assets/portraits/$portraitKey/$expression.png';
   }
 

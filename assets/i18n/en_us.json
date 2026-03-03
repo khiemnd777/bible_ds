@@ -29,6 +29,15 @@
   "select_situation": "Select a situation",
   "today": "Today",
   "donate": "Donate",
+  "onboarding_skip": "Skip",
+  "onboarding_next": "Next",
+  "onboarding_start": "Start",
+  "onboarding_title_1": "Welcome to Daily Turning",
+  "onboarding_body_1": "Read each story and choose what your character should do.",
+  "onboarding_title_2": "Your choices shape the day",
+  "onboarding_body_2": "Every decision changes your spiritual stats and your ending summary.",
+  "onboarding_title_3": "Build your daily streak",
+  "onboarding_body_3": "Come back each day, complete a scenario, and grow your streak.",
   "content_preview": "Content Preview",
   "scene": "Scene",
   "simulate_choice": "Simulate Choice",
@@ -51,5 +60,10 @@
   "your_phone_optional_label": "Your phone (optional)",
   "choose_avatar_source_title": "Choose avatar source",
   "gallery_option": "Gallery",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "reset_all_storage": "Reset all storage",
+  "reset_storage_title": "Reset all storage?",
+  "reset_storage_description": "This will permanently clear your local progress, app settings, and reminders on this device.",
+  "reset_storage_confirm": "Reset storage",
+  "storage_reset_success": "All local storage has been reset."
 }
