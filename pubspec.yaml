@@ -1,7 +1,7 @@
 name: bible_decision_simulator
-description: Bible Decision Simulator - offline-first interactive narrative game.
+description: Daily Turning - Interactive Christian Decision Game.
 publish_to: "none"
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ">=3.3.0 <4.0.0"

@@ -37,17 +37,25 @@ class AppLocaleController extends StateNotifier<String> {
   final SharedPreferences _prefs;
 
   Future<void> setLocale(String localeCode) async {
-    if (state == localeCode) return;
-    state = localeCode;
-    await _prefs.setString(prefsKey, localeCode);
+    final normalizedLocale = normalizeLocaleCode(localeCode);
+    if (state == normalizedLocale) return;
+    state = normalizedLocale;
+    await _prefs.setString(prefsKey, normalizedLocale);
   }
 
   static String _initialLocale(SharedPreferences prefs) {
     final saved = prefs.getString(prefsKey);
-    if (saved != null && saved.isNotEmpty) return saved;
+    if (saved != null && saved.isNotEmpty) {
+      return normalizeLocaleCode(saved);
+    }
 
-    final locale = ui.PlatformDispatcher.instance.locale;
-    if (locale.languageCode == 'vi') return 'vi_VN';
+    final deviceLocale = ui.PlatformDispatcher.instance.locale.toLanguageTag();
+    return normalizeLocaleCode(deviceLocale);
+  }
+
+  static String normalizeLocaleCode(String localeCode) {
+    final normalized = localeCode.trim().toLowerCase().replaceAll('-', '_');
+    if (normalized.startsWith('vi')) return 'vi_VN';
     return 'en_US';
   }
 }

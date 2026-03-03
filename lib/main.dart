@@ -204,7 +204,7 @@ class _RootShellState extends ConsumerState<_RootShell>
             child: Center(
               child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
-                  value: localeCode == 'vi_VN' ? 'vi_VN' : 'en_US',
+                  value: AppLocaleController.normalizeLocaleCode(localeCode),
                   items: const [
                     DropdownMenuItem(
                       value: 'en_US',
