@@ -81,6 +81,10 @@ class UiText {
         'onboarding_body_3',
         'Come back each day, complete a scenario, and grow your streak.',
       );
+  String get choiceGuideMessage => _t(
+        'choice_guide_message',
+        'Please choose one of the options below.',
+      );
 
   String get contentPreview => _t('content_preview', 'Content Preview');
   String get scene => _t('scene', 'Scene');

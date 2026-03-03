@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:bible_decision_simulator/core/di.dart';
 import 'package:bible_decision_simulator/features/profile/providers/profile_avatar_provider.dart';
@@ -105,7 +106,7 @@ class GameFlowScreen extends ConsumerWidget {
   }
 }
 
-class ScenarioScreen extends StatelessWidget {
+class ScenarioScreen extends ConsumerStatefulWidget {
   static const double _chatSpacing = 16;
   static final RegExp _avatarPortraitPattern = RegExp(r'^(male|female)_\d+$');
   static TextStyle _conversationTextStyle(BuildContext context) {
@@ -143,6 +144,76 @@ class ScenarioScreen extends StatelessWidget {
   final String? outcomeText;
   final Future<void> Function()? onNextOutcome;
 
+  @override
+  ConsumerState<ScenarioScreen> createState() => _ScenarioScreenState();
+}
+
+class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
+  static const String _choiceGuideSeenPrefsKey = 'bds.choice_guide.seen';
+  final GlobalKey _firstChoiceBubbleKey = GlobalKey();
+
+  bool _showChoiceGuide = false;
+  Rect? _choiceBubbleRect;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadChoiceGuideState();
+  }
+
+  Future<void> _loadChoiceGuideState() async {
+    final prefs = ref.read(sharedPreferencesProvider);
+    final hasSeenGuide = prefs.getBool(_choiceGuideSeenPrefsKey) ?? false;
+    if (!mounted || hasSeenGuide) return;
+    setState(() {
+      _showChoiceGuide = true;
+    });
+    _scheduleChoiceRectSync();
+  }
+
+  @override
+  void didUpdateWidget(covariant ScenarioScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (_showChoiceGuide) {
+      _scheduleChoiceRectSync();
+    }
+  }
+
+  void _scheduleChoiceRectSync() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_showChoiceGuide) return;
+      final bubbleContext = _firstChoiceBubbleKey.currentContext;
+      final rootContext = context;
+      if (bubbleContext == null) {
+        if (_choiceBubbleRect != null) {
+          setState(() {
+            _choiceBubbleRect = null;
+          });
+        }
+        return;
+      }
+      final bubbleBox = bubbleContext.findRenderObject() as RenderBox?;
+      final rootBox = rootContext.findRenderObject() as RenderBox?;
+      if (bubbleBox == null || rootBox == null) return;
+      final topLeft = bubbleBox.localToGlobal(Offset.zero, ancestor: rootBox);
+      final nextRect = topLeft & bubbleBox.size;
+      if (_choiceBubbleRect == nextRect) return;
+      setState(() {
+        _choiceBubbleRect = nextRect;
+      });
+    });
+  }
+
+  Future<void> _dismissChoiceGuide() async {
+    if (!_showChoiceGuide) return;
+    setState(() {
+      _showChoiceGuide = false;
+      _choiceBubbleRect = null;
+    });
+    final prefs = ref.read(sharedPreferencesProvider);
+    await prefs.setBool(_choiceGuideSeenPrefsKey, true);
+  }
+
   bool _isNarratorSpeaker(String speaker) {
     final lowerSpeaker = speaker.toLowerCase();
     return lowerSpeaker.contains('narrator') ||
@@ -156,7 +227,7 @@ class ScenarioScreen extends StatelessWidget {
     required Color playerColor,
     required String playerAvatarPath,
   }) {
-    final character = characterMap.resolve(turn.speaker);
+    final character = widget.characterMap.resolve(turn.speaker);
     if (character == null) {
       if (_isNarratorSpeaker(turn.speaker)) {
         return _NarratorChatBlock(
@@ -168,7 +239,7 @@ class ScenarioScreen extends StatelessWidget {
       throw Exception('Unknown speaker: ${turn.speaker}');
     }
 
-    if (character.id == scene.characters.player.id) {
+    if (character.id == widget.scene.characters.player.id) {
       return _PlayerSpeechBubble(
         playerName: character.name,
         playerAvatarPath: playerAvatarPath,
@@ -186,13 +257,13 @@ class ScenarioScreen extends StatelessWidget {
   }
 
   String _portraitPathFor(Character character) {
-    final resolvedPath = portraitPaths[character.id];
+    final resolvedPath = widget.portraitPaths[character.id];
     if (resolvedPath != null) {
       return resolvedPath;
     }
 
     final normalizedKey = character.portraitKey.trim().toLowerCase();
-    if (_avatarPortraitPattern.hasMatch(normalizedKey)) {
+    if (ScenarioScreen._avatarPortraitPattern.hasMatch(normalizedKey)) {
       return 'assets/portraits/$normalizedKey/avatar.png';
     }
 
@@ -205,108 +276,286 @@ class ScenarioScreen extends StatelessWidget {
     final npcColor = Theme.of(context).colorScheme.surfaceContainer;
     final playerColor = Theme.of(context).colorScheme.primaryContainer;
     final outcomeColor = Theme.of(context).colorScheme.secondaryContainer;
-    final isOutcomeMode = selectedChoice != null && outcomeText != null;
+    final isOutcomeMode = widget.selectedChoice != null && widget.outcomeText != null;
     final currentTurn =
-        currentTurnId == null ? null : scene.findTurn(currentTurnId!);
-    final introTurns = scene.introTurns;
-    final playerPortraitPath = _portraitPathFor(scene.characters.player);
-    final playerAvatarPath = playerAvatarPathOverride ?? playerPortraitPath;
+        widget.currentTurnId == null ? null : widget.scene.findTurn(widget.currentTurnId!);
+    final introTurns = widget.scene.introTurns;
+    final playerPortraitPath = _portraitPathFor(widget.scene.characters.player);
+    final playerAvatarPath = widget.playerAvatarPathOverride ?? playerPortraitPath;
+    final hasChoices = !isOutcomeMode &&
+        currentTurn != null &&
+        currentTurn.choices.isNotEmpty;
 
-    return Column(
+    if (_showChoiceGuide && hasChoices) {
+      _scheduleChoiceRectSync();
+    }
+
+    return Stack(
       children: [
-        _SceneHeader(title: scene.title, topic: text.topicLabel(scene.topic)),
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ...introTurns.map((turn) {
-                  return _buildTurnBubble(
-                    turn: turn,
-                    narratorColor: narratorColor,
-                    npcColor: npcColor,
-                    playerColor: playerColor,
-                    playerAvatarPath: playerAvatarPath,
-                  );
-                }),
-                ...selectedTurns.asMap().entries.map(
-                      (entry) => Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          _buildTurnBubble(
-                            turn: entry.value,
-                            narratorColor: narratorColor,
-                            npcColor: npcColor,
-                            playerColor: playerColor,
-                            playerAvatarPath: playerAvatarPath,
+        Column(
+          children: [
+            _SceneHeader(
+              title: widget.scene.title,
+              topic: widget.text.topicLabel(widget.scene.topic),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ...introTurns.map((turn) {
+                      return _buildTurnBubble(
+                        turn: turn,
+                        narratorColor: narratorColor,
+                        npcColor: npcColor,
+                        playerColor: playerColor,
+                        playerAvatarPath: playerAvatarPath,
+                      );
+                    }),
+                    ...widget.selectedTurns.asMap().entries.map(
+                          (entry) => Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              _buildTurnBubble(
+                                turn: entry.value,
+                                narratorColor: narratorColor,
+                                npcColor: npcColor,
+                                playerColor: playerColor,
+                                playerAvatarPath: playerAvatarPath,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: ScenarioScreen._chatSpacing,
+                                ),
+                                child: _PlayerSpeechBubble(
+                                  playerName: widget.scene.characters.player.name,
+                                  playerAvatarPath: playerAvatarPath,
+                                  text: widget.selectedChoices[entry.key].playerLine,
+                                  color: playerColor,
+                                ),
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                bottom: ScenarioScreen._chatSpacing),
-                            child: _PlayerSpeechBubble(
-                              playerName: scene.characters.player.name,
-                              playerAvatarPath: playerAvatarPath,
-                              text: selectedChoices[entry.key].playerLine,
-                              color: playerColor,
+                        ),
+                    if (!isOutcomeMode && currentTurn != null)
+                      _buildTurnBubble(
+                        turn: currentTurn,
+                        narratorColor: narratorColor,
+                        npcColor: npcColor,
+                        playerColor: playerColor,
+                        playerAvatarPath: playerAvatarPath,
+                      ),
+                    if (hasChoices)
+                      ...currentTurn.choices.asMap().entries.map(
+                            (entry) => Padding(
+                              padding: const EdgeInsets.only(
+                                bottom: ScenarioScreen._chatSpacing,
+                              ),
+                              child: _PlayerChoiceBubble(
+                                key:
+                                    entry.key == 0 ? _firstChoiceBubbleKey : null,
+                                playerName: widget.scene.characters.player.name,
+                                playerAvatarPath: playerAvatarPath,
+                                text: entry.value.text,
+                                color: playerColor,
+                                onTap: () => widget.onPickChoice(entry.value.id),
+                                showAvatar: entry.key == 0,
+                              ),
                             ),
                           ),
-                        ],
+                    if (isOutcomeMode)
+                      _OutcomeBubble(
+                        title: widget.text.outcome,
+                        text: widget.outcomeText!,
+                        color: outcomeColor,
                       ),
-                    ),
-                if (!isOutcomeMode && currentTurn != null)
-                  _buildTurnBubble(
-                    turn: currentTurn,
-                    narratorColor: narratorColor,
-                    npcColor: npcColor,
-                    playerColor: playerColor,
-                    playerAvatarPath: playerAvatarPath,
-                  ),
-                if (!isOutcomeMode &&
-                    currentTurn != null &&
-                    currentTurn.choices.isNotEmpty)
-                  ...currentTurn.choices.asMap().entries.map(
-                        (entry) => Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: ScenarioScreen._chatSpacing),
-                          child: _PlayerChoiceBubble(
-                            playerName: scene.characters.player.name,
-                            playerAvatarPath: playerAvatarPath,
-                            text: entry.value.text,
-                            color: playerColor,
-                            onTap: () => onPickChoice(entry.value.id),
-                            showAvatar: entry.key == 0,
+                    if (isOutcomeMode)
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: ScenarioScreen._chatSpacing,
+                        ),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: FilledButton(
+                            onPressed: widget.onNextOutcome == null
+                                ? null
+                                : () {
+                                    widget.onNextOutcome!.call();
+                                  },
+                            child: Text(widget.text.next),
                           ),
                         ),
                       ),
-                if (isOutcomeMode)
-                  _OutcomeBubble(
-                    title: text.outcome,
-                    text: outcomeText!,
-                    color: outcomeColor,
-                  ),
-                if (isOutcomeMode)
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        bottom: ScenarioScreen._chatSpacing),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: FilledButton(
-                        onPressed: onNextOutcome == null
-                            ? null
-                            : () {
-                                onNextOutcome!.call();
-                              },
-                        child: Text(text.next),
-                      ),
-                    ),
-                  ),
-              ],
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        if (_showChoiceGuide && hasChoices)
+          Positioned.fill(
+            child: _ChoiceGuideOverlay(
+              spotlightRect: _choiceBubbleRect,
+              onDismiss: _dismissChoiceGuide,
+              message: widget.text.choiceGuideMessage,
             ),
           ),
-        ),
       ],
     );
+  }
+}
+
+class _ChoiceGuideOverlay extends StatefulWidget {
+  const _ChoiceGuideOverlay({
+    required this.spotlightRect,
+    required this.onDismiss,
+    required this.message,
+  });
+
+  final Rect? spotlightRect;
+  final VoidCallback onDismiss;
+  final String message;
+
+  @override
+  State<_ChoiceGuideOverlay> createState() => _ChoiceGuideOverlayState();
+}
+
+class _ChoiceGuideOverlayState extends State<_ChoiceGuideOverlay>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1400),
+  )..repeat(reverse: true);
+  late final Animation<double> _offset = Tween<double>(
+    begin: 0,
+    end: -6,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  late final Animation<double> _opacity = Tween<double>(
+    begin: 0.9,
+    end: 1.0,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    final rect = widget.spotlightRect;
+    final panelTop = (() {
+      if (rect == null) return size.height * 0.58;
+      final preferred = rect.top - 116;
+      if (preferred >= 72) return preferred;
+      return (rect.bottom + 20).clamp(72.0, size.height - 180.0);
+    })();
+
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: widget.onDismiss,
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _SpotlightOverlayPainter(spotlightRect: rect),
+            ),
+          ),
+          Positioned(
+            left: 20,
+            right: 20,
+            top: panelTop,
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Opacity(
+                  opacity: _opacity.value,
+                  child: Transform.translate(
+                    offset: Offset(0, _offset.value),
+                    child: child,
+                  ),
+                );
+              },
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(14),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x33000000),
+                      blurRadius: 18,
+                      offset: Offset(0, 8),
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        widget.message,
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SpotlightOverlayPainter extends CustomPainter {
+  const _SpotlightOverlayPainter({required this.spotlightRect});
+
+  final Rect? spotlightRect;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final canvasBounds = Offset.zero & size;
+    canvas.saveLayer(canvasBounds, Paint());
+    canvas.drawRect(
+      canvasBounds,
+      Paint()..color = const Color(0xB3000000),
+    );
+
+    if (spotlightRect != null) {
+      final expanded = spotlightRect!.inflate(8);
+      final holeRRect = RRect.fromRectAndRadius(expanded, const Radius.circular(16));
+      canvas.drawRRect(
+        holeRRect,
+        Paint()..blendMode = ui.BlendMode.clear,
+      );
+    }
+
+    canvas.restore();
+
+    if (spotlightRect != null) {
+      final borderRect = spotlightRect!.inflate(8);
+      final border = RRect.fromRectAndRadius(borderRect, const Radius.circular(16));
+      canvas.drawRRect(
+        border,
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2
+          ..color = Colors.white.withValues(alpha: 0.85),
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SpotlightOverlayPainter oldDelegate) {
+    return oldDelegate.spotlightRect != spotlightRect;
   }
 }
 
@@ -461,8 +710,9 @@ class _PlayerSpeechBubble extends StatelessWidget {
   }
 }
 
-class _PlayerChoiceBubble extends StatelessWidget {
+class _PlayerChoiceBubble extends StatefulWidget {
   const _PlayerChoiceBubble({
+    super.key,
     required this.playerName,
     required this.playerAvatarPath,
     required this.text,
@@ -479,34 +729,81 @@ class _PlayerChoiceBubble extends StatelessWidget {
   final bool showAvatar;
 
   @override
+  State<_PlayerChoiceBubble> createState() => _PlayerChoiceBubbleState();
+}
+
+class _PlayerChoiceBubbleState extends State<_PlayerChoiceBubble>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1300),
+  )..repeat(reverse: true);
+  late final Animation<double> _scale = Tween<double>(
+    begin: 1.0,
+    end: 1.015,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  late final Animation<double> _glow = Tween<double>(
+    begin: 0.08,
+    end: 0.22,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(
-          child: OutlinedButton(
-            onPressed: onTap,
-            style: OutlinedButton.styleFrom(
-              backgroundColor: color,
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.all(12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              return Transform.scale(
+                scale: _scale.value,
+                alignment: Alignment.centerRight,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: widget.color.withValues(alpha: _glow.value),
+                        blurRadius: 14,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: child,
+                ),
+              );
+            },
+            child: OutlinedButton(
+              onPressed: widget.onTap,
+              style: OutlinedButton.styleFrom(
+                backgroundColor: widget.color,
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.all(12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
-            ),
-            child: Text(
-              text,
-              textAlign: TextAlign.left,
-              style: ScenarioScreen._conversationTextStyle(context),
+              child: Text(
+                widget.text,
+                textAlign: TextAlign.left,
+                style: ScenarioScreen._conversationTextStyle(context),
+              ),
             ),
           ),
         ),
         const SizedBox(width: 8),
         SizedBox(
           width: 52,
-          child: showAvatar
-              ? _Avatar(path: playerAvatarPath, label: playerName)
+          child: widget.showAvatar
+              ? _Avatar(path: widget.playerAvatarPath, label: widget.playerName)
               : const SizedBox.shrink(),
         ),
       ],
