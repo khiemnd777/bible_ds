@@ -76,7 +76,7 @@
           {
             "id": "t4_after_private",
             "speaker": "Violet",
-            "text": "I’ll say something. But… I’m scared people will think I’m taking credit. And… Felix DM’d me saying we should leave it to keep things “peaceful.”",
+            "text": "I’ll say something. But… I’m scared people will think I’m taking credit. And… Felix DM’d me saying we should leave it to keep things “peaceful.",
             "nextTurnId": "t5_choice_2",
             "choices": []
           },
@@ -108,7 +108,7 @@
               {
                 "id": "c2_escalate_callout",
                 "text": "Call Felix out directly and make it clear who did what in front of the group.",
-                "playerLine": "Felix, don’t do this. If I did the work, say I did the work. Don’t push someone else forward just to keep it “peaceful.”",
+                "playerLine": "Felix, don’t do this. If I did the work, say I did the work. Don’t push someone else forward just to keep it “peaceful.",
                 "intentTag": "assert",
                 "actionTag": "confront",
                 "effects": [
@@ -118,7 +118,7 @@
                 ],
                 "portraitOverrides": { "player": "angry", "npc": "neutral" },
                 "outcome": {
-                  "text": "You get the credit back fast, but Violet gets trapped in the middle and the team atmosphere cracks. People remember “how you said it” longer than “what you were right about.”",
+                  "text": "You get the credit back fast, but Violet gets trapped in the middle and the team atmosphere cracks. People remember “how you said it” longer than “what you were right about.",
                   "next": "reflection:ref_humility_01"
                 },
                 "nextTurnId": ""
@@ -331,7 +331,7 @@
           {
             "id": "o02_half_fix",
             "requiredChoiceIds": ["c2_quiet_fix_only"],
-            "text": "You fix the tech, but not the relationship. Humility isn’t just “getting it done”—it’s “lowering yourself in the right place.”",
+            "text": "You fix the tech, but not the relationship. Humility isn’t just “getting it done”—it’s “lowering yourself in the right place.",
             "next": "reflection:ref_humility_02"
           }
         ]
@@ -689,7 +689,7 @@
           {
             "id": "t1",
             "speaker": "Narrator",
-            "text": "It’s a casual match. You’ve been the best player on the team for weeks. Then Coach starts Hugo, and puts you on the bench to “balance the team.”",
+            "text": "It’s a casual match. You’ve been the best player on the team for weeks. Then Coach starts Hugo, and puts you on the bench to “balance the team.",
             "nextTurnId": "t2",
             "choices": []
           },
@@ -854,7 +854,7 @@
           {
             "id": "t1",
             "speaker": "Narrator",
-            "text": "You’re busy. Mom texts: “Can you come home for dinner?” You accidentally leave it on read, then forget to reply. At night she calls, voice small: “It’s okay… you’re busy.”",
+            "text": "You’re busy. Mom texts: “Can you come home for dinner?” You accidentally leave it on read, then forget to reply. At night she calls, voice small: “It’s okay… you’re busy.",
             "nextTurnId": "t2",
             "choices": []
           },

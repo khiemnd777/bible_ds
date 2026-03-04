@@ -89,6 +89,7 @@ class GameFlowScreen extends ConsumerWidget {
           scenes: state.content?.scenes ?? const [],
           currentSceneId: state.scene?.id,
           onOpenSceneByIndex: controller.openSceneByIndex,
+          onDebugOpenSceneByIndex: controller.debugUnlockAndOpenSceneByIndex,
           text: text,
         ),
       GamePhase.dailySummary => SummaryScreen(
@@ -99,6 +100,7 @@ class GameFlowScreen extends ConsumerWidget {
           scenes: state.content?.scenes ?? const [],
           currentSceneId: state.scene?.id,
           onOpenSceneByIndex: controller.openSceneByIndex,
+          onDebugOpenSceneByIndex: controller.debugUnlockAndOpenSceneByIndex,
           text: text,
           dailyTrend: state.dailyTrend,
         ),

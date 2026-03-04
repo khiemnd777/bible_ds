@@ -795,7 +795,7 @@
               "c1_sign_quiet",
               "c3_confess_work"
             ],
-            "text": "Bạn đã chọn an toàn lúc đầu, rồi quay lại sửa. Bạn mất cơ hội thăng chức… nhưng bạn lấy lại sự trong sạch trong lòng. Linh ôm bạn, không trách, chỉ nói: “Mình làm lại được.”",
+            "text": "Bạn đã chọn an toàn lúc đầu, rồi quay lại sửa. Bạn mất cơ hội thăng chức… nhưng bạn lấy lại sự trong sạch trong lòng. Linh ôm bạn, không trách, chỉ nói: “Mình làm lại được.",
             "next": "reflection:ref_courage_promo_01"
           },
           {
@@ -813,7 +813,7 @@
               "c1_ask_fix",
               "c2_back_down"
             ],
-            "text": "Bạn từng nói không… rồi rút lại. Bạn vẫn lên chức, nhưng từ đó bạn hay tự hỏi: “Mình thật sự tin điều mình nói không?”",
+            "text": "Bạn từng nói không… rồi rút lại. Bạn vẫn lên chức, nhưng từ đó bạn hay tự hỏi: “Mình thật sự tin điều mình nói không?",
             "next": "reflection:ref_courage_promo_01"
           },
           {

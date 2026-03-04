@@ -35,7 +35,7 @@
             "choices": [
               {
                 "id": "p01_c1_defend",
-                "text": "Say right away: “Yeah but you still did most of it anyway, so what?”",
+                "text": "Say right away: “Yeah but you still did most of it anyway, so what?",
                 "playerLine": "Yeah but you still did most of it anyway, so what?",
                 "intentTag": "defend",
                 "actionTag": "save_face",
@@ -50,7 +50,7 @@
               },
               {
                 "id": "p01_c1_own",
-                "text": "Own it in front of the group: “Oh yeah… Lily actually fixed a lot back then. I’m sorry—let me clarify it with the leader.”",
+                "text": "Own it in front of the group: “Oh yeah… Lily actually fixed a lot back then. I’m sorry—let me clarify it with the leader.",
                 "playerLine": "Oh yeah… Lily actually fixed a lot back then. I’m sorry—let me clarify it with the leader.",
                 "intentTag": "repent",
                 "actionTag": "own_it",
@@ -135,7 +135,7 @@
           {
             "id": "p01_t6",
             "speaker": "Narrator",
-            "text": "That night, you open your phone and see Lily text: “I’m not mad. I’m just sad because it feels like you needed to win more than you needed me.”",
+            "text": "That night, you open your phone and see Lily text: “I’m not mad. I’m just sad because it feels like you needed to win more than you needed me.",
             "nextTurnId": "p01_t7",
             "choices": []
           },
@@ -236,7 +236,7 @@
           {
             "id": "p02_t3",
             "speaker": "Narrator",
-            "text": "You reread the post. You realize: you didn’t lie—but the way you told it makes you look like the “main character.”",
+            "text": "You reread the post. You realize: you didn’t lie—but the way you told it makes you look like the “main character.",
             "nextTurnId": "",
             "choices": [
               {
@@ -316,7 +316,7 @@
               },
               {
                 "id": "p02_c2_snap",
-                "text": "Reply with a little sarcasm: “Uh, I did mention you 🙂”",
+                "text": "Reply with a little sarcasm: “Uh, I did mention you 🙂",
                 "playerLine": "Uh, I did mention you 🙂",
                 "intentTag": "retaliate",
                 "actionTag": "sarcasm",
@@ -334,7 +334,7 @@
           {
             "id": "p02_t6",
             "speaker": "Narrator",
-            "text": "That night, you see Kyle send a screenshot: someone in the team chat said, “Forget it—let’s not work together anymore.”",
+            "text": "That night, you see Kyle send a screenshot: someone in the team chat said, “Forget it—let’s not work together anymore.",
             "nextTurnId": "p02_t7",
             "choices": []
           },
@@ -421,7 +421,7 @@
           {
             "id": "p03_t1",
             "speaker": "Narrator",
-            "text": "You’re having dinner at Maya’s house. Her dad asks about work. You get excited talking and accidentally call Maya’s field “easy.”",
+            "text": "You’re having dinner at Maya’s house. Her dad asks about work. You get excited talking and accidentally call Maya’s field “easy.",
             "nextTurnId": "p03_t2",
             "choices": []
           },
@@ -485,7 +485,7 @@
             "choices": [
               {
                 "id": "p03_c2_listen",
-                "text": "Stay quiet for a moment, then ask: “How do you want me to make it right?”",
+                "text": "Stay quiet for a moment, then ask: “How do you want me to make it right?",
                 "playerLine": "I’m sorry. What do you want me to do so you can feel respected again?",
                 "intentTag": "love",
                 "actionTag": "listen",
@@ -639,7 +639,7 @@
             "choices": [
               {
                 "id": "p04_c1_correct",
-                "text": "Say bluntly: “Your faith is weak. Stop complaining.”",
+                "text": "Say bluntly: “Your faith is weak. Stop complaining.",
                 "playerLine": "Your faith is weak. Stop complaining—get up already.",
                 "intentTag": "judge",
                 "actionTag": "harsh_truth",
@@ -654,7 +654,7 @@
               },
               {
                 "id": "p04_c1_hold",
-                "text": "Sit closer: “Tell me more—I’m listening.”",
+                "text": "Sit closer: “Tell me more—I’m listening.",
                 "playerLine": "Tell me more. I’m listening.",
                 "intentTag": "love",
                 "actionTag": "listen_first",
@@ -684,7 +684,7 @@
             "choices": [
               {
                 "id": "p04_c2_own",
-                "text": "Own it: “I wanted to look strong, so I spoke harshly.”",
+                "text": "Own it: “I wanted to look strong, so I spoke harshly.",
                 "playerLine": "I’m sorry. I wanted to look like I was “right,” so I spoke way too harshly.",
                 "intentTag": "repent",
                 "actionTag": "own_it",
@@ -699,7 +699,7 @@
               },
               {
                 "id": "p04_c2_fix",
-                "text": "Push back: “But I was right—you needed to hear it.”",
+                "text": "Push back: “But I was right—you needed to hear it.",
                 "playerLine": "But I was right… you needed to hear it so you could be stronger.",
                 "intentTag": "defend",
                 "actionTag": "double_down",
@@ -823,7 +823,7 @@
             "choices": [
               {
                 "id": "p05_c1_take",
-                "text": "Laugh it off: “Come on, we all do work.”",
+                "text": "Laugh it off: “Come on, we all do work.",
                 "playerLine": "Come on, we all do work. Don’t overthink it.",
                 "intentTag": "avoid",
                 "actionTag": "minimize",
@@ -883,7 +883,7 @@
               },
               {
                 "id": "p05_c2_backtrack",
-                "text": "Backtrack: “Never mind… I was just saying it.”",
+                "text": "Backtrack: “Never mind… I was just saying it.",
                 "playerLine": "Never mind… I probably overthought it. Sorry about that.",
                 "intentTag": "fear",
                 "actionTag": "backtrack",
@@ -901,7 +901,7 @@
           {
             "id": "p05_t6",
             "speaker": "Narrator",
-            "text": "That afternoon, Hugo texts: “I don’t need you to ‘save’ me. I just need you to see me as a teammate.”",
+            "text": "That afternoon, Hugo texts: “I don’t need you to ‘save’ me. I just need you to see me as a teammate.",
             "nextTurnId": "p05_t7",
             "choices": []
           },
@@ -1007,7 +1007,7 @@
             "choices": [
               {
                 "id": "p06_c1_push",
-                "text": "Say it straight: “So what do you want me to do now?”",
+                "text": "Say it straight: “So what do you want me to do now?",
                 "playerLine": "So what do you want me to do now? I already said sorry.",
                 "intentTag": "defend",
                 "actionTag": "pressure",
@@ -1022,7 +1022,7 @@
               },
               {
                 "id": "p06_c1_slow",
-                "text": "Lower your voice: “Can you explain it to me? I want to understand for real—not just finish this.”",
+                "text": "Lower your voice: “Can you explain it to me? I want to understand for real—not just finish this.",
                 "playerLine": "Can you explain it to me? I want to understand for real—not just finish this.",
                 "intentTag": "love",
                 "actionTag": "slow_down",
@@ -1040,7 +1040,7 @@
           {
             "id": "p06_t4",
             "speaker": "Tracy",
-            "text": "I want you to admit that back then you treated my feelings like an “annoyance,” not something “important.”",
+            "text": "I want you to admit that back then you treated my feelings like an “annoyance,” not something “important.",
             "nextTurnId": "p06_t5",
             "choices": []
           },
@@ -1052,8 +1052,8 @@
             "choices": [
               {
                 "id": "p06_c2_admit",
-                "text": "Admit it: “Yeah, I minimized your feelings.”",
-                "playerLine": "Yeah. I minimized your feelings. I’m sorry for that—not just sorry that we “argued.”",
+                "text": "Admit it: “Yeah, I minimized your feelings.",
+                "playerLine": "Yeah. I minimized your feelings. I’m sorry for that—not just sorry that we “argued.",
                 "intentTag": "repent",
                 "actionTag": "admit",
                 "effects": [
@@ -1067,7 +1067,7 @@
               },
               {
                 "id": "p06_c2_semantics",
-                "text": "Argue semantics: “I didn’t minimize you—I was just busy.”",
+                "text": "Argue semantics: “I didn’t minimize you—I was just busy.",
                 "playerLine": "I didn’t minimize you. I was just overwhelmed, so I reacted like that.",
                 "intentTag": "justify",
                 "actionTag": "word_game",
@@ -1191,7 +1191,7 @@
             "choices": [
               {
                 "id": "p07_c1_deflect",
-                "text": "Blame it on being tired: “I’m just doing too much.”",
+                "text": "Blame it on being tired: “I’m just doing too much.",
                 "playerLine": "I’m just doing too much, that’s all. It’s not like I have a problem.",
                 "intentTag": "defend",
                 "actionTag": "deflect",
@@ -1206,7 +1206,7 @@
               },
               {
                 "id": "p07_c1_open",
-                "text": "Admit it: “I’m scared of being looked down on, so I control things.”",
+                "text": "Admit it: “I’m scared of being looked down on, so I control things.",
                 "playerLine": "I think… I’m scared of being looked down on. So I control things so I won’t get criticized.",
                 "intentTag": "repent",
                 "actionTag": "open_up",
@@ -1322,7 +1322,7 @@
           {
             "id": "p07_o_burnout",
             "requiredChoiceIds": ["p07_c1_deflect", "p07_c2_keep"],
-            "text": "You keep carrying everything to protect your position. You still get praised… until you burn out and snap at the people you claim to be “helping.”",
+            "text": "You keep carrying everything to protect your position. You still get praised… until you burn out and snap at the people you claim to be “helping.",
             "next": "reflection:ref_pride_07"
           },
           {

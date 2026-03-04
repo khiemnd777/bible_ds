@@ -370,7 +370,7 @@
             "choices": [
               {
                 "id": "c1_sign_quiet",
-                "text": "Sign to keep things quiet, telling yourself “I’ll fix it after I’m promoted.”",
+                "text": "Sign to keep things quiet, telling yourself “I’ll fix it after I’m promoted.",
                 "playerLine": "Okay… I’ll sign. And I’ll keep a close eye on the project so it’s solid.",
                 "intentTag": "fear",
                 "actionTag": "comply",
@@ -795,7 +795,7 @@
               "c1_sign_quiet",
               "c3_confess_work"
             ],
-            "text": "You chose safety first, then came back to fix it. You lose the promotion… but you get your clean conscience back. Lily hugs you—no blame—just: “We can start over.”",
+            "text": "You chose safety first, then came back to fix it. You lose the promotion… but you get your clean conscience back. Lily hugs you—no blame—just: “We can start over.",
             "next": "reflection:ref_courage_promo_01"
           },
           {
@@ -813,7 +813,7 @@
               "c1_ask_fix",
               "c2_back_down"
             ],
-            "text": "You said no… then took it back. You still get promoted, but from then on you keep wondering: “Do I really believe what I say?”",
+            "text": "You said no… then took it back. You still get promoted, but from then on you keep wondering: “Do I really believe what I say?",
             "next": "reflection:ref_courage_promo_01"
           },
           {
@@ -859,7 +859,7 @@
           {
             "id": "t1",
             "speaker": "Narrator",
-            "text": "After group time, you walk past the chair-stacking area and hear people whispering about Mia. Their voices are low, but you catch words like: “fake,” “not decent,” “don’t trust her.”",
+            "text": "After group time, you walk past the chair-stacking area and hear people whispering about Mia. Their voices are low, but you catch words like: “fake,” “not decent,” “don’t trust her.",
             "nextTurnId": "t2",
             "choices": []
           },
@@ -925,7 +925,7 @@
               },
               {
                 "id": "c1_play_safe",
-                "text": "Stay quiet: “not my business.”",
+                "text": "Stay quiet: “not my business.",
                 "playerLine": "Uh… I don’t know. I’m gonna head out.",
                 "intentTag": "fear",
                 "actionTag": "avoid",
@@ -954,7 +954,7 @@
           {
             "id": "t_after_stop",
             "speaker": "Narrator",
-            "text": "The moment stalls. Kyle smirks, like you just did something “naive.”",
+            "text": "The moment stalls. Kyle smirks, like you just did something “naive.",
             "nextTurnId": "t6",
             "choices": []
           },
@@ -1995,7 +1995,7 @@
           {
             "id": "t_boundary_1",
             "speaker": "Noah",
-            "text": "So you don’t trust me? You’re rebelling against your “head.”",
+            "text": "So you don’t trust me? You’re rebelling against your “head.",
             "nextTurnId": "t_boundary_2",
             "choices": []
           },
@@ -2047,7 +2047,7 @@
               },
               {
                 "id": "c2_handle_alone",
-                "text": "Handle it alone: avoid involving anyone so it won’t “become a big deal.”",
+                "text": "Handle it alone: avoid involving anyone so it won’t “become a big deal.",
                 "playerLine": "I’ll… talk to Noah myself. No need to drag anyone in.",
                 "intentTag": "fear",
                 "actionTag": "handle_alone",
@@ -2454,7 +2454,7 @@
           {
             "id": "t_boundary_2",
             "speaker": "Narrator",
-            "text": "You hear “family” used like a rope. If you soften, the boundary disappears. If you stay firm, you get labeled “calculating.”",
+            "text": "You hear “family” used like a rope. If you soften, the boundary disappears. If you stay firm, you get labeled “calculating.",
             "nextTurnId": "t_choice_2a",
             "choices": []
           },
@@ -2925,7 +2925,7 @@
           {
             "id": "t_hold_1",
             "speaker": "Narrator",
-            "text": "You take the contract. Money comes steadily. Lily worries less. But every night you’re exhausted, and the ministry invitation stays “on the side.”",
+            "text": "You take the contract. Money comes steadily. Lily worries less. But every night you’re exhausted, and the ministry invitation stays “on the side.",
             "nextTurnId": "t_hold_2",
             "choices": []
           },
@@ -2970,7 +2970,7 @@
               },
               {
                 "id": "c2_keep_postponing",
-                "text": "Postpone again: “I’ll do it when things settle.”",
+                "text": "Postpone again: “I’ll do it when things settle.",
                 "playerLine": "Let me get more stable first. I’m too busy right now.",
                 "intentTag": "fear",
                 "actionTag": "postpone",
@@ -3044,7 +3044,7 @@
               },
               {
                 "id": "c2_overcommit",
-                "text": "Overcommit: try to do everything to prove you have “enough faith.”",
+                "text": "Overcommit: try to do everything to prove you have “enough faith.",
                 "playerLine": "I can do it. I’m fine. I just need to push a little harder.",
                 "intentTag": "pride",
                 "actionTag": "overcommit",

@@ -33,8 +33,8 @@
             "choices": [
               {
                 "id": "c_f02_1_soft",
-                "text": "Nhắn lại nhẹ nhàng: “Mình nghe rồi. Mai mình nói chuyện riêng nha.”",
-                "playerLine": "“Mình thấy tin nhắn rồi. Mai mình nói chuyện riêng nha, mình muốn hiểu bạn.”",
+                "text": "Nhắn lại nhẹ nhàng: “Mình nghe rồi. Mai mình nói chuyện riêng nha.",
+                "playerLine": "Mình thấy tin nhắn rồi. Mai mình nói chuyện riêng nha, mình muốn hiểu bạn.",
                 "intentTag": "calm",
                 "actionTag": "invite_talk",
                 "effects": [
@@ -48,8 +48,8 @@
               },
               {
                 "id": "c_f02_1_sharp",
-                "text": "Nhắn gắt: “Gỡ rồi tưởng không sao hả? Nói thẳng đi.”",
-                "playerLine": "“Gỡ rồi là xong hả? Bạn muốn nói gì thì nói thẳng luôn đi.”",
+                "text": "Nhắn gắt: “Gỡ rồi tưởng không sao hả? Nói thẳng đi.",
+                "playerLine": "Gỡ rồi là xong hả? Bạn muốn nói gì thì nói thẳng luôn đi.",
                 "intentTag": "hurt",
                 "actionTag": "pressure",
                 "effects": [
@@ -66,7 +66,7 @@
           {
             "id": "t4",
             "speaker": "Dẫn chuyện",
-            "text": "Một lát sau, bạn nhận được tin nhắn riêng từ Linh: “Mình bực vì tưởng bạn kể chuyện mình trễ deadline với trưởng nhóm… nhưng hoá ra người nói không phải bạn.”",
+            "text": "Một lát sau, bạn nhận được tin nhắn riêng từ Linh: “Mình bực vì tưởng bạn kể chuyện mình trễ deadline với trưởng nhóm… nhưng hoá ra người nói không phải bạn.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -79,7 +79,7 @@
               {
                 "id": "c_f02_2_forgive",
                 "text": "Tha thứ và đề nghị cùng dọn hiểu lầm, không bêu tên ai.",
-                "playerLine": "“Ok, mình tha cho bạn. Mai mình với bạn nói lại cho rõ, mình không muốn ai bị bêu.”",
+                "playerLine": "Ok, mình tha cho bạn. Mai mình với bạn nói lại cho rõ, mình không muốn ai bị bêu.",
                 "intentTag": "forgive",
                 "actionTag": "restore",
                 "effects": [
@@ -93,8 +93,8 @@
               },
               {
                 "id": "c_f02_2_hold",
-                "text": "Giữ khoảng cách: “Tạm thời mình không muốn nói nữa.”",
-                "playerLine": "“Mình nghe rồi. Nhưng cho mình vài bữa, mình chưa ổn.”",
+                "text": "Giữ khoảng cách: “Tạm thời mình không muốn nói nữa.",
+                "playerLine": "Mình nghe rồi. Nhưng cho mình vài bữa, mình chưa ổn.",
                 "intentTag": "guarded",
                 "actionTag": "distance",
                 "effects": [
@@ -177,7 +177,7 @@
               {
                 "id": "c_f03_1_correct",
                 "text": "Sửa lại sự thật một cách bình tĩnh, không công kích.",
-                "playerLine": "“Mình gửi phần đó hôm qua 5 giờ. Mình forward lại mail để mọi người nắm cho rõ nha.”",
+                "playerLine": "Mình gửi phần đó hôm qua 5 giờ. Mình forward lại mail để mọi người nắm cho rõ nha.",
                 "intentTag": "truth",
                 "actionTag": "clarify",
                 "effects": [
@@ -192,7 +192,7 @@
               {
                 "id": "c_f03_1_expose",
                 "text": "Bóc thẳng Huy trước mặt mọi người để “đỡ tức”.",
-                "playerLine": "“Bạn nói vậy là đổ thừa. Trễ là do bạn kẹt chứ không phải mình.”",
+                "playerLine": "Bạn nói vậy là đổ thừa. Trễ là do bạn kẹt chứ không phải mình.",
                 "intentTag": "anger",
                 "actionTag": "expose",
                 "effects": [
@@ -209,7 +209,7 @@
           {
             "id": "t4",
             "speaker": "Dẫn chuyện",
-            "text": "Tan họp, Huy kéo bạn ra một góc: “Mình xin lỗi. Nhưng nếu sếp biết mình trễ, chắc mình bị cắt hợp đồng. Mình đang nuôi mẹ bệnh.”",
+            "text": "Tan họp, Huy kéo bạn ra một góc: “Mình xin lỗi. Nhưng nếu sếp biết mình trễ, chắc mình bị cắt hợp đồng. Mình đang nuôi mẹ bệnh.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -222,7 +222,7 @@
               {
                 "id": "c_f03_2_mercy_plan",
                 "text": "Tha thứ nhưng đặt kế hoạch rõ: lần sau báo sớm, cùng gỡ với sếp.",
-                "playerLine": "“Mình tha cho bạn. Nhưng lần sau đừng đẩy mình vô thế nữa. Giờ mình giúp bạn nói với sếp theo cách đỡ sốc.”",
+                "playerLine": "Mình tha cho bạn. Nhưng lần sau đừng đẩy mình vô thế nữa. Giờ mình giúp bạn nói với sếp theo cách đỡ sốc.",
                 "intentTag": "mercy",
                 "actionTag": "boundary_with_help",
                 "effects": [
@@ -237,8 +237,8 @@
               },
               {
                 "id": "c_f03_2_cold",
-                "text": "Không tha: “Bạn tự lo đi, mình hết tin bạn rồi.”",
-                "playerLine": "“Mình nghe rồi, nhưng mình không chấp nhận. Bạn tự giải quyết với sếp đi.”",
+                "text": "Không tha: “Bạn tự lo đi, mình hết tin bạn rồi.",
+                "playerLine": "Mình nghe rồi, nhưng mình không chấp nhận. Bạn tự giải quyết với sếp đi.",
                 "intentTag": "cut_off",
                 "actionTag": "withdraw",
                 "effects": [
@@ -320,8 +320,8 @@
             "choices": [
               {
                 "id": "c_f04_1_private",
-                "text": "Hỏi riêng, không kết tội: “Mình đang rối, giúp mình nhớ lại tối đó.”",
-                "playerLine": "“Tuấn, mình hỏi riêng thôi. Tối đó tụi mình dọn xong lúc mấy giờ? Bạn giúp mình nhớ lại được không?”",
+                "text": "Hỏi riêng, không kết tội: “Mình đang rối, giúp mình nhớ lại tối đó.",
+                "playerLine": "Tuấn, mình hỏi riêng thôi. Tối đó tụi mình dọn xong lúc mấy giờ? Bạn giúp mình nhớ lại được không?",
                 "intentTag": "gentle",
                 "actionTag": "seek_truth",
                 "effects": [
@@ -335,8 +335,8 @@
               },
               {
                 "id": "c_f04_1_accuse",
-                "text": "Nói thẳng: “Có phải bạn lấy không?”",
-                "playerLine": "“Nói thiệt đi… có phải bạn lấy tiền trong ví mình không?”",
+                "text": "Nói thẳng: “Có phải bạn lấy không?",
+                "playerLine": "Nói thiệt đi… có phải bạn lấy tiền trong ví mình không?",
                 "intentTag": "suspicion",
                 "actionTag": "accuse",
                 "effects": [
@@ -366,7 +366,7 @@
               {
                 "id": "c_f04_2_apologize",
                 "text": "Xin lỗi rõ ràng, nhận sai vì đã nghi ngờ.",
-                "playerLine": "“Mình xin lỗi. Mình đã nghi bạn. Mình sai. Cho mình sửa, được không?”",
+                "playerLine": "Mình xin lỗi. Mình đã nghi bạn. Mình sai. Cho mình sửa, được không?",
                 "intentTag": "repent",
                 "actionTag": "apologize",
                 "effects": [
@@ -380,8 +380,8 @@
               },
               {
                 "id": "c_f04_2_minimize",
-                "text": "Giảm nhẹ: “Thôi bỏ qua đi, chuyện nhỏ mà.”",
-                "playerLine": "“Thôi bỏ qua nha, cũng may là không phải bạn.”",
+                "text": "Giảm nhẹ: “Thôi bỏ qua đi, chuyện nhỏ mà.",
+                "playerLine": "Thôi bỏ qua nha, cũng may là không phải bạn.",
                 "intentTag": "avoid",
                 "actionTag": "minimize",
                 "effects": [
@@ -467,7 +467,7 @@
               {
                 "id": "c_f05_1_dm",
                 "text": "Nhắn riêng My: hỏi lý do và xin gỡ tag, không làm lớn.",
-                "playerLine": "“My, mình thấy post rồi. Mình buồn lắm. Bạn cho mình hỏi sao bạn viết vậy, và gỡ tag giúp mình được không?”",
+                "playerLine": "My, mình thấy post rồi. Mình buồn lắm. Bạn cho mình hỏi sao bạn viết vậy, và gỡ tag giúp mình được không?",
                 "intentTag": "seek_peace",
                 "actionTag": "dm",
                 "effects": [
@@ -481,8 +481,8 @@
               },
               {
                 "id": "c_f05_1_comment",
-                "text": "Cmt công khai: “Bạn nói ai vậy? Nói rõ coi.”",
-                "playerLine": "“Bạn đang nói mình hả? Bạn nói rõ ra đi.”",
+                "text": "Cmt công khai: “Bạn nói ai vậy? Nói rõ coi.",
+                "playerLine": "Bạn đang nói mình hả? Bạn nói rõ ra đi.",
                 "intentTag": "defend",
                 "actionTag": "public_callout",
                 "effects": [
@@ -512,7 +512,7 @@
               {
                 "id": "c_f05_2_explain_soft",
                 "text": "Nói sự thật vừa đủ với My (và nếu cần, với nhóm), rồi tha thứ.",
-                "playerLine": "“My, hôm đó mình ra ngoài vì bệnh viện gọi. Mình không muốn kể, nhưng mình cũng không muốn bị hiểu lầm. Mình tha cho bạn, chỉ mong bạn sửa lại giúp mình.”",
+                "playerLine": "My, hôm đó mình ra ngoài vì bệnh viện gọi. Mình không muốn kể, nhưng mình cũng không muốn bị hiểu lầm. Mình tha cho bạn, chỉ mong bạn sửa lại giúp mình.",
                 "intentTag": "truth_in_love",
                 "actionTag": "explain_and_forgive",
                 "effects": [
@@ -529,7 +529,7 @@
               {
                 "id": "c_f05_2_keep_secret",
                 "text": "Không nói gì thêm, tự gỡ tag và nuốt ấm ức.",
-                "playerLine": "“Thôi, mình tự xử lý. Mình không muốn kể chuyện riêng.”",
+                "playerLine": "Thôi, mình tự xử lý. Mình không muốn kể chuyện riêng.",
                 "intentTag": "silent_endure",
                 "actionTag": "withdraw",
                 "effects": [
@@ -612,7 +612,7 @@
               {
                 "id": "c_f06_1_clear_gentle",
                 "text": "Nhắc thẳng nhưng lịch sự: đưa hạn cụ thể và phương án trả dần.",
-                "playerLine": "“Thảo ơi, chuyện tiền bữa trước… mình cần rõ. Bạn trả dần mỗi tuần cũng được, nhưng mình cần mốc cụ thể.”",
+                "playerLine": "Thảo ơi, chuyện tiền bữa trước… mình cần rõ. Bạn trả dần mỗi tuần cũng được, nhưng mình cần mốc cụ thể.",
                 "intentTag": "boundary",
                 "actionTag": "clarify_terms",
                 "effects": [
@@ -626,8 +626,8 @@
               },
               {
                 "id": "c_f06_1_sarcasm",
-                "text": "Mỉa: “Cà phê đều mà trả tiền thì quên ha.”",
-                "playerLine": "“Bạn đi cà phê đều, còn tiền trả mình thì… quên luôn hả?”",
+                "text": "Mỉa: “Cà phê đều mà trả tiền thì quên ha.",
+                "playerLine": "Bạn đi cà phê đều, còn tiền trả mình thì… quên luôn hả?",
                 "intentTag": "resent",
                 "actionTag": "sarcasm",
                 "effects": [
@@ -657,7 +657,7 @@
               {
                 "id": "c_f06_2_restructure",
                 "text": "Tha thứ và thương lượng lại kế hoạch trả, không làm Thảo mất mặt.",
-                "playerLine": "“Mình hiểu. Mình không ép bạn trả một cục. Mình tha cho cái chuyện im luôn, nhưng mình cần lịch trả rõ để mình lo việc nhà.”",
+                "playerLine": "Mình hiểu. Mình không ép bạn trả một cục. Mình tha cho cái chuyện im luôn, nhưng mình cần lịch trả rõ để mình lo việc nhà.",
                 "intentTag": "mercy_with_structure",
                 "actionTag": "restructure",
                 "effects": [
@@ -673,7 +673,7 @@
               {
                 "id": "c_f06_2_demand",
                 "text": "Không chấp nhận: yêu cầu trả ngay hoặc cắt liên lạc.",
-                "playerLine": "“Mình thông cảm, nhưng mình cũng cần. Bạn xoay cách nào trả mình trong tuần này. Không thì… thôi.”",
+                "playerLine": "Mình thông cảm, nhưng mình cũng cần. Bạn xoay cách nào trả mình trong tuần này. Không thì… thôi.",
                 "intentTag": "hardline",
                 "actionTag": "demand",
                 "effects": [
@@ -756,7 +756,7 @@
               {
                 "id": "c_f07_1_hold_tongue",
                 "text": "Im một nhịp, rồi nói thật cảm xúc mà không hỗn.",
-                "playerLine": "“Mẹ, con nghe câu đó con đau. Con không muốn cãi, nhưng con muốn Mẹ biết con đang cố thật.”",
+                "playerLine": "Mẹ, con nghe câu đó con đau. Con không muốn cãi, nhưng con muốn Mẹ biết con đang cố thật.",
                 "intentTag": "honest_soft",
                 "actionTag": "express",
                 "effects": [
@@ -771,8 +771,8 @@
               },
               {
                 "id": "c_f07_1_snap",
-                "text": "Bật lại: “Mẹ có bao giờ hiểu con đâu!”",
-                "playerLine": "“Mẹ lúc nào cũng nói vậy! Mẹ có hiểu con đâu!”",
+                "text": "Bật lại: “Mẹ có bao giờ hiểu con đâu!",
+                "playerLine": "Mẹ lúc nào cũng nói vậy! Mẹ có hiểu con đâu!",
                 "intentTag": "explode",
                 "actionTag": "snap",
                 "effects": [
@@ -802,7 +802,7 @@
               {
                 "id": "c_f07_2_forgive_hug",
                 "text": "Chủ động xin lỗi phần nóng nảy (nếu có) và tha thứ cho lời nói của Mẹ.",
-                "playerLine": "“Mẹ, con xin lỗi vì con phản ứng. Con cũng tha cho câu nói lúc nãy. Mẹ đừng lo một mình, con cũng đang học mạnh lên.”",
+                "playerLine": "Mẹ, con xin lỗi vì con phản ứng. Con cũng tha cho câu nói lúc nãy. Mẹ đừng lo một mình, con cũng đang học mạnh lên.",
                 "intentTag": "reconcile",
                 "actionTag": "forgive",
                 "effects": [
@@ -818,7 +818,7 @@
               {
                 "id": "c_f07_2_silent_wall",
                 "text": "Giữ im lặng, để thời gian tự nguội.",
-                "playerLine": "“Con mệt. Con lên phòng trước.”",
+                "playerLine": "Con mệt. Con lên phòng trước.",
                 "intentTag": "withdraw",
                 "actionTag": "wall",
                 "effects": [
@@ -901,7 +901,7 @@
               {
                 "id": "c_f08_1_ask_why",
                 "text": "Hỏi lý do trước, không kết tội ngay.",
-                "playerLine": "“Trang, mình muốn hiểu. Sao bạn đổi lịch mà không nói mình một tiếng?”",
+                "playerLine": "Trang, mình muốn hiểu. Sao bạn đổi lịch mà không nói mình một tiếng?",
                 "intentTag": "clarify",
                 "actionTag": "ask",
                 "effects": [
@@ -915,8 +915,8 @@
               },
               {
                 "id": "c_f08_1_attack",
-                "text": "Nói thẳng kiểu trách: “Bạn coi mình ra gì vậy?”",
-                "playerLine": "“Bạn coi mình ra gì mà tự ý gạch tên mình vậy?”",
+                "text": "Nói thẳng kiểu trách: “Bạn coi mình ra gì vậy?",
+                "playerLine": "Bạn coi mình ra gì mà tự ý gạch tên mình vậy?",
                 "intentTag": "hurt_pride",
                 "actionTag": "accuse",
                 "effects": [
@@ -946,7 +946,7 @@
               {
                 "id": "c_f08_2_forgive_and_learn",
                 "text": "Tha thứ cho cách làm của Trang, và xin feedback cụ thể để sửa.",
-                "playerLine": "“Mình buồn vì bạn né, nhưng mình tha. Bạn nói rõ giúp mình chỗ nào mình làm người ta khó chịu, để mình sửa.”",
+                "playerLine": "Mình buồn vì bạn né, nhưng mình tha. Bạn nói rõ giúp mình chỗ nào mình làm người ta khó chịu, để mình sửa.",
                 "intentTag": "teachability",
                 "actionTag": "forgive_and_grow",
                 "effects": [
@@ -961,8 +961,8 @@
               },
               {
                 "id": "c_f08_2_defend",
-                "text": "Tự vệ: “Mình vậy mới hiệu quả. Ai không chịu thì thôi.”",
-                "playerLine": "“Mình làm nhanh là vì mình muốn xong việc. Ai không chịu thì thôi, mình khỏi phục vụ nữa.”",
+                "text": "Tự vệ: “Mình vậy mới hiệu quả. Ai không chịu thì thôi.",
+                "playerLine": "Mình làm nhanh là vì mình muốn xong việc. Ai không chịu thì thôi, mình khỏi phục vụ nữa.",
                 "intentTag": "defend_pride",
                 "actionTag": "withdraw_in_pride",
                 "effects": [

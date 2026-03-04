@@ -4,6 +4,7 @@ import 'package:bible_decision_simulator/features/monetization/donate_dialog.dar
 import 'package:bible_decision_simulator/game_engine/models/content_models.dart';
 import 'package:bible_decision_simulator/game_engine/stat/stat_state.dart';
 import 'package:bible_decision_simulator/game_engine/stat/daily_trend_engine.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,6 +23,7 @@ class SummaryScreen extends ConsumerWidget {
     required this.text,
     this.dailyTrend,
     this.onNavigateScenarioView,
+    this.onDebugOpenSceneByIndex,
   });
 
   final StatState stats;
@@ -34,6 +36,7 @@ class SummaryScreen extends ConsumerWidget {
   final UiText text;
   final DailyTrend? dailyTrend;
   final VoidCallback? onNavigateScenarioView;
+  final Future<bool> Function(int index)? onDebugOpenSceneByIndex;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -162,6 +165,13 @@ class SummaryScreen extends ConsumerWidget {
       onNavigateScenarioView?.call();
       return;
     }
+    if (kDebugMode && onDebugOpenSceneByIndex != null) {
+      final opened = await _openDebugSituation(context);
+      if (opened) {
+        onNavigateScenarioView?.call();
+      }
+      return;
+    }
     final currentIndex =
         scenes.indexWhere((scene) => scene.id == currentSceneId);
     if (currentIndex >= 0 && currentIndex < scenes.length) {
@@ -192,9 +202,58 @@ class SummaryScreen extends ConsumerWidget {
     await onOpenSceneByIndex(selectedIndex);
     onNavigateScenarioView?.call();
   }
+
+  Future<bool> _openDebugSituation(BuildContext context) async {
+    final currentIndex =
+        scenes.indexWhere((scene) => scene.id == currentSceneId);
+    final selectedIndex = await _showScenePickerDialog(context);
+    if (selectedIndex == null) return false;
+
+    var targetIndex = selectedIndex;
+    if (selectedIndex == _debugOpenNextSentinelIndex) {
+      targetIndex =
+          currentIndex < 0 ? 0 : (currentIndex + 1) % scenes.length;
+    }
+
+    final openedNormally = await onOpenSceneByIndex(targetIndex);
+    if (openedNormally) return true;
+    return await onDebugOpenSceneByIndex!(targetIndex);
+  }
+
+  Future<int?> _showScenePickerDialog(BuildContext context) async {
+    return showDialog<int>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(text.selectSituation),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: scenes.length + 1,
+            itemBuilder: (itemContext, index) {
+              if (index == 0) {
+                return ListTile(
+                  leading: const Icon(Icons.skip_next),
+                  title: const Text('Debug: open next scene'),
+                  onTap: () => Navigator.of(dialogContext)
+                      .pop(_debugOpenNextSentinelIndex),
+                );
+              }
+              final sceneIndex = index - 1;
+              return ListTile(
+                title: Text(scenes[sceneIndex].title),
+                onTap: () => Navigator.of(dialogContext).pop(sceneIndex),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 const _orderedStatKeys = ['faith', 'love', 'humility', 'wisdom', 'pride'];
+const _debugOpenNextSentinelIndex = -1;
 
 class _TrendRow extends StatelessWidget {
   const _TrendRow({

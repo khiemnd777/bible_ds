@@ -161,6 +161,7 @@ class _RootShellState extends ConsumerState<_RootShell>
         scenes: gameState.content?.scenes ?? const [],
         currentSceneId: gameState.scene?.id,
         onOpenSceneByIndex: gameController.openSceneByIndex,
+        onDebugOpenSceneByIndex: gameController.debugUnlockAndOpenSceneByIndex,
         onNavigateScenarioView: () => setState(() => _index = 0),
         text: text,
       ),

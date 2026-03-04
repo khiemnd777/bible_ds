@@ -446,6 +446,28 @@ class GameController extends StateNotifier<GameViewState> {
     return true;
   }
 
+  Future<bool> debugUnlockAndOpenSceneByIndex(int index) async {
+    final content = state.content;
+    if (content == null) return false;
+    if (index < 0 || index >= content.scenes.length) return false;
+
+    final scene = content.scenes[index];
+    if (!canOpenScene(scene.id)) {
+      final unlockedSceneIds = [...state.progress.unlockedSceneIds];
+      if (!unlockedSceneIds.contains(scene.id)) {
+        unlockedSceneIds.add(scene.id);
+      }
+      final updatedProgress = state.progress.copyWith(
+        unlockedSceneIds: unlockedSceneIds,
+      );
+      await _progressStore.saveProgress(updatedProgress);
+      state = state.copyWith(progress: updatedProgress);
+    }
+
+    startScene(scene.id);
+    return true;
+  }
+
   void startScene(String sceneId) {
     final content = state.content;
     if (content == null) return;

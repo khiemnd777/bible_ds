@@ -35,7 +35,7 @@
             "choices": [
               {
                 "id": "p01_c1_defend",
-                "text": "Nói liền: “Ừ nhưng bạn cũng làm phần lớn mà, có gì đâu.”",
+                "text": "Nói liền: “Ừ nhưng bạn cũng làm phần lớn mà, có gì đâu.",
                 "playerLine": "Ừ nhưng bạn cũng làm phần lớn mà, có gì đâu.",
                 "intentTag": "defend",
                 "actionTag": "save_face",
@@ -50,7 +50,7 @@
               },
               {
                 "id": "p01_c1_own",
-                "text": "Nhận ngay trước nhóm: “Ủa đúng rồi… hồi đó Linh sửa nhiều. Mình xin lỗi, để mình nói lại với trưởng nhóm.”",
+                "text": "Nhận ngay trước nhóm: “Ủa đúng rồi… hồi đó Linh sửa nhiều. Mình xin lỗi, để mình nói lại với trưởng nhóm.",
                 "playerLine": "Ủa đúng rồi… hồi đó Linh sửa nhiều. Mình xin lỗi, để mình nói lại với trưởng nhóm.",
                 "intentTag": "repent",
                 "actionTag": "own_it",
@@ -135,7 +135,7 @@
           {
             "id": "p01_t6",
             "speaker": "Dẫn chuyện",
-            "text": "Tối đó, bạn mở điện thoại ra thấy Linh nhắn: “Mình không giận. Chỉ buồn vì mình cảm giác bạn cần thắng hơn cần mình.”",
+            "text": "Tối đó, bạn mở điện thoại ra thấy Linh nhắn: “Mình không giận. Chỉ buồn vì mình cảm giác bạn cần thắng hơn cần mình.",
             "nextTurnId": "p01_t7",
             "choices": []
           },
@@ -316,7 +316,7 @@
               },
               {
                 "id": "p02_c2_snap",
-                "text": "Reply kiểu ‘mỉa nhẹ’: “Ủa mình có nhắc rồi mà 🙂”",
+                "text": "Reply kiểu ‘mỉa nhẹ’: “Ủa mình có nhắc rồi mà 🙂",
                 "playerLine": "Ủa mình có nhắc rồi mà 🙂",
                 "intentTag": "retaliate",
                 "actionTag": "sarcasm",
@@ -485,7 +485,7 @@
             "choices": [
               {
                 "id": "p03_c2_listen",
-                "text": "Im một chút rồi hỏi: “Bạn muốn mình sửa sao?”",
+                "text": "Im một chút rồi hỏi: “Bạn muốn mình sửa sao?",
                 "playerLine": "Mình xin lỗi. Bạn muốn mình sửa sao để bạn thấy được tôn trọng lại?",
                 "intentTag": "love",
                 "actionTag": "listen",
@@ -639,7 +639,7 @@
             "choices": [
               {
                 "id": "p04_c1_correct",
-                "text": "Nói thẳng: “Bạn đang yếu đức tin đó. Đừng có than nữa.”",
+                "text": "Nói thẳng: “Bạn đang yếu đức tin đó. Đừng có than nữa.",
                 "playerLine": "Bạn đang yếu đức tin đó. Đừng có than nữa, đứng dậy đi.",
                 "intentTag": "judge",
                 "actionTag": "harsh_truth",
@@ -654,7 +654,7 @@
               },
               {
                 "id": "p04_c1_hold",
-                "text": "Ngồi gần hơn: “Bạn kể thêm đi, mình nghe.”",
+                "text": "Ngồi gần hơn: “Bạn kể thêm đi, mình nghe.",
                 "playerLine": "Bạn kể thêm đi. Mình nghe đây.",
                 "intentTag": "love",
                 "actionTag": "listen_first",
@@ -684,7 +684,7 @@
             "choices": [
               {
                 "id": "p04_c2_own",
-                "text": "Nhận lỗi: “Mình muốn tỏ ra mạnh, nên mình nói nặng.”",
+                "text": "Nhận lỗi: “Mình muốn tỏ ra mạnh, nên mình nói nặng.",
                 "playerLine": "Mình xin lỗi. Mình muốn tỏ ra mình ‘đúng’, nên mình nói nặng quá.",
                 "intentTag": "repent",
                 "actionTag": "own_it",
@@ -699,7 +699,7 @@
               },
               {
                 "id": "p04_c2_fix",
-                "text": "Bẻ lại: “Nhưng mình nói đúng mà, bạn cần nghe.”",
+                "text": "Bẻ lại: “Nhưng mình nói đúng mà, bạn cần nghe.",
                 "playerLine": "Nhưng mình nói đúng mà… bạn cần nghe để mạnh lên.",
                 "intentTag": "defend",
                 "actionTag": "double_down",
@@ -823,7 +823,7 @@
             "choices": [
               {
                 "id": "p05_c1_take",
-                "text": "Cười cho qua: “Thôi mà, ai làm cũng vậy.”",
+                "text": "Cười cho qua: “Thôi mà, ai làm cũng vậy.",
                 "playerLine": "Thôi mà, ai làm cũng vậy, đừng nghĩ nhiều.",
                 "intentTag": "avoid",
                 "actionTag": "minimize",
@@ -883,7 +883,7 @@
               },
               {
                 "id": "p05_c2_backtrack",
-                "text": "Back lại: “Dạ thôi… em nói vậy cho vui.”",
+                "text": "Back lại: “Dạ thôi… em nói vậy cho vui.",
                 "playerLine": "Dạ thôi… chắc em nghĩ nhiều. Em xin lỗi sếp.",
                 "intentTag": "fear",
                 "actionTag": "backtrack",
@@ -901,7 +901,7 @@
           {
             "id": "p05_t6",
             "speaker": "Dẫn chuyện",
-            "text": "Chiều đó, Huy nhắn: “Mình không cần bạn ‘cứu’. Mình chỉ cần bạn coi mình là người đồng đội.”",
+            "text": "Chiều đó, Huy nhắn: “Mình không cần bạn ‘cứu’. Mình chỉ cần bạn coi mình là người đồng đội.",
             "nextTurnId": "p05_t7",
             "choices": []
           },
@@ -1007,7 +1007,7 @@
             "choices": [
               {
                 "id": "p06_c1_push",
-                "text": "Nói thẳng: “Vậy bạn muốn mình làm gì nữa?”",
+                "text": "Nói thẳng: “Vậy bạn muốn mình làm gì nữa?",
                 "playerLine": "Vậy bạn muốn mình làm gì nữa? Mình xin lỗi rồi mà.",
                 "intentTag": "defend",
                 "actionTag": "pressure",
@@ -1022,7 +1022,7 @@
               },
               {
                 "id": "p06_c1_slow",
-                "text": "Hạ giọng: “Bạn nói rõ giúp mình, mình muốn hiểu thiệt.”",
+                "text": "Hạ giọng: “Bạn nói rõ giúp mình, mình muốn hiểu thiệt.",
                 "playerLine": "Bạn nói rõ giúp mình nha. Mình muốn hiểu thiệt, không phải cho xong.",
                 "intentTag": "love",
                 "actionTag": "slow_down",
@@ -1052,7 +1052,7 @@
             "choices": [
               {
                 "id": "p06_c2_admit",
-                "text": "Thừa nhận: “Đúng, mình đã coi nhẹ cảm xúc bạn.”",
+                "text": "Thừa nhận: “Đúng, mình đã coi nhẹ cảm xúc bạn.",
                 "playerLine": "Đúng. Mình đã coi nhẹ cảm xúc bạn. Mình xin lỗi vì cái đó, không phải vì ‘cãi nhau’ thôi.",
                 "intentTag": "repent",
                 "actionTag": "admit",
@@ -1067,7 +1067,7 @@
               },
               {
                 "id": "p06_c2_semantics",
-                "text": "Bắt chữ: “Mình không coi nhẹ, mình chỉ bận.”",
+                "text": "Bắt chữ: “Mình không coi nhẹ, mình chỉ bận.",
                 "playerLine": "Mình không coi nhẹ. Lúc đó mình bận quá nên mình phản ứng vậy thôi.",
                 "intentTag": "justify",
                 "actionTag": "word_game",
@@ -1191,7 +1191,7 @@
             "choices": [
               {
                 "id": "p07_c1_deflect",
-                "text": "Đổ cho mệt: “Mình làm nhiều quá nên vậy thôi.”",
+                "text": "Đổ cho mệt: “Mình làm nhiều quá nên vậy thôi.",
                 "playerLine": "Mình làm nhiều quá nên mệt, chứ mình đâu có vấn đề gì.",
                 "intentTag": "defend",
                 "actionTag": "deflect",
@@ -1206,7 +1206,7 @@
               },
               {
                 "id": "p07_c1_open",
-                "text": "Thừa nhận: “Mình sợ bị coi thường, nên mình kiểm soát.”",
+                "text": "Thừa nhận: “Mình sợ bị coi thường, nên mình kiểm soát.",
                 "playerLine": "Mình nghĩ… mình sợ bị coi thường. Nên mình hay kiểm soát để khỏi bị chê.",
                 "intentTag": "repent",
                 "actionTag": "open_up",

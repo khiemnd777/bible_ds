@@ -33,8 +33,8 @@
             "choices": [
               {
                 "id": "c_f02_1_soft",
-                "text": "Reply gently: “I saw it. Let’s talk one-on-one tomorrow.”",
-                "playerLine": "“I saw the message. Let’s talk one-on-one tomorrow—I want to understand you.”",
+                "text": "Reply gently: “I saw it. Let’s talk one-on-one tomorrow.",
+                "playerLine": "I saw the message. Let’s talk one-on-one tomorrow—I want to understand you.",
                 "intentTag": "calm",
                 "actionTag": "invite_talk",
                 "effects": [
@@ -48,8 +48,8 @@
               },
               {
                 "id": "c_f02_1_sharp",
-                "text": "Snap back: “You think deleting it makes it okay? Say it straight.”",
-                "playerLine": "“So deleting it makes it disappear? If you’ve got something to say, say it.”",
+                "text": "Snap back: “You think deleting it makes it okay? Say it straight.",
+                "playerLine": "So deleting it makes it disappear? If you’ve got something to say, say it.",
                 "intentTag": "hurt",
                 "actionTag": "pressure",
                 "effects": [
@@ -66,7 +66,7 @@
           {
             "id": "t4",
             "speaker": "Narrator",
-            "text": "A little later, you get a DM from Lena: “I was mad because I thought you told the leader I missed the deadline… but it turns out it wasn’t you who said it.”",
+            "text": "A little later, you get a DM from Lena: “I was mad because I thought you told the leader I missed the deadline… but it turns out it wasn’t you who said it.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -79,7 +79,7 @@
               {
                 "id": "c_f02_2_forgive",
                 "text": "Forgive her and offer to clear the misunderstanding together, without naming and shaming anyone.",
-                "playerLine": "“Okay, I forgive you. Tomorrow we’ll talk and clear it up—I don’t want anyone getting dragged.”",
+                "playerLine": "Okay, I forgive you. Tomorrow we’ll talk and clear it up—I don’t want anyone getting dragged.",
                 "intentTag": "forgive",
                 "actionTag": "restore",
                 "effects": [
@@ -96,8 +96,8 @@
               },
               {
                 "id": "c_f02_2_hold",
-                "text": "Keep distance: “I don’t want to talk right now.”",
-                "playerLine": "“I hear you. But give me a few days—I’m not okay yet.”",
+                "text": "Keep distance: “I don’t want to talk right now.",
+                "playerLine": "I hear you. But give me a few days—I’m not okay yet.",
                 "intentTag": "guarded",
                 "actionTag": "distance",
                 "effects": [
@@ -107,7 +107,7 @@
                 ],
                 "portraitOverrides": { "player": "neutral", "npc": "neutral" },
                 "outcome": {
-                  "text": "You stay calm, but something still sticks inside. The relationship basically “freezes.”",
+                  "text": "You stay calm, but something still sticks inside. The relationship basically “freezes.",
                   "next": "reflection:ref_forgive_02"
                 },
                 "nextTurnId": ""
@@ -183,7 +183,7 @@
               {
                 "id": "c_f03_1_correct",
                 "text": "Correct the facts calmly, without attacking.",
-                "playerLine": "“I sent that yesterday at 5 PM. I’ll forward the email so everyone can see it clearly.”",
+                "playerLine": "I sent that yesterday at 5 PM. I’ll forward the email so everyone can see it clearly.",
                 "intentTag": "truth",
                 "actionTag": "clarify",
                 "effects": [
@@ -198,7 +198,7 @@
               {
                 "id": "c_f03_1_expose",
                 "text": "Call Ethan out directly in front of everyone—just to vent.",
-                "playerLine": "“That’s blame-shifting. It’s late because you’re stuck, not because of me.”",
+                "playerLine": "That’s blame-shifting. It’s late because you’re stuck, not because of me.",
                 "intentTag": "anger",
                 "actionTag": "expose",
                 "effects": [
@@ -215,7 +215,7 @@
           {
             "id": "t4",
             "speaker": "Narrator",
-            "text": "After the meeting, Ethan pulls you aside: “I’m sorry. But if the boss knows I’m late, I might lose my contract. I’m taking care of my sick mom.”",
+            "text": "After the meeting, Ethan pulls you aside: “I’m sorry. But if the boss knows I’m late, I might lose my contract. I’m taking care of my sick mom.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -228,7 +228,7 @@
               {
                 "id": "c_f03_2_mercy_plan",
                 "text": "Forgive him, but set a clear plan: next time tell you early, and you’ll address it with the boss together.",
-                "playerLine": "“I forgive you. But don’t put me in that spot again. Right now, I’ll help you talk to the boss in a way that won’t blow up.”",
+                "playerLine": "I forgive you. But don’t put me in that spot again. Right now, I’ll help you talk to the boss in a way that won’t blow up.",
                 "intentTag": "mercy",
                 "actionTag": "boundary_with_help",
                 "effects": [
@@ -243,8 +243,8 @@
               },
               {
                 "id": "c_f03_2_cold",
-                "text": "Don’t forgive: “Figure it out yourself. I don’t trust you anymore.”",
-                "playerLine": "“I hear you, but I can’t accept that. Handle it with the boss yourself.”",
+                "text": "Don’t forgive: “Figure it out yourself. I don’t trust you anymore.",
+                "playerLine": "I hear you, but I can’t accept that. Handle it with the boss yourself.",
                 "intentTag": "cut_off",
                 "actionTag": "withdraw",
                 "effects": [
@@ -326,8 +326,8 @@
             "choices": [
               {
                 "id": "c_f04_1_private",
-                "text": "Ask privately without accusing: “I’m stressed—help me remember that night.”",
-                "playerLine": "“Noah, I’m asking privately. What time did we finish cleaning that night? Can you help me remember?”",
+                "text": "Ask privately without accusing: “I’m stressed—help me remember that night.",
+                "playerLine": "Noah, I’m asking privately. What time did we finish cleaning that night? Can you help me remember?",
                 "intentTag": "gentle",
                 "actionTag": "seek_truth",
                 "effects": [
@@ -341,8 +341,8 @@
               },
               {
                 "id": "c_f04_1_accuse",
-                "text": "Ask bluntly: “Did you take it?”",
-                "playerLine": "“Be honest… did you take the money from my wallet?”",
+                "text": "Ask bluntly: “Did you take it?",
+                "playerLine": "Be honest… did you take the money from my wallet?",
                 "intentTag": "suspicion",
                 "actionTag": "accuse",
                 "effects": [
@@ -372,7 +372,7 @@
               {
                 "id": "c_f04_2_apologize",
                 "text": "Apologize clearly and own that you suspected him.",
-                "playerLine": "“I’m sorry. I suspected you. I was wrong. Let me make it right, okay?”",
+                "playerLine": "I’m sorry. I suspected you. I was wrong. Let me make it right, okay?",
                 "intentTag": "repent",
                 "actionTag": "apologize",
                 "effects": [
@@ -386,8 +386,8 @@
               },
               {
                 "id": "c_f04_2_minimize",
-                "text": "Downplay it: “Forget it—no big deal.”",
-                "playerLine": "“It’s fine, forget it. At least it wasn’t you.”",
+                "text": "Downplay it: “Forget it—no big deal.",
+                "playerLine": "It’s fine, forget it. At least it wasn’t you.",
                 "intentTag": "avoid",
                 "actionTag": "minimize",
                 "effects": [
@@ -473,7 +473,7 @@
               {
                 "id": "c_f05_1_dm",
                 "text": "DM Mia: ask why and request she removes the tag—don’t make it big.",
-                "playerLine": "“Mia, I saw the post. I’m really hurt. Can I ask why you wrote that—and can you remove the tag for me?”",
+                "playerLine": "Mia, I saw the post. I’m really hurt. Can I ask why you wrote that—and can you remove the tag for me?",
                 "intentTag": "seek_peace",
                 "actionTag": "dm",
                 "effects": [
@@ -487,8 +487,8 @@
               },
               {
                 "id": "c_f05_1_comment",
-                "text": "Comment publicly: “Who are you talking about? Say it.”",
-                "playerLine": "“Are you talking about me? Say it clearly.”",
+                "text": "Comment publicly: “Who are you talking about? Say it.",
+                "playerLine": "Are you talking about me? Say it clearly.",
                 "intentTag": "defend",
                 "actionTag": "public_callout",
                 "effects": [
@@ -518,7 +518,7 @@
               {
                 "id": "c_f05_2_explain_soft",
                 "text": "Share just enough truth with Mia (and if needed, the group), then forgive.",
-                "playerLine": "“Mia, I stepped out because the hospital called. I didn’t want to share it, but I also don’t want to be misunderstood. I forgive you—I just need you to fix it.”",
+                "playerLine": "Mia, I stepped out because the hospital called. I didn’t want to share it, but I also don’t want to be misunderstood. I forgive you—I just need you to fix it.",
                 "intentTag": "truth_in_love",
                 "actionTag": "explain_and_forgive",
                 "effects": [
@@ -535,7 +535,7 @@
               {
                 "id": "c_f05_2_keep_secret",
                 "text": "Say nothing more, remove the tag yourself, and swallow the hurt.",
-                "playerLine": "“It’s fine. I’ll handle it myself. I don’t want to share personal stuff.”",
+                "playerLine": "It’s fine. I’ll handle it myself. I don’t want to share personal stuff.",
                 "intentTag": "silent_endure",
                 "actionTag": "withdraw",
                 "effects": [
@@ -618,7 +618,7 @@
               {
                 "id": "c_f06_1_clear_gentle",
                 "text": "Be direct but polite: set a clear deadline and offer a payment plan.",
-                "playerLine": "“Sophia, about the money from before… I need clarity. Weekly payments are fine, but I need a concrete timeline.”",
+                "playerLine": "Sophia, about the money from before… I need clarity. Weekly payments are fine, but I need a concrete timeline.",
                 "intentTag": "boundary",
                 "actionTag": "clarify_terms",
                 "effects": [
@@ -632,8 +632,8 @@
               },
               {
                 "id": "c_f06_1_sarcasm",
-                "text": "Be sarcastic: “Coffee on time, but paying me back? Forgot, huh.”",
-                "playerLine": "“You’re on time for coffee, but paying me back is… just forgotten?”",
+                "text": "Be sarcastic: “Coffee on time, but paying me back? Forgot, huh.",
+                "playerLine": "You’re on time for coffee, but paying me back is… just forgotten?",
                 "intentTag": "resent",
                 "actionTag": "sarcasm",
                 "effects": [
@@ -663,7 +663,7 @@
               {
                 "id": "c_f06_2_restructure",
                 "text": "Forgive her and renegotiate a payment plan without embarrassing her.",
-                "playerLine": "“I get it. I won’t force you to pay it all at once. I forgive the silence—but I still need a clear plan so I can handle things at home.”",
+                "playerLine": "I get it. I won’t force you to pay it all at once. I forgive the silence—but I still need a clear plan so I can handle things at home.",
                 "intentTag": "mercy_with_structure",
                 "actionTag": "restructure",
                 "effects": [
@@ -679,7 +679,7 @@
               {
                 "id": "c_f06_2_demand",
                 "text": "Refuse: demand payment now or cut ties.",
-                "playerLine": "“I understand, but I need it too. Find a way to pay me back this week. Otherwise… we’re done.”",
+                "playerLine": "I understand, but I need it too. Find a way to pay me back this week. Otherwise… we’re done.",
                 "intentTag": "hardline",
                 "actionTag": "demand",
                 "effects": [
@@ -762,7 +762,7 @@
               {
                 "id": "c_f07_1_hold_tongue",
                 "text": "Pause for a beat, then be honest without being disrespectful.",
-                "playerLine": "“Mom, that hurt. I’m not trying to fight, but I need you to know I’m really trying.”",
+                "playerLine": "Mom, that hurt. I’m not trying to fight, but I need you to know I’m really trying.",
                 "intentTag": "honest_soft",
                 "actionTag": "express",
                 "effects": [
@@ -777,8 +777,8 @@
               },
               {
                 "id": "c_f07_1_snap",
-                "text": "Snap back: “You never understand me!”",
-                "playerLine": "“You always say stuff like that! You never understand me!”",
+                "text": "Snap back: “You never understand me!",
+                "playerLine": "You always say stuff like that! You never understand me!",
                 "intentTag": "explode",
                 "actionTag": "snap",
                 "effects": [
@@ -808,7 +808,7 @@
               {
                 "id": "c_f07_2_forgive_hug",
                 "text": "Initiate repair: apologize for any heat (if you had it) and forgive Mom’s words.",
-                "playerLine": "“Mom, I’m sorry for how I reacted. And I forgive what you said earlier. Don’t carry the worry alone—I’m learning how to be strong too.”",
+                "playerLine": "Mom, I’m sorry for how I reacted. And I forgive what you said earlier. Don’t carry the worry alone—I’m learning how to be strong too.",
                 "intentTag": "reconcile",
                 "actionTag": "forgive",
                 "effects": [
@@ -824,7 +824,7 @@
               {
                 "id": "c_f07_2_silent_wall",
                 "text": "Stay quiet and let time cool things down.",
-                "playerLine": "“I’m tired. I’m going to my room.”",
+                "playerLine": "I’m tired. I’m going to my room.",
                 "intentTag": "withdraw",
                 "actionTag": "wall",
                 "effects": [
@@ -907,7 +907,7 @@
               {
                 "id": "c_f08_1_ask_why",
                 "text": "Ask for the reason first, without accusing right away.",
-                "playerLine": "“Grace, I want to understand. Why did you change the schedule without telling me?”",
+                "playerLine": "Grace, I want to understand. Why did you change the schedule without telling me?",
                 "intentTag": "clarify",
                 "actionTag": "ask",
                 "effects": [
@@ -921,8 +921,8 @@
               },
               {
                 "id": "c_f08_1_attack",
-                "text": "Go straight at her: “What am I to you?”",
-                "playerLine": "“What am I to you that you can just cross my name out like that?”",
+                "text": "Go straight at her: “What am I to you?",
+                "playerLine": "What am I to you that you can just cross my name out like that?",
                 "intentTag": "hurt_pride",
                 "actionTag": "accuse",
                 "effects": [
@@ -952,7 +952,7 @@
               {
                 "id": "c_f08_2_forgive_and_learn",
                 "text": "Forgive Grace’s approach and ask for specific feedback so you can grow.",
-                "playerLine": "“I’m hurt you avoided me, but I forgive you. Tell me specifically what I do that bothers people—so I can change.”",
+                "playerLine": "I’m hurt you avoided me, but I forgive you. Tell me specifically what I do that bothers people—so I can change.",
                 "intentTag": "teachability",
                 "actionTag": "forgive_and_grow",
                 "effects": [
@@ -967,8 +967,8 @@
               },
               {
                 "id": "c_f08_2_defend",
-                "text": "Defend yourself: “I’m just efficient. If they can’t handle it, whatever.”",
-                "playerLine": "“I move fast because I want things done. If people can’t handle it, fine—I just won’t serve anymore.”",
+                "text": "Defend yourself: “I’m just efficient. If they can’t handle it, whatever.",
+                "playerLine": "I move fast because I want things done. If people can’t handle it, fine—I just won’t serve anymore.",
                 "intentTag": "defend_pride",
                 "actionTag": "withdraw_in_pride",
                 "effects": [

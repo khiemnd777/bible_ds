@@ -252,7 +252,7 @@
           {
             "id": "t5_choice_2",
             "speaker": "Dẫn chuyện",
-            "text": "“Phần dơ” là: bạn đứng ra nhắn xin lỗi nhóm chung, rồi ở lại dọn dẹp và chạy thử lại từ đầu. Bạn chọn sao?",
+            "text": "Phần dơ” là: bạn đứng ra nhắn xin lỗi nhóm chung, rồi ở lại dọn dẹp và chạy thử lại từ đầu. Bạn chọn sao?",
             "nextTurnId": "",
             "choices": [
               {
@@ -858,7 +858,7 @@
           {
             "id": "t1",
             "speaker": "Dẫn chuyện",
-            "text": "Bạn đang bận. Mẹ nhắn: “Con về ăn cơm được không?” Bạn lỡ seen, rồi quên trả lời. Tối mẹ gọi, giọng nhỏ: “Ờ… thôi con bận thì thôi.”",
+            "text": "Bạn đang bận. Mẹ nhắn: “Con về ăn cơm được không?” Bạn lỡ seen, rồi quên trả lời. Tối mẹ gọi, giọng nhỏ: “Ờ… thôi con bận thì thôi.",
             "nextTurnId": "t2",
             "choices": []
           },
@@ -1219,7 +1219,7 @@
       "id": "ref_humility_04",
       "topic": "humility",
       "verseRef": "Gia-cơ 4:6",
-      "verseText": "Nhưng ân điển Ngài ban cho càng lớn hơn, nên Kinh Thánh nói: “Đức Chúa Trời chống cự kẻ kiêu ngạo, nhưng ban ân điển cho người khiêm nhường.”",
+      "verseText": "Nhưng ân điển Ngài ban cho càng lớn hơn, nên Kinh Thánh nói: “Đức Chúa Trời chống cự kẻ kiêu ngạo, nhưng ban ân điển cho người khiêm nhường.",
       "questions": [
         "Mình đang muốn ‘thắng’ một cuộc tranh luận, hay muốn ‘cứu’ một con người?",
         "Khi bị hiểu lầm, mình thường chọn bảo vệ hình ảnh hay chọn khiêm nhường để hiểu người?",
