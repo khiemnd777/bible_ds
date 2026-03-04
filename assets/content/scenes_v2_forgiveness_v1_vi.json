@@ -27,7 +27,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Linh",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn trả lời sao?",
             "nextTurnId": "",
             "choices": [
@@ -72,7 +72,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Linh",
+            "speaker": "Dẫn chuyện",
             "text": "Giờ bạn làm gì tiếp?",
             "nextTurnId": "",
             "choices": [
@@ -170,7 +170,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Huy",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn chọn cách phản ứng nào ngay lúc đó?",
             "nextTurnId": "",
             "choices": [
@@ -215,7 +215,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Huy",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn phản hồi sao bây giờ?",
             "nextTurnId": "",
             "choices": [
@@ -314,7 +314,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Tuấn",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn nói chuyện sao cho đúng đây?",
             "nextTurnId": "",
             "choices": [
@@ -359,7 +359,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Tuấn",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn nói gì để kết lại chuyện này?",
             "nextTurnId": "",
             "choices": [
@@ -460,7 +460,7 @@
           },
           {
             "id": "t3",
-            "speaker": "My",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn làm gì với cái post đó?",
             "nextTurnId": "",
             "choices": [
@@ -505,7 +505,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Khoa",
+            "speaker": "Dẫn chuyện",
             "text": "Giờ bạn muốn xử lý thế nào?",
             "nextTurnId": "",
             "choices": [
@@ -605,7 +605,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Thảo",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn nhắc tiền sao cho ra chuyện?",
             "nextTurnId": "",
             "choices": [
@@ -650,7 +650,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Thảo",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn chọn hướng nào tiếp theo?",
             "nextTurnId": "",
             "choices": [
@@ -749,7 +749,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Mẹ",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn phản ứng sao ngay lúc đó?",
             "nextTurnId": "",
             "choices": [
@@ -795,7 +795,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Mẹ",
+            "speaker": "Dẫn chuyện",
             "text": "Giờ bạn chọn cách hàn gắn thế nào?",
             "nextTurnId": "",
             "choices": [
@@ -894,7 +894,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Trang",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn chọn nói sao?",
             "nextTurnId": "",
             "choices": [
@@ -939,7 +939,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Trang",
+            "speaker": "Dẫn chuyện",
             "text": "Bạn phản ứng sao với sự thật này?",
             "nextTurnId": "",
             "choices": [

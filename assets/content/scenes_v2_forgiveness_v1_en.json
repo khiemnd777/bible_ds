@@ -27,7 +27,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Lena",
+            "speaker": "Narrator",
             "text": "How do you reply?",
             "nextTurnId": "",
             "choices": [
@@ -72,7 +72,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Lena",
+            "speaker": "Narrator",
             "text": "What do you do next?",
             "nextTurnId": "",
             "choices": [
@@ -176,7 +176,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Ethan",
+            "speaker": "Narrator",
             "text": "How do you respond right then?",
             "nextTurnId": "",
             "choices": [
@@ -221,7 +221,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Ethan",
+            "speaker": "Narrator",
             "text": "How do you respond now?",
             "nextTurnId": "",
             "choices": [
@@ -320,7 +320,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Noah",
+            "speaker": "Narrator",
             "text": "How are you going to talk about this the right way?",
             "nextTurnId": "",
             "choices": [
@@ -365,7 +365,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Noah",
+            "speaker": "Narrator",
             "text": "What do you say to close this out?",
             "nextTurnId": "",
             "choices": [
@@ -466,7 +466,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Mia",
+            "speaker": "Narrator",
             "text": "What do you do about that post?",
             "nextTurnId": "",
             "choices": [
@@ -511,7 +511,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Kyle",
+            "speaker": "Narrator",
             "text": "How do you want to handle it now?",
             "nextTurnId": "",
             "choices": [
@@ -611,7 +611,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Sophia",
+            "speaker": "Narrator",
             "text": "How do you bring up the money and actually make it real?",
             "nextTurnId": "",
             "choices": [
@@ -656,7 +656,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Sophia",
+            "speaker": "Narrator",
             "text": "Which direction do you choose next?",
             "nextTurnId": "",
             "choices": [
@@ -755,7 +755,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Mom",
+            "speaker": "Narrator",
             "text": "How do you react in that moment?",
             "nextTurnId": "",
             "choices": [
@@ -801,7 +801,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Mom",
+            "speaker": "Narrator",
             "text": "How do you choose to repair things now?",
             "nextTurnId": "",
             "choices": [
@@ -900,7 +900,7 @@
           },
           {
             "id": "t3",
-            "speaker": "Grace",
+            "speaker": "Narrator",
             "text": "How do you respond?",
             "nextTurnId": "",
             "choices": [
@@ -945,7 +945,7 @@
           },
           {
             "id": "t5",
-            "speaker": "Grace",
+            "speaker": "Narrator",
             "text": "How do you respond to that truth?",
             "nextTurnId": "",
             "choices": [
