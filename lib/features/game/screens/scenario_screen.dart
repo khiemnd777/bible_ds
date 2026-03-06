@@ -979,6 +979,16 @@ class _OutcomeBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final titleStyle = Theme.of(context).textTheme.titleMedium?.copyWith(
+          fontWeight: FontWeight.w700,
+          fontSize: (Theme.of(context).textTheme.titleMedium?.fontSize ?? 16) + 1,
+        );
+    final bodyBase = Theme.of(context).textTheme.bodyLarge;
+    final bodyStyle = (bodyBase ?? const TextStyle()).copyWith(
+      fontSize: (bodyBase?.fontSize ?? 16),
+      height: 1.4,
+    );
+
     return _AnimatedChatEntry(
       child: Padding(
         padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
@@ -994,10 +1004,13 @@ class _OutcomeBubble extends StatelessWidget {
             children: [
               Text(
                 '$title:',
-                style: Theme.of(context).textTheme.labelLarge,
+                style: titleStyle,
               ),
               const SizedBox(height: 6),
-              _TypingText(text),
+              _TypingText(
+                text,
+                style: bodyStyle,
+              ),
             ],
           ),
         ),
