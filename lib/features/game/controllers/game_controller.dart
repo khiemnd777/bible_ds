@@ -314,10 +314,14 @@ class GameController extends StateNotifier<GameViewState> {
     );
 
     final nextSelectedChoices = [...state.selectedChoices, choice];
-    final nextSelectedTurns = [...state.selectedTurns, turn];
+    var nextSelectedTurns = [...state.selectedTurns, turn];
     final nextChoiceIds = nextSelectedChoices.map((c) => c.id).toList();
 
     if (choice.nextTurnId.isNotEmpty) {
+      nextSelectedTurns = [
+        ...nextSelectedTurns,
+        ...scene.turnsBeforeNextChoice(choice.nextTurnId),
+      ];
       final nextTurn = scene.firstTurnWithChoices(choice.nextTurnId);
       if (nextTurn != null) {
         state = state.copyWith(

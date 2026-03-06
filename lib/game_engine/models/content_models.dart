@@ -79,6 +79,25 @@ class Scene {
     return null;
   }
 
+  List<ConversationTurn> turnsBeforeNextChoice(String? fromTurnId) {
+    if (fromTurnId == null || fromTurnId.isEmpty) {
+      return const [];
+    }
+
+    final turns = <ConversationTurn>[];
+    var currentId = fromTurnId;
+    final visited = <String>{};
+    while (currentId.isNotEmpty && visited.add(currentId)) {
+      final turn = findTurn(currentId);
+      if (turn == null) break;
+      if (turn.choices.isNotEmpty) break;
+      turns.add(turn);
+      if (turn.nextTurnId.isEmpty) break;
+      currentId = turn.nextTurnId;
+    }
+    return turns;
+  }
+
   List<ConversationTurn> leadingTurnsBefore(String turnId) {
     final leading = <ConversationTurn>[];
     var currentId = conversation.startTurnId;

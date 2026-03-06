@@ -287,6 +287,39 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
     final hasChoices = !isOutcomeMode &&
         currentTurn != null &&
         currentTurn.choices.isNotEmpty;
+    final transcript = <Widget>[];
+    var selectedChoiceIndex = 0;
+
+    for (final turn in widget.selectedTurns) {
+      transcript.add(
+        _buildTurnBubble(
+          turn: turn,
+          narratorColor: narratorColor,
+          npcColor: npcColor,
+          playerColor: playerColor,
+          playerAvatarPath: playerAvatarPath,
+        ),
+      );
+
+      if (turn.choices.isEmpty || selectedChoiceIndex >= widget.selectedChoices.length) {
+        continue;
+      }
+
+      transcript.add(
+        Padding(
+          padding: const EdgeInsets.only(
+            bottom: ScenarioScreen._chatSpacing,
+          ),
+          child: _PlayerSpeechBubble(
+            playerName: widget.scene.characters.player.name,
+            playerAvatarPath: playerAvatarPath,
+            text: widget.selectedChoices[selectedChoiceIndex].playerLine,
+            color: playerColor,
+          ),
+        ),
+      );
+      selectedChoiceIndex += 1;
+    }
 
     if (_showChoiceGuide && hasChoices) {
       _scheduleChoiceRectSync();
@@ -315,31 +348,7 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
                         playerAvatarPath: playerAvatarPath,
                       );
                     }),
-                    ...widget.selectedTurns.asMap().entries.map(
-                          (entry) => Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              _buildTurnBubble(
-                                turn: entry.value,
-                                narratorColor: narratorColor,
-                                npcColor: npcColor,
-                                playerColor: playerColor,
-                                playerAvatarPath: playerAvatarPath,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  bottom: ScenarioScreen._chatSpacing,
-                                ),
-                                child: _PlayerSpeechBubble(
-                                  playerName: widget.scene.characters.player.name,
-                                  playerAvatarPath: playerAvatarPath,
-                                  text: widget.selectedChoices[entry.key].playerLine,
-                                  color: playerColor,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                    ...transcript,
                     if (!isOutcomeMode && currentTurn != null)
                       _buildTurnBubble(
                         turn: currentTurn,
