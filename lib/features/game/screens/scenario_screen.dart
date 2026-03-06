@@ -152,15 +152,20 @@ class ScenarioScreen extends ConsumerStatefulWidget {
 
 class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
   static const String _choiceGuideSeenPrefsKey = 'bds.choice_guide.seen';
+  static const Duration _turnRevealDelay = Duration(milliseconds: 200);
   final GlobalKey _firstChoiceBubbleKey = GlobalKey();
 
   bool _showChoiceGuide = false;
   Rect? _choiceBubbleRect;
+  int _visibleTurnCount = 0;
+  int _revealGeneration = 0;
+  bool _isAwaitingTurnCompletion = false;
 
   @override
   void initState() {
     super.initState();
     _loadChoiceGuideState();
+    _syncVisibleTurns();
   }
 
   Future<void> _loadChoiceGuideState() async {
@@ -176,9 +181,87 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
   @override
   void didUpdateWidget(covariant ScenarioScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
+    final shouldRestartReveal = oldWidget.scene.id != widget.scene.id ||
+        (oldWidget.selectedTurns.isNotEmpty && widget.selectedTurns.isEmpty);
+    if (shouldRestartReveal) {
+      _revealGeneration += 1;
+      _visibleTurnCount = 0;
+      _choiceBubbleRect = null;
+      _isAwaitingTurnCompletion = false;
+    }
+    _syncVisibleTurns();
     if (_showChoiceGuide) {
       _scheduleChoiceRectSync();
     }
+  }
+
+  List<Duration> _revealDurations() {
+    final durations = <Duration>[];
+
+    for (final turn in widget.scene.introTurns) {
+      durations.add(_TypingText.durationForText(turn.text));
+    }
+
+    var selectedChoiceIndex = 0;
+    for (final turn in widget.selectedTurns) {
+      durations.add(_TypingText.durationForText(turn.text));
+      if (turn.choices.isEmpty || selectedChoiceIndex >= widget.selectedChoices.length) {
+        continue;
+      }
+      durations.add(
+        _TypingText.durationForText(widget.selectedChoices[selectedChoiceIndex].playerLine),
+      );
+      selectedChoiceIndex += 1;
+    }
+
+    if (widget.selectedChoice == null && widget.currentTurnId != null) {
+      final currentTurn = widget.scene.findTurn(widget.currentTurnId!);
+      if (currentTurn != null) {
+        durations.add(_TypingText.durationForText(currentTurn.text));
+      }
+    }
+
+    if (widget.outcomeText != null) {
+      durations.add(_TypingText.durationForText(widget.outcomeText!));
+    }
+
+    return durations;
+  }
+
+  void _syncVisibleTurns() {
+    final durations = _revealDurations();
+    final targetCount = durations.length;
+    if (targetCount <= _visibleTurnCount) {
+      if (_visibleTurnCount != targetCount || _isAwaitingTurnCompletion) {
+        setState(() {
+          _visibleTurnCount = targetCount;
+          _isAwaitingTurnCompletion = false;
+        });
+      }
+      return;
+    }
+
+    final generation = ++_revealGeneration;
+    Future<void>(() async {
+      while (mounted &&
+          generation == _revealGeneration &&
+          _visibleTurnCount < targetCount) {
+        final nextIndex = _visibleTurnCount;
+        setState(() {
+          _visibleTurnCount += 1;
+          _isAwaitingTurnCompletion = true;
+        });
+        final animationDuration = _AnimatedChatEntry.animationDuration >
+                durations[nextIndex]
+            ? _AnimatedChatEntry.animationDuration
+            : durations[nextIndex];
+        await Future<void>.delayed(animationDuration + _turnRevealDelay);
+        if (!mounted || generation != _revealGeneration) return;
+        setState(() {
+          _isAwaitingTurnCompletion = false;
+        });
+      }
+    });
   }
 
   void _scheduleChoiceRectSync() {
@@ -284,9 +367,6 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
     final introTurns = widget.scene.introTurns;
     final playerPortraitPath = _portraitPathFor(widget.scene.characters.player);
     final playerAvatarPath = widget.playerAvatarPathOverride ?? playerPortraitPath;
-    final hasChoices = !isOutcomeMode &&
-        currentTurn != null &&
-        currentTurn.choices.isNotEmpty;
     final transcript = <Widget>[];
     var selectedChoiceIndex = 0;
 
@@ -321,6 +401,44 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
       selectedChoiceIndex += 1;
     }
 
+    final revealableTurns = <Widget>[
+      ...introTurns.map((turn) {
+        return _buildTurnBubble(
+          turn: turn,
+          narratorColor: narratorColor,
+          npcColor: npcColor,
+          playerColor: playerColor,
+          playerAvatarPath: playerAvatarPath,
+        );
+      }),
+      ...transcript,
+      if (!isOutcomeMode && currentTurn != null)
+        _buildTurnBubble(
+          turn: currentTurn,
+          narratorColor: narratorColor,
+          npcColor: npcColor,
+          playerColor: playerColor,
+          playerAvatarPath: playerAvatarPath,
+        ),
+      if (isOutcomeMode)
+        _OutcomeBubble(
+          title: widget.text.outcome,
+          text: widget.outcomeText!,
+          color: outcomeColor,
+        ),
+    ];
+    final visibleRevealableTurns = revealableTurns
+        .take(_visibleTurnCount.clamp(0, revealableTurns.length))
+        .toList();
+    final hasChoices = !isOutcomeMode &&
+        currentTurn != null &&
+        currentTurn.choices.isNotEmpty &&
+        _visibleTurnCount >= revealableTurns.length &&
+        !_isAwaitingTurnCompletion;
+    final showOutcomeNext = isOutcomeMode &&
+        _visibleTurnCount >= revealableTurns.length &&
+        !_isAwaitingTurnCompletion;
+
     if (_showChoiceGuide && hasChoices) {
       _scheduleChoiceRectSync();
     }
@@ -339,24 +457,7 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    ...introTurns.map((turn) {
-                      return _buildTurnBubble(
-                        turn: turn,
-                        narratorColor: narratorColor,
-                        npcColor: npcColor,
-                        playerColor: playerColor,
-                        playerAvatarPath: playerAvatarPath,
-                      );
-                    }),
-                    ...transcript,
-                    if (!isOutcomeMode && currentTurn != null)
-                      _buildTurnBubble(
-                        turn: currentTurn,
-                        narratorColor: narratorColor,
-                        npcColor: npcColor,
-                        playerColor: playerColor,
-                        playerAvatarPath: playerAvatarPath,
-                      ),
+                    ...visibleRevealableTurns,
                     if (hasChoices)
                       ...currentTurn.choices.asMap().entries.map(
                             (entry) => Padding(
@@ -375,13 +476,7 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
                               ),
                             ),
                           ),
-                    if (isOutcomeMode)
-                      _OutcomeBubble(
-                        title: widget.text.outcome,
-                        text: widget.outcomeText!,
-                        color: outcomeColor,
-                      ),
-                    if (isOutcomeMode)
+                    if (showOutcomeNext)
                       Padding(
                         padding: const EdgeInsets.only(
                           bottom: ScenarioScreen._chatSpacing,
@@ -611,21 +706,26 @@ class _NarratorChatBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('$speaker:', style: Theme.of(context).textTheme.labelLarge),
-            const SizedBox(height: 6),
-            Text(text, style: ScenarioScreen._conversationTextStyle(context)),
-          ],
+    return _AnimatedChatEntry(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
+        child: Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('$speaker:', style: Theme.of(context).textTheme.labelLarge),
+              const SizedBox(height: 6),
+              _TypingText(
+                text,
+                style: ScenarioScreen._conversationTextStyle(context),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -647,27 +747,29 @@ class _NpcBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _Avatar(path: npcAvatarPath, label: npcName),
-          const SizedBox(width: 8),
-          Flexible(
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                text,
-                style: ScenarioScreen._conversationTextStyle(context),
+    return _AnimatedChatEntry(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _Avatar(path: npcAvatarPath, label: npcName),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: _TypingText(
+                  text,
+                  style: ScenarioScreen._conversationTextStyle(context),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -690,32 +792,34 @@ class _PlayerSpeechBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Flexible(
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                text,
-                textAlign: TextAlign.left,
-                style: ScenarioScreen._conversationTextStyle(context),
+    return _AnimatedChatEntry(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: _TypingText(
+                  text,
+                  textAlign: TextAlign.left,
+                  style: ScenarioScreen._conversationTextStyle(context),
+                ),
               ),
             ),
-          ),
-          const SizedBox(width: 8),
-          SizedBox(
-            width: 52,
-            child: _Avatar(path: playerAvatarPath, label: playerName),
-          ),
-        ],
+            const SizedBox(width: 8),
+            SizedBox(
+              width: 52,
+              child: _Avatar(path: playerAvatarPath, label: playerName),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -835,27 +939,128 @@ class _OutcomeBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '$title:',
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
-            const SizedBox(height: 6),
-            Text(text),
-          ],
+    return _AnimatedChatEntry(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '$title:',
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+              const SizedBox(height: 6),
+              _TypingText(text),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class _AnimatedChatEntry extends StatefulWidget {
+  const _AnimatedChatEntry({required this.child});
+
+  static const Duration animationDuration = Duration(milliseconds: 240);
+
+  final Widget child;
+
+  @override
+  State<_AnimatedChatEntry> createState() => _AnimatedChatEntryState();
+}
+
+class _AnimatedChatEntryState extends State<_AnimatedChatEntry>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: _AnimatedChatEntry.animationDuration,
+  )..forward();
+  late final Animation<double> _opacity = CurvedAnimation(
+    parent: _controller,
+    curve: Curves.easeOut,
+  );
+  late final Animation<Offset> _offset = Tween<Offset>(
+    begin: const Offset(0, 0.08),
+    end: Offset.zero,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _opacity,
+      child: SlideTransition(
+        position: _offset,
+        child: widget.child,
+      ),
+    );
+  }
+}
+
+class _TypingText extends StatefulWidget {
+  const _TypingText(
+    this.text, {
+    this.style,
+    this.textAlign,
+  });
+
+  static Duration durationForText(String text) {
+    return Duration(
+      milliseconds: (text.characters.length * 18).clamp(180, 900),
+    );
+  }
+
+  final String text;
+  final TextStyle? style;
+  final TextAlign? textAlign;
+
+  @override
+  State<_TypingText> createState() => _TypingTextState();
+}
+
+class _TypingTextState extends State<_TypingText>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: _TypingText.durationForText(widget.text),
+  )..forward();
+  late final Animation<int> _visibleCharacters = StepTween(
+    begin: 0,
+    end: widget.text.characters.length,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _visibleCharacters,
+      builder: (context, _) {
+        final visibleCount = _visibleCharacters.value;
+        final visibleText = widget.text.characters.take(visibleCount).toString();
+        return Text(
+          visibleText,
+          textAlign: widget.textAlign,
+          style: widget.style,
+        );
+      },
     );
   }
 }
