@@ -153,19 +153,29 @@ class ScenarioScreen extends ConsumerStatefulWidget {
 class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
   static const String _choiceGuideSeenPrefsKey = 'bds.choice_guide.seen';
   static const Duration _turnRevealDelay = Duration(milliseconds: 200);
+  static const Duration _autoScrollTick = Duration(milliseconds: 48);
   final GlobalKey _firstChoiceBubbleKey = GlobalKey();
+  final ScrollController _scrollController = ScrollController();
 
   bool _showChoiceGuide = false;
   Rect? _choiceBubbleRect;
   int _visibleTurnCount = 0;
   int _revealGeneration = 0;
   bool _isAwaitingTurnCompletion = false;
+  int _autoScrollGeneration = 0;
 
   @override
   void initState() {
     super.initState();
     _loadChoiceGuideState();
     _syncVisibleTurns();
+  }
+
+  @override
+  void dispose() {
+    _autoScrollGeneration += 1;
+    _scrollController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadChoiceGuideState() async {
@@ -185,6 +195,7 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
         (oldWidget.selectedTurns.isNotEmpty && widget.selectedTurns.isEmpty);
     if (shouldRestartReveal) {
       _revealGeneration += 1;
+      _autoScrollGeneration += 1;
       _visibleTurnCount = 0;
       _choiceBubbleRect = null;
       _isAwaitingTurnCompletion = false;
@@ -255,12 +266,40 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
                 durations[nextIndex]
             ? _AnimatedChatEntry.animationDuration
             : durations[nextIndex];
+        _followScrollFor(animationDuration + _turnRevealDelay);
         await Future<void>.delayed(animationDuration + _turnRevealDelay);
         if (!mounted || generation != _revealGeneration) return;
         setState(() {
           _isAwaitingTurnCompletion = false;
         });
       }
+    });
+  }
+
+  void _followScrollFor(Duration duration) {
+    final generation = ++_autoScrollGeneration;
+    _scrollToBottom();
+    Future<void>(() async {
+      final ticks = (duration.inMilliseconds / _autoScrollTick.inMilliseconds).ceil();
+      for (var i = 0; i < ticks; i += 1) {
+        await Future<void>.delayed(_autoScrollTick);
+        if (!mounted || generation != _autoScrollGeneration) return;
+        _scrollToBottom();
+      }
+    });
+  }
+
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_scrollController.hasClients) return;
+      final position = _scrollController.position;
+      final target = position.maxScrollExtent;
+      if ((target - position.pixels).abs() < 4) return;
+      _scrollController.animateTo(
+        target,
+        duration: const Duration(milliseconds: 140),
+        curve: Curves.easeOut,
+      );
     });
   }
 
@@ -453,6 +492,7 @@ class _ScenarioScreenState extends ConsumerState<ScenarioScreen> {
             ),
             Expanded(
               child: SingleChildScrollView(
+                controller: _scrollController,
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
