@@ -353,7 +353,7 @@
           {
             "id": "t4",
             "speaker": "Dẫn chuyện",
-            "text": "Plot twist: Camera ở sảnh cho thấy một người lạ nhặt ví bạn. Tuấn không lấy. Nhưng Tuấn cũng vừa bị người nhà hỏi mượn tiền tối đó, nên bạn nhìn ánh mắt Tuấn là bạn đã “kết án” rồi.",
+            "text": "Camera ở sảnh cho thấy một người lạ nhặt ví bạn. Tuấn không lấy. Nhưng Tuấn cũng vừa bị người nhà hỏi mượn tiền tối đó, nên bạn nhìn ánh mắt Tuấn là bạn đã “kết án” rồi.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -499,7 +499,7 @@
           {
             "id": "t4",
             "speaker": "Dẫn chuyện",
-            "text": "Plot twist: My tưởng bạn “bận việc riêng” vì thấy bạn đi ra ngoài giữa buổi. Thật ra bạn chạy ra nghe điện thoại bệnh viện báo tin người thân đang cấp cứu. Bạn chưa kể với ai.",
+            "text": "My tưởng bạn “bận việc riêng” vì thấy bạn đi ra ngoài giữa buổi. Thật ra bạn chạy ra nghe điện thoại bệnh viện báo tin người thân đang cấp cứu. Bạn chưa kể với ai.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -644,7 +644,7 @@
           {
             "id": "t4",
             "speaker": "Dẫn chuyện",
-            "text": "Plot twist: Thảo thú nhận đang trả nợ viện phí cho ba, nên không dám nói. Nhưng bạn cũng đang kẹt tiền học cho em. Hai người đều có lý do thật.",
+            "text": "Thảo thú nhận đang trả nợ viện phí cho ba, nên không dám nói. Nhưng bạn cũng đang kẹt tiền học cho em. Hai người đều có lý do thật.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -789,7 +789,7 @@
           {
             "id": "t4",
             "speaker": "Dẫn chuyện",
-            "text": "Plot twist: Bạn vô tình nghe Mẹ nói chuyện điện thoại với dì: “Tui sợ nó gục… tui không biết nói sao cho nó mạnh lên.” Mẹ không ghét bạn—Mẹ sợ mất bạn.",
+            "text": "Bạn vô tình nghe Mẹ nói chuyện điện thoại với dì: “Tui sợ nó gục… tui không biết nói sao cho nó mạnh lên.” Mẹ không ghét bạn—Mẹ sợ mất bạn.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -933,7 +933,7 @@
           {
             "id": "t4",
             "speaker": "Dẫn chuyện",
-            "text": "Plot twist: Trang nói thật—có người góp ý bạn hay “làm nhanh cho xong” nên các bạn mới không dám giao phần cần kiên nhẫn. Trang sợ nói thẳng sẽ làm bạn tự ái, nên chọn cách né.",
+            "text": "Trang nói thật—có người góp ý bạn hay “làm nhanh cho xong” nên các bạn mới không dám giao phần cần kiên nhẫn. Trang sợ nói thẳng sẽ làm bạn tự ái, nên chọn cách né.",
             "nextTurnId": "t5",
             "choices": []
           },

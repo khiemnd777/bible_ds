@@ -615,7 +615,7 @@
           {
             "id": "t15",
             "speaker": "Anh Tín",
-            "text": "Plot twist nè: Nếu bạn im, họ kiện cả công ty. Nhưng nếu bạn nói, bạn sẽ bị ghét. Bạn chọn cái nào?",
+            "text": "Nếu bạn im, họ kiện cả công ty. Nhưng nếu bạn nói, bạn sẽ bị ghét. Bạn chọn cái nào?",
             "nextTurnId": "t_choice_3",
             "choices": []
           },
@@ -1281,7 +1281,7 @@
           {
             "id": "t_pastor_2",
             "speaker": "Dẫn chuyện",
-            "text": "Plot twist cuối: Khoa gửi tin nhắn cho vài người: “Bạn đang che giấu chuyện của My.” Bạn bị biến thành người ‘đồng lõa’ trong lời đồn mới.",
+            "text": "Khoa gửi tin nhắn cho vài người: “Bạn đang che giấu chuyện của My.” Bạn bị biến thành người ‘đồng lõa’ trong lời đồn mới.",
             "nextTurnId": "t_choice_5",
             "choices": []
           },
@@ -1729,7 +1729,7 @@
           {
             "id": "t10",
             "speaker": "Dẫn chuyện",
-            "text": "Tối đó, Bảo không đòi chơi, không đòi ăn. Bảo chỉ ôm gối, nhìn vào khoảng trống. Plot twist cuối: Bảo không giận vì bị la. Bảo sợ bạn sẽ bỏ Bảo lần nữa.",
+            "text": "Tối đó, Bảo không đòi chơi, không đòi ăn. Bảo chỉ ôm gối, nhìn vào khoảng trống. Bảo không giận vì bị la. Bảo sợ bạn sẽ bỏ Bảo lần nữa.",
             "nextTurnId": "t13",
             "choices": []
           },

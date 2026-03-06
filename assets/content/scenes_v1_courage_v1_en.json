@@ -1281,7 +1281,7 @@
           {
             "id": "t_pastor_2",
             "speaker": "Narrator",
-            "text": "Final plot twist: Kyle messages a few people: “You’re hiding Mia’s situation.” You become the “accomplice” in a brand-new rumor.",
+            "text": "Kyle messages a few people: “You’re hiding Mia’s situation.” You become the “accomplice” in a brand-new rumor.",
             "nextTurnId": "t_choice_5",
             "choices": []
           },
@@ -1729,7 +1729,7 @@
           {
             "id": "t10",
             "speaker": "Narrator",
-            "text": "That night, Ben doesn’t ask to play, doesn’t ask to eat. Ben just hugs a pillow and stares into empty space. Final plot twist: Ben isn’t scared because you yelled—Ben is scared you’ll leave Ben again.",
+            "text": "That night, Ben doesn’t ask to play, doesn’t ask to eat. Ben just hugs a pillow and stares into empty space. Ben isn’t scared because you yelled—Ben is scared you’ll leave Ben again.",
             "nextTurnId": "t13",
             "choices": []
           },

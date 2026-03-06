@@ -1094,7 +1094,7 @@
           {
             "id": "t5_choice_2",
             "speaker": "Dẫn chuyện",
-            "text": "Plot twist: nếu bạn che, bạn vô tình dạy Sang rằng trốn là bình thường. Nếu bạn nói thật, bạn có thể mất “thiện cảm” của Sang. Bạn chọn cuối cùng?",
+            "text": "nếu bạn che, bạn vô tình dạy Sang rằng trốn là bình thường. Nếu bạn nói thật, bạn có thể mất “thiện cảm” của Sang. Bạn chọn cuối cùng?",
             "nextTurnId": "",
             "choices": [
               {
