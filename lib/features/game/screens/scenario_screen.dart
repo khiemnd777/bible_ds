@@ -747,6 +747,7 @@ class _NarratorChatBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _AnimatedChatEntry(
+      beginOffset: Offset.zero,
       child: Padding(
         padding: const EdgeInsets.only(bottom: ScenarioScreen._chatSpacing),
         child: Container(
@@ -760,7 +761,7 @@ class _NarratorChatBlock extends StatelessWidget {
             children: [
               Text('$speaker:', style: Theme.of(context).textTheme.labelLarge),
               const SizedBox(height: 6),
-              _TypingText(
+              Text(
                 text,
                 style: ScenarioScreen._conversationTextStyle(context),
               ),
@@ -910,58 +911,61 @@ class _PlayerChoiceBubbleState extends State<_PlayerChoiceBubble>
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Flexible(
-          child: AnimatedBuilder(
-            animation: _controller,
-            builder: (context, child) {
-              return Transform.scale(
-                scale: _scale.value,
-                alignment: Alignment.centerRight,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: widget.color.withValues(alpha: _glow.value),
-                        blurRadius: 14,
-                        spreadRadius: 1,
-                      ),
-                    ],
+    return _AnimatedChatEntry(
+      beginOffset: const Offset(0, 0.14),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Flexible(
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Transform.scale(
+                  scale: _scale.value,
+                  alignment: Alignment.centerRight,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: widget.color.withValues(alpha: _glow.value),
+                          blurRadius: 14,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                    ),
+                    child: child,
                   ),
-                  child: child,
+                );
+              },
+              child: OutlinedButton(
+                onPressed: widget.onTap,
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: widget.color,
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.all(12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
-              );
-            },
-            child: OutlinedButton(
-              onPressed: widget.onTap,
-              style: OutlinedButton.styleFrom(
-                backgroundColor: widget.color,
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.all(12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                child: Text(
+                  widget.text,
+                  textAlign: TextAlign.left,
+                  style: ScenarioScreen._conversationTextStyle(context),
                 ),
-              ),
-              child: Text(
-                widget.text,
-                textAlign: TextAlign.left,
-                style: ScenarioScreen._conversationTextStyle(context),
               ),
             ),
           ),
-        ),
-        const SizedBox(width: 8),
-        SizedBox(
-          width: 52,
-          child: widget.showAvatar
-              ? _Avatar(path: widget.playerAvatarPath, label: widget.playerName)
-              : const SizedBox.shrink(),
-        ),
-      ],
+          const SizedBox(width: 8),
+          SizedBox(
+            width: 52,
+            child: widget.showAvatar
+                ? _Avatar(path: widget.playerAvatarPath, label: widget.playerName)
+                : const SizedBox.shrink(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -1020,11 +1024,15 @@ class _OutcomeBubble extends StatelessWidget {
 }
 
 class _AnimatedChatEntry extends StatefulWidget {
-  const _AnimatedChatEntry({required this.child});
+  const _AnimatedChatEntry({
+    required this.child,
+    this.beginOffset = const Offset(0, 0.08),
+  });
 
   static const Duration animationDuration = Duration(milliseconds: 240);
 
   final Widget child;
+  final Offset beginOffset;
 
   @override
   State<_AnimatedChatEntry> createState() => _AnimatedChatEntryState();
@@ -1041,7 +1049,7 @@ class _AnimatedChatEntryState extends State<_AnimatedChatEntry>
     curve: Curves.easeOut,
   );
   late final Animation<Offset> _offset = Tween<Offset>(
-    begin: const Offset(0, 0.08),
+    begin: widget.beginOffset,
     end: Offset.zero,
   ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 

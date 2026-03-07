@@ -316,7 +316,7 @@
               },
               {
                 "id": "p02_c2_snap",
-                "text": "Reply kiểu ‘mỉa nhẹ’: “Ủa mình có nhắc rồi mà 🙂",
+                "text": "Reply kiểu ‘mỉa mai nhẹ’: “Ủa mình có nhắc rồi mà 🙂",
                 "playerLine": "Ủa mình có nhắc rồi mà 🙂",
                 "intentTag": "retaliate",
                 "actionTag": "sarcasm",

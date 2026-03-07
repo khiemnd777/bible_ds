@@ -626,7 +626,7 @@
               },
               {
                 "id": "c_f06_1_sarcasm",
-                "text": "Mỉa: “Cà phê đều mà trả tiền thì quên ha.",
+                "text": "Mỉa mai: “Cà phê đều mà trả tiền thì quên ha.",
                 "playerLine": "Bạn đi cà phê đều, còn tiền trả mình thì… quên luôn hả?",
                 "intentTag": "resent",
                 "actionTag": "sarcasm",

@@ -179,7 +179,7 @@
           {
             "id": "t_public_1",
             "speaker": "Mục sư An",
-            "text": "Chuyện này nghiêm trọng hơn mình nghĩ.",
+            "text": "Chuyện này nghiêm trọng hơn tôi nghĩ.",
             "nextTurnId": "t_public_2",
             "choices": []
           },
@@ -1479,7 +1479,7 @@
           {
             "id": "t4",
             "speaker": "Dẫn chuyện",
-            "text": "Bảo cắn môi. Bạn thấy cô Thảo đứng gần đó nhìn qua. Bảo nói nhỏ mà nghe như cãi.",
+            "text": "Bảo cắn môi. Bạn thấy cô Thảo đứng gần đó nhìn qua. Bảo nói nhỏ mà nghe như một trận cãi nhau.",
             "nextTurnId": "t5",
             "choices": []
           },
@@ -1500,13 +1500,13 @@
           {
             "id": "t_choice_1",
             "speaker": "Dẫn chuyện",
-            "text": "Ngay khoảnh khắc đó, bạn có thể kéo lại… hoặc để cái tôi dẫn đường.",
+            "text": "Ngay khoảnh khắc đó, bạn có thể kéo lại… hoặc để cái tôi định hướng.",
             "nextTurnId": "",
             "choices": [
               {
                 "id": "c1_apologize_now",
                 "text": "Xin lỗi Bảo ngay tại chỗ, dù xung quanh đang nhìn.",
-                "playerLine": "Ba/mẹ xin lỗi. Ba/mẹ nói lớn tiếng là sai. Con có sợ, ba/mẹ hiểu.",
+                "playerLine": "Ba/mẹ xin lỗi. Ba/mẹ nói lớn tiếng là sai. Ba/mẹ biết con sợ, ba/mẹ hiểu.",
                 "intentTag": "courage",
                 "actionTag": "apologize_public",
                 "effects": [
@@ -1655,7 +1655,7 @@
           {
             "id": "t11",
             "speaker": "Linh",
-            "text": "Ủa sao con im ru? Có chuyện gì hả?",
+            "text": "Ủa Bảo, con bị sao vậy? Có chuyện gì hả?",
             "nextTurnId": "t12",
             "choices": []
           },
@@ -1675,7 +1675,7 @@
               {
                 "id": "c2_confess_to_partner",
                 "text": "Nói thật với Linh, nhờ Linh cùng bạn xin lỗi và sửa.",
-                "playerLine": "Mình lỡ lớn tiếng trước mặt cô giáo… mình sai. Tối nay mình muốn xin lỗi con đàng hoàng.",
+                "playerLine": "Anh lỡ lớn tiếng trước mặt cô giáo… anh sai. Tối nay anh muốn xin lỗi con đàng hoàng.",
                 "intentTag": "courage",
                 "actionTag": "confess_partner",
                 "effects": [
@@ -1701,7 +1701,7 @@
               {
                 "id": "c2_double_down",
                 "text": "Giữ uy: nói Linh đừng can thiệp, bạn tự dạy con.",
-                "playerLine": "Chuyện nhỏ thôi. Mình xử lý được. Đừng làm lớn.",
+                "playerLine": "Chuyện nhỏ thôi. Anh xử lý được. Đừng làm lớn chuyện.",
                 "intentTag": "pride",
                 "actionTag": "control",
                 "effects": [

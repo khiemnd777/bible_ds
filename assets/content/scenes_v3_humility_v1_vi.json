@@ -522,7 +522,7 @@
           {
             "id": "t1",
             "speaker": "Dẫn chuyện",
-            "text": "Bạn đăng một status chia sẻ trải nghiệm đức tin. Hân comment kiểu mỉa: “Nghe đạo đức ghê ha.” Mọi người bắt đầu hùa theo.",
+            "text": "Bạn đăng một status chia sẻ trải nghiệm đức tin. Hân comment kiểu mỉa mai: “Nghe đạo đức ghê ha.” Mọi người bắt đầu hùa theo.",
             "nextTurnId": "t2",
             "choices": []
           },
