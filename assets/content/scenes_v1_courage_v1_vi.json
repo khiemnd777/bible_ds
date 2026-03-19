@@ -72,8 +72,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -94,8 +94,8 @@
                     "delta": 8
                   },
                   {
-                    "stat": "fear",
-                    "delta": -3
+                    "stat": "wisdom",
+                    "delta": 3
                   },
                   {
                     "stat": "love",
@@ -138,12 +138,12 @@
                 "actionTag": "persist_truth",
                 "effects": [
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 8
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -160,7 +160,7 @@
                 "actionTag": "withdraw",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 6
                   },
                   {
@@ -226,7 +226,7 @@
                 "actionTag": "hard_truth",
                 "effects": [
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 10
                   },
                   {
@@ -376,7 +376,7 @@
                 "actionTag": "comply",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 10
                   },
                   {
@@ -384,7 +384,7 @@
                     "delta": -4
                   },
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": -6
                   }
                 ],
@@ -402,12 +402,12 @@
                 "actionTag": "refuse",
                 "effects": [
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": 10
                   },
                   {
-                    "stat": "fear",
-                    "delta": -4
+                    "stat": "wisdom",
+                    "delta": 4
                   },
                   {
                     "stat": "wisdom",
@@ -464,7 +464,7 @@
                 "actionTag": "hide",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 6
                   },
                   {
@@ -498,8 +498,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -545,11 +545,11 @@
                 "actionTag": "backdown",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 8
                   },
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": -6
                   },
                   {
@@ -571,16 +571,16 @@
                 "actionTag": "escalate",
                 "effects": [
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": 12
                   },
                   {
-                    "stat": "obedience",
+                    "stat": "humility",
                     "delta": 8
                   },
                   {
-                    "stat": "fear",
-                    "delta": -4
+                    "stat": "wisdom",
+                    "delta": 4
                   }
                 ],
                 "portraitOverrides": {
@@ -637,12 +637,12 @@
                     "delta": 8
                   },
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 10
                   },
                   {
-                    "stat": "fear",
-                    "delta": -3
+                    "stat": "wisdom",
+                    "delta": 3
                   }
                 ],
                 "portraitOverrides": {
@@ -659,7 +659,7 @@
                 "actionTag": "exit",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 4
                   },
                   {
@@ -667,7 +667,7 @@
                     "delta": 3
                   },
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": -2
                   }
                 ],
@@ -718,12 +718,12 @@
                     "delta": 10
                   },
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 8
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -740,7 +740,7 @@
                 "actionTag": "deny",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 10
                   },
                   {
@@ -905,7 +905,7 @@
                 "actionTag": "stop_gossip",
                 "effects": [
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": 10
                   },
                   {
@@ -913,8 +913,8 @@
                     "delta": 4
                   },
                   {
-                    "stat": "fear",
-                    "delta": -3
+                    "stat": "wisdom",
+                    "delta": 3
                   }
                 ],
                 "portraitOverrides": {
@@ -931,7 +931,7 @@
                 "actionTag": "avoid",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 8
                   },
                   {
@@ -990,8 +990,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -1008,12 +1008,12 @@
                 "actionTag": "public_boundary",
                 "effects": [
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 8
                   },
                   {
-                    "stat": "fear",
-                    "delta": -3
+                    "stat": "wisdom",
+                    "delta": 3
                   },
                   {
                     "stat": "love",
@@ -1071,8 +1071,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -1089,7 +1089,7 @@
                 "actionTag": "distance",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 6
                   },
                   {
@@ -1148,12 +1148,12 @@
                     "delta": 10
                   },
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 4
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -1170,7 +1170,7 @@
                 "actionTag": "deflect",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 8
                   },
                   {
@@ -1233,8 +1233,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "humility",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -1259,7 +1259,7 @@
                     "delta": -2
                   },
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 4
                   }
                 ],
@@ -1307,8 +1307,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "humility",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -1325,7 +1325,7 @@
                 "actionTag": "public_callout",
                 "effects": [
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 6
                   },
                   {
@@ -1333,8 +1333,8 @@
                     "delta": -4
                   },
                   {
-                    "stat": "fear",
-                    "delta": -1
+                    "stat": "wisdom",
+                    "delta": 1
                   }
                 ],
                 "portraitOverrides": {
@@ -1545,7 +1545,7 @@
                     "delta": -4
                   },
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 3
                   }
                 ],
@@ -1688,8 +1688,8 @@
                     "delta": 4
                   },
                   {
-                    "stat": "fear",
-                    "delta": -1
+                    "stat": "wisdom",
+                    "delta": 1
                   }
                 ],
                 "portraitOverrides": {
@@ -1714,7 +1714,7 @@
                     "delta": -3
                   },
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 2
                   }
                 ],
@@ -1762,7 +1762,7 @@
                     "delta": 8
                   },
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 4
                   }
                 ],
@@ -1788,7 +1788,7 @@
                     "delta": -2
                   },
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 4
                   }
                 ],
@@ -1946,7 +1946,7 @@
                 "actionTag": "set_boundary",
                 "effects": [
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": 10
                   },
                   {
@@ -1954,8 +1954,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -1972,7 +1972,7 @@
                 "actionTag": "comply",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 10
                   },
                   {
@@ -2035,8 +2035,8 @@
                     "delta": 4
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -2053,7 +2053,7 @@
                 "actionTag": "handle_alone",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 6
                   },
                   {
@@ -2101,7 +2101,7 @@
                 "actionTag": "reclaim_boundary",
                 "effects": [
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": 10
                   },
                   {
@@ -2109,8 +2109,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -2127,7 +2127,7 @@
                 "actionTag": "isolate",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 10
                   },
                   {
@@ -2182,7 +2182,7 @@
                 "actionTag": "leave_with_plan",
                 "effects": [
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": 12
                   },
                   {
@@ -2190,8 +2190,8 @@
                     "delta": 8
                   },
                   {
-                    "stat": "fear",
-                    "delta": -3
+                    "stat": "wisdom",
+                    "delta": 3
                   }
                 ],
                 "portraitOverrides": {
@@ -2208,11 +2208,11 @@
                 "actionTag": "smooth_over",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 8
                   },
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": -4
                   },
                   {
@@ -2380,8 +2380,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -2406,7 +2406,7 @@
                     "delta": -3
                   },
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 4
                   }
                 ],
@@ -2424,12 +2424,12 @@
                 "actionTag": "refuse",
                 "effects": [
                   {
-                    "stat": "courage",
+                    "stat": "faith",
                     "delta": 10
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   },
                   {
                     "stat": "love",
@@ -2480,8 +2480,8 @@
                     "delta": 2
                   },
                   {
-                    "stat": "fear",
-                    "delta": -1
+                    "stat": "wisdom",
+                    "delta": 1
                   }
                 ],
                 "portraitOverrides": {
@@ -2498,7 +2498,7 @@
                 "actionTag": "soften",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 6
                   },
                   {
@@ -2571,12 +2571,12 @@
                     "delta": 8
                   },
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 4
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   }
                 ],
                 "portraitOverrides": {
@@ -2619,7 +2619,7 @@
                 "actionTag": "cut_contact",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 6
                   },
                   {
@@ -2627,7 +2627,7 @@
                     "delta": -3
                   },
                   {
-                    "stat": "courage",
+                    "stat": "wisdom",
                     "delta": 2
                   }
                 ],
@@ -2780,8 +2780,8 @@
                     "delta": 12
                   },
                   {
-                    "stat": "fear",
-                    "delta": -2
+                    "stat": "wisdom",
+                    "delta": 2
                   },
                   {
                     "stat": "wisdom",
@@ -2802,7 +2802,7 @@
                 "actionTag": "hold_job",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 6
                   },
                   {
@@ -2836,8 +2836,8 @@
                     "delta": 6
                   },
                   {
-                    "stat": "fear",
-                    "delta": -1
+                    "stat": "wisdom",
+                    "delta": 1
                   }
                 ],
                 "portraitOverrides": {
@@ -2950,7 +2950,7 @@
                 "actionTag": "schedule_serving",
                 "effects": [
                   {
-                    "stat": "obedience",
+                    "stat": "faith",
                     "delta": 8
                   },
                   {
@@ -2976,7 +2976,7 @@
                 "actionTag": "postpone",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 6
                   },
                   {
@@ -3054,7 +3054,7 @@
                     "delta": 8
                   },
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 4
                   },
                   {
@@ -3095,7 +3095,7 @@
                     "delta": 10
                   },
                   {
-                    "stat": "obedience",
+                    "stat": "humility",
                     "delta": 6
                   },
                   {
@@ -3117,7 +3117,7 @@
                 "actionTag": "choose_safe",
                 "effects": [
                   {
-                    "stat": "fear",
+                    "stat": "pride",
                     "delta": 8
                   },
                   {
